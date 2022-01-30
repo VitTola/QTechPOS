@@ -16,9 +16,9 @@ using QTech.Base.Enums;
 
 namespace QTech.Forms
 {
-    public partial class CurrencyPage : ExPage, IPage
+    public partial class SupplierPage : ExPage, IPage
     {
-        public CurrencyPage()
+        public SupplierPage()
         {
             InitializeComponent();
             Bind();
@@ -51,7 +51,7 @@ namespace QTech.Forms
         public async void AddNew()
         {
             Model = new Base.Models.Currency();
-            var dig = new frmCurrency(Model, GeneralProcess.Add);
+            var dig = new frmCustomer(Model, GeneralProcess.Add);
             if (dig.ShowDialog() == DialogResult.OK)
             {
                 await Search();
@@ -73,7 +73,7 @@ namespace QTech.Forms
                 return;
             }
 
-            var dig = new frmCurrency(Model, GeneralProcess.Update);
+            var dig = new frmCustomer(Model, GeneralProcess.Update);
 
             if (dig.ShowDialog() == DialogResult.OK)
             {
@@ -113,7 +113,7 @@ namespace QTech.Forms
                 return;
             }
 
-            var dig = new frmCurrency(Model, GeneralProcess.Remove);
+            var dig = new frmCustomer(Model, GeneralProcess.Remove);
             if (dig.ShowDialog() == DialogResult.OK)
             {
                 await Search();
@@ -149,7 +149,7 @@ namespace QTech.Forms
                 return;
             }
 
-            var dig = new frmCurrency(Model, GeneralProcess.View);
+            var dig = new frmCustomer(Model, GeneralProcess.View);
             dig.ShowDialog();
         }
 

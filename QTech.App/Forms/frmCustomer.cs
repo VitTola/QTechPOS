@@ -1,10 +1,8 @@
 ﻿using QTech.Base;
 using QTech.Base.Helpers;
 using QTech.Base.Models;
-using QTech.Base.SearchModels;
 using QTech.Component;
 using QTech.Component.Helpers;
-using QTech.Db;
 using QTech.Db.Logics;
 using System;
 using System.Collections.Generic;
@@ -15,121 +13,59 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using BaseResource = QTech.Base.Properties.Resources;
 
 namespace QTech.Forms
 {
     public partial class frmCustomer : ExDialog, IDialog
     {
-        public Customer Model = new Customer();
+        public Currency Model { get; set; }
 
-        public frmCustomer(Customer model, GeneralProcess flage)
+        public frmCustomer(Currency model, GeneralProcess flag)
         {
             InitializeComponent();
-            this.Model = model;
-            this.Flag = flage;
 
-            Bind();
+            this.Model = model;
+            this.Flag = flag;
+
+            BindAsync();
             InitEvent();
             this.SetTheme(this.Controls, null);
 
         }
         public GeneralProcess Flag { get; set; }
-        public void Bind()
+
+        public void BindAsync()
         {
+            colName.Visible = true;
+            colName.Width = 100;
             Read();
         }
         public void InitEvent()
         {
-            this.MaximizeBox = false;
-            this.Text = Flag.GetTextDialog(Base.Properties.Resources.Customer);
-            txtPhone.RegisterEnglishInput();
-            txtNote.RegisterPrimaryInput();
-
-            tabMain.SelectedIndexChanged += TabMain_SelectedIndexChanged;
-            dgvGoods.EditingControlShowing += DgvGoods_EditingControlShowing;
-            dgvGoods.RegisterEnglishInputColumns(colSalePrice);
-            dgvGoods.ReadOnly = false;
-            dgvGoods.AllowRowNotFound = false;
-            colGoodName.ReadOnly = true;
-            colCategory_.ReadOnly = true;
-            dgvGoods.EditMode = DataGridViewEditMode.EditOnEnter;
-            if (Flag == GeneralProcess.Add)
-            {
-                tabMain.Controls.Remove(tabSetPrice);
-            }
             this.SetEnabled(Flag != GeneralProcess.Remove && Flag != GeneralProcess.View);
-            dgvGoods.EditColumnIcon(colGoodName,colSalePrice);
+            this.MaximizeBox = false;
+            this.Text = Flag.GetTextDialog(Base.Properties.Resources.Currency);
+            txtNote.RegisterPrimaryInput();
+            txtName.RegisterPrimaryInput();
 
-
         }
-        private void DgvGoods_EditingControlShowing(object sender, DataGridViewEditingControlShowingEventArgs e)
+        private void dgv_EditingControlShowing(object sender, DataGridViewEditingControlShowingEventArgs e)
         {
-            if (dgvGoods.CurrentCell.ColumnIndex == colSalePrice.Index)
-            {
-                if (e.Control is TextBox txt)
-                {
-                    txt.KeyPress += (o, ee) => { txt.validCurrency(sender, ee); };
-                }
-            }
-        }
-        private async void TabMain_SelectedIndexChanged(object sender, EventArgs e)
-        {
-           
-        }
-        private DataGridViewRow _newRow(bool isFocus = false)
-        {
-            var row = dgvGoods.Rows[dgvGoods.Rows.Add()];
-            row.Cells[colProductId.Name].Value = 0;
-            if (isFocus)
-            {
-                dgvGoods.Focus();
-            }
-            return row;
+            e.Control.RegisterEnglishInput();
         }
         public bool InValid()
         {
-            if (!txtName.IsValidRequired(lblName.Text) | !txtPhone.IsValidRequired(lblPhone.Text)
-                | !txtPhone.IsValidPhone())
+            if (!txtName.IsValidRequired(lblName.Text) 
+              )
             {
-                return false;
+                return true;
             }
-            return true;
+            return false;
         }
-      
-        public async void Read()
+        public void Read()
         {
             txtName.Text = Model.Name;
-            txtPhone.Text = Model.Phone;
             txtNote.Text = Model.Note;
-           
-        }
-        public void ViewChangeLog()
-        {
-            AuditTrailDialog.ShowChangeLog(Model);
-        }
-        public void Write()
-        {
-            if (!InValid())
-            {
-                return;
-            }
-            
-            Model.Active = true;
-            Model.Name = txtName.Text;
-            Model.Phone = txtPhone.Text;
-            Model.Note = txtNote.Text;
-
-        }
-        private void btnClose_Click(object sender, EventArgs e)
-        {
-            this.Close();
-        }
-       
-       
-        private void btnSave_Click(object sender, EventArgs e)
-        {
-            Save();
         }
         public async void Save()
         {
@@ -138,10 +74,10 @@ namespace QTech.Forms
                 Close();
             }
 
-            if (!InValid()) { return; }
+            if (InValid()) { return; }
             Write();
 
-            var isExist = await btnSave.RunAsync(() => CustomerLogic.Instance.IsExistsAsync(Model));
+            var isExist = await btnSave.RunAsync(() => CurrencyLogic.Instance.IsExistsAsync(Model));
             if (isExist == true)
             {
                 txtName.IsExists(lblName.Text);
@@ -152,15 +88,15 @@ namespace QTech.Forms
             {
                 if (Flag == GeneralProcess.Add)
                 {
-                    return CustomerLogic.Instance.AddAsync(Model);
+                    return CurrencyLogic.Instance.AddAsync(Model);
                 }
                 else if (Flag == GeneralProcess.Update)
                 {
-                    return CustomerLogic.Instance.UpdateAsync(Model);
+                    return CurrencyLogic.Instance.UpdateAsync(Model);
                 }
                 else if (Flag == GeneralProcess.Remove)
                 {
-                    return CustomerLogic.Instance.RemoveAsync(Model);
+                    return CurrencyLogic.Instance.RemoveAsync(Model);
                 }
 
                 return null;
@@ -171,7 +107,27 @@ namespace QTech.Forms
                 DialogResult = System.Windows.Forms.DialogResult.OK;
             }
         }
-
+        public void ViewChangeLog()
+        {
+            AuditTrailDialog.ShowChangeLog(Model);
+        }
+        public void Write()
+        {
+            Model.Name = txtName.Text;
+            Model.Note = txtNote.Text;
+        }
+        private void btnSave_Click(object sender, EventArgs e)
+        {
+            Save();
+        }
+        private void btnClose_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
+        private void btnAuditTrail_Click(object sender, EventArgs e)
+        {
+            ViewChangeLog();
+        }
         protected override bool ProcessCmdKey(ref Message msg, Keys keyData)
         {
             if (keyData == (Keys.Control | Keys.E))
@@ -179,11 +135,6 @@ namespace QTech.Forms
                 btnChangeLog.PerformClick();
             }
             return base.ProcessCmdKey(ref msg, keyData);
-        }
-
-        private void btnChangeLog_Click(object sender, EventArgs e)
-        {
-            ViewChangeLog();
         }
     }
 }

@@ -16,11 +16,11 @@ using System.Windows.Forms;
 
 namespace QTech.Forms
 {
-    public partial class frmCurrency : ExDialog, IDialog
+    public partial class frmSupplier : ExDialog, IDialog
     {
-        public Currency Model { get; set; }
+        public Table Model { get; set; }
 
-        public frmCurrency(Currency model, GeneralProcess flag)
+        public frmSupplier(Table model, GeneralProcess flag)
         {
             InitializeComponent();
 
@@ -38,20 +38,22 @@ namespace QTech.Forms
         {
             colName.Visible = true;
             colName.Width = 100;
+
             Read();
         }
         public void InitEvent()
         {
             this.SetEnabled(Flag != GeneralProcess.Remove && Flag != GeneralProcess.View);
             this.MaximizeBox = false;
-            this.Text = Flag.GetTextDialog(Base.Properties.Resources.Currency);
+            this.Text = Flag.GetTextDialog(Base.Properties.Resources.Table);
             txtNote.RegisterPrimaryInput();
-            txtName.RegisterPrimaryInput();
+            chkUseable_.Checked = true;
 
         }
         private void dgv_EditingControlShowing(object sender, DataGridViewEditingControlShowingEventArgs e)
         {
             e.Control.RegisterEnglishInput();
+            
         }
         public bool InValid()
         {
@@ -66,6 +68,7 @@ namespace QTech.Forms
         {
             txtName.Text = Model.Name;
             txtNote.Text = Model.Note;
+            chkUseable_.Checked = Model.IsUseable;
         }
         public async void Save()
         {
@@ -77,26 +80,30 @@ namespace QTech.Forms
             if (InValid()) { return; }
             Write();
 
-            var isExist = await btnSave.RunAsync(() => CurrencyLogic.Instance.IsExistsAsync(Model));
-            if (isExist == true)
+            if (Flag == GeneralProcess.Add)
             {
-                txtName.IsExists(lblName.Text);
-                return;
+                var isExist = await btnSave.RunAsync(() => TableLogic.Instance.IsExistsAsync(Model));
+                if (isExist == true)
+                {
+                    txtName.IsExists(lblName.Text);
+                    return;
+                }
             }
+          
 
             var result = await btnSave.RunAsync(() =>
             {
                 if (Flag == GeneralProcess.Add)
                 {
-                    return CurrencyLogic.Instance.AddAsync(Model);
+                    return TableLogic.Instance.AddAsync(Model);
                 }
                 else if (Flag == GeneralProcess.Update)
                 {
-                    return CurrencyLogic.Instance.UpdateAsync(Model);
+                    return TableLogic.Instance.UpdateAsync(Model);
                 }
                 else if (Flag == GeneralProcess.Remove)
                 {
-                    return CurrencyLogic.Instance.RemoveAsync(Model);
+                    return TableLogic.Instance.RemoveAsync(Model);
                 }
 
                 return null;
@@ -115,6 +122,8 @@ namespace QTech.Forms
         {
             Model.Name = txtName.Text;
             Model.Note = txtNote.Text;
+            Model.IsUseable = chkUseable_.Checked;
+            
         }
         private void btnSave_Click(object sender, EventArgs e)
         {
@@ -124,7 +133,8 @@ namespace QTech.Forms
         {
             this.Close();
         }
-        private void btnAuditTrail_Click(object sender, EventArgs e)
+
+        private void btnChangeLog_Click(object sender, EventArgs e)
         {
             ViewChangeLog();
         }
@@ -135,6 +145,10 @@ namespace QTech.Forms
                 btnChangeLog.PerformClick();
             }
             return base.ProcessCmdKey(ref msg, keyData);
+        }
+        private void btnChangeLog_Click_1(object sender, EventArgs e)
+        {
+            ViewChangeLog();
         }
     }
 }

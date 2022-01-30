@@ -1,6 +1,6 @@
 ﻿namespace QTech.Forms
 {
-    partial class CurrencyPage
+    partial class SupplierPage
     {
         /// <summary>
         /// Required designer variable.

@@ -54,7 +54,7 @@ namespace QTech.Forms
         public async void AddNew()
         {
             Model = new Table();
-            var dig = new frmTable(Model, GeneralProcess.Add);
+            var dig = new frmSupplier(Model, GeneralProcess.Add);
             if (dig.ShowDialog() == DialogResult.OK)
             {
                 await Search();
@@ -76,7 +76,7 @@ namespace QTech.Forms
                 return;
             }
 
-            var dig = new frmTable(Model, GeneralProcess.Update);
+            var dig = new frmSupplier(Model, GeneralProcess.Update);
 
             if (dig.ShowDialog() == DialogResult.OK)
             {
@@ -116,7 +116,7 @@ namespace QTech.Forms
                 return;
             }
 
-            var dig = new frmTable(Model, GeneralProcess.Remove);
+            var dig = new frmSupplier(Model, GeneralProcess.Remove);
             if (dig.ShowDialog() == DialogResult.OK)
             {
                 await Search();
@@ -152,7 +152,7 @@ namespace QTech.Forms
                 return;
             }
 
-            var dig = new frmTable(Model, GeneralProcess.View);
+            var dig = new frmSupplier(Model, GeneralProcess.View);
             dig.ShowDialog();
         }
 
