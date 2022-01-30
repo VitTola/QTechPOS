@@ -82,7 +82,7 @@
             this.graPanel1.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.graPanel1.Name = "graPanel1";
             this.graPanel1.Rounded = true;
-            this.graPanel1.Size = new System.Drawing.Size(935, 35);
+            this.graPanel1.Size = new System.Drawing.Size(1069, 35);
             this.graPanel1.TabIndex = 0;
             // 
             // colorWithAlpha1
@@ -99,7 +99,7 @@
             this.flowLayoutPanel2.Location = new System.Drawing.Point(0, 0);
             this.flowLayoutPanel2.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.flowLayoutPanel2.Name = "flowLayoutPanel2";
-            this.flowLayoutPanel2.Size = new System.Drawing.Size(266, 35);
+            this.flowLayoutPanel2.Size = new System.Drawing.Size(304, 35);
             this.flowLayoutPanel2.TabIndex = 0;
             // 
             // txtSearch
@@ -107,8 +107,8 @@
             this.txtSearch.BackColor = System.Drawing.Color.White;
             this.txtSearch.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtSearch.Font = new System.Drawing.Font("Khmer OS Battambang", 8.25F);
-            this.txtSearch.Location = new System.Drawing.Point(5, 4);
-            this.txtSearch.Margin = new System.Windows.Forms.Padding(5, 4, 3, 3);
+            this.txtSearch.Location = new System.Drawing.Point(6, 4);
+            this.txtSearch.Margin = new System.Windows.Forms.Padding(6, 4, 3, 3);
             this.txtSearch.Name = "txtSearch";
             this.txtSearch.Padding = new System.Windows.Forms.Padding(2, 3, 1, 4);
             this.txtSearch.PlaceHolderText = "";
@@ -123,10 +123,10 @@
             this.flowLayoutPanel1.Controls.Add(this.btnAdd);
             this.flowLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Right;
             this.flowLayoutPanel1.FlowDirection = System.Windows.Forms.FlowDirection.RightToLeft;
-            this.flowLayoutPanel1.Location = new System.Drawing.Point(266, 0);
+            this.flowLayoutPanel1.Location = new System.Drawing.Point(304, 0);
             this.flowLayoutPanel1.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.flowLayoutPanel1.Name = "flowLayoutPanel1";
-            this.flowLayoutPanel1.Size = new System.Drawing.Size(669, 35);
+            this.flowLayoutPanel1.Size = new System.Drawing.Size(765, 35);
             this.flowLayoutPanel1.TabIndex = 1;
             // 
             // btnRemove
@@ -138,12 +138,12 @@
             this.btnRemove.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(152)))), ((int)(((byte)(203)))), ((int)(((byte)(255)))));
             this.btnRemove.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnRemove.ForeColor = System.Drawing.Color.White;
-            this.btnRemove.Location = new System.Drawing.Point(559, 4);
-            this.btnRemove.Margin = new System.Windows.Forms.Padding(0, 4, 5, 2);
+            this.btnRemove.Location = new System.Drawing.Point(639, 4);
+            this.btnRemove.Margin = new System.Windows.Forms.Padding(0, 4, 6, 2);
             this.btnRemove.Name = "btnRemove";
             this.btnRemove.ShortcutAligment = QTech.Component.ExButtonLoading.Aligment.Horizontal;
             this.btnRemove.ShortcutText = null;
-            this.btnRemove.Size = new System.Drawing.Size(105, 27);
+            this.btnRemove.Size = new System.Drawing.Size(120, 27);
             this.btnRemove.TabIndex = 2;
             this.btnRemove.Text = "លុប";
             this.btnRemove.UseVisualStyleBackColor = false;
@@ -159,12 +159,12 @@
             this.btnUpdate.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnUpdate.Font = new System.Drawing.Font("Khmer OS Battambang", 8.25F);
             this.btnUpdate.ForeColor = System.Drawing.Color.White;
-            this.btnUpdate.Location = new System.Drawing.Point(452, 4);
+            this.btnUpdate.Location = new System.Drawing.Point(517, 4);
             this.btnUpdate.Margin = new System.Windows.Forms.Padding(0, 4, 2, 2);
             this.btnUpdate.Name = "btnUpdate";
             this.btnUpdate.ShortcutAligment = QTech.Component.ExButtonLoading.Aligment.Horizontal;
             this.btnUpdate.ShortcutText = null;
-            this.btnUpdate.Size = new System.Drawing.Size(105, 27);
+            this.btnUpdate.Size = new System.Drawing.Size(120, 27);
             this.btnUpdate.TabIndex = 1;
             this.btnUpdate.Text = "កែប្រែ";
             this.btnUpdate.UseVisualStyleBackColor = false;
@@ -180,12 +180,12 @@
             this.btnAdd.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnAdd.Font = new System.Drawing.Font("Khmer OS Battambang", 8.25F);
             this.btnAdd.ForeColor = System.Drawing.Color.White;
-            this.btnAdd.Location = new System.Drawing.Point(345, 4);
+            this.btnAdd.Location = new System.Drawing.Point(395, 4);
             this.btnAdd.Margin = new System.Windows.Forms.Padding(0, 4, 2, 2);
             this.btnAdd.Name = "btnAdd";
             this.btnAdd.ShortcutAligment = QTech.Component.ExButtonLoading.Aligment.Horizontal;
             this.btnAdd.ShortcutText = null;
-            this.btnAdd.Size = new System.Drawing.Size(105, 27);
+            this.btnAdd.Size = new System.Drawing.Size(120, 27);
             this.btnAdd.TabIndex = 0;
             this.btnAdd.Text = "បន្ថែម";
             this.btnAdd.UseVisualStyleBackColor = false;
@@ -270,7 +270,7 @@
             this.dgv.RowHeadersVisible = false;
             this.dgv.RowTemplate.Height = 28;
             this.dgv.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgv.Size = new System.Drawing.Size(935, 394);
+            this.dgv.Size = new System.Drawing.Size(1069, 394);
             this.dgv.TabIndex = 2;
             // 
             // colId
@@ -303,12 +303,12 @@
             // 
             // CategoryPage
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 19F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 19F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(935, 429);
+            this.ClientSize = new System.Drawing.Size(1069, 429);
             this.Controls.Add(this.dgv);
             this.Controls.Add(this.graPanel1);
-            this.Font = new System.Drawing.Font("Khmer OS Battambang", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Font = new System.Drawing.Font("Fasthand", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.Name = "CategoryPage";
             this.Text = "CategoryPage";

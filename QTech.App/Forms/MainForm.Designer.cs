@@ -741,7 +741,7 @@
             // 
             // lblWhitbackG_
             // 
-            this.lblWhitbackG_.BackColor = System.Drawing.SystemColors.Control;
+            this.lblWhitbackG_.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(189)))), ((int)(((byte)(189)))), ((int)(((byte)(190)))));
             this.lblWhitbackG_.Location = new System.Drawing.Point(2, -2);
             this.lblWhitbackG_.Name = "lblWhitbackG_";
             this.lblWhitbackG_.Size = new System.Drawing.Size(103, 23);

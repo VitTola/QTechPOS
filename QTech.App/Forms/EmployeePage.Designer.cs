@@ -33,6 +33,12 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             this.dgv = new QTech.Component.ExDataGridView();
+            this.colId = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colRow_ = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colName = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colPosition = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colPhone = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colNote = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.graPanel1 = new QTech.Component.GRAPanel();
             this.colorWithAlpha1 = new QTech.Component.ColorWithAlpha();
             this.flowLayoutPanel2 = new System.Windows.Forms.FlowLayoutPanel();
@@ -43,12 +49,6 @@
             this.btnAdd = new QTech.Component.ExButtonLoading();
             this.colorWithAlpha2 = new QTech.Component.ColorWithAlpha();
             this.colorWithAlpha3 = new QTech.Component.ColorWithAlpha();
-            this.colId = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.colRow_ = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.colName = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.colPosition = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.colPhone = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.colNote = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.dgv)).BeginInit();
             this.graPanel1.SuspendLayout();
             this.flowLayoutPanel2.SuspendLayout();
@@ -98,6 +98,7 @@
             this.dgv.Executing = false;
             this.dgv.Font = new System.Drawing.Font("Khmer OS System", 8F);
             this.dgv.Location = new System.Drawing.Point(0, 35);
+            this.dgv.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.dgv.MultiSelect = false;
             this.dgv.Name = "dgv";
             this.dgv.Paging = null;
@@ -105,151 +106,9 @@
             this.dgv.RowHeadersVisible = false;
             this.dgv.RowTemplate.Height = 28;
             this.dgv.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgv.Size = new System.Drawing.Size(943, 522);
+            this.dgv.Size = new System.Drawing.Size(1257, 522);
             this.dgv.TabIndex = 1;
             this.dgv.RowPostPaint += new System.Windows.Forms.DataGridViewRowPostPaintEventHandler(this.dgv_RowPostPaint);
-            // 
-            // graPanel1
-            // 
-            this.graPanel1.BackColor = System.Drawing.Color.Transparent;
-            this.graPanel1.Border = false;
-            this.graPanel1.BorderColor = System.Drawing.SystemColors.ActiveBorder;
-            this.graPanel1.Colors.Add(this.colorWithAlpha1);
-            this.graPanel1.ContentPadding = new System.Windows.Forms.Padding(0);
-            this.graPanel1.Controls.Add(this.flowLayoutPanel2);
-            this.graPanel1.Controls.Add(this.flowLayoutPanel1);
-            this.graPanel1.CornerRadius = 3;
-            this.graPanel1.Corners = ((QTech.Component.Corners)((((QTech.Component.Corners.TopLeft | QTech.Component.Corners.TopRight) 
-            | QTech.Component.Corners.BottomLeft) 
-            | QTech.Component.Corners.BottomRight)));
-            this.graPanel1.Dock = System.Windows.Forms.DockStyle.Top;
-            this.graPanel1.Gradient = false;
-            this.graPanel1.GradientMode = System.Drawing.Drawing2D.LinearGradientMode.Vertical;
-            this.graPanel1.GradientOffset = 1F;
-            this.graPanel1.GradientSize = new System.Drawing.Size(0, 0);
-            this.graPanel1.GradientWrapMode = System.Drawing.Drawing2D.WrapMode.Tile;
-            this.graPanel1.Grayscale = false;
-            this.graPanel1.Image = null;
-            this.graPanel1.ImageAlpha = 75;
-            this.graPanel1.ImagePadding = new System.Windows.Forms.Padding(0);
-            this.graPanel1.ImagePosition = QTech.Component.ImagePositions.BottomRight;
-            this.graPanel1.ImageSize = new System.Drawing.Size(48, 48);
-            this.graPanel1.Location = new System.Drawing.Point(0, 0);
-            this.graPanel1.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.graPanel1.Name = "graPanel1";
-            this.graPanel1.Rounded = true;
-            this.graPanel1.Size = new System.Drawing.Size(943, 35);
-            this.graPanel1.TabIndex = 0;
-            // 
-            // colorWithAlpha1
-            // 
-            this.colorWithAlpha1.Alpha = 255;
-            this.colorWithAlpha1.Color = System.Drawing.SystemColors.Control;
-            this.colorWithAlpha1.Parent = this.graPanel1;
-            // 
-            // flowLayoutPanel2
-            // 
-            this.flowLayoutPanel2.Controls.Add(this.txtSearch);
-            this.flowLayoutPanel2.Dock = System.Windows.Forms.DockStyle.Left;
-            this.flowLayoutPanel2.Location = new System.Drawing.Point(0, 0);
-            this.flowLayoutPanel2.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.flowLayoutPanel2.Name = "flowLayoutPanel2";
-            this.flowLayoutPanel2.Size = new System.Drawing.Size(269, 35);
-            this.flowLayoutPanel2.TabIndex = 0;
-            // 
-            // txtSearch
-            // 
-            this.txtSearch.BackColor = System.Drawing.Color.White;
-            this.txtSearch.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.txtSearch.Font = new System.Drawing.Font("Khmer OS System", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtSearch.Location = new System.Drawing.Point(4, 4);
-            this.txtSearch.Margin = new System.Windows.Forms.Padding(4, 4, 3, 3);
-            this.txtSearch.Name = "txtSearch";
-            this.txtSearch.Padding = new System.Windows.Forms.Padding(2, 3, 1, 4);
-            this.txtSearch.PlaceHolderText = "";
-            this.txtSearch.SearchMode = QTech.Component.ExTextbox.SearchModes.OnKeyReturn;
-            this.txtSearch.Size = new System.Drawing.Size(200, 26);
-            this.txtSearch.TabIndex = 0;
-            this.txtSearch.QuickSearch += new System.EventHandler(this.txtSearch_QuickSearch);
-            // 
-            // flowLayoutPanel1
-            // 
-            this.flowLayoutPanel1.Controls.Add(this.btnRemove);
-            this.flowLayoutPanel1.Controls.Add(this.btnUpdate);
-            this.flowLayoutPanel1.Controls.Add(this.btnAdd);
-            this.flowLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.flowLayoutPanel1.FlowDirection = System.Windows.Forms.FlowDirection.RightToLeft;
-            this.flowLayoutPanel1.Location = new System.Drawing.Point(0, 0);
-            this.flowLayoutPanel1.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.flowLayoutPanel1.Name = "flowLayoutPanel1";
-            this.flowLayoutPanel1.Size = new System.Drawing.Size(943, 35);
-            this.flowLayoutPanel1.TabIndex = 1;
-            // 
-            // btnRemove
-            // 
-            this.btnRemove.BackColor = System.Drawing.Color.Ivory;
-            this.btnRemove.DefaultImage = null;
-            this.btnRemove.Executing = false;
-            this.btnRemove.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnRemove.ForeColor = System.Drawing.Color.White;
-            this.btnRemove.Location = new System.Drawing.Point(849, 4);
-            this.btnRemove.Margin = new System.Windows.Forms.Padding(0, 4, 4, 2);
-            this.btnRemove.Name = "btnRemove";
-            this.btnRemove.ShortcutAligment = QTech.Component.ExButtonLoading.Aligment.Horizontal;
-            this.btnRemove.ShortcutText = null;
-            this.btnRemove.Size = new System.Drawing.Size(90, 27);
-            this.btnRemove.TabIndex = 2;
-            this.btnRemove.Text = "លុប";
-            this.btnRemove.UseVisualStyleBackColor = true;
-            this.btnRemove.Click += new System.EventHandler(this.btnRemove_Click);
-            // 
-            // btnUpdate
-            // 
-            this.btnUpdate.BackColor = System.Drawing.Color.Ivory;
-            this.btnUpdate.DefaultImage = null;
-            this.btnUpdate.Executing = false;
-            this.btnUpdate.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnUpdate.ForeColor = System.Drawing.Color.White;
-            this.btnUpdate.Location = new System.Drawing.Point(757, 4);
-            this.btnUpdate.Margin = new System.Windows.Forms.Padding(0, 4, 2, 2);
-            this.btnUpdate.Name = "btnUpdate";
-            this.btnUpdate.ShortcutAligment = QTech.Component.ExButtonLoading.Aligment.Horizontal;
-            this.btnUpdate.ShortcutText = null;
-            this.btnUpdate.Size = new System.Drawing.Size(90, 27);
-            this.btnUpdate.TabIndex = 1;
-            this.btnUpdate.Text = "កែប្រែ";
-            this.btnUpdate.UseVisualStyleBackColor = true;
-            this.btnUpdate.Click += new System.EventHandler(this.btnUpdate_Click);
-            // 
-            // btnAdd
-            // 
-            this.btnAdd.BackColor = System.Drawing.Color.Ivory;
-            this.btnAdd.DefaultImage = null;
-            this.btnAdd.Executing = false;
-            this.btnAdd.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnAdd.ForeColor = System.Drawing.Color.White;
-            this.btnAdd.Location = new System.Drawing.Point(665, 4);
-            this.btnAdd.Margin = new System.Windows.Forms.Padding(0, 4, 2, 2);
-            this.btnAdd.Name = "btnAdd";
-            this.btnAdd.ShortcutAligment = QTech.Component.ExButtonLoading.Aligment.Horizontal;
-            this.btnAdd.ShortcutText = null;
-            this.btnAdd.Size = new System.Drawing.Size(90, 27);
-            this.btnAdd.TabIndex = 0;
-            this.btnAdd.Text = "បន្ថែម";
-            this.btnAdd.UseVisualStyleBackColor = true;
-            this.btnAdd.Click += new System.EventHandler(this.btnAdd_Click);
-            // 
-            // colorWithAlpha2
-            // 
-            this.colorWithAlpha2.Alpha = 255;
-            this.colorWithAlpha2.Color = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
-            this.colorWithAlpha2.Parent = null;
-            // 
-            // colorWithAlpha3
-            // 
-            this.colorWithAlpha3.Alpha = 255;
-            this.colorWithAlpha3.Color = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
-            this.colorWithAlpha3.Parent = null;
             // 
             // colId
             // 
@@ -306,15 +165,157 @@
             this.colNote.Name = "colNote";
             this.colNote.ReadOnly = true;
             // 
+            // graPanel1
+            // 
+            this.graPanel1.BackColor = System.Drawing.Color.Transparent;
+            this.graPanel1.Border = false;
+            this.graPanel1.BorderColor = System.Drawing.SystemColors.ActiveBorder;
+            this.graPanel1.Colors.Add(this.colorWithAlpha1);
+            this.graPanel1.ContentPadding = new System.Windows.Forms.Padding(0);
+            this.graPanel1.Controls.Add(this.flowLayoutPanel2);
+            this.graPanel1.Controls.Add(this.flowLayoutPanel1);
+            this.graPanel1.CornerRadius = 3;
+            this.graPanel1.Corners = ((QTech.Component.Corners)((((QTech.Component.Corners.TopLeft | QTech.Component.Corners.TopRight) 
+            | QTech.Component.Corners.BottomLeft) 
+            | QTech.Component.Corners.BottomRight)));
+            this.graPanel1.Dock = System.Windows.Forms.DockStyle.Top;
+            this.graPanel1.Gradient = false;
+            this.graPanel1.GradientMode = System.Drawing.Drawing2D.LinearGradientMode.Vertical;
+            this.graPanel1.GradientOffset = 1F;
+            this.graPanel1.GradientSize = new System.Drawing.Size(0, 0);
+            this.graPanel1.GradientWrapMode = System.Drawing.Drawing2D.WrapMode.Tile;
+            this.graPanel1.Grayscale = false;
+            this.graPanel1.Image = null;
+            this.graPanel1.ImageAlpha = 75;
+            this.graPanel1.ImagePadding = new System.Windows.Forms.Padding(0);
+            this.graPanel1.ImagePosition = QTech.Component.ImagePositions.BottomRight;
+            this.graPanel1.ImageSize = new System.Drawing.Size(48, 48);
+            this.graPanel1.Location = new System.Drawing.Point(0, 0);
+            this.graPanel1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.graPanel1.Name = "graPanel1";
+            this.graPanel1.Rounded = true;
+            this.graPanel1.Size = new System.Drawing.Size(1257, 35);
+            this.graPanel1.TabIndex = 0;
+            // 
+            // colorWithAlpha1
+            // 
+            this.colorWithAlpha1.Alpha = 255;
+            this.colorWithAlpha1.Color = System.Drawing.SystemColors.Control;
+            this.colorWithAlpha1.Parent = this.graPanel1;
+            // 
+            // flowLayoutPanel2
+            // 
+            this.flowLayoutPanel2.Controls.Add(this.txtSearch);
+            this.flowLayoutPanel2.Dock = System.Windows.Forms.DockStyle.Left;
+            this.flowLayoutPanel2.Location = new System.Drawing.Point(0, 0);
+            this.flowLayoutPanel2.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.flowLayoutPanel2.Name = "flowLayoutPanel2";
+            this.flowLayoutPanel2.Size = new System.Drawing.Size(359, 35);
+            this.flowLayoutPanel2.TabIndex = 0;
+            // 
+            // txtSearch
+            // 
+            this.txtSearch.BackColor = System.Drawing.Color.White;
+            this.txtSearch.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.txtSearch.Font = new System.Drawing.Font("Khmer OS System", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtSearch.Location = new System.Drawing.Point(5, 4);
+            this.txtSearch.Margin = new System.Windows.Forms.Padding(5, 4, 4, 3);
+            this.txtSearch.Name = "txtSearch";
+            this.txtSearch.Padding = new System.Windows.Forms.Padding(3, 3, 1, 4);
+            this.txtSearch.PlaceHolderText = "";
+            this.txtSearch.SearchMode = QTech.Component.ExTextbox.SearchModes.OnKeyReturn;
+            this.txtSearch.Size = new System.Drawing.Size(200, 26);
+            this.txtSearch.TabIndex = 0;
+            this.txtSearch.QuickSearch += new System.EventHandler(this.txtSearch_QuickSearch);
+            // 
+            // flowLayoutPanel1
+            // 
+            this.flowLayoutPanel1.Controls.Add(this.btnRemove);
+            this.flowLayoutPanel1.Controls.Add(this.btnUpdate);
+            this.flowLayoutPanel1.Controls.Add(this.btnAdd);
+            this.flowLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.flowLayoutPanel1.FlowDirection = System.Windows.Forms.FlowDirection.RightToLeft;
+            this.flowLayoutPanel1.Location = new System.Drawing.Point(0, 0);
+            this.flowLayoutPanel1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.flowLayoutPanel1.Name = "flowLayoutPanel1";
+            this.flowLayoutPanel1.Size = new System.Drawing.Size(1257, 35);
+            this.flowLayoutPanel1.TabIndex = 1;
+            // 
+            // btnRemove
+            // 
+            this.btnRemove.BackColor = System.Drawing.Color.Ivory;
+            this.btnRemove.DefaultImage = null;
+            this.btnRemove.Executing = false;
+            this.btnRemove.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnRemove.ForeColor = System.Drawing.Color.White;
+            this.btnRemove.Location = new System.Drawing.Point(1132, 4);
+            this.btnRemove.Margin = new System.Windows.Forms.Padding(0, 4, 5, 2);
+            this.btnRemove.Name = "btnRemove";
+            this.btnRemove.ShortcutAligment = QTech.Component.ExButtonLoading.Aligment.Horizontal;
+            this.btnRemove.ShortcutText = null;
+            this.btnRemove.Size = new System.Drawing.Size(120, 27);
+            this.btnRemove.TabIndex = 2;
+            this.btnRemove.Text = "លុប";
+            this.btnRemove.UseVisualStyleBackColor = true;
+            this.btnRemove.Click += new System.EventHandler(this.btnRemove_Click);
+            // 
+            // btnUpdate
+            // 
+            this.btnUpdate.BackColor = System.Drawing.Color.Ivory;
+            this.btnUpdate.DefaultImage = null;
+            this.btnUpdate.Executing = false;
+            this.btnUpdate.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnUpdate.ForeColor = System.Drawing.Color.White;
+            this.btnUpdate.Location = new System.Drawing.Point(1009, 4);
+            this.btnUpdate.Margin = new System.Windows.Forms.Padding(0, 4, 3, 2);
+            this.btnUpdate.Name = "btnUpdate";
+            this.btnUpdate.ShortcutAligment = QTech.Component.ExButtonLoading.Aligment.Horizontal;
+            this.btnUpdate.ShortcutText = null;
+            this.btnUpdate.Size = new System.Drawing.Size(120, 27);
+            this.btnUpdate.TabIndex = 1;
+            this.btnUpdate.Text = "កែប្រែ";
+            this.btnUpdate.UseVisualStyleBackColor = true;
+            this.btnUpdate.Click += new System.EventHandler(this.btnUpdate_Click);
+            // 
+            // btnAdd
+            // 
+            this.btnAdd.BackColor = System.Drawing.Color.Ivory;
+            this.btnAdd.DefaultImage = null;
+            this.btnAdd.Executing = false;
+            this.btnAdd.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnAdd.ForeColor = System.Drawing.Color.White;
+            this.btnAdd.Location = new System.Drawing.Point(886, 4);
+            this.btnAdd.Margin = new System.Windows.Forms.Padding(0, 4, 3, 2);
+            this.btnAdd.Name = "btnAdd";
+            this.btnAdd.ShortcutAligment = QTech.Component.ExButtonLoading.Aligment.Horizontal;
+            this.btnAdd.ShortcutText = null;
+            this.btnAdd.Size = new System.Drawing.Size(120, 27);
+            this.btnAdd.TabIndex = 0;
+            this.btnAdd.Text = "បន្ថែម";
+            this.btnAdd.UseVisualStyleBackColor = true;
+            this.btnAdd.Click += new System.EventHandler(this.btnAdd_Click);
+            // 
+            // colorWithAlpha2
+            // 
+            this.colorWithAlpha2.Alpha = 255;
+            this.colorWithAlpha2.Color = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
+            this.colorWithAlpha2.Parent = null;
+            // 
+            // colorWithAlpha3
+            // 
+            this.colorWithAlpha3.Alpha = 255;
+            this.colorWithAlpha3.Color = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
+            this.colorWithAlpha3.Parent = null;
+            // 
             // EmployeePage
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 19F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 19F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(943, 557);
+            this.ClientSize = new System.Drawing.Size(1257, 557);
             this.Controls.Add(this.dgv);
             this.Controls.Add(this.graPanel1);
-            this.Font = new System.Drawing.Font("Khmer OS System", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.Font = new System.Drawing.Font("Fasthand", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.Name = "EmployeePage";
             this.Text = "EmployeePage";
             ((System.ComponentModel.ISupportInitialize)(this.dgv)).EndInit();

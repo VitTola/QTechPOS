@@ -44,7 +44,6 @@
             this.txtUserName = new System.Windows.Forms.TextBox();
             this.lblNote = new QTech.Component.ExLabel();
             this.txtNote = new System.Windows.Forms.TextBox();
-            this.exLabel1 = new QTech.Component.ExLabel();
             this.txtConfirmPassword = new System.Windows.Forms.TextBox();
             this.exLabel2 = new QTech.Component.ExLabel();
             this.container.SuspendLayout();
@@ -56,13 +55,12 @@
             // digheader
             // 
             this.digheader.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(122)))), ((int)(((byte)(204)))));
-            this.digheader.Size = new System.Drawing.Size(778, 20);
+            this.digheader.Size = new System.Drawing.Size(828, 20);
             // 
             // container
             // 
             this.container.Controls.Add(this.exLabel2);
             this.container.Controls.Add(this.txtConfirmPassword);
-            this.container.Controls.Add(this.exLabel1);
             this.container.Controls.Add(this.lblNote);
             this.container.Controls.Add(this.txtNote);
             this.container.Controls.Add(this._lblUserName);
@@ -74,13 +72,14 @@
             this.container.Controls.Add(this.txtPassword);
             this.container.Controls.Add(this.txtAccount);
             this.container.Margin = new System.Windows.Forms.Padding(2);
-            this.container.Size = new System.Drawing.Size(778, 600);
+            this.container.Size = new System.Drawing.Size(828, 600);
             this.container.Text = "container";
+            this.container.Paint += new System.Windows.Forms.PaintEventHandler(this.container_Paint);
             // 
             // txtAccount
             // 
             this.txtAccount.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.txtAccount.Location = new System.Drawing.Point(151, 21);
+            this.txtAccount.Location = new System.Drawing.Point(196, 20);
             this.txtAccount.Margin = new System.Windows.Forms.Padding(2);
             this.txtAccount.MaxLength = 200;
             this.txtAccount.Name = "txtAccount";
@@ -91,11 +90,11 @@
             // 
             this._lblAccount.AutoSize = true;
             this._lblAccount.ForeColor = System.Drawing.Color.WhiteSmoke;
-            this._lblAccount.Location = new System.Drawing.Point(37, 25);
+            this._lblAccount.Location = new System.Drawing.Point(42, 25);
             this._lblAccount.Margin = new System.Windows.Forms.Padding(2);
             this._lblAccount.Name = "_lblAccount";
             this._lblAccount.Required = true;
-            this._lblAccount.Size = new System.Drawing.Size(71, 19);
+            this._lblAccount.Size = new System.Drawing.Size(78, 19);
             this._lblAccount.TabIndex = 17;
             this._lblAccount.Text = "ឈ្មោះគណនី";
             // 
@@ -104,18 +103,18 @@
             this._lblPassword.AutoSize = true;
             this._lblPassword.BackColor = System.Drawing.Color.Transparent;
             this._lblPassword.ForeColor = System.Drawing.Color.WhiteSmoke;
-            this._lblPassword.Location = new System.Drawing.Point(37, 56);
+            this._lblPassword.Location = new System.Drawing.Point(42, 56);
             this._lblPassword.Margin = new System.Windows.Forms.Padding(2);
             this._lblPassword.Name = "_lblPassword";
             this._lblPassword.Required = true;
-            this._lblPassword.Size = new System.Drawing.Size(63, 19);
+            this._lblPassword.Size = new System.Drawing.Size(73, 19);
             this._lblPassword.TabIndex = 40;
             this._lblPassword.Text = "លេខសំងាត់";
             // 
             // txtPassword
             // 
             this.txtPassword.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.txtPassword.Location = new System.Drawing.Point(151, 52);
+            this.txtPassword.Location = new System.Drawing.Point(196, 52);
             this.txtPassword.Margin = new System.Windows.Forms.Padding(2);
             this.txtPassword.MaxLength = 1000;
             this.txtPassword.Multiline = true;
@@ -131,10 +130,10 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.grbPermission.Controls.Add(this.trvPermission);
             this.grbPermission.ForeColor = System.Drawing.Color.WhiteSmoke;
-            this.grbPermission.Location = new System.Drawing.Point(42, 126);
+            this.grbPermission.Location = new System.Drawing.Point(48, 126);
             this.grbPermission.Margin = new System.Windows.Forms.Padding(2);
             this.grbPermission.Name = "grbPermission";
-            this.grbPermission.Size = new System.Drawing.Size(692, 404);
+            this.grbPermission.Size = new System.Drawing.Size(732, 404);
             this.grbPermission.TabIndex = 7;
             this.grbPermission.TabStop = false;
             this.grbPermission.Text = "សិទ្ធិប្រើប្រាស់";
@@ -150,7 +149,7 @@
             this.trvPermission.Margin = new System.Windows.Forms.Padding(2);
             this.trvPermission.Name = "trvPermission";
             this.trvPermission.PreventCheckEvent = false;
-            this.trvPermission.Size = new System.Drawing.Size(686, 377);
+            this.trvPermission.Size = new System.Drawing.Size(726, 377);
             this.trvPermission.TabIndex = 0;
             this.trvPermission.BeforeCheck += new System.Windows.Forms.TreeViewCancelEventHandler(this.trvPermission_BeforeCheck);
             // 
@@ -163,7 +162,7 @@
             this.exPanel.Location = new System.Drawing.Point(1, 563);
             this.exPanel.Name = "exPanel";
             this.exPanel.Padding = new System.Windows.Forms.Padding(2);
-            this.exPanel.Size = new System.Drawing.Size(776, 36);
+            this.exPanel.Size = new System.Drawing.Size(826, 36);
             this.exPanel.TabIndex = 41;
             // 
             // flowLayoutPanel3
@@ -172,9 +171,9 @@
             this.flowLayoutPanel3.Controls.Add(this.btnSave);
             this.flowLayoutPanel3.Dock = System.Windows.Forms.DockStyle.Fill;
             this.flowLayoutPanel3.FlowDirection = System.Windows.Forms.FlowDirection.RightToLeft;
-            this.flowLayoutPanel3.Location = new System.Drawing.Point(457, 2);
+            this.flowLayoutPanel3.Location = new System.Drawing.Point(522, 2);
             this.flowLayoutPanel3.Name = "flowLayoutPanel3";
-            this.flowLayoutPanel3.Size = new System.Drawing.Size(317, 32);
+            this.flowLayoutPanel3.Size = new System.Drawing.Size(302, 32);
             this.flowLayoutPanel3.TabIndex = 0;
             // 
             // btnClose
@@ -186,12 +185,12 @@
             this.btnClose.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnClose.Font = new System.Drawing.Font("Khmer OS Battambang", 8F);
             this.btnClose.ForeColor = System.Drawing.Color.White;
-            this.btnClose.Location = new System.Drawing.Point(228, 3);
+            this.btnClose.Location = new System.Drawing.Point(201, 3);
             this.btnClose.Margin = new System.Windows.Forms.Padding(2, 3, 2, 2);
             this.btnClose.Name = "btnClose";
             this.btnClose.ShortcutAligment = QTech.Component.ExButtonLoading.Aligment.Horizontal;
             this.btnClose.ShortcutText = "Q";
-            this.btnClose.Size = new System.Drawing.Size(87, 27);
+            this.btnClose.Size = new System.Drawing.Size(99, 27);
             this.btnClose.TabIndex = 1;
             this.btnClose.Text = "បិទ";
             this.btnClose.UseVisualStyleBackColor = true;
@@ -206,12 +205,12 @@
             this.btnSave.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnSave.Font = new System.Drawing.Font("Khmer OS Battambang", 8F);
             this.btnSave.ForeColor = System.Drawing.Color.White;
-            this.btnSave.Location = new System.Drawing.Point(137, 3);
+            this.btnSave.Location = new System.Drawing.Point(98, 3);
             this.btnSave.Margin = new System.Windows.Forms.Padding(2);
             this.btnSave.Name = "btnSave";
             this.btnSave.ShortcutAligment = QTech.Component.ExButtonLoading.Aligment.Horizontal;
             this.btnSave.ShortcutText = "S";
-            this.btnSave.Size = new System.Drawing.Size(87, 27);
+            this.btnSave.Size = new System.Drawing.Size(99, 27);
             this.btnSave.TabIndex = 0;
             this.btnSave.Text = "រក្សាទុក";
             this.btnSave.UseVisualStyleBackColor = true;
@@ -222,25 +221,25 @@
             this.flowLayoutPanel2.Dock = System.Windows.Forms.DockStyle.Left;
             this.flowLayoutPanel2.Location = new System.Drawing.Point(2, 2);
             this.flowLayoutPanel2.Name = "flowLayoutPanel2";
-            this.flowLayoutPanel2.Size = new System.Drawing.Size(455, 32);
+            this.flowLayoutPanel2.Size = new System.Drawing.Size(520, 32);
             this.flowLayoutPanel2.TabIndex = 0;
             // 
             // _lblUserName
             // 
             this._lblUserName.AutoSize = true;
             this._lblUserName.ForeColor = System.Drawing.Color.WhiteSmoke;
-            this._lblUserName.Location = new System.Drawing.Point(414, 25);
+            this._lblUserName.Location = new System.Drawing.Point(450, 25);
             this._lblUserName.Margin = new System.Windows.Forms.Padding(2);
             this._lblUserName.Name = "_lblUserName";
             this._lblUserName.Required = true;
-            this._lblUserName.Size = new System.Drawing.Size(97, 19);
+            this._lblUserName.Size = new System.Drawing.Size(110, 19);
             this._lblUserName.TabIndex = 43;
             this._lblUserName.Text = "ឈ្មោះអ្នកប្រើប្រាស់";
             // 
             // txtUserName
             // 
             this.txtUserName.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.txtUserName.Location = new System.Drawing.Point(534, 21);
+            this.txtUserName.Location = new System.Drawing.Point(580, 21);
             this.txtUserName.Margin = new System.Windows.Forms.Padding(2);
             this.txtUserName.MaxLength = 200;
             this.txtUserName.Name = "txtUserName";
@@ -251,18 +250,18 @@
             // 
             this.lblNote.AutoSize = true;
             this.lblNote.ForeColor = System.Drawing.Color.WhiteSmoke;
-            this.lblNote.Location = new System.Drawing.Point(414, 58);
+            this.lblNote.Location = new System.Drawing.Point(450, 58);
             this.lblNote.Margin = new System.Windows.Forms.Padding(2);
             this.lblNote.Name = "lblNote";
             this.lblNote.Required = false;
-            this.lblNote.Size = new System.Drawing.Size(39, 19);
+            this.lblNote.Size = new System.Drawing.Size(42, 19);
             this.lblNote.TabIndex = 45;
             this.lblNote.Text = "ចំណាំ";
             // 
             // txtNote
             // 
             this.txtNote.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.txtNote.Location = new System.Drawing.Point(534, 53);
+            this.txtNote.Location = new System.Drawing.Point(580, 53);
             this.txtNote.Margin = new System.Windows.Forms.Padding(2);
             this.txtNote.MaxLength = 200;
             this.txtNote.Multiline = true;
@@ -270,22 +269,10 @@
             this.txtNote.Size = new System.Drawing.Size(200, 59);
             this.txtNote.TabIndex = 4;
             // 
-            // exLabel1
-            // 
-            this.exLabel1.AutoSize = true;
-            this.exLabel1.BackColor = System.Drawing.Color.Transparent;
-            this.exLabel1.Location = new System.Drawing.Point(193, 86);
-            this.exLabel1.Margin = new System.Windows.Forms.Padding(2);
-            this.exLabel1.Name = "exLabel1";
-            this.exLabel1.Required = true;
-            this.exLabel1.Size = new System.Drawing.Size(94, 19);
-            this.exLabel1.TabIndex = 47;
-            this.exLabel1.Text = "បញ្ជាក់លេខសំងាត់";
-            // 
             // txtConfirmPassword
             // 
             this.txtConfirmPassword.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.txtConfirmPassword.Location = new System.Drawing.Point(151, 83);
+            this.txtConfirmPassword.Location = new System.Drawing.Point(196, 83);
             this.txtConfirmPassword.Margin = new System.Windows.Forms.Padding(2);
             this.txtConfirmPassword.MaxLength = 1000;
             this.txtConfirmPassword.Multiline = true;
@@ -299,20 +286,20 @@
             this.exLabel2.AutoSize = true;
             this.exLabel2.BackColor = System.Drawing.Color.Transparent;
             this.exLabel2.ForeColor = System.Drawing.Color.WhiteSmoke;
-            this.exLabel2.Location = new System.Drawing.Point(37, 86);
+            this.exLabel2.Location = new System.Drawing.Point(42, 87);
             this.exLabel2.Margin = new System.Windows.Forms.Padding(2);
             this.exLabel2.Name = "exLabel2";
             this.exLabel2.Required = true;
-            this.exLabel2.Size = new System.Drawing.Size(94, 19);
+            this.exLabel2.Size = new System.Drawing.Size(111, 19);
             this.exLabel2.TabIndex = 48;
             this.exLabel2.Text = "បញ្ជាក់លេខសំងាត់";
             // 
             // frmUser
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 19F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 19F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(778, 620);
-            this.Font = new System.Drawing.Font("Khmer OS Battambang", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.ClientSize = new System.Drawing.Size(828, 620);
+            this.Font = new System.Drawing.Font("Fasthand", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Location = new System.Drawing.Point(0, 0);
             this.Name = "frmUser";
             this.Text = "តួនាទី";
@@ -341,7 +328,6 @@
         private System.Windows.Forms.TextBox txtUserName;
         private Component.ExLabel lblNote;
         private System.Windows.Forms.TextBox txtNote;
-        private Component.ExLabel exLabel1;
         private System.Windows.Forms.TextBox txtConfirmPassword;
         private Component.ExLabel exLabel2;
     }

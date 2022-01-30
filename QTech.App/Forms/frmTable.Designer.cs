@@ -56,7 +56,7 @@
             // digheader
             // 
             this.digheader.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(48)))));
-            this.digheader.Size = new System.Drawing.Size(370, 20);
+            this.digheader.Size = new System.Drawing.Size(383, 20);
             // 
             // container
             // 
@@ -66,7 +66,7 @@
             this.container.Controls.Add(this.txtNote);
             this.container.Controls.Add(this.lblName);
             this.container.Controls.Add(this.txtName);
-            this.container.Size = new System.Drawing.Size(370, 242);
+            this.container.Size = new System.Drawing.Size(383, 242);
             // 
             // colId
             // 
@@ -134,7 +134,7 @@
             // 
             // txtName
             // 
-            this.txtName.Location = new System.Drawing.Point(123, 25);
+            this.txtName.Location = new System.Drawing.Point(141, 25);
             this.txtName.Margin = new System.Windows.Forms.Padding(2);
             this.txtName.Name = "txtName";
             this.txtName.Size = new System.Drawing.Size(200, 28);
@@ -143,26 +143,26 @@
             // lblName
             // 
             this.lblName.AutoSize = true;
-            this.lblName.Location = new System.Drawing.Point(33, 28);
+            this.lblName.Location = new System.Drawing.Point(38, 28);
             this.lblName.Name = "lblName";
             this.lblName.Required = true;
-            this.lblName.Size = new System.Drawing.Size(40, 19);
+            this.lblName.Size = new System.Drawing.Size(43, 19);
             this.lblName.TabIndex = 5;
             this.lblName.Text = "ឈ្មោះ";
             // 
             // lblNote
             // 
             this.lblNote.AutoSize = true;
-            this.lblNote.Location = new System.Drawing.Point(33, 60);
+            this.lblNote.Location = new System.Drawing.Point(38, 60);
             this.lblNote.Name = "lblNote";
             this.lblNote.Required = false;
-            this.lblNote.Size = new System.Drawing.Size(39, 19);
+            this.lblNote.Size = new System.Drawing.Size(42, 19);
             this.lblNote.TabIndex = 13;
             this.lblNote.Text = "ចំណាំ";
             // 
             // txtNote
             // 
-            this.txtNote.Location = new System.Drawing.Point(123, 57);
+            this.txtNote.Location = new System.Drawing.Point(141, 57);
             this.txtNote.Margin = new System.Windows.Forms.Padding(2);
             this.txtNote.Multiline = true;
             this.txtNote.Name = "txtNote";
@@ -178,7 +178,7 @@
             this.exPanel1.Location = new System.Drawing.Point(1, 205);
             this.exPanel1.Name = "exPanel1";
             this.exPanel1.Padding = new System.Windows.Forms.Padding(2);
-            this.exPanel1.Size = new System.Drawing.Size(368, 36);
+            this.exPanel1.Size = new System.Drawing.Size(381, 36);
             this.exPanel1.TabIndex = 17;
             // 
             // flowLayoutPanel2
@@ -187,9 +187,9 @@
             this.flowLayoutPanel2.Controls.Add(this.btnSave);
             this.flowLayoutPanel2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.flowLayoutPanel2.FlowDirection = System.Windows.Forms.FlowDirection.RightToLeft;
-            this.flowLayoutPanel2.Location = new System.Drawing.Point(142, 2);
+            this.flowLayoutPanel2.Location = new System.Drawing.Point(162, 2);
             this.flowLayoutPanel2.Name = "flowLayoutPanel2";
-            this.flowLayoutPanel2.Size = new System.Drawing.Size(224, 32);
+            this.flowLayoutPanel2.Size = new System.Drawing.Size(217, 32);
             this.flowLayoutPanel2.TabIndex = 0;
             // 
             // btnClose
@@ -200,12 +200,12 @@
             this.btnClose.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnClose.Font = new System.Drawing.Font("Khmer OS Battambang", 8F);
             this.btnClose.ForeColor = System.Drawing.Color.White;
-            this.btnClose.Location = new System.Drawing.Point(135, 3);
+            this.btnClose.Location = new System.Drawing.Point(116, 3);
             this.btnClose.Margin = new System.Windows.Forms.Padding(2, 3, 2, 2);
             this.btnClose.Name = "btnClose";
             this.btnClose.ShortcutAligment = QTech.Component.ExButtonLoading.Aligment.Horizontal;
             this.btnClose.ShortcutText = "Q";
-            this.btnClose.Size = new System.Drawing.Size(87, 27);
+            this.btnClose.Size = new System.Drawing.Size(99, 27);
             this.btnClose.TabIndex = 1;
             this.btnClose.Text = "បិទ";
             this.btnClose.UseVisualStyleBackColor = true;
@@ -219,12 +219,12 @@
             this.btnSave.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnSave.Font = new System.Drawing.Font("Khmer OS Battambang", 8F);
             this.btnSave.ForeColor = System.Drawing.Color.White;
-            this.btnSave.Location = new System.Drawing.Point(44, 3);
+            this.btnSave.Location = new System.Drawing.Point(13, 3);
             this.btnSave.Margin = new System.Windows.Forms.Padding(2, 3, 2, 2);
             this.btnSave.Name = "btnSave";
             this.btnSave.ShortcutAligment = QTech.Component.ExButtonLoading.Aligment.Horizontal;
             this.btnSave.ShortcutText = "S";
-            this.btnSave.Size = new System.Drawing.Size(87, 27);
+            this.btnSave.Size = new System.Drawing.Size(99, 27);
             this.btnSave.TabIndex = 0;
             this.btnSave.Text = "រក្សាទុក";
             this.btnSave.UseVisualStyleBackColor = true;
@@ -236,7 +236,7 @@
             this.flowLayoutPanel3.Dock = System.Windows.Forms.DockStyle.Left;
             this.flowLayoutPanel3.Location = new System.Drawing.Point(2, 2);
             this.flowLayoutPanel3.Name = "flowLayoutPanel3";
-            this.flowLayoutPanel3.Size = new System.Drawing.Size(140, 32);
+            this.flowLayoutPanel3.Size = new System.Drawing.Size(160, 32);
             this.flowLayoutPanel3.TabIndex = 2;
             // 
             // btnChangeLog
@@ -253,7 +253,7 @@
             this.btnChangeLog.Name = "btnChangeLog";
             this.btnChangeLog.ShortcutAligment = QTech.Component.ExButtonLoading.Aligment.Horizontal;
             this.btnChangeLog.ShortcutText = "E";
-            this.btnChangeLog.Size = new System.Drawing.Size(75, 27);
+            this.btnChangeLog.Size = new System.Drawing.Size(86, 27);
             this.btnChangeLog.TabIndex = 9;
             this.btnChangeLog.Text = "ប្រវត្តកែប្រែ";
             this.btnChangeLog.UseVisualStyleBackColor = true;
@@ -264,19 +264,19 @@
             this.chkUseable_.AutoSize = true;
             this.chkUseable_.Checked = true;
             this.chkUseable_.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.chkUseable_.Location = new System.Drawing.Point(123, 161);
+            this.chkUseable_.Location = new System.Drawing.Point(141, 161);
             this.chkUseable_.Name = "chkUseable_";
-            this.chkUseable_.Size = new System.Drawing.Size(78, 23);
+            this.chkUseable_.Size = new System.Drawing.Size(86, 23);
             this.chkUseable_.TabIndex = 18;
             this.chkUseable_.Text = "ប្រើការបាន";
             this.chkUseable_.UseVisualStyleBackColor = true;
             // 
             // frmTable
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 19F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 19F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(370, 262);
-            this.Font = new System.Drawing.Font("Khmer OS Battambang", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.ClientSize = new System.Drawing.Size(383, 262);
+            this.Font = new System.Drawing.Font("Fasthand", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Location = new System.Drawing.Point(0, 0);
             this.MaximizeBox = false;
             this.Name = "frmTable";

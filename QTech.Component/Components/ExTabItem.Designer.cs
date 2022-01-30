@@ -61,8 +61,6 @@
             // 
             // picBox
             // 
-            this.picBox.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left)));
             this.picBox.Cursor = System.Windows.Forms.Cursors.Hand;
             this.picBox.Location = new System.Drawing.Point(6, 2);
             this.picBox.Name = "picBox";

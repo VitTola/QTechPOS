@@ -109,7 +109,7 @@ namespace QTech.Component
             tabItem.TextAlignment = ContentAlignment.MiddleCenter;
             tabItem.Dock = DockStyle.Bottom;
             var width = (tabItem.Text.Length + (tabItem.Image?.Size.Width ?? 16));
-            tabItem.Width = (width * 2) + (width * 2) + 10;
+            tabItem.Width = (width * 2) + (width * 2) + 5;
             //tabItem.Height = (tabItem.Font.Size > (tabItem.Image?.Height ?? 0)) ?
             //    (int)tabItem.Font.Size + 9 : (tabItem.Image?.Height ?? 0) + 9;
             tabItem.Height = 35;

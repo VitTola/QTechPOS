@@ -251,5 +251,10 @@ namespace QTech.Forms
         {
             ViewChangeLog();
         }
+
+        private void container_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
     }
 }

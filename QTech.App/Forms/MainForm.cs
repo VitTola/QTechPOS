@@ -381,6 +381,7 @@ namespace QTech.Forms
             _lblVersion.LinkColor = currentTheme.LabelColor;
             _lblComanyName.BackColor = currentTheme.MainFormFirstMenuePanel;
             lblTheme_.ForeColor = currentTheme.LabelColor;
+            _lblComanyName.ForeColor = currentTheme.LabelColor;
 
 
 

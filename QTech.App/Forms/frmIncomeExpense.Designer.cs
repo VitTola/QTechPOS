@@ -54,7 +54,8 @@
             // digheader
             // 
             this.digheader.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(48)))));
-            this.digheader.Size = new System.Drawing.Size(378, 20);
+            this.digheader.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.digheader.Size = new System.Drawing.Size(430, 20);
             // 
             // container
             // 
@@ -67,25 +68,26 @@
             this.container.Controls.Add(this.exPanel1);
             this.container.Controls.Add(this._lblMiscNo);
             this.container.Controls.Add(this.txtMiscNo);
-            this.container.Size = new System.Drawing.Size(378, 272);
+            this.container.Size = new System.Drawing.Size(430, 272);
             // 
             // _lblMiscNo
             // 
             this._lblMiscNo.AutoSize = true;
-            this._lblMiscNo.Location = new System.Drawing.Point(24, 24);
+            this._lblMiscNo.Location = new System.Drawing.Point(32, 24);
+            this._lblMiscNo.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this._lblMiscNo.Name = "_lblMiscNo";
             this._lblMiscNo.Required = true;
-            this._lblMiscNo.Size = new System.Drawing.Size(72, 19);
+            this._lblMiscNo.Size = new System.Drawing.Size(76, 19);
             this._lblMiscNo.TabIndex = 15;
             this._lblMiscNo.Text = "លេខសំគាល់";
             // 
             // txtMiscNo
             // 
-            this.txtMiscNo.Location = new System.Drawing.Point(142, 21);
-            this.txtMiscNo.Margin = new System.Windows.Forms.Padding(2);
+            this.txtMiscNo.Location = new System.Drawing.Point(189, 21);
+            this.txtMiscNo.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.txtMiscNo.Name = "txtMiscNo";
             this.txtMiscNo.ReadOnly = true;
-            this.txtMiscNo.Size = new System.Drawing.Size(200, 27);
+            this.txtMiscNo.Size = new System.Drawing.Size(200, 28);
             this.txtMiscNo.TabIndex = 0;
             // 
             // exPanel1
@@ -95,18 +97,20 @@
             this.exPanel1.Controls.Add(this.flowLayoutPanel2);
             this.exPanel1.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.exPanel1.Location = new System.Drawing.Point(1, 235);
+            this.exPanel1.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.exPanel1.Name = "exPanel1";
-            this.exPanel1.Padding = new System.Windows.Forms.Padding(2);
-            this.exPanel1.Size = new System.Drawing.Size(376, 36);
+            this.exPanel1.Padding = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.exPanel1.Size = new System.Drawing.Size(428, 36);
             this.exPanel1.TabIndex = 25;
             // 
             // flowLayoutPanel3
             // 
             this.flowLayoutPanel3.Controls.Add(this.btnChangeLog);
             this.flowLayoutPanel3.Dock = System.Windows.Forms.DockStyle.Left;
-            this.flowLayoutPanel3.Location = new System.Drawing.Point(2, 2);
+            this.flowLayoutPanel3.Location = new System.Drawing.Point(3, 2);
+            this.flowLayoutPanel3.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.flowLayoutPanel3.Name = "flowLayoutPanel3";
-            this.flowLayoutPanel3.Size = new System.Drawing.Size(132, 32);
+            this.flowLayoutPanel3.Size = new System.Drawing.Size(176, 32);
             this.flowLayoutPanel3.TabIndex = 1;
             // 
             // btnChangeLog
@@ -118,12 +122,12 @@
             this.btnChangeLog.Font = new System.Drawing.Font("Khmer OS Battambang", 8F);
             this.btnChangeLog.ForeColor = System.Drawing.Color.Black;
             this.btnChangeLog.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnChangeLog.Location = new System.Drawing.Point(2, 3);
-            this.btnChangeLog.Margin = new System.Windows.Forms.Padding(2, 3, 2, 2);
+            this.btnChangeLog.Location = new System.Drawing.Point(3, 3);
+            this.btnChangeLog.Margin = new System.Windows.Forms.Padding(3, 3, 3, 2);
             this.btnChangeLog.Name = "btnChangeLog";
             this.btnChangeLog.ShortcutAligment = QTech.Component.ExButtonLoading.Aligment.Horizontal;
             this.btnChangeLog.ShortcutText = "E";
-            this.btnChangeLog.Size = new System.Drawing.Size(75, 27);
+            this.btnChangeLog.Size = new System.Drawing.Size(100, 27);
             this.btnChangeLog.TabIndex = 7;
             this.btnChangeLog.Text = "ប្រវត្តកែប្រែ";
             this.btnChangeLog.UseVisualStyleBackColor = true;
@@ -135,9 +139,10 @@
             this.flowLayoutPanel2.Controls.Add(this.btnSave);
             this.flowLayoutPanel2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.flowLayoutPanel2.FlowDirection = System.Windows.Forms.FlowDirection.RightToLeft;
-            this.flowLayoutPanel2.Location = new System.Drawing.Point(2, 2);
+            this.flowLayoutPanel2.Location = new System.Drawing.Point(3, 2);
+            this.flowLayoutPanel2.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.flowLayoutPanel2.Name = "flowLayoutPanel2";
-            this.flowLayoutPanel2.Size = new System.Drawing.Size(372, 32);
+            this.flowLayoutPanel2.Size = new System.Drawing.Size(422, 32);
             this.flowLayoutPanel2.TabIndex = 0;
             // 
             // btnClose
@@ -147,12 +152,12 @@
             this.btnClose.Executing = false;
             this.btnClose.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnClose.ForeColor = System.Drawing.Color.White;
-            this.btnClose.Location = new System.Drawing.Point(295, 3);
-            this.btnClose.Margin = new System.Windows.Forms.Padding(2, 3, 2, 2);
+            this.btnClose.Location = new System.Drawing.Point(319, 3);
+            this.btnClose.Margin = new System.Windows.Forms.Padding(3, 3, 3, 2);
             this.btnClose.Name = "btnClose";
             this.btnClose.ShortcutAligment = QTech.Component.ExButtonLoading.Aligment.Horizontal;
             this.btnClose.ShortcutText = null;
-            this.btnClose.Size = new System.Drawing.Size(75, 27);
+            this.btnClose.Size = new System.Drawing.Size(100, 27);
             this.btnClose.TabIndex = 1;
             this.btnClose.Text = "បិទ";
             this.btnClose.UseVisualStyleBackColor = true;
@@ -165,12 +170,12 @@
             this.btnSave.Executing = false;
             this.btnSave.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnSave.ForeColor = System.Drawing.Color.White;
-            this.btnSave.Location = new System.Drawing.Point(216, 3);
-            this.btnSave.Margin = new System.Windows.Forms.Padding(2, 3, 2, 2);
+            this.btnSave.Location = new System.Drawing.Point(213, 3);
+            this.btnSave.Margin = new System.Windows.Forms.Padding(3, 3, 3, 2);
             this.btnSave.Name = "btnSave";
             this.btnSave.ShortcutAligment = QTech.Component.ExButtonLoading.Aligment.Horizontal;
             this.btnSave.ShortcutText = null;
-            this.btnSave.Size = new System.Drawing.Size(75, 27);
+            this.btnSave.Size = new System.Drawing.Size(100, 27);
             this.btnSave.TabIndex = 0;
             this.btnSave.Text = "រក្សាទុក";
             this.btnSave.UseVisualStyleBackColor = true;
@@ -179,10 +184,11 @@
             // _lblMiscType
             // 
             this._lblMiscType.AutoSize = true;
-            this._lblMiscType.Location = new System.Drawing.Point(24, 56);
+            this._lblMiscType.Location = new System.Drawing.Point(32, 56);
+            this._lblMiscType.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this._lblMiscType.Name = "_lblMiscType";
             this._lblMiscType.Required = true;
-            this._lblMiscType.Size = new System.Drawing.Size(44, 19);
+            this._lblMiscType.Size = new System.Drawing.Size(47, 19);
             this._lblMiscType.TabIndex = 27;
             this._lblMiscType.Text = "ប្រភេទ";
             // 
@@ -190,28 +196,30 @@
             // 
             this.cboMiscType.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cboMiscType.FormattingEnabled = true;
-            this.cboMiscType.Location = new System.Drawing.Point(142, 53);
+            this.cboMiscType.Location = new System.Drawing.Point(189, 53);
+            this.cboMiscType.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.cboMiscType.Name = "cboMiscType";
-            this.cboMiscType.Size = new System.Drawing.Size(200, 27);
+            this.cboMiscType.Size = new System.Drawing.Size(199, 27);
             this.cboMiscType.TabIndex = 1;
             // 
             // lblNote
             // 
             this.lblNote.AutoSize = true;
-            this.lblNote.Location = new System.Drawing.Point(24, 120);
+            this.lblNote.Location = new System.Drawing.Point(32, 120);
+            this.lblNote.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblNote.Name = "lblNote";
             this.lblNote.Required = false;
-            this.lblNote.Size = new System.Drawing.Size(41, 19);
+            this.lblNote.Size = new System.Drawing.Size(42, 19);
             this.lblNote.TabIndex = 29;
             this.lblNote.Text = "ចំណាំ";
             // 
             // txtNote
             // 
-            this.txtNote.Location = new System.Drawing.Point(141, 117);
-            this.txtNote.Margin = new System.Windows.Forms.Padding(2);
+            this.txtNote.Location = new System.Drawing.Point(189, 117);
+            this.txtNote.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.txtNote.Multiline = true;
             this.txtNote.Name = "txtNote";
-            this.txtNote.Size = new System.Drawing.Size(200, 84);
+            this.txtNote.Size = new System.Drawing.Size(199, 84);
             this.txtNote.TabIndex = 3;
             // 
             // panel1
@@ -220,8 +228,8 @@
             this.panel1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.panel1.Controls.Add(this.txtAmount);
             this.panel1.Controls.Add(this.label1);
-            this.panel1.Location = new System.Drawing.Point(142, 85);
-            this.panel1.Margin = new System.Windows.Forms.Padding(2);
+            this.panel1.Location = new System.Drawing.Point(189, 85);
+            this.panel1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.panel1.Name = "panel1";
             this.panel1.Padding = new System.Windows.Forms.Padding(0, 2, 0, 0);
             this.panel1.Size = new System.Drawing.Size(200, 27);
@@ -233,10 +241,10 @@
             this.txtAmount.Dock = System.Windows.Forms.DockStyle.Fill;
             this.txtAmount.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtAmount.Location = new System.Drawing.Point(0, 2);
-            this.txtAmount.Margin = new System.Windows.Forms.Padding(2);
+            this.txtAmount.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.txtAmount.Multiline = true;
             this.txtAmount.Name = "txtAmount";
-            this.txtAmount.Size = new System.Drawing.Size(154, 23);
+            this.txtAmount.Size = new System.Drawing.Size(139, 23);
             this.txtAmount.TabIndex = 2;
             this.txtAmount.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
@@ -244,9 +252,10 @@
             // 
             this.label1.Dock = System.Windows.Forms.DockStyle.Right;
             this.label1.Font = new System.Drawing.Font("Khmer OS System", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(154, 2);
+            this.label1.Location = new System.Drawing.Point(139, 2);
+            this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(44, 23);
+            this.label1.Size = new System.Drawing.Size(59, 23);
             this.label1.TabIndex = 0;
             this.label1.Text = "USD";
             this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -254,20 +263,22 @@
             // _lblAmount
             // 
             this._lblAmount.AutoSize = true;
-            this._lblAmount.Location = new System.Drawing.Point(24, 88);
+            this._lblAmount.Location = new System.Drawing.Point(32, 88);
+            this._lblAmount.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this._lblAmount.Name = "_lblAmount";
             this._lblAmount.Required = true;
-            this._lblAmount.Size = new System.Drawing.Size(76, 19);
+            this._lblAmount.Size = new System.Drawing.Size(81, 19);
             this._lblAmount.TabIndex = 30;
             this._lblAmount.Text = "ចំនួនទឹកប្រាក់";
             // 
             // frmIncomeExpense
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 19F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 19F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(378, 292);
-            this.Font = new System.Drawing.Font("Khmer OS System", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.ClientSize = new System.Drawing.Size(430, 292);
+            this.Font = new System.Drawing.Font("Fasthand", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Location = new System.Drawing.Point(0, 0);
+            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.Name = "frmIncomeExpense";
             this.Text = "frmIncomeExpense";
             this.container.ResumeLayout(false);
