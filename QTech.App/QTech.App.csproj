@@ -160,10 +160,6 @@
     <Compile Include="Forms\frmSetting.Designer.cs">
       <DependentUpon>frmSetting.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\SalePage.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Forms\SalePage.Designer.cs" />
     <Compile Include="Forms\ScalePage.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -290,6 +286,12 @@
     <Compile Include="Forms\frmSale.Designer.cs">
       <DependentUpon>frmSale.cs</DependentUpon>
     </Compile>
+	 <Compile Include="Forms\SalePage.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\SalePage.Designer.cs">
+      <DependentUpon>SalePage.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\frmProduct.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -385,7 +387,6 @@
     <EmbeddedResource Include="Forms\frmSetting.resx">
       <DependentUpon>frmSetting.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\SalePage.resx" />
     <EmbeddedResource Include="Forms\ScalePage.resx">
       <DependentUpon>ScalePage.cs</DependentUpon>
     </EmbeddedResource>

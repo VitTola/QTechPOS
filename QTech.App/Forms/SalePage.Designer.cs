@@ -358,7 +358,7 @@ namespace QTech.Forms
             this.Controls.Add(this.dgv);
             this.Controls.Add(this.flowLayoutPanel3);
             this.Controls.Add(this.graPanel1);
-            this.Font = new System.Drawing.Font("Khmer OS System", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Font = new System.Drawing.Font("Fasthand", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.Name = "SalePage";
             this.Text = "SalePage";
