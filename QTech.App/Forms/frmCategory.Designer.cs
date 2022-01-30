@@ -55,7 +55,7 @@
             // digheader
             // 
             this.digheader.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(48)))));
-            this.digheader.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.digheader.Margin = new System.Windows.Forms.Padding(4);
             this.digheader.Size = new System.Drawing.Size(395, 20);
             // 
             // container
@@ -190,7 +190,7 @@
             this.flowLayoutPanel3.Location = new System.Drawing.Point(3, 2);
             this.flowLayoutPanel3.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.flowLayoutPanel3.Name = "flowLayoutPanel3";
-            this.flowLayoutPanel3.Size = new System.Drawing.Size(213, 32);
+            this.flowLayoutPanel3.Size = new System.Drawing.Size(112, 32);
             this.flowLayoutPanel3.TabIndex = 1;
             // 
             // btnChangeLog
@@ -217,8 +217,9 @@
             // 
             this.flowLayoutPanel2.Controls.Add(this.btnClose);
             this.flowLayoutPanel2.Controls.Add(this.btnSave);
+            this.flowLayoutPanel2.Dock = System.Windows.Forms.DockStyle.Right;
             this.flowLayoutPanel2.FlowDirection = System.Windows.Forms.FlowDirection.RightToLeft;
-            this.flowLayoutPanel2.Location = new System.Drawing.Point(203, 2);
+            this.flowLayoutPanel2.Location = new System.Drawing.Point(118, 2);
             this.flowLayoutPanel2.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.flowLayoutPanel2.Name = "flowLayoutPanel2";
             this.flowLayoutPanel2.Size = new System.Drawing.Size(272, 32);
@@ -269,7 +270,7 @@
             this.ClientSize = new System.Drawing.Size(395, 240);
             this.Font = new System.Drawing.Font("Fasthand", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Location = new System.Drawing.Point(0, 0);
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.MaximizeBox = false;
             this.Name = "frmCategory";
             this.Text = "frmCategory";

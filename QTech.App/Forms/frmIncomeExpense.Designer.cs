@@ -54,7 +54,7 @@
             // digheader
             // 
             this.digheader.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(48)))));
-            this.digheader.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.digheader.Margin = new System.Windows.Forms.Padding(4);
             this.digheader.Size = new System.Drawing.Size(430, 20);
             // 
             // container
@@ -110,7 +110,7 @@
             this.flowLayoutPanel3.Location = new System.Drawing.Point(3, 2);
             this.flowLayoutPanel3.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.flowLayoutPanel3.Name = "flowLayoutPanel3";
-            this.flowLayoutPanel3.Size = new System.Drawing.Size(176, 32);
+            this.flowLayoutPanel3.Size = new System.Drawing.Size(157, 32);
             this.flowLayoutPanel3.TabIndex = 1;
             // 
             // btnChangeLog
@@ -278,7 +278,7 @@
             this.ClientSize = new System.Drawing.Size(430, 292);
             this.Font = new System.Drawing.Font("Fasthand", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Location = new System.Drawing.Point(0, 0);
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "frmIncomeExpense";
             this.Text = "frmIncomeExpense";
             this.container.ResumeLayout(false);

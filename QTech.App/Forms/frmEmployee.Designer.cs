@@ -58,7 +58,7 @@
             // digheader
             // 
             this.digheader.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(48)))));
-            this.digheader.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.digheader.Margin = new System.Windows.Forms.Padding(4);
             this.digheader.Size = new System.Drawing.Size(436, 20);
             // 
             // container
@@ -137,10 +137,10 @@
             this.flowLayoutPanel2.Controls.Add(this.btnSave);
             this.flowLayoutPanel2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.flowLayoutPanel2.FlowDirection = System.Windows.Forms.FlowDirection.RightToLeft;
-            this.flowLayoutPanel2.Location = new System.Drawing.Point(232, 2);
+            this.flowLayoutPanel2.Location = new System.Drawing.Point(126, 2);
             this.flowLayoutPanel2.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.flowLayoutPanel2.Name = "flowLayoutPanel2";
-            this.flowLayoutPanel2.Size = new System.Drawing.Size(199, 32);
+            this.flowLayoutPanel2.Size = new System.Drawing.Size(305, 32);
             this.flowLayoutPanel2.TabIndex = 0;
             // 
             // btnClose
@@ -150,7 +150,7 @@
             this.btnClose.Executing = false;
             this.btnClose.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnClose.ForeColor = System.Drawing.Color.White;
-            this.btnClose.Location = new System.Drawing.Point(96, 3);
+            this.btnClose.Location = new System.Drawing.Point(202, 3);
             this.btnClose.Margin = new System.Windows.Forms.Padding(3, 3, 3, 2);
             this.btnClose.Name = "btnClose";
             this.btnClose.ShortcutAligment = QTech.Component.ExButtonLoading.Aligment.Horizontal;
@@ -168,7 +168,7 @@
             this.btnSave.Executing = false;
             this.btnSave.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnSave.ForeColor = System.Drawing.Color.White;
-            this.btnSave.Location = new System.Drawing.Point(96, 35);
+            this.btnSave.Location = new System.Drawing.Point(96, 3);
             this.btnSave.Margin = new System.Windows.Forms.Padding(3, 3, 3, 2);
             this.btnSave.Name = "btnSave";
             this.btnSave.ShortcutAligment = QTech.Component.ExButtonLoading.Aligment.Horizontal;
@@ -186,7 +186,7 @@
             this.flowLayoutPanel3.Location = new System.Drawing.Point(3, 2);
             this.flowLayoutPanel3.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.flowLayoutPanel3.Name = "flowLayoutPanel3";
-            this.flowLayoutPanel3.Size = new System.Drawing.Size(229, 32);
+            this.flowLayoutPanel3.Size = new System.Drawing.Size(123, 32);
             this.flowLayoutPanel3.TabIndex = 4;
             // 
             // btnChangeLog
@@ -309,7 +309,7 @@
             this.ClientSize = new System.Drawing.Size(436, 275);
             this.Font = new System.Drawing.Font("Fasthand", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Location = new System.Drawing.Point(0, 0);
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.MaximizeBox = false;
             this.Name = "frmEmployee";
             this.Text = "frmEmployee";

@@ -57,7 +57,7 @@ namespace QTech.Db
     {
         public static DbConfig config = new DbConfig() {
             DataSource = ".",
-            DataBase = "QTech_ResturantDb",
+            DataBase = "QTechPOSDb",
             Theme = ShareValue.User?.Theme ?? QTech.Base.Enums.Theme.Template1
             
         };

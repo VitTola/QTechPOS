@@ -34,9 +34,9 @@ namespace QTech.Forms
         {
             dgv.RowTemplate.Height = 28;
             dgv.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
-            btnAdd.Visible = ShareValue.IsAuthorized(AuthKey.General_Currency_Add);
-            btnRemove.Visible = ShareValue.IsAuthorized(AuthKey.General_Currency_Remove);
-            btnUpdate.Visible = ShareValue.IsAuthorized(AuthKey.General_Currency_Update);
+            //btnAdd.Visible = ShareValue.IsAuthorized(AuthKey.General_Currency_Add);
+            //btnRemove.Visible = ShareValue.IsAuthorized(AuthKey.General_Currency_Remove);
+            //btnUpdate.Visible = ShareValue.IsAuthorized(AuthKey.General_Currency_Update);
 
             txtSearch.RegisterPrimaryInput();
             txtSearch.RegisterKeyArrowDown(dgv);

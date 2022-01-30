@@ -196,12 +196,6 @@
     <Compile Include="Forms\SettingPage.Designer.cs">
       <DependentUpon>SettingPage.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\TablePage.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Forms\TablePage.Designer.cs">
-      <DependentUpon>TablePage.cs</DependentUpon>
-    </Compile>
     <Compile Include="Forms\frmSupplier.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -401,9 +395,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\SettingPage.resx">
       <DependentUpon>SettingPage.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Forms\TablePage.resx">
-      <DependentUpon>TablePage.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\frmSupplier.resx">
       <DependentUpon>frmSupplier.cs</DependentUpon>

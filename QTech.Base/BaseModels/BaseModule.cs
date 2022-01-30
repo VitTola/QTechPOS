@@ -159,12 +159,12 @@ namespace QTech.Base.BaseModels
             {
                 Index = 1,
                 Level = 2,
-                Key = AuthKey.General_Table,
-                ParentKey = AuthKey.General,
-                DisplayName = BaseResource.Table,
+                Key = AuthKey.Supplier_Supplier,
+                ParentKey = AuthKey.Supplier,
+                DisplayName = BaseResource.Suppliers,
                 Icon = BaseResource.TableImg,
                 Children = new List<MenuBar>(),
-                FormName = "QTech.Forms.TablePage"
+                FormName = "QTech.Forms.SupplierPage"
 
             },
               new MenuBar()
@@ -183,7 +183,7 @@ namespace QTech.Base.BaseModels
             {
                 Index = 3,
                 Level = 2,
-                Key = AuthKey.Sale,
+                Key = AuthKey.Product_Scale,
                 ParentKey = AuthKey.Product,
                 DisplayName = BaseResource.Scale,
                 Icon = BaseResource.scale_img,
@@ -193,28 +193,28 @@ namespace QTech.Base.BaseModels
             },
             // new MenuBar()
             //{
-            //    Index = 2,
+            //    Index = 1,
             //    Level = 2,
-            //    Key = AuthKey.General_Currency,
+            //    Key = AuthKey.Supplier,
             //    ParentKey = AuthKey.General,
             //    DisplayName = BaseResource.Currency,
             //    Icon = BaseResource.Currency_img,
             //    Children = new List<MenuBar>(),
-            //    FormName = "QTech.Forms.CurrencyPage"
+            //    FormName = "QTech.Forms.SupplierPage"
 
             //},
-                 new MenuBar()
-            {
-                Index = 2,
-                Level = 2,
-                Key = AuthKey.Setting_OtherSetting,
-                ParentKey = AuthKey.Setting,
-                DisplayName = BaseResource.OtherSetting,
-                Icon = BaseResource.OtherSetting_Img,
-                Children = new List<MenuBar>(),
-                FormName = "QTech.Forms.frmSetting"
+            //     new MenuBar()
+            //{
+            //    Index = 2,
+            //    Level = 2,
+            //    Key = AuthKey.Setting_OtherSetting,
+            //    ParentKey = AuthKey.Setting,
+            //    DisplayName = BaseResource.OtherSetting,
+            //    Icon = BaseResource.OtherSetting_Img,
+            //    Children = new List<MenuBar>(),
+            //    FormName = "QTech.Forms.frmSetting"
 
-            },
+            //},
 
         };
 
@@ -232,7 +232,7 @@ namespace QTech.Base.BaseModels
             },
             new MenuBar()
             {
-                Index = 5,
+                Index = 3,
                 Level = 1,
                 Key = AuthKey.Customer,
                 DisplayName = BaseResource.Customer,
@@ -243,7 +243,7 @@ namespace QTech.Base.BaseModels
             },
             new MenuBar()
             {
-                Index = 3,
+                Index = 4,
                 Level = 1,
                 Key = AuthKey.Product,
                 DisplayName = BaseResource.Product,
@@ -265,7 +265,7 @@ namespace QTech.Base.BaseModels
             },
             new MenuBar()
             {
-                Index = 6,
+                Index = 8,
                 Level = 1,
                 Key = AuthKey.Report,
                 DisplayName = "របាយការណ៍   ",
@@ -275,7 +275,7 @@ namespace QTech.Base.BaseModels
             },
              new MenuBar()
             {
-                Index = 7,
+                Index = 6,
                 Level = 1,
                 Key = AuthKey.Setting,
                 DisplayName = BaseResource.Setting_Text,
@@ -285,7 +285,7 @@ namespace QTech.Base.BaseModels
             },
           new MenuBar()
             {
-                Index = 4,
+                Index = 7,
                 Level = 1,
                 Key = AuthKey.General,
                 DisplayName = BaseResource.General_,
@@ -293,7 +293,16 @@ namespace QTech.Base.BaseModels
                 Children = new List<MenuBar>(),
                 FormName = ""
             },
-
+          new MenuBar()
+            {
+                Index = 5,
+                Level = 1,
+                Key = AuthKey.Supplier,
+                DisplayName = BaseResource.Suppliers,
+                Icon = BaseResource.General_img,
+                Children = new List<MenuBar>(),
+                FormName = ""
+            },
         };
 
 
