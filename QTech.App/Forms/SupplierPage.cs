@@ -13,6 +13,7 @@ using System.Collections.Generic;
 using System.Drawing;
 using QTech.Base.Models;
 using QTech.Base.Enums;
+using QTech.Reports;
 
 namespace QTech.Forms
 {
@@ -50,12 +51,13 @@ namespace QTech.Forms
 
         public async void AddNew()
         {
-            Model = new Base.Models.Currency();
-            var dig = new frmCustomer(Model, GeneralProcess.Add);
-            if (dig.ShowDialog() == DialogResult.OK)
-            {
-                await Search();
-            }
+            new ReportDriverDeliveryPage().Show();
+            //Model = new Base.Models.Currency();
+            //var dig = new frmCustomer(Model, GeneralProcess.Add);
+            //if (dig.ShowDialog() == DialogResult.OK)
+            //{
+            //    await Search();
+            //}
         }
 
         public async void EditAsync()

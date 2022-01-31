@@ -305,6 +305,12 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <Compile Include="Reports\ReportDriverDeliveryPage.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Reports\ReportDriverDeliveryPage.designer.cs">
+      <DependentUpon>ReportDriverDeliveryPage.cs</DependentUpon>
+    </Compile>
     <Compile Include="Reports\ReportProfit.cs">
       <DependentUpon>ReportProfit.rpt</DependentUpon>
       <AutoGen>True</AutoGen>
@@ -445,6 +451,9 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <SubType>Designer</SubType>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reports\ReportDriverDeliveryPage.resx">
+      <DependentUpon>ReportDriverDeliveryPage.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Reports\ReportProfit.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
@@ -613,9 +622,7 @@
       <Install>false</Install>
     </BootstrapperPackage>
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Reports\FormPage\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
     <PropertyGroup>

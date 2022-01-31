@@ -1443,6 +1443,7 @@ namespace QTech.Component
                 } 
                 MsgBox.ShowError(exp, title);
 
+                
                 if (type.GetInterfaces().Any(x => x == typeof(IList)))
                 {
                     return (TResult)Activator.CreateInstance(typeof(TResult));
