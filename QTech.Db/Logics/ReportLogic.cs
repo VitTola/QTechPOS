@@ -20,7 +20,6 @@ namespace QTech.Db.Logics
     {
         public  DataTable ExecuteDynamicReport(string Sql, params SqlParameter[] parameters)
         {
-            var sb = new StringBuilder();
             var dt = new System.Data.DataTable();
             var cn = _db.Database.Connection;
             using (var cmd = cn.CreateCommand())
@@ -32,10 +31,10 @@ namespace QTech.Db.Logics
                 {
                     cmd.CommandTimeout = (int)timeout;
                 }
-                //if (parameters.Any())
-                //{
-                //    cmd.Parameters.AddRange(parameters);
-                //}
+                if (parameters?.Any() ?? false)
+                {
+                    cmd.Parameters.AddRange(parameters);
+                }
                 dt.Load( cmd.ExecuteReader());
             }
             if (cn.State == System.Data.ConnectionState.Open) { cn.Close(); }

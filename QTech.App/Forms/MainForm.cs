@@ -120,7 +120,6 @@ namespace QTech.Forms
                         TextAlignment = ContentAlignment.MiddleLeft,
                         BorderStyle = BorderStyle.None,
                         Padding = new Padding() { All = 0 },
-                        Font = new Font("Fasthand", 8)
                 };
                     if (ShareValue.IsAuthorized(x.Key))
                     {
@@ -236,6 +235,7 @@ namespace QTech.Forms
                             pSecondMenue2.Controls.Add(secodMenue);
                             secodMenue.Click += SecodMenue_Click;
                             secodMenue.Leave += SecodMenue_Leave;
+                            //secodMenue.MouseHover += SecodMenue_MouseHover;
                         }
                     });
                     if (pSecondMenue2.Controls.Count > 0)
@@ -250,6 +250,18 @@ namespace QTech.Forms
                 }
 
                 ClickedButton = menuBar;
+            }
+        }
+
+        private void SecodMenue_MouseHover(object sender, EventArgs e)
+        {
+            if (sender is ExTabItem2 btn)
+            {
+                if (ShareValue.User.Theme == Base.Enums.Theme.Template1)
+                {
+                    btn.BackColor = Color.FromArgb(37, 48, 62);
+                    btn.ForeColor = Color.FromArgb(59, 143, 250);
+                }
             }
         }
 

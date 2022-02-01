@@ -51,13 +51,12 @@ namespace QTech.Forms
 
         public async void AddNew()
         {
-            new ReportDriverDeliveryPage().Show();
-            //Model = new Base.Models.Currency();
-            //var dig = new frmCustomer(Model, GeneralProcess.Add);
-            //if (dig.ShowDialog() == DialogResult.OK)
-            //{
-            //    await Search();
-            //}
+            Model = new Base.Models.Currency();
+            var dig = new frmCustomer(Model, GeneralProcess.Add);
+            if (dig.ShowDialog() == DialogResult.OK)
+            {
+                await Search();
+            }
         }
 
         public async void EditAsync()

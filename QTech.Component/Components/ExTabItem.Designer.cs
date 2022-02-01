@@ -43,8 +43,9 @@
             this.panelLeft.BackgroundImage = global::QTech.Component.Properties.Resources.Left;
             this.panelLeft.Dock = System.Windows.Forms.DockStyle.Left;
             this.panelLeft.Location = new System.Drawing.Point(0, 0);
+            this.panelLeft.Margin = new System.Windows.Forms.Padding(4);
             this.panelLeft.Name = "panelLeft";
-            this.panelLeft.Size = new System.Drawing.Size(8, 34);
+            this.panelLeft.Size = new System.Drawing.Size(11, 42);
             this.panelLeft.TabIndex = 5;
             // 
             // panelMiddle
@@ -54,17 +55,19 @@
             this.panelMiddle.Controls.Add(this.picBox);
             this.panelMiddle.Controls.Add(this.lblCaption);
             this.panelMiddle.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panelMiddle.Location = new System.Drawing.Point(8, 0);
+            this.panelMiddle.Location = new System.Drawing.Point(11, 0);
+            this.panelMiddle.Margin = new System.Windows.Forms.Padding(4);
             this.panelMiddle.Name = "panelMiddle";
-            this.panelMiddle.Size = new System.Drawing.Size(198, 34);
+            this.panelMiddle.Size = new System.Drawing.Size(264, 42);
             this.panelMiddle.TabIndex = 7;
             // 
             // picBox
             // 
             this.picBox.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.picBox.Location = new System.Drawing.Point(6, 2);
+            this.picBox.Location = new System.Drawing.Point(8, 2);
+            this.picBox.Margin = new System.Windows.Forms.Padding(4);
             this.picBox.Name = "picBox";
-            this.picBox.Size = new System.Drawing.Size(15, 33);
+            this.picBox.Size = new System.Drawing.Size(20, 41);
             this.picBox.TabIndex = 4;
             this.picBox.TabStop = false;
             this.picBox.Click += new System.EventHandler(this.picBox_Click);
@@ -79,10 +82,11 @@
             this.lblCaption.Cursor = System.Windows.Forms.Cursors.Hand;
             this.lblCaption.Font = new System.Drawing.Font("Fasthand", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblCaption.ForeColor = System.Drawing.Color.White;
-            this.lblCaption.Location = new System.Drawing.Point(25, 1);
+            this.lblCaption.Location = new System.Drawing.Point(33, 1);
+            this.lblCaption.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblCaption.Name = "lblCaption";
             this.lblCaption.Padding = new System.Windows.Forms.Padding(0, 2, 0, 0);
-            this.lblCaption.Size = new System.Drawing.Size(0, 21);
+            this.lblCaption.Size = new System.Drawing.Size(0, 27);
             this.lblCaption.TabIndex = 3;
             this.lblCaption.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.lblCaption.Click += new System.EventHandler(this.lblCaption_Click);
@@ -96,15 +100,15 @@
             this.panelRight.BackColor = System.Drawing.Color.Transparent;
             this.panelRight.BackgroundImage = global::QTech.Component.Properties.Resources.Right;
             this.panelRight.Dock = System.Windows.Forms.DockStyle.Right;
-            this.panelRight.Location = new System.Drawing.Point(197, 0);
-            this.panelRight.Margin = new System.Windows.Forms.Padding(0);
+            this.panelRight.Location = new System.Drawing.Point(263, 0);
+            this.panelRight.Margin = new System.Windows.Forms.Padding(4);
             this.panelRight.Name = "panelRight";
-            this.panelRight.Size = new System.Drawing.Size(9, 34);
+            this.panelRight.Size = new System.Drawing.Size(12, 42);
             this.panelRight.TabIndex = 6;
             // 
             // ExTabItem
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoValidate = System.Windows.Forms.AutoValidate.EnableAllowFocusChange;
             this.BackColor = System.Drawing.Color.Transparent;
@@ -113,7 +117,7 @@
             this.Controls.Add(this.panelLeft);
             this.Margin = new System.Windows.Forms.Padding(0);
             this.Name = "ExTabItem";
-            this.Size = new System.Drawing.Size(206, 34);
+            this.Size = new System.Drawing.Size(275, 42);
             this.panelMiddle.ResumeLayout(false);
             this.panelMiddle.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.picBox)).EndInit();

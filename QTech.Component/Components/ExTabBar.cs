@@ -11,11 +11,10 @@ namespace QTech.Component
             Left = 1,
             Right = 1,
             Bottom = 0,
-            Top = 3
+            Top = 2
         }
 
         private FlowDirection _defaultDirection = FlowDirection.RightToLeft;
-       // private Color _defaultBackColor = Color.Silver;
         private Font _defaultFont = new Font(new FontFamily("Fasthand"), 8);
 
         public ExTabBar()
@@ -97,7 +96,7 @@ namespace QTech.Component
 
         public void AddTabItem(ExTabItem tabItem)
         {
-            ////Margin
+             ////Margin
             tabItem.Margin = new Padding()
             {
                 Left = (int)ItemMarginSetting.Left,
@@ -112,10 +111,9 @@ namespace QTech.Component
             tabItem.Width = (width * 2) + (width * 2) + 5;
             //tabItem.Height = (tabItem.Font.Size > (tabItem.Image?.Height ?? 0)) ?
             //    (int)tabItem.Font.Size + 9 : (tabItem.Image?.Height ?? 0) + 9;
-            tabItem.Height = 35;
+            tabItem.Height = 25;
 
             _body.Controls.Add(tabItem);
-            //CheckBodyHeight();
         }
     }
 }

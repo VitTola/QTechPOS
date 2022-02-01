@@ -60,7 +60,7 @@ namespace QTech.Component
             //var drawFont = new Font("Constantia", 6.75F);
             var drawFont = new Font("Arial Black", 7F);
             //var drawFont = new Font("DDD Round Square", 8F);
-            var drawBrush = new SolidBrush(ColorTranslator.FromHtml(EDomain.Resources.ColorPrimary));
+            var drawBrush = new SolidBrush(Color.Blue);
             // Set format of string.
             var drawFormat = new StringFormat
             {
@@ -75,7 +75,6 @@ namespace QTech.Component
                 drawFormat.FormatFlags = StringFormatFlags.DirectionVertical;
                 drawFormat.Alignment = StringAlignment.Near;
             }
-            //this.Font = new Font("Khmer OS Battambang", 8);
 
              e.Graphics.DrawString(ShortcutText, drawFont, drawBrush, locationF, drawFormat);
         }

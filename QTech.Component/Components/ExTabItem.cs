@@ -42,6 +42,8 @@ namespace QTech.Component
                     temp.PanelRight = global::QTech.Component.Properties.Resources.GRight;
                     temp.PanelCenter = global::QTech.Component.Properties.Resources.GCenter;
                     temp.LabelColor = Color.WhiteSmoke;
+                    //panelRight.Width = 12;
+
                 }
                 else if (Theme == Base.Enums.Theme.Template2)
                 {
@@ -54,6 +56,7 @@ namespace QTech.Component
                     temp.PanelRight = global::QTech.Component.Properties.Resources._2Right;
                     temp.PanelCenter = global::QTech.Component.Properties.Resources._2Center;
                     temp.LabelColor = Color.Black;
+                    //panelRight.Width = 12;
 
                 }
                 else if (Theme == Base.Enums.Theme.Template3)
@@ -67,6 +70,8 @@ namespace QTech.Component
                     temp.PanelRight = global::QTech.Component.Properties.Resources._3Right;
                     temp.PanelCenter = global::QTech.Component.Properties.Resources._3Center;
                     temp.LabelColor = Color.Black;
+                    //panelRight.Width = 13;
+
                 }
 
                 return temp;
