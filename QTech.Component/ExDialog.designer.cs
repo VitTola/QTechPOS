@@ -195,7 +195,7 @@ namespace QTech.Component
             this._lblTITLE.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this._lblTITLE.BackColor = System.Drawing.Color.Transparent;
-            this._lblTITLE.Font = new System.Drawing.Font("Khmer OS System", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this._lblTITLE.Font = new System.Drawing.Font("Fasthand", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this._lblTITLE.ForeColor = System.Drawing.Color.White;
             this._lblTITLE.Location = new System.Drawing.Point(24, 1);
             this._lblTITLE.Name = "_lblTITLE";

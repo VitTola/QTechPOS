@@ -18,9 +18,9 @@ namespace QTech.Forms
 {
     public partial class frmSupplier : ExDialog, IDialog
     {
-        public Table Model { get; set; }
+        public Supplier Model { get; set; }
 
-        public frmSupplier(Table model, GeneralProcess flag)
+        public frmSupplier(Supplier model, GeneralProcess flag)
         {
             InitializeComponent();
 
@@ -47,18 +47,13 @@ namespace QTech.Forms
             this.MaximizeBox = false;
             this.Text = Flag.GetTextDialog(Base.Properties.Resources.Suppliers);
             txtNote.RegisterPrimaryInput();
-            chkUseable_.Checked = true;
+            txtPhone.RegisterInputPhone();
 
-        }
-        private void dgv_EditingControlShowing(object sender, DataGridViewEditingControlShowingEventArgs e)
-        {
-            e.Control.RegisterEnglishInput();
-            
         }
         public bool InValid()
         {
             if (!txtName.IsValidRequired(lblName.Text) 
-              )
+              | txtPhone.IsValidRequired(lblPhone_.Text))
             {
                 return true;
             }
@@ -67,8 +62,8 @@ namespace QTech.Forms
         public void Read()
         {
             txtName.Text = Model.Name;
+            txtPhone.Text = Model.Phone;
             txtNote.Text = Model.Note;
-            chkUseable_.Checked = Model.IsUseable;
         }
         public async void Save()
         {
@@ -82,7 +77,7 @@ namespace QTech.Forms
 
             if (Flag == GeneralProcess.Add)
             {
-                var isExist = await btnSave.RunAsync(() => TableLogic.Instance.IsExistsAsync(Model));
+                var isExist = await btnSave.RunAsync(() => SupplierLogic.Instance.IsExistsAsync(Model));
                 if (isExist == true)
                 {
                     txtName.IsExists(lblName.Text);
@@ -95,15 +90,15 @@ namespace QTech.Forms
             {
                 if (Flag == GeneralProcess.Add)
                 {
-                    return TableLogic.Instance.AddAsync(Model);
+                    return SupplierLogic.Instance.AddAsync(Model);
                 }
                 else if (Flag == GeneralProcess.Update)
                 {
-                    return TableLogic.Instance.UpdateAsync(Model);
+                    return SupplierLogic.Instance.UpdateAsync(Model);
                 }
                 else if (Flag == GeneralProcess.Remove)
                 {
-                    return TableLogic.Instance.RemoveAsync(Model);
+                    return SupplierLogic.Instance.RemoveAsync(Model);
                 }
 
                 return null;
@@ -122,8 +117,7 @@ namespace QTech.Forms
         {
             Model.Name = txtName.Text;
             Model.Note = txtNote.Text;
-            Model.IsUseable = chkUseable_.Checked;
-            
+            Model.Phone = txtPhone.Text;
         }
         private void btnSave_Click(object sender, EventArgs e)
         {
@@ -134,10 +128,6 @@ namespace QTech.Forms
             this.Close();
         }
 
-        private void btnChangeLog_Click(object sender, EventArgs e)
-        {
-            ViewChangeLog();
-        }
         protected override bool ProcessCmdKey(ref Message msg, Keys keyData)
         {
             if (keyData == (Keys.Control | Keys.E))

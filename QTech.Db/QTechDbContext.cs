@@ -41,10 +41,9 @@ namespace QTech.Db
         public virtual DbSet<Position> Positions { get; set; }
         public virtual DbSet<AuditTrail> AuditTrails { get; set; }
         public virtual DbSet<ApplicationSetting> ApplicationSettings { get; set; }
-        public virtual DbSet<Table> Tables { get; set; }
+        public virtual DbSet<Supplier> Suppliers { get; set; }
         public virtual DbSet<Scale> Scales { get; set; }
         public virtual DbSet<ProductPrice> ProductPrices { get; set; }
-        public virtual DbSet<Currency> Currencies { get; set; }
         
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {

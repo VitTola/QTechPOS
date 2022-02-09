@@ -60,7 +60,7 @@ namespace QTech.Component
             //var drawFont = new Font("Constantia", 6.75F);
             var drawFont = new Font("Arial Black", 7F);
             //var drawFont = new Font("DDD Round Square", 8F);
-            var drawBrush = new SolidBrush(Color.Blue);
+            var drawBrush = new SolidBrush(Color.Orange);
             // Set format of string.
             var drawFormat = new StringFormat
             {

@@ -87,14 +87,14 @@ namespace QTech.Forms
 
         public async void AddNew()
         {
-            //var customer = new Customer();
-            //var dig = new frmCustomer(customer, GeneralProcess.Add);
-            //if (dig.ShowDialog() == DialogResult.OK)
-            //{
-            //    await Search();
-            //    selectedModel = dig.Model;
-            //    RefreshAfterOperation(selectedModel);
-            //}
+            var customer = new Customer();
+            var dig = new frmCustomer(customer, GeneralProcess.Add);
+            if (dig.ShowDialog() == DialogResult.OK)
+            {
+                await Search();
+                selectedModel = dig.Model;
+                RefreshAfterOperation(selectedModel);
+            }
         }
 
         public async void EditAsync()

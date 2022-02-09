@@ -7,9 +7,10 @@ using QTechSearch = QTech.Base.BaseModels;
 
 namespace QTech.Base.SearchModels
 {
-    public class CurrencySearch : QTechSearch.BasicSearchModel
+    public class SupplierSearch : QTechSearch.BasicSearchModel
     {
-        public string Code { get; set; }
+        public int Id { get; set; }
         public string Name { get; set; }
+
     }
 }

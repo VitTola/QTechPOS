@@ -26,7 +26,7 @@ namespace QTech.Forms
             InitEvent();
             this.SetTheme(this.Controls, null);
         }
-        public Base.Models.Currency Model { get; set; }
+        public Base.Models.Supplier Model { get; set; }
 
         private void Bind()
         {
@@ -35,9 +35,9 @@ namespace QTech.Forms
         {
             dgv.RowTemplate.Height = 28;
             dgv.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
-            //btnAdd.Visible = ShareValue.IsAuthorized(AuthKey.General_Currency_Add);
-            //btnRemove.Visible = ShareValue.IsAuthorized(AuthKey.General_Currency_Remove);
-            //btnUpdate.Visible = ShareValue.IsAuthorized(AuthKey.General_Currency_Update);
+            btnAdd.Visible = ShareValue.IsAuthorized(AuthKey.Supplier_Supplier_Add);
+            btnRemove.Visible = ShareValue.IsAuthorized(AuthKey.Supplier_Supplier_Remove);
+            btnUpdate.Visible = ShareValue.IsAuthorized(AuthKey.Supplier_Supplier_Update);
 
             txtSearch.RegisterPrimaryInput();
             txtSearch.RegisterKeyArrowDown(dgv);
@@ -51,8 +51,8 @@ namespace QTech.Forms
 
         public async void AddNew()
         {
-            Model = new Base.Models.Currency();
-            var dig = new frmCustomer(Model, GeneralProcess.Add);
+            Model = new Base.Models.Supplier();
+            var dig = new frmSupplier(Model, GeneralProcess.Add);
             if (dig.ShowDialog() == DialogResult.OK)
             {
                 await Search();
@@ -68,13 +68,13 @@ namespace QTech.Forms
 
             var id = (int)dgv.SelectedRows[0].Cells[colId.Name].Value;
 
-            Model = await btnUpdate.RunAsync(() => CurrencyLogic.Instance.FindAsync(id));
+            Model = await btnUpdate.RunAsync(() => SupplierLogic.Instance.FindAsync(id));
             if (Model == null)
             {
                 return;
             }
 
-            var dig = new frmCustomer(Model, GeneralProcess.Update);
+            var dig = new frmSupplier(Model, GeneralProcess.Update);
 
             if (dig.ShowDialog() == DialogResult.OK)
             {
@@ -100,21 +100,21 @@ namespace QTech.Forms
             }
 
             var id = (int)dgv.CurrentRow.Cells[colId.Name].Value;
-            var canRemove = await btnRemove.RunAsync(() => CurrencyLogic.Instance.CanRemoveAsync(id));
+            var canRemove = await btnRemove.RunAsync(() => SupplierLogic.Instance.CanRemoveAsync(id));
             if (canRemove == false)
             {
                 MsgBox.ShowWarning(EasyServer.Domain.Resources.RowCannotBeRemoved,
-                    GeneralProcess.Remove.GetTextDialog(BaseResource.Currency));
+                    GeneralProcess.Remove.GetTextDialog(BaseResource.Suppliers));
                 return;
             }
 
-            Model = await btnRemove.RunAsync(() => CurrencyLogic.Instance.FindAsync(id));
+            Model = await btnRemove.RunAsync(() => SupplierLogic.Instance.FindAsync(id));
             if (Model == null)
             {
                 return;
             }
 
-            var dig = new frmCustomer(Model, GeneralProcess.Remove);
+            var dig = new frmSupplier(Model, GeneralProcess.Remove);
             if (dig.ShowDialog() == DialogResult.OK)
             {
                 await Search();
@@ -123,12 +123,12 @@ namespace QTech.Forms
 
         public async Task Search()
         {
-            var search = new CurrencySearch()
+            var search = new SupplierSearch()
             {
                 Search = txtSearch.Text,
             };
 
-            var result = await dgv.RunAsync(() => CurrencyLogic.Instance.SearchAsync(search));
+            var result = await dgv.RunAsync(() => SupplierLogic.Instance.SearchAsync(search));
             if (result != null)
             {
                 dgv.DataSource = result.OrderByDescending(x=>x.RowDate)._ToDataTable();
@@ -143,14 +143,14 @@ namespace QTech.Forms
             }
 
             var id = (int)dgv.SelectedRows[0].Cells[colId.Name].Value;
-            Model = await btnUpdate.RunAsync(() => CurrencyLogic.Instance.FindAsync(id));
+            Model = await btnUpdate.RunAsync(() => SupplierLogic.Instance.FindAsync(id));
 
             if (Model == null)
             {
                 return;
             }
 
-            var dig = new frmCustomer(Model, GeneralProcess.View);
+            var dig = new frmSupplier(Model, GeneralProcess.View);
             dig.ShowDialog();
         }
 

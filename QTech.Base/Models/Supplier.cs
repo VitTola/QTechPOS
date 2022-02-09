@@ -7,14 +7,15 @@ using System.Threading.Tasks;
 
 namespace QTech.Base.Models
 {
-    public class Currency : QTech.Base.ActiveBaseModel
+    public class Supplier : QTech.Base.ActiveBaseModel
     {
-        [AuditData(Ignored:true)]
+        [AuditData(Ignored: true)]
         public string Code { get; set; }
         [AuditData(resourceName: "Name", index: 1)]
         public string Name { get; set; }
-        [AuditData(resourceName: "Note", index: 2)]
+        [AuditData(resourceName: "Phone", index: 2)]
+        public string Phone { get; set; }
+        [AuditData(resourceName: "Note", index: 3)]
         public string Note { get; set; }
-
     }
 }

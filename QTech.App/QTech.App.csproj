@@ -130,6 +130,12 @@
     <Reference Include="WindowsFormsIntegration" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Forms\frmSale.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\frmSale.Designer.cs">
+      <DependentUpon>frmSale.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\SupplierPage.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -141,12 +147,6 @@
     </Compile>
     <Compile Include="Forms\frmCustomer.Designer.cs">
       <DependentUpon>frmCustomer.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Forms\frmCalculate.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Forms\frmCalculate.Designer.cs">
-      <DependentUpon>frmCalculate.cs</DependentUpon>
     </Compile>
     <Compile Include="Forms\frmSetting.cs">
       <SubType>Form</SubType>
@@ -177,12 +177,6 @@
     </Compile>
     <Compile Include="Forms\frmPosition.Designer.cs">
       <DependentUpon>frmPosition.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Forms\frmFoodOrder.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Forms\frmFoodOrder.Designer.cs">
-      <DependentUpon>frmFoodOrder.cs</DependentUpon>
     </Compile>
     <Compile Include="Forms\ReloadMainForm.cs">
       <SubType>Form</SubType>
@@ -267,12 +261,6 @@
     </Compile>
     <Compile Include="Forms\CustomerPage.Designer.cs">
       <DependentUpon>CustomerPage.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Forms\frmSale.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Forms\frmSale.Designer.cs">
-      <DependentUpon>frmSale.cs</DependentUpon>
     </Compile>
     <Compile Include="Forms\SalePage.cs">
       <SubType>Form</SubType>
@@ -366,9 +354,6 @@
     <EmbeddedResource Include="Forms\frmCustomer.resx">
       <DependentUpon>frmCustomer.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\frmCalculate.resx">
-      <DependentUpon>frmCalculate.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="Forms\frmSetting.resx">
       <DependentUpon>frmSetting.cs</DependentUpon>
     </EmbeddedResource>
@@ -383,9 +368,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\frmPosition.resx">
       <DependentUpon>frmPosition.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Forms\frmFoodOrder.resx">
-      <DependentUpon>frmFoodOrder.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\frmIncomeExpense.resx">
       <DependentUpon>frmIncomeExpense.cs</DependentUpon>
@@ -428,9 +410,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\CustomerPage.resx">
       <DependentUpon>CustomerPage.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Forms\frmSale.resx">
-      <DependentUpon>frmSale.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\frmProduct.resx">
       <DependentUpon>frmProduct.cs</DependentUpon>

@@ -57,17 +57,7 @@ namespace QTech.Db.Logics
                 SaleDetailLogic.Instance.AddAsync(x);
             });
 
-            //Update TableStatus
-            var table = TableLogic.Instance.FindAsync(entity.TableId);
-            if (table!=null)
-            {
-                table.CurrentSaleId = result.Id;
-                table.TableStus = TableStatus.Occupy;
-                _db.Tables.Attach(table);
-                _db.Entry(table).Property(x => x.TableStus).IsModified = true;
-                _db.Entry(table).Property(x => x.CurrentSaleId).IsModified = true;
-                _db.SaveChanges();
-            }
+            
 
             return result;
         }

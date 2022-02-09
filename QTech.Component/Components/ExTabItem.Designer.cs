@@ -58,7 +58,7 @@
             this.panelMiddle.Location = new System.Drawing.Point(11, 0);
             this.panelMiddle.Margin = new System.Windows.Forms.Padding(4);
             this.panelMiddle.Name = "panelMiddle";
-            this.panelMiddle.Size = new System.Drawing.Size(264, 42);
+            this.panelMiddle.Size = new System.Drawing.Size(251, 42);
             this.panelMiddle.TabIndex = 7;
             // 
             // picBox
@@ -100,10 +100,10 @@
             this.panelRight.BackColor = System.Drawing.Color.Transparent;
             this.panelRight.BackgroundImage = global::QTech.Component.Properties.Resources.Right;
             this.panelRight.Dock = System.Windows.Forms.DockStyle.Right;
-            this.panelRight.Location = new System.Drawing.Point(263, 0);
+            this.panelRight.Location = new System.Drawing.Point(262, 0);
             this.panelRight.Margin = new System.Windows.Forms.Padding(4);
             this.panelRight.Name = "panelRight";
-            this.panelRight.Size = new System.Drawing.Size(12, 42);
+            this.panelRight.Size = new System.Drawing.Size(13, 42);
             this.panelRight.TabIndex = 6;
             // 
             // ExTabItem
@@ -112,8 +112,8 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoValidate = System.Windows.Forms.AutoValidate.EnableAllowFocusChange;
             this.BackColor = System.Drawing.Color.Transparent;
-            this.Controls.Add(this.panelRight);
             this.Controls.Add(this.panelMiddle);
+            this.Controls.Add(this.panelRight);
             this.Controls.Add(this.panelLeft);
             this.Margin = new System.Windows.Forms.Padding(0);
             this.Name = "ExTabItem";

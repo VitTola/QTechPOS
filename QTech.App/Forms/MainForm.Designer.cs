@@ -294,6 +294,7 @@
             // 
             this.txtUserName.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.txtUserName.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.txtUserName.Font = new System.Drawing.Font("Fasthand", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtUserName.ForeColor = System.Drawing.Color.White;
             this.txtUserName.Location = new System.Drawing.Point(29, 6);
             this.txtUserName.Name = "txtUserName";
@@ -326,7 +327,7 @@
             this.flowLayoutPanel3.Controls.Add(this.label7);
             this.flowLayoutPanel3.Location = new System.Drawing.Point(162, 3);
             this.flowLayoutPanel3.Name = "flowLayoutPanel3";
-            this.flowLayoutPanel3.Size = new System.Drawing.Size(190, 25);
+            this.flowLayoutPanel3.Size = new System.Drawing.Size(201, 25);
             this.flowLayoutPanel3.TabIndex = 12;
             this.flowLayoutPanel3.WrapContents = false;
             // 
@@ -351,10 +352,11 @@
             // 
             this.lblTheme_.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.lblTheme_.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.lblTheme_.Font = new System.Drawing.Font("Fasthand", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblTheme_.ForeColor = System.Drawing.Color.White;
             this.lblTheme_.Location = new System.Drawing.Point(65, 3);
             this.lblTheme_.Name = "lblTheme_";
-            this.lblTheme_.Size = new System.Drawing.Size(72, 19);
+            this.lblTheme_.Size = new System.Drawing.Size(83, 19);
             this.lblTheme_.TabIndex = 3;
             this.lblTheme_.Text = "ប្តូរព័ណ៌ផ្ទាំង";
             // 
@@ -364,7 +366,7 @@
             this._lblTheme.ForeColor = System.Drawing.Color.Black;
             this._lblTheme.Image = global::QTech.Properties.Resources.DropDown;
             this._lblTheme.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this._lblTheme.Location = new System.Drawing.Point(140, 0);
+            this._lblTheme.Location = new System.Drawing.Point(151, 0);
             this._lblTheme.Margin = new System.Windows.Forms.Padding(0, 0, 3, 0);
             this._lblTheme.Name = "_lblTheme";
             this._lblTheme.Size = new System.Drawing.Size(21, 23);
@@ -375,7 +377,7 @@
             // label7
             // 
             this.label7.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.label7.Location = new System.Drawing.Point(167, 0);
+            this.label7.Location = new System.Drawing.Point(178, 0);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(20, 20);
             this.label7.TabIndex = 4;
@@ -396,15 +398,15 @@
             // 
             this._lblVersion.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this._lblVersion.AutoSize = true;
-            this._lblVersion.Font = new System.Drawing.Font("Arial Narrow", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this._lblVersion.Font = new System.Drawing.Font("Fasthand", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this._lblVersion.ForeColor = System.Drawing.Color.White;
             this._lblVersion.LinkBehavior = System.Windows.Forms.LinkBehavior.HoverUnderline;
             this._lblVersion.LinkColor = System.Drawing.Color.White;
-            this._lblVersion.Location = new System.Drawing.Point(352, 0);
+            this._lblVersion.Location = new System.Drawing.Point(343, 0);
             this._lblVersion.Margin = new System.Windows.Forms.Padding(0, 0, 3, 0);
             this._lblVersion.Name = "_lblVersion";
             this._lblVersion.Padding = new System.Windows.Forms.Padding(0, 1, 0, 0);
-            this._lblVersion.Size = new System.Drawing.Size(42, 16);
+            this._lblVersion.Size = new System.Drawing.Size(51, 20);
             this._lblVersion.TabIndex = 6;
             this._lblVersion.TabStop = true;
             this._lblVersion.Text = "V1.0.0.0";
@@ -415,18 +417,19 @@
             // 
             this.label5.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.label5.AutoSize = true;
+            this.label5.Font = new System.Drawing.Font("Fasthand", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label5.ForeColor = System.Drawing.Color.White;
-            this.label5.Location = new System.Drawing.Point(309, 0);
+            this.label5.Location = new System.Drawing.Point(297, 0);
             this.label5.Margin = new System.Windows.Forms.Padding(3, 0, 0, 0);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(43, 19);
+            this.label5.Size = new System.Drawing.Size(46, 19);
             this.label5.TabIndex = 8;
             this.label5.Text = "ជំនាន់៖";
             // 
             // _lbSocketStatus
             // 
             this._lbSocketStatus.AutoSize = true;
-            this._lbSocketStatus.Location = new System.Drawing.Point(288, 0);
+            this._lbSocketStatus.Location = new System.Drawing.Point(276, 0);
             this._lbSocketStatus.Name = "_lbSocketStatus";
             this._lbSocketStatus.Required = false;
             this._lbSocketStatus.Size = new System.Drawing.Size(15, 19);
@@ -448,10 +451,11 @@
             // txtLogin
             // 
             this.txtLogin.AutoSize = true;
+            this.txtLogin.Font = new System.Drawing.Font("Fasthand", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtLogin.ForeColor = System.Drawing.Color.White;
             this.txtLogin.Location = new System.Drawing.Point(27, 4);
             this.txtLogin.Name = "txtLogin";
-            this.txtLogin.Size = new System.Drawing.Size(110, 19);
+            this.txtLogin.Size = new System.Drawing.Size(108, 19);
             this.txtLogin.TabIndex = 1;
             this.txtLogin.Text = "01-01-2019 01:01:01";
             // 
@@ -483,7 +487,7 @@
             this.mainPanel.Grayscale = false;
             this.mainPanel.Image = null;
             this.mainPanel.ImageAlpha = 75;
-            this.mainPanel.ImagePadding = new System.Windows.Forms.Padding(5);
+            this.mainPanel.ImagePadding = new System.Windows.Forms.Padding(0);
             this.mainPanel.ImagePosition = QTech.Component.ImagePositions.BottomRight;
             this.mainPanel.ImageSize = new System.Drawing.Size(48, 48);
             this.mainPanel.ImeMode = System.Windows.Forms.ImeMode.On;

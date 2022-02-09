@@ -169,7 +169,6 @@
     <Compile Include="Helpers\UISetting.cs" />
     <Compile Include="Models\ApplicationSetting.cs" />
     <Compile Include="Models\AuditTrail.cs" />
-    <Compile Include="Models\Currency.cs" />
     <Compile Include="Models\Scale.cs" />
     <Compile Include="Models\IncomeExpense.cs" />
     <Compile Include="Models\Invoice.cs" />
@@ -179,7 +178,7 @@
     <Compile Include="Models\Employee.cs" />
     <Compile Include="Models\Product.cs" />
     <Compile Include="Models\Sale.cs" />
-    <Compile Include="Models\Table.cs" />
+    <Compile Include="Models\Supplier.cs" />
     <Compile Include="Models\UserPermission.cs" />
     <Compile Include="Models\Version.cs" />
     <Compile Include="OutFaceModels\DriverDeliveryDetail.cs" />
@@ -216,7 +215,7 @@
     </Compile>
     <Compile Include="SearchModels\AuditTrailHistorySearch.cs" />
     <Compile Include="SearchModels\AuditTrailSearch.cs" />
-    <Compile Include="SearchModels\CurrencySearch.cs" />
+    <Compile Include="SearchModels\SupplierSearch.cs" />
     <Compile Include="SearchModels\ProductPriceSearch.cs" />
     <Compile Include="SearchModels\ScaleSearch.cs" />
     <Compile Include="SearchModels\PositionSearch.cs" />

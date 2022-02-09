@@ -18,9 +18,9 @@ namespace QTech.Forms
 {
     public partial class frmCustomer : ExDialog, IDialog
     {
-        public Currency Model { get; set; }
+        public Customer Model { get; set; }
 
-        public frmCustomer(Currency model, GeneralProcess flag)
+        public frmCustomer(Customer model, GeneralProcess flag)
         {
             InitializeComponent();
 
@@ -44,7 +44,7 @@ namespace QTech.Forms
         {
             this.SetEnabled(Flag != GeneralProcess.Remove && Flag != GeneralProcess.View);
             this.MaximizeBox = false;
-            this.Text = Flag.GetTextDialog(Base.Properties.Resources.Currency);
+            this.Text = Flag.GetTextDialog(Base.Properties.Resources.Customer);
             txtNote.RegisterPrimaryInput();
             txtName.RegisterPrimaryInput();
 
@@ -77,7 +77,7 @@ namespace QTech.Forms
             if (InValid()) { return; }
             Write();
 
-            var isExist = await btnSave.RunAsync(() => CurrencyLogic.Instance.IsExistsAsync(Model));
+            var isExist = await btnSave.RunAsync(() => CustomerLogic.Instance.IsExistsAsync(Model));
             if (isExist == true)
             {
                 txtName.IsExists(lblName.Text);
@@ -88,15 +88,15 @@ namespace QTech.Forms
             {
                 if (Flag == GeneralProcess.Add)
                 {
-                    return CurrencyLogic.Instance.AddAsync(Model);
+                    return CustomerLogic.Instance.AddAsync(Model);
                 }
                 else if (Flag == GeneralProcess.Update)
                 {
-                    return CurrencyLogic.Instance.UpdateAsync(Model);
+                    return CustomerLogic.Instance.UpdateAsync(Model);
                 }
                 else if (Flag == GeneralProcess.Remove)
                 {
-                    return CurrencyLogic.Instance.RemoveAsync(Model);
+                    return CustomerLogic.Instance.RemoveAsync(Model);
                 }
 
                 return null;

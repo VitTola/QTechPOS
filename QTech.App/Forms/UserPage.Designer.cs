@@ -78,7 +78,7 @@
             this.graPanel1.ImagePosition = QTech.Component.ImagePositions.BottomRight;
             this.graPanel1.ImageSize = new System.Drawing.Size(48, 48);
             this.graPanel1.Location = new System.Drawing.Point(0, 0);
-            this.graPanel1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.graPanel1.Margin = new System.Windows.Forms.Padding(4);
             this.graPanel1.Name = "graPanel1";
             this.graPanel1.Rounded = true;
             this.graPanel1.Size = new System.Drawing.Size(1047, 35);
@@ -95,7 +95,7 @@
             this.flowLayoutPanel2.Controls.Add(this.txtSearch);
             this.flowLayoutPanel2.Dock = System.Windows.Forms.DockStyle.Left;
             this.flowLayoutPanel2.Location = new System.Drawing.Point(0, 0);
-            this.flowLayoutPanel2.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.flowLayoutPanel2.Margin = new System.Windows.Forms.Padding(4);
             this.flowLayoutPanel2.Name = "flowLayoutPanel2";
             this.flowLayoutPanel2.Size = new System.Drawing.Size(299, 35);
             this.flowLayoutPanel2.TabIndex = 0;
@@ -122,7 +122,7 @@
             this.flowLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.flowLayoutPanel1.FlowDirection = System.Windows.Forms.FlowDirection.RightToLeft;
             this.flowLayoutPanel1.Location = new System.Drawing.Point(0, 0);
-            this.flowLayoutPanel1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.flowLayoutPanel1.Margin = new System.Windows.Forms.Padding(0);
             this.flowLayoutPanel1.Name = "flowLayoutPanel1";
             this.flowLayoutPanel1.Size = new System.Drawing.Size(1047, 35);
             this.flowLayoutPanel1.TabIndex = 1;
@@ -293,7 +293,7 @@
             this.Controls.Add(this.dgv);
             this.Controls.Add(this.graPanel1);
             this.Font = new System.Drawing.Font("Fasthand", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "UserPage";
             this.Text = "CategoryPage";
             this.graPanel1.ResumeLayout(false);

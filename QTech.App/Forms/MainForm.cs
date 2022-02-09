@@ -235,7 +235,6 @@ namespace QTech.Forms
                             pSecondMenue2.Controls.Add(secodMenue);
                             secodMenue.Click += SecodMenue_Click;
                             secodMenue.Leave += SecodMenue_Leave;
-                            //secodMenue.MouseHover += SecodMenue_MouseHover;
                         }
                     });
                     if (pSecondMenue2.Controls.Count > 0)
@@ -298,7 +297,6 @@ namespace QTech.Forms
                     pSecondMenue2.Controls.OfType<ExTabItem2>().Where(x => x != btn).ToList()
                     .ForEach(y => { y.BackColor = Color.Transparent; y.ForeColor = ShareValue.CurrentTheme.LabelColor; });
                 }
-                
             }
         }
         private ExTabItem2 MyTemplateButton(string text, Image image, Object obj)
@@ -333,7 +331,7 @@ namespace QTech.Forms
         private void lblUserDropDown__Click(object sender, EventArgs e)
         {
             var p = Point.Add(lblUserProfile_.PointToScreen(new Point(0, -50)), new Size(0, lblUserProfile_.Height));
-            //Point p = new Point(lblUserProfile_.Left, pContainBottom.Top - cnmStrip.Height + 22);
+            cnmStrip.Font = new Font("Fasthand", cnmStrip.Font.Size);
             cnmStrip.Show(p);
         }
         private void btnLogOut_Click(object sender, EventArgs e)
@@ -424,6 +422,7 @@ namespace QTech.Forms
         private void _lblTheme_Click(object sender, EventArgs e)
         {
             var p = Point.Add(_lblTheme.PointToScreen(new Point(0, -50)), new Size(0, _lblTheme.Height));
+            cnmTheme.Font = new Font("Fasthand", cnmTheme.Font.Size);
             cnmTheme.Show(p);
         }
 
