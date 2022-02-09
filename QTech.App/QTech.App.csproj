@@ -136,6 +136,12 @@
     <Compile Include="Forms\frmSale.Designer.cs">
       <DependentUpon>frmSale.cs</DependentUpon>
     </Compile>
+    <Compile Include="Forms\SalePage.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\SalePage.designer.cs">
+      <DependentUpon>SalePage.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\SupplierPage.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -262,12 +268,6 @@
     <Compile Include="Forms\CustomerPage.Designer.cs">
       <DependentUpon>CustomerPage.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\SalePage.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Forms\SalePage.Designer.cs">
-      <DependentUpon>SalePage.cs</DependentUpon>
-    </Compile>
     <Compile Include="Forms\frmProduct.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -348,6 +348,12 @@
       <SubType>Component</SubType>
     </Compile>
     <Compile Include="Settings.cs" />
+    <EmbeddedResource Include="Forms\frmSale.resx">
+      <DependentUpon>frmSale.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\SalePage.resx">
+      <DependentUpon>SalePage.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Forms\SupplierPage.resx">
       <DependentUpon>SupplierPage.cs</DependentUpon>
     </EmbeddedResource>

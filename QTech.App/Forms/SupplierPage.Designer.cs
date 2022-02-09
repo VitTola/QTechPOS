@@ -296,6 +296,7 @@
             // 
             // colPhone
             // 
+            this.colPhone.DataPropertyName = "Phone";
             this.colPhone.HeaderText = "លេខទូរស័ព្ទ";
             this.colPhone.Name = "colPhone";
             this.colPhone.ReadOnly = true;

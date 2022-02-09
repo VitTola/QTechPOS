@@ -32,29 +32,18 @@ namespace QTech.Forms
 
         private void Bind()
         {
-            imageList1.ColorDepth = ColorDepth.Depth32Bit;
-            imageList1.ImageSize = new Size(14, 14);
-            imageList1.TransparentColor = System.Drawing.Color.Transparent;
-            imageList1.Images.Add(nameof(Properties.Resources.Customer_img), Properties.Resources.Customer_img);
-            imageList1.Images.Add(nameof(Properties.Resources.Site_img), Properties.Resources.Site_img);
         }
         private void InitEvent()
         {
-            dgv.RowsDefaultCellStyle.SelectionBackColor = System.Drawing.Color.FromArgb(173, 205, 239);
-            dgv.DefaultCellStyle.SelectionForeColor = System.Drawing.Color.Black;
-            dgv.RowTemplate.Height = 25;
+            dgv.RowTemplate.Height = 28;
             dgv.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
-            dgv.ColumnHeadersHeight = 25;
-            dgv.BackgroundColor = System.Drawing.Color.White;
-            dgv.AllowUserToResizeColumns = false;
-
-            txtSearch.RegisterEnglishInput();
-            txtSearch.RegisterKeyArrowDown(dgv);
-            txtSearch.QuickSearch += txtSearch_QuickSearch;
-
             btnAdd.Visible = ShareValue.IsAuthorized(AuthKey.Customer_Customer_Add);
             btnRemove.Visible = ShareValue.IsAuthorized(AuthKey.Customer_Customer_Remove);
             btnUpdate.Visible = ShareValue.IsAuthorized(AuthKey.Customer_Customer_Update);
+
+            txtSearch.RegisterPrimaryInput();
+            txtSearch.RegisterKeyArrowDown(dgv);
+            txtSearch.QuickSearch += txtSearch_QuickSearch;
         }
 
         private async void txtSearch_QuickSearch(object sender, EventArgs e)
@@ -62,38 +51,13 @@ namespace QTech.Forms
             await Search();
         }
 
-        private void Dgv_NodeCollapsed(object sender, CollapsedEventArgs e)
-        {
-            if (sender is TreeGridNode treeGrid)
-            {
-
-            }
-            isNodeCollapsed = true;
-        }
-
-        private void RefreshAfterOperation(Customer model)
-        {
-            var parentNode = dgv.Rows.Cast<TreeGridNode>().FirstOrDefault(x => x.Tag is Customer cus && cus.Id == model.Id);
-            if (parentNode != null)
-            {
-                parentNode.Selected = true;
-                if (parentNode.IsExpanded)
-                {
-                    parentNode.Collapse();
-                }
-                parentNode.Expand();
-            }
-        }
-
         public async void AddNew()
         {
-            var customer = new Customer();
-            var dig = new frmCustomer(customer, GeneralProcess.Add);
+            Model = new Customer();
+            var dig = new frmCustomer(Model, GeneralProcess.Add);
             if (dig.ShowDialog() == DialogResult.OK)
             {
                 await Search();
-                selectedModel = dig.Model;
-                RefreshAfterOperation(selectedModel);
             }
         }
 
@@ -104,7 +68,7 @@ namespace QTech.Forms
                 return;
             }
 
-            var id = (int)dgv.SelectedRows[0].Cells[colParentId.Name].Value;
+            var id = (int)dgv.SelectedRows[0].Cells[colId.Name]?.Value;
 
             Model = await btnUpdate.RunAsync(() => CustomerLogic.Instance.FindAsync(id));
             if (Model == null)
@@ -112,18 +76,19 @@ namespace QTech.Forms
                 return;
             }
 
-            //var dig = new frmCustomer(Model, GeneralProcess.Update);
+            var dig = new frmCustomer(Model, GeneralProcess.Update);
 
-            //if (dig.ShowDialog() == DialogResult.OK)
-            //{
-            //    await Search();
-            //    selectedModel = dig.Model;
-            //    RefreshAfterOperation(selectedModel);
-            //}
+            if (dig.ShowDialog() == DialogResult.OK)
+            {
+                await Search();
+                dgv.RowSelected(colId.Name, dig.Model.Id);
+            }
         }
 
         public async void Reload()
         {
+            dgv.AllowRowNotFound = true;
+            dgv.AllowRowNumber = true;
             dgv.ColumnHeadersHeight = 28;
 
             await Search();
@@ -136,12 +101,12 @@ namespace QTech.Forms
                 return;
             }
 
-            var id = (int)dgv.CurrentRow.Cells[colParentId.Name].Value;
+            var id = (int)dgv.CurrentRow.Cells[colId.Name].Value;
             var canRemove = await btnRemove.RunAsync(() => CustomerLogic.Instance.CanRemoveAsync(id));
             if (canRemove == false)
             {
                 MsgBox.ShowWarning(EasyServer.Domain.Resources.RowCannotBeRemoved,
-                    GeneralProcess.Remove.GetTextDialog(BaseResource.Employee));
+                    GeneralProcess.Remove.GetTextDialog(BaseResource.Customer));
                 return;
             }
 
@@ -151,25 +116,25 @@ namespace QTech.Forms
                 return;
             }
 
-            //var dig = new frmCustomer(Model, GeneralProcess.Remove);
-            //if (dig.ShowDialog() == DialogResult.OK)
-            //{
-            //    await Search();
-            //}
+            var dig = new frmCustomer(Model, GeneralProcess.Remove);
+            if (dig.ShowDialog() == DialogResult.OK)
+            {
+                await Search();
+            }
         }
 
         public async Task Search()
         {
-            //dgv.Columns[colName.Name].DisplayIndex = 1;
-            //var search = new CustomerSearch()
-            //{
-            //    Search = txtSearch.Text,
-            //};
+            var search = new CustomerSearch()
+            {
+                Search = txtSearch.Text,
+            };
 
-            //var result = await dgv.RunAsync(() => CustomerLogic.Instance.SearchAsync(search));
-            //if (result != null)
-            //{
-            //}
+            var result = await dgv.RunAsync(() => CustomerLogic.Instance.SearchAsync(search));
+            if (result != null)
+            {
+                dgv.DataSource = result.OrderByDescending(x => x.RowDate)._ToDataTable();
+            }
         }
 
         public async void View()
@@ -179,7 +144,7 @@ namespace QTech.Forms
                 return;
             }
 
-            var id = (int)dgv.SelectedRows[0].Cells[colParentId.Name].Value;
+            var id = (int)dgv.SelectedRows[0].Cells[colId.Name].Value;
             Model = await btnUpdate.RunAsync(() => CustomerLogic.Instance.FindAsync(id));
 
             if (Model == null)
@@ -187,8 +152,8 @@ namespace QTech.Forms
                 return;
             }
 
-            //var dig = new frmCustomer(Model, GeneralProcess.View);
-            //dig.ShowDialog();
+            var dig = new frmCustomer(Model, GeneralProcess.View);
+            dig.ShowDialog();
         }
 
         private void btnAdd_Click(object sender, EventArgs e)

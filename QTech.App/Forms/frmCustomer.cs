@@ -66,6 +66,7 @@ namespace QTech.Forms
         {
             txtName.Text = Model.Name;
             txtNote.Text = Model.Note;
+            txtPhone.Text = Model.Phone;
         }
         public async void Save()
         {
@@ -115,6 +116,7 @@ namespace QTech.Forms
         {
             Model.Name = txtName.Text;
             Model.Note = txtNote.Text;
+            Model.Phone = txtPhone.Text;
         }
         private void btnSave_Click(object sender, EventArgs e)
         {

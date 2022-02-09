@@ -155,7 +155,7 @@
             // lblNote
             // 
             this.lblNote.AutoSize = true;
-            this.lblNote.Location = new System.Drawing.Point(38, 96);
+            this.lblNote.Location = new System.Drawing.Point(38, 90);
             this.lblNote.Name = "lblNote";
             this.lblNote.Required = false;
             this.lblNote.Size = new System.Drawing.Size(42, 19);
@@ -164,12 +164,12 @@
             // 
             // txtNote
             // 
-            this.txtNote.Location = new System.Drawing.Point(141, 93);
+            this.txtNote.Location = new System.Drawing.Point(141, 87);
             this.txtNote.Margin = new System.Windows.Forms.Padding(2);
             this.txtNote.Multiline = true;
             this.txtNote.Name = "txtNote";
             this.txtNote.Size = new System.Drawing.Size(200, 90);
-            this.txtNote.TabIndex = 1;
+            this.txtNote.TabIndex = 2;
             // 
             // exPanel1
             // 
@@ -256,25 +256,25 @@
             this.btnChangeLog.ShortcutAligment = QTech.Component.ExButtonLoading.Aligment.Horizontal;
             this.btnChangeLog.ShortcutText = "E";
             this.btnChangeLog.Size = new System.Drawing.Size(86, 27);
-            this.btnChangeLog.TabIndex = 9;
+            this.btnChangeLog.TabIndex = 0;
             this.btnChangeLog.Text = "ប្រវត្តកែប្រែ";
             this.btnChangeLog.UseVisualStyleBackColor = true;
             this.btnChangeLog.Click += new System.EventHandler(this.btnChangeLog_Click_1);
             // 
             // txtPhone
             // 
-            this.txtPhone.Location = new System.Drawing.Point(141, 59);
+            this.txtPhone.Location = new System.Drawing.Point(141, 56);
             this.txtPhone.Margin = new System.Windows.Forms.Padding(2);
             this.txtPhone.Name = "txtPhone";
             this.txtPhone.Size = new System.Drawing.Size(200, 28);
-            this.txtPhone.TabIndex = 0;
+            this.txtPhone.TabIndex = 1;
             // 
             // lblPhone_
             // 
             this.lblPhone_.AutoSize = true;
-            this.lblPhone_.Location = new System.Drawing.Point(38, 62);
+            this.lblPhone_.Location = new System.Drawing.Point(38, 59);
             this.lblPhone_.Name = "lblPhone_";
-            this.lblPhone_.Required = true;
+            this.lblPhone_.Required = false;
             this.lblPhone_.Size = new System.Drawing.Size(75, 19);
             this.lblPhone_.TabIndex = 5;
             this.lblPhone_.Text = "លេខទូរស័ព្ទ";

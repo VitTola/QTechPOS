@@ -46,6 +46,8 @@
             this.flowLayoutPanel2 = new System.Windows.Forms.FlowLayoutPanel();
             this.btnClose = new QTech.Component.ExButtonLoading();
             this.btnSave = new QTech.Component.ExButtonLoading();
+            this.lblPhone_ = new QTech.Component.ExLabel();
+            this.txtPhone = new System.Windows.Forms.TextBox();
             this.container.SuspendLayout();
             this.exPanel1.SuspendLayout();
             this.flowLayoutPanel3.SuspendLayout();
@@ -56,16 +58,18 @@
             // 
             this.digheader.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(48)))));
             this.digheader.Margin = new System.Windows.Forms.Padding(4);
-            this.digheader.Size = new System.Drawing.Size(398, 20);
+            this.digheader.Size = new System.Drawing.Size(406, 20);
             // 
             // container
             // 
+            this.container.Controls.Add(this.lblPhone_);
+            this.container.Controls.Add(this.txtPhone);
             this.container.Controls.Add(this.exPanel1);
             this.container.Controls.Add(this.lblNote);
             this.container.Controls.Add(this.txtNote);
             this.container.Controls.Add(this.lblName);
             this.container.Controls.Add(this.txtName);
-            this.container.Size = new System.Drawing.Size(398, 220);
+            this.container.Size = new System.Drawing.Size(406, 254);
             // 
             // colId
             // 
@@ -142,7 +146,7 @@
             // lblName
             // 
             this.lblName.AutoSize = true;
-            this.lblName.Location = new System.Drawing.Point(37, 28);
+            this.lblName.Location = new System.Drawing.Point(50, 28);
             this.lblName.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblName.Name = "lblName";
             this.lblName.Required = true;
@@ -153,7 +157,7 @@
             // lblNote
             // 
             this.lblNote.AutoSize = true;
-            this.lblNote.Location = new System.Drawing.Point(37, 60);
+            this.lblNote.Location = new System.Drawing.Point(50, 92);
             this.lblNote.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblNote.Name = "lblNote";
             this.lblNote.Required = false;
@@ -163,7 +167,7 @@
             // 
             // txtNote
             // 
-            this.txtNote.Location = new System.Drawing.Point(153, 57);
+            this.txtNote.Location = new System.Drawing.Point(153, 89);
             this.txtNote.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.txtNote.Multiline = true;
             this.txtNote.Name = "txtNote";
@@ -176,11 +180,11 @@
             this.exPanel1.Controls.Add(this.flowLayoutPanel3);
             this.exPanel1.Controls.Add(this.flowLayoutPanel2);
             this.exPanel1.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.exPanel1.Location = new System.Drawing.Point(1, 183);
+            this.exPanel1.Location = new System.Drawing.Point(1, 217);
             this.exPanel1.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.exPanel1.Name = "exPanel1";
             this.exPanel1.Padding = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.exPanel1.Size = new System.Drawing.Size(396, 36);
+            this.exPanel1.Size = new System.Drawing.Size(404, 36);
             this.exPanel1.TabIndex = 17;
             // 
             // flowLayoutPanel3
@@ -222,7 +226,7 @@
             this.flowLayoutPanel2.Location = new System.Drawing.Point(3, 2);
             this.flowLayoutPanel2.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.flowLayoutPanel2.Name = "flowLayoutPanel2";
-            this.flowLayoutPanel2.Size = new System.Drawing.Size(390, 32);
+            this.flowLayoutPanel2.Size = new System.Drawing.Size(398, 32);
             this.flowLayoutPanel2.TabIndex = 0;
             // 
             // btnClose
@@ -233,7 +237,7 @@
             this.btnClose.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnClose.Font = new System.Drawing.Font("Khmer OS Battambang", 8F);
             this.btnClose.ForeColor = System.Drawing.Color.White;
-            this.btnClose.Location = new System.Drawing.Point(287, 3);
+            this.btnClose.Location = new System.Drawing.Point(295, 3);
             this.btnClose.Margin = new System.Windows.Forms.Padding(3, 3, 3, 2);
             this.btnClose.Name = "btnClose";
             this.btnClose.ShortcutAligment = QTech.Component.ExButtonLoading.Aligment.Horizontal;
@@ -252,7 +256,7 @@
             this.btnSave.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnSave.Font = new System.Drawing.Font("Khmer OS Battambang", 8F);
             this.btnSave.ForeColor = System.Drawing.Color.White;
-            this.btnSave.Location = new System.Drawing.Point(181, 3);
+            this.btnSave.Location = new System.Drawing.Point(189, 3);
             this.btnSave.Margin = new System.Windows.Forms.Padding(3, 3, 3, 2);
             this.btnSave.Name = "btnSave";
             this.btnSave.ShortcutAligment = QTech.Component.ExButtonLoading.Aligment.Horizontal;
@@ -263,17 +267,35 @@
             this.btnSave.UseVisualStyleBackColor = true;
             this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
             // 
+            // lblPhone_
+            // 
+            this.lblPhone_.AutoSize = true;
+            this.lblPhone_.Location = new System.Drawing.Point(50, 60);
+            this.lblPhone_.Name = "lblPhone_";
+            this.lblPhone_.Required = false;
+            this.lblPhone_.Size = new System.Drawing.Size(75, 19);
+            this.lblPhone_.TabIndex = 19;
+            this.lblPhone_.Text = "លេខទូរស័ព្ទ";
+            // 
+            // txtPhone
+            // 
+            this.txtPhone.Location = new System.Drawing.Point(153, 57);
+            this.txtPhone.Margin = new System.Windows.Forms.Padding(2);
+            this.txtPhone.Name = "txtPhone";
+            this.txtPhone.Size = new System.Drawing.Size(200, 28);
+            this.txtPhone.TabIndex = 18;
+            // 
             // frmCustomer
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 19F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(398, 240);
+            this.ClientSize = new System.Drawing.Size(406, 274);
             this.Font = new System.Drawing.Font("Fasthand", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Location = new System.Drawing.Point(0, 0);
             this.Margin = new System.Windows.Forms.Padding(4);
             this.MaximizeBox = false;
             this.Name = "frmCustomer";
-            this.Text = "frmCategory";
+            this.Text = "frmCustomer";
             this.container.ResumeLayout(false);
             this.container.PerformLayout();
             this.exPanel1.ResumeLayout(false);
@@ -302,5 +324,7 @@
         private Component.ExButtonLoading btnSave;
         private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel3;
         private Component.ExButtonLoading btnChangeLog;
+        private Component.ExLabel lblPhone_;
+        private System.Windows.Forms.TextBox txtPhone;
     }
 }

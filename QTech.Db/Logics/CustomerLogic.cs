@@ -1,5 +1,6 @@
 ﻿using QTech.Base;
 using QTech.Base.BaseModels;
+using QTech.Base.Helpers;
 using QTech.Base.Models;
 using QTech.Base.SearchModels;
 using System;
@@ -19,7 +20,11 @@ namespace QTech.Db.Logics
         }
         public override Customer AddAsync(Customer entity)
         {
-            var Customer = base.AddAsync(entity);
+            var result = base.AddAsync(entity);
+            if (result != null)
+            {
+                AuditTrailLogic.Instance.AddManualAuditTrail<Customer, int, Customer>(entity, null, GeneralProcess.Add);
+            }
             return entity;
         }
         public override Customer FindAsync(int id)
@@ -50,7 +55,12 @@ namespace QTech.Db.Logics
         }
         public override Customer UpdateAsync(Customer entity)
         {
-            base.UpdateAsync(entity);
+            var oldEntity = base.GetOldEntityAsync(entity).Result;
+            var result = base.UpdateAsync(entity);
+            if (result != null)
+            {
+                AuditTrailLogic.Instance.AddManualAuditTrail<Customer, int, Customer>(entity, oldEntity, GeneralProcess.Update);
+            }
             return entity;
         }
        

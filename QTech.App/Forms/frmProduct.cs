@@ -108,12 +108,10 @@ namespace QTech.Forms
 
             List<ProductPrice> ProductPrices = null;
             List<Scale> Scales = null;
-            List<Currency> Currencies = null;
             var _result = await this.RunAsync(() =>
             {
                 ProductPrices = ProductPriceLogic.Instance.SearchAsync(new ProductPriceSearch { ProductId = Model.Id });
                 Scales = ScaleLogic.Instance.SearchAsync(new ScaleSearch());
-                Currencies = CurrencyLogic.Instance.SearchAsync(new CurrencySearch());
                 var result = CategoryLogic.Instance.FindAsync(Model.CategoryId);
                 return result;
             }
@@ -147,21 +145,7 @@ namespace QTech.Forms
                     };
                         row.Cells[colScale.Name].Value = _scale;
                     }
-                    if (Currencies?.Any() ?? false)
-                    {
-                        var cur = Currencies.FirstOrDefault(f => f.Id == x.CurrencyId);
-                        var _currency = new List<DropDownItemModel>()
-                    {
-                                new DropDownItemModel
-                                {
-                                    Id = cur.Id,
-                                    Code = cur.Name,
-                                    Name = cur.Name,
-                                    DisplayText = cur.Name,
-                                    ItemObject = cur,
-                                }
-                    };
-                    }
+                    
                 });
             }
         }

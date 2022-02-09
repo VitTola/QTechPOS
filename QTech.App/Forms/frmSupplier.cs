@@ -45,15 +45,15 @@ namespace QTech.Forms
         {
             this.SetEnabled(Flag != GeneralProcess.Remove && Flag != GeneralProcess.View);
             this.MaximizeBox = false;
-            this.Text = Flag.GetTextDialog(Base.Properties.Resources.Suppliers);
+            this.Text = Flag.GetTextDialog(Base.Properties.Resources.Supplier);
             txtNote.RegisterPrimaryInput();
             txtPhone.RegisterInputPhone();
+            txtPhone.RegisterEnglishInput();
 
         }
         public bool InValid()
         {
-            if (!txtName.IsValidRequired(lblName.Text) 
-              | txtPhone.IsValidRequired(lblPhone_.Text))
+            if (!txtName.IsValidRequired(lblName.Text))
             {
                 return true;
             }

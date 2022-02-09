@@ -1780,9 +1780,9 @@ namespace QTech.Base.Properties {
         /// <summary>
         ///   Looks up a localized string similar to អ្នកផ្គត់ផ្គង់.
         /// </summary>
-        public static string Suppliers {
+        public static string Supplier {
             get {
-                return ResourceManager.GetString("Suppliers", resourceCulture);
+                return ResourceManager.GetString("Supplier", resourceCulture);
             }
         }
         

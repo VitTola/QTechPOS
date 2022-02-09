@@ -161,7 +161,7 @@ namespace QTech.Base.BaseModels
                 Level = 2,
                 Key = AuthKey.Supplier_Supplier,
                 ParentKey = AuthKey.Supplier,
-                DisplayName = BaseResource.Suppliers,
+                DisplayName = BaseResource.Supplier,
                 Icon = BaseResource.TableImg,
                 Children = new List<MenuBar>(),
                 FormName = "QTech.Forms.SupplierPage"
@@ -298,7 +298,7 @@ namespace QTech.Base.BaseModels
                 Index = 5,
                 Level = 1,
                 Key = AuthKey.Supplier,
-                DisplayName = BaseResource.Suppliers,
+                DisplayName = BaseResource.Supplier,
                 Icon = BaseResource.General_img,
                 Children = new List<MenuBar>(),
                 FormName = ""

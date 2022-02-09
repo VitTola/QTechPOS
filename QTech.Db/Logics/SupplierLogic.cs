@@ -1,5 +1,6 @@
 ﻿using QTech.Base;
 using QTech.Base.BaseModels;
+using QTech.Base.Helpers;
 using QTech.Base.Models;
 using QTech.Base.SearchModels;
 using System;
@@ -19,7 +20,11 @@ namespace QTech.Db.Logics
         }
         public override Supplier AddAsync(Supplier entity)
         {
-            var Supplier = base.AddAsync(entity);
+            var result = base.AddAsync(entity);
+            if (result != null)
+            {
+                AuditTrailLogic.Instance.AddManualAuditTrail<Supplier, int, Supplier>(entity, null, GeneralProcess.Add);
+            }
             return entity;
         }
         public override Supplier FindAsync(int id)
@@ -50,7 +55,12 @@ namespace QTech.Db.Logics
         }
         public override Supplier UpdateAsync(Supplier entity)
         {
-            base.UpdateAsync(entity);
+            var oldEntity = base.GetOldEntityAsync(entity).Result;
+            var result = base.UpdateAsync(entity);
+            if (result != null)
+            {
+                AuditTrailLogic.Instance.AddManualAuditTrail<Supplier, int, Supplier>(entity, oldEntity, GeneralProcess.Update);
+            }
             return entity;
         }
        

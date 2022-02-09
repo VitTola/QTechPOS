@@ -63,15 +63,7 @@ namespace QTech.Db.Logics
         }
         public override Sale UpdateAsync(Sale entity)
         {
-            //Update Table Status to Free In case No Order
-            if (!entity.SaleDetails.Any(x=>x.Quantity > 0))
-            {
-                entity.Active = false;
-                var _table = TableLogic.Instance.FindAsync(entity.TableId);
-                _table.TableStus = TableStatus.Free;
-                _table.CurrentSaleId = 0;
-                TableLogic.Instance.UpdateAsync(_table);
-            }
+            
             var result = base.UpdateAsync(entity);
 
             UpdateSaleDetail(result.SaleDetails, result);
