@@ -293,6 +293,11 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <Compile Include="ReportModel\DataSet.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>DataSet.xsd</DependentUpon>
+    </Compile>
     <Compile Include="Reports\ReportProfit.cs">
       <DependentUpon>ReportProfit.rpt</DependentUpon>
       <AutoGen>True</AutoGen>
@@ -346,6 +351,12 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>RportDriverDeliveryDetail.rpt</DependentUpon>
       <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="ReportViewerPage\ReportIncomeExpensePage.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ReportViewerPage\ReportIncomeExpensePage.designer.cs">
+      <DependentUpon>ReportIncomeExpensePage.cs</DependentUpon>
     </Compile>
     <Compile Include="Settings.cs" />
     <EmbeddedResource Include="Forms\frmSale.resx">
@@ -471,6 +482,9 @@
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
       <LastGenOutput>RportDriverDeliveryDetail.cs</LastGenOutput>
     </EmbeddedResource>
+    <EmbeddedResource Include="ReportViewerPage\ReportIncomeExpensePage.resx">
+      <DependentUpon>ReportIncomeExpensePage.cs</DependentUpon>
+    </EmbeddedResource>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
@@ -508,6 +522,17 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
+    <None Include="ReportModel\DataSet.xsc">
+      <DependentUpon>DataSet.xsd</DependentUpon>
+    </None>
+    <None Include="ReportModel\DataSet.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>DataSet.Designer.cs</LastGenOutput>
+    </None>
+    <None Include="ReportModel\DataSet.xss">
+      <DependentUpon>DataSet.xsd</DependentUpon>
+    </None>
     <None Include="Resources\calendar.png" />
   </ItemGroup>
   <ItemGroup>

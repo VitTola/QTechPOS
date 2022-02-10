@@ -191,30 +191,18 @@ namespace QTech.Base.BaseModels
                 FormName = "QTech.Forms.ScalePage"
 
             },
-            // new MenuBar()
-            //{
-            //    Index = 1,
-            //    Level = 2,
-            //    Key = AuthKey.Supplier,
-            //    ParentKey = AuthKey.General,
-            //    DisplayName = BaseResource.Currency,
-            //    Icon = BaseResource.Currency_img,
-            //    Children = new List<MenuBar>(),
-            //    FormName = "QTech.Forms.SupplierPage"
+               new MenuBar()
+            {
+                Index = 3,
+                Level = 2,
+                Key = AuthKey.Report_IncomeExpense,
+                ParentKey = AuthKey.Report,
+                DisplayName = BaseResource.ReportIncomeExpense,
+                Icon = BaseResource.InOut,
+                Children = new List<MenuBar>(),
+                FormName = "QTech.ReportViewerPage.ReportIncomeExpensePage"
 
-            //},
-            //     new MenuBar()
-            //{
-            //    Index = 2,
-            //    Level = 2,
-            //    Key = AuthKey.Setting_OtherSetting,
-            //    ParentKey = AuthKey.Setting,
-            //    DisplayName = BaseResource.OtherSetting,
-            //    Icon = BaseResource.OtherSetting_Img,
-            //    Children = new List<MenuBar>(),
-            //    FormName = "QTech.Forms.frmSetting"
-
-            //},
+            },
 
         };
 

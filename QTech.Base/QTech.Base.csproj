@@ -222,7 +222,6 @@
     <Compile Include="SearchModels\TableSearch.cs" />
     <Compile Include="SearchModels\ProfitSearch.cs" />
     <Compile Include="SearchModels\IncomExpenseSearch.cs" />
-    <Compile Include="SearchModels\ReportExpenseSearch.cs" />
     <Compile Include="SearchModels\UserPermissionSearch.cs" />
     <Compile Include="SearchModels\UserSearch.cs" />
     <Compile Include="SearchModels\PermissionSearch.cs" />

@@ -54,7 +54,7 @@ namespace QTech.Forms
             // digheader
             // 
             this.digheader.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(90)))), ((int)(((byte)(18)))), ((int)(((byte)(22)))));
-            this.digheader.Size = new System.Drawing.Size(386, 20);
+            this.digheader.Size = new System.Drawing.Size(338, 20);
             // 
             // container
             // 
@@ -64,7 +64,7 @@ namespace QTech.Forms
             this.container.Controls.Add(this.txtPassword);
             this.container.Controls.Add(this.txtUserName);
             this.container.Controls.Add(this.picKeyLogin);
-            this.container.Size = new System.Drawing.Size(386, 157);
+            this.container.Size = new System.Drawing.Size(338, 157);
             this.container.Text = "container";
             // 
             // txtUserName
@@ -75,7 +75,7 @@ namespace QTech.Forms
             this.txtUserName.Location = new System.Drawing.Point(166, 32);
             this.txtUserName.Margin = new System.Windows.Forms.Padding(2);
             this.txtUserName.Name = "txtUserName";
-            this.txtUserName.Size = new System.Drawing.Size(190, 28);
+            this.txtUserName.Size = new System.Drawing.Size(144, 28);
             this.txtUserName.TabIndex = 0;
             this.txtUserName.TextChanged += new System.EventHandler(this.txtUserName_TextChanged);
             this.txtUserName.Enter += new System.EventHandler(this.txtUserName_Enter);
@@ -87,7 +87,7 @@ namespace QTech.Forms
             this.txtPassword.Margin = new System.Windows.Forms.Padding(2);
             this.txtPassword.Name = "txtPassword";
             this.txtPassword.PasswordChar = '*';
-            this.txtPassword.Size = new System.Drawing.Size(190, 28);
+            this.txtPassword.Size = new System.Drawing.Size(144, 28);
             this.txtPassword.TabIndex = 1;
             this.txtPassword.UseSystemPasswordChar = true;
             this.txtPassword.TextChanged += new System.EventHandler(this.txtPassword_TextChanged);
@@ -141,7 +141,7 @@ namespace QTech.Forms
             this.exPanel.Location = new System.Drawing.Point(1, 120);
             this.exPanel.Name = "exPanel";
             this.exPanel.Padding = new System.Windows.Forms.Padding(2);
-            this.exPanel.Size = new System.Drawing.Size(384, 36);
+            this.exPanel.Size = new System.Drawing.Size(336, 36);
             this.exPanel.TabIndex = 22;
             // 
             // flowLayoutPanel3
@@ -152,7 +152,7 @@ namespace QTech.Forms
             this.flowLayoutPanel3.FlowDirection = System.Windows.Forms.FlowDirection.RightToLeft;
             this.flowLayoutPanel3.Location = new System.Drawing.Point(53, 2);
             this.flowLayoutPanel3.Name = "flowLayoutPanel3";
-            this.flowLayoutPanel3.Size = new System.Drawing.Size(329, 32);
+            this.flowLayoutPanel3.Size = new System.Drawing.Size(281, 32);
             this.flowLayoutPanel3.TabIndex = 0;
             // 
             // btnClose
@@ -163,7 +163,7 @@ namespace QTech.Forms
             this.btnClose.Executing = false;
             this.btnClose.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnClose.ForeColor = System.Drawing.Color.White;
-            this.btnClose.Location = new System.Drawing.Point(242, 3);
+            this.btnClose.Location = new System.Drawing.Point(194, 3);
             this.btnClose.Margin = new System.Windows.Forms.Padding(2, 3, 2, 2);
             this.btnClose.Name = "btnClose";
             this.btnClose.ShortcutAligment = QTech.Component.ExButtonLoading.Aligment.Horizontal;
@@ -182,7 +182,7 @@ namespace QTech.Forms
             this.btnLogin_.Executing = false;
             this.btnLogin_.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnLogin_.ForeColor = System.Drawing.Color.White;
-            this.btnLogin_.Location = new System.Drawing.Point(153, 3);
+            this.btnLogin_.Location = new System.Drawing.Point(105, 3);
             this.btnLogin_.Margin = new System.Windows.Forms.Padding(2);
             this.btnLogin_.Name = "btnLogin_";
             this.btnLogin_.ShortcutAligment = QTech.Component.ExButtonLoading.Aligment.Horizontal;
@@ -206,7 +206,7 @@ namespace QTech.Forms
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 19F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(386, 177);
+            this.ClientSize = new System.Drawing.Size(338, 177);
             this.Font = new System.Drawing.Font("Fasthand", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Location = new System.Drawing.Point(0, 0);

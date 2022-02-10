@@ -67,6 +67,7 @@ namespace QTech.Base.Enums
         ,Supplier_Supplier_Add   =	61
         ,Supplier_Supplier_Update    =	62
         ,Supplier_Supplier_Remove    =	63
+        ,Report_IncomeExpense = 64
 
     }
 }

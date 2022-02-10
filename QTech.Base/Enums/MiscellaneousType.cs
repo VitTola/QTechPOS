@@ -10,7 +10,7 @@ namespace QTech.Base.Enums
     {
         Income = 1,
         Expense = 2,
-        All = 3,
+        All = 0,
 
     }
 }

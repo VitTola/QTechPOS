@@ -26,6 +26,7 @@ namespace QTech.Db.Logics
             {
                 if (cn.State == System.Data.ConnectionState.Closed) { cn.Open(); }
                 cmd.CommandText = Sql;
+                cmd.CommandType = CommandType.StoredProcedure;
                 var timeout = _db.Database.Connection.ConnectionTimeout;
                 if (timeout == 0)
                 {
@@ -35,7 +36,7 @@ namespace QTech.Db.Logics
                 {
                     cmd.Parameters.AddRange(parameters);
                 }
-                dt.Load( cmd.ExecuteReader());
+                dt.Load(cmd.ExecuteReader());
             }
             if (cn.State == System.Data.ConnectionState.Open) { cn.Close(); }
 
