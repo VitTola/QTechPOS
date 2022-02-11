@@ -392,9 +392,7 @@ namespace QTech.Forms
             _lblComanyName.BackColor = currentTheme.MainFormFirstMenuePanel;
             lblTheme_.ForeColor = currentTheme.LabelColor;
             _lblComanyName.ForeColor = currentTheme.LabelColor;
-
-
-
+            
             digheader.Colors.Clear();
             digheader.Colors.Add(new ColorWithAlpha()
             {
@@ -468,8 +466,9 @@ namespace QTech.Forms
             if (currentTheme != Base.Enums.Theme.Template3)
             {
                 isReload = true;
+                var obj = this;
                 this.Hide();
-                new ReloadMainForm(this).Show();
+                new ReloadMainForm(obj).Show();
             }
         }
     }
