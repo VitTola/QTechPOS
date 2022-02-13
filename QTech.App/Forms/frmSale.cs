@@ -77,7 +77,8 @@ namespace QTech.Forms
             cboCustomer.SelectedIndexChanged += CboCustomer_SelectedIndexChanged;
             this.Load += FrmSale_Load;
             this.MaximizeBox = true;
-
+            lblPhone.Anchor = _lblSaleDate.Anchor = dtpSaleDate_.Anchor = txtPhone.Anchor = AnchorStyles.Right | AnchorStyles.Top;
+            txtNote2.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
 
             if (Flag != GeneralProcess.Add)
             {
@@ -639,6 +640,11 @@ namespace QTech.Forms
         public void BindAsync()
         {
             throw new NotImplementedException();
+        }
+
+        private void tabGeneral__Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

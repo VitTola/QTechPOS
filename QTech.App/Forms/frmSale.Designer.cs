@@ -66,14 +66,14 @@
             this.label1 = new System.Windows.Forms.Label();
             this.tabMain = new System.Windows.Forms.TabControl();
             this.tabCustomer_ = new System.Windows.Forms.TabPage();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.txtNote1 = new System.Windows.Forms.TextBox();
             this.exLabel3 = new QTech.Component.ExLabel();
             this.dtpSaleDate = new QTech.Component.ExDateTimePicker();
             this.lblSaleDate_ = new QTech.Component.ExLabel();
             this.tabGeneral_ = new System.Windows.Forms.TabPage();
-            this.textBox2 = new System.Windows.Forms.TextBox();
+            this.txtNote2 = new System.Windows.Forms.TextBox();
             this.exLabel4 = new QTech.Component.ExLabel();
-            this.exLabel1 = new QTech.Component.ExLabel();
+            this._lblSaleDate = new QTech.Component.ExLabel();
             this.dtpSaleDate_ = new QTech.Component.ExDateTimePicker();
             this.lblPhone = new QTech.Component.ExLabel();
             this.txtPhone = new System.Windows.Forms.TextBox();
@@ -81,6 +81,9 @@
             this.lblInvoiceNo1 = new QTech.Component.ExLabel();
             this.txtCustomer = new System.Windows.Forms.TextBox();
             this.lblCustomer1 = new QTech.Component.ExLabel();
+            this.panel2 = new System.Windows.Forms.Panel();
+            this.panel3 = new System.Windows.Forms.Panel();
+            this.panel4 = new System.Windows.Forms.Panel();
             this.container.SuspendLayout();
             this.flowLayOutLabelRemoveAdd.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgv)).BeginInit();
@@ -92,6 +95,9 @@
             this.tabMain.SuspendLayout();
             this.tabCustomer_.SuspendLayout();
             this.tabGeneral_.SuspendLayout();
+            this.panel2.SuspendLayout();
+            this.panel3.SuspendLayout();
+            this.panel4.SuspendLayout();
             this.SuspendLayout();
             // 
             // digheader
@@ -102,15 +108,11 @@
             // 
             // container
             // 
+            this.container.Controls.Add(this.panel3);
+            this.container.Controls.Add(this.panel4);
+            this.container.Controls.Add(this.panel2);
             this.container.Controls.Add(this.tabMain);
-            this.container.Controls.Add(this.panel1);
-            this.container.Controls.Add(this.lblExpense_);
-            this.container.Controls.Add(this.pnlExpect);
-            this.container.Controls.Add(this.lblTotalAmount);
             this.container.Controls.Add(this.exPanel1);
-            this.container.Controls.Add(this.exLabel2);
-            this.container.Controls.Add(this.dgv);
-            this.container.Controls.Add(this.flowLayOutLabelRemoveAdd);
             this.container.Size = new System.Drawing.Size(877, 746);
             // 
             // flowLayOutLabelRemoveAdd
@@ -119,7 +121,7 @@
             this.flowLayOutLabelRemoveAdd.Controls.Add(this.lblRemove);
             this.flowLayOutLabelRemoveAdd.Controls.Add(this.lblAdd);
             this.flowLayOutLabelRemoveAdd.FlowDirection = System.Windows.Forms.FlowDirection.RightToLeft;
-            this.flowLayOutLabelRemoveAdd.Location = new System.Drawing.Point(703, 231);
+            this.flowLayOutLabelRemoveAdd.Location = new System.Drawing.Point(743, 8);
             this.flowLayOutLabelRemoveAdd.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.flowLayOutLabelRemoveAdd.Name = "flowLayOutLabelRemoveAdd";
             this.flowLayOutLabelRemoveAdd.Size = new System.Drawing.Size(132, 19);
@@ -159,9 +161,6 @@
             this.dgv.AllowUserToResizeRows = false;
             dataGridViewCellStyle1.BackColor = System.Drawing.Color.WhiteSmoke;
             this.dgv.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
-            this.dgv.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
             this.dgv.BackgroundColor = System.Drawing.Color.White;
             this.dgv.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.dgv.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.None;
@@ -190,10 +189,11 @@
             dataGridViewCellStyle6.SelectionForeColor = System.Drawing.Color.Black;
             dataGridViewCellStyle6.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
             this.dgv.DefaultCellStyle = dataGridViewCellStyle6;
+            this.dgv.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dgv.EnableHeadersVisualStyles = false;
             this.dgv.Executing = false;
             this.dgv.Font = new System.Drawing.Font("Khmer OS System", 8F);
-            this.dgv.Location = new System.Drawing.Point(40, 259);
+            this.dgv.Location = new System.Drawing.Point(0, 0);
             this.dgv.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.dgv.MultiSelect = false;
             this.dgv.Name = "dgv";
@@ -202,7 +202,7 @@
             this.dgv.RowHeadersVisible = false;
             this.dgv.RowTemplate.Height = 28;
             this.dgv.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgv.Size = new System.Drawing.Size(795, 438);
+            this.dgv.Size = new System.Drawing.Size(875, 427);
             this.dgv.TabIndex = 0;
             // 
             // colId
@@ -279,7 +279,7 @@
             this.exLabel2.AutoSize = true;
             this.exLabel2.Font = new System.Drawing.Font("Fasthand", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.exLabel2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(238)))), ((int)(((byte)(127)))), ((int)(((byte)(0)))));
-            this.exLabel2.Location = new System.Drawing.Point(40, 231);
+            this.exLabel2.Location = new System.Drawing.Point(4, 8);
             this.exLabel2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.exLabel2.Name = "exLabel2";
             this.exLabel2.Required = true;
@@ -303,11 +303,11 @@
             // flowLayoutPanel3
             // 
             this.flowLayoutPanel3.Controls.Add(this.btnPrint);
-            this.flowLayoutPanel3.Dock = System.Windows.Forms.DockStyle.Left;
+            this.flowLayoutPanel3.Dock = System.Windows.Forms.DockStyle.Fill;
             this.flowLayoutPanel3.Location = new System.Drawing.Point(3, 2);
             this.flowLayoutPanel3.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.flowLayoutPanel3.Name = "flowLayoutPanel3";
-            this.flowLayoutPanel3.Size = new System.Drawing.Size(701, 32);
+            this.flowLayoutPanel3.Size = new System.Drawing.Size(317, 32);
             this.flowLayoutPanel3.TabIndex = 3;
             // 
             // btnPrint
@@ -333,10 +333,10 @@
             this.flowLayoutPanel2.Controls.Add(this.btnSave);
             this.flowLayoutPanel2.Dock = System.Windows.Forms.DockStyle.Right;
             this.flowLayoutPanel2.FlowDirection = System.Windows.Forms.FlowDirection.RightToLeft;
-            this.flowLayoutPanel2.Location = new System.Drawing.Point(265, 2);
+            this.flowLayoutPanel2.Location = new System.Drawing.Point(320, 2);
             this.flowLayoutPanel2.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.flowLayoutPanel2.Name = "flowLayoutPanel2";
-            this.flowLayoutPanel2.Size = new System.Drawing.Size(607, 32);
+            this.flowLayoutPanel2.Size = new System.Drawing.Size(552, 32);
             this.flowLayoutPanel2.TabIndex = 0;
             // 
             // btnClose
@@ -344,7 +344,7 @@
             this.btnClose.BackColor = System.Drawing.Color.Ivory;
             this.btnClose.DefaultImage = null;
             this.btnClose.Executing = false;
-            this.btnClose.Location = new System.Drawing.Point(504, 3);
+            this.btnClose.Location = new System.Drawing.Point(449, 3);
             this.btnClose.Margin = new System.Windows.Forms.Padding(3, 3, 3, 2);
             this.btnClose.Name = "btnClose";
             this.btnClose.ShortcutAligment = QTech.Component.ExButtonLoading.Aligment.Horizontal;
@@ -359,7 +359,7 @@
             this.btnSave.BackColor = System.Drawing.Color.Ivory;
             this.btnSave.DefaultImage = null;
             this.btnSave.Executing = false;
-            this.btnSave.Location = new System.Drawing.Point(398, 3);
+            this.btnSave.Location = new System.Drawing.Point(343, 3);
             this.btnSave.Margin = new System.Windows.Forms.Padding(3, 3, 3, 2);
             this.btnSave.Name = "btnSave";
             this.btnSave.ShortcutAligment = QTech.Component.ExButtonLoading.Aligment.Horizontal;
@@ -405,7 +405,7 @@
             this.lblTotalAmount.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.lblTotalAmount.AutoSize = true;
             this.lblTotalAmount.Font = new System.Drawing.Font("Fasthand", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblTotalAmount.Location = new System.Drawing.Point(476, 672);
+            this.lblTotalAmount.Location = new System.Drawing.Point(481, 12);
             this.lblTotalAmount.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblTotalAmount.Name = "lblTotalAmount";
             this.lblTotalAmount.Required = false;
@@ -419,7 +419,6 @@
             this.cboCustomer.Choose = "";
             this.cboCustomer.CustomSearchForm = null;
             this.cboCustomer.DataSourceFn = null;
-            this.cboCustomer.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cboCustomer.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.cboCustomer.FormattingEnabled = true;
             this.cboCustomer.IsGirdViewColumn = false;
@@ -442,7 +441,7 @@
             this.pnlExpect.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.pnlExpect.Controls.Add(this.txtTotal);
             this.pnlExpect.Controls.Add(this.lblCur2);
-            this.pnlExpect.Location = new System.Drawing.Point(635, 668);
+            this.pnlExpect.Location = new System.Drawing.Point(640, 8);
             this.pnlExpect.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.pnlExpect.Name = "pnlExpect";
             this.pnlExpect.Padding = new System.Windows.Forms.Padding(0, 2, 0, 0);
@@ -477,7 +476,7 @@
             // 
             this.lblExpense_.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.lblExpense_.AutoSize = true;
-            this.lblExpense_.Location = new System.Drawing.Point(44, 672);
+            this.lblExpense_.Location = new System.Drawing.Point(46, 12);
             this.lblExpense_.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblExpense_.Name = "lblExpense_";
             this.lblExpense_.Required = false;
@@ -492,7 +491,7 @@
             this.panel1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.panel1.Controls.Add(this.txtExpense);
             this.panel1.Controls.Add(this.label1);
-            this.panel1.Location = new System.Drawing.Point(203, 668);
+            this.panel1.Location = new System.Drawing.Point(205, 8);
             this.panel1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.panel1.Name = "panel1";
             this.panel1.Padding = new System.Windows.Forms.Padding(0, 2, 0, 0);
@@ -537,7 +536,7 @@
             // tabCustomer_
             // 
             this.tabCustomer_.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(245)))), ((int)(((byte)(245)))), ((int)(((byte)(237)))));
-            this.tabCustomer_.Controls.Add(this.textBox1);
+            this.tabCustomer_.Controls.Add(this.txtNote1);
             this.tabCustomer_.Controls.Add(this.exLabel3);
             this.tabCustomer_.Controls.Add(this.dtpSaleDate);
             this.tabCustomer_.Controls.Add(this.lblSaleDate_);
@@ -553,16 +552,16 @@
             this.tabCustomer_.TabIndex = 0;
             this.tabCustomer_.Text = "អតិថិជនប្រចាំ";
             // 
-            // textBox1
+            // txtNote1
             // 
-            this.textBox1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            this.txtNote1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.textBox1.Location = new System.Drawing.Point(197, 90);
-            this.textBox1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.textBox1.Multiline = true;
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(633, 60);
-            this.textBox1.TabIndex = 47;
+            this.txtNote1.Location = new System.Drawing.Point(197, 90);
+            this.txtNote1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.txtNote1.Multiline = true;
+            this.txtNote1.Name = "txtNote1";
+            this.txtNote1.Size = new System.Drawing.Size(633, 60);
+            this.txtNote1.TabIndex = 47;
             // 
             // exLabel3
             // 
@@ -599,9 +598,9 @@
             // tabGeneral_
             // 
             this.tabGeneral_.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(245)))), ((int)(((byte)(245)))), ((int)(((byte)(237)))));
-            this.tabGeneral_.Controls.Add(this.textBox2);
+            this.tabGeneral_.Controls.Add(this.txtNote2);
             this.tabGeneral_.Controls.Add(this.exLabel4);
-            this.tabGeneral_.Controls.Add(this.exLabel1);
+            this.tabGeneral_.Controls.Add(this._lblSaleDate);
             this.tabGeneral_.Controls.Add(this.dtpSaleDate_);
             this.tabGeneral_.Controls.Add(this.lblPhone);
             this.tabGeneral_.Controls.Add(this.txtPhone);
@@ -616,22 +615,21 @@
             this.tabGeneral_.Size = new System.Drawing.Size(867, 169);
             this.tabGeneral_.TabIndex = 1;
             this.tabGeneral_.Text = "អតិថិជនទូទៅ";
+            this.tabGeneral_.Click += new System.EventHandler(this.tabGeneral__Click);
             // 
-            // textBox2
+            // txtNote2
             // 
-            this.textBox2.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.textBox2.Location = new System.Drawing.Point(199, 86);
-            this.textBox2.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.textBox2.Multiline = true;
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(1490, 60);
-            this.textBox2.TabIndex = 49;
+            this.txtNote2.Location = new System.Drawing.Point(193, 85);
+            this.txtNote2.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.txtNote2.Multiline = true;
+            this.txtNote2.Name = "txtNote2";
+            this.txtNote2.Size = new System.Drawing.Size(644, 60);
+            this.txtNote2.TabIndex = 49;
             // 
             // exLabel4
             // 
             this.exLabel4.AutoSize = true;
-            this.exLabel4.Location = new System.Drawing.Point(40, 90);
+            this.exLabel4.Location = new System.Drawing.Point(34, 89);
             this.exLabel4.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.exLabel4.Name = "exLabel4";
             this.exLabel4.Required = false;
@@ -639,22 +637,20 @@
             this.exLabel4.TabIndex = 50;
             this.exLabel4.Text = "ចំណាំ";
             // 
-            // exLabel1
+            // _lblSaleDate
             // 
-            this.exLabel1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.exLabel1.AutoSize = true;
-            this.exLabel1.Location = new System.Drawing.Point(1374, 27);
-            this.exLabel1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.exLabel1.Name = "exLabel1";
-            this.exLabel1.Required = true;
-            this.exLabel1.Size = new System.Drawing.Size(48, 19);
-            this.exLabel1.TabIndex = 47;
-            this.exLabel1.Text = "ថ្ងៃលក់";
+            this._lblSaleDate.AutoSize = true;
+            this._lblSaleDate.Location = new System.Drawing.Point(533, 27);
+            this._lblSaleDate.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this._lblSaleDate.Name = "_lblSaleDate";
+            this._lblSaleDate.Required = true;
+            this._lblSaleDate.Size = new System.Drawing.Size(48, 19);
+            this._lblSaleDate.TabIndex = 47;
+            this._lblSaleDate.Text = "ថ្ងៃលក់";
             // 
             // dtpSaleDate_
             // 
-            this.dtpSaleDate_.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.dtpSaleDate_.Location = new System.Drawing.Point(1490, 22);
+            this.dtpSaleDate_.Location = new System.Drawing.Point(637, 22);
             this.dtpSaleDate_.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.dtpSaleDate_.Name = "dtpSaleDate_";
             this.dtpSaleDate_.Size = new System.Drawing.Size(200, 28);
@@ -662,9 +658,8 @@
             // 
             // lblPhone
             // 
-            this.lblPhone.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.lblPhone.AutoSize = true;
-            this.lblPhone.Location = new System.Drawing.Point(1374, 58);
+            this.lblPhone.Location = new System.Drawing.Point(533, 58);
             this.lblPhone.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblPhone.Name = "lblPhone";
             this.lblPhone.Required = true;
@@ -674,8 +669,7 @@
             // 
             // txtPhone
             // 
-            this.txtPhone.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.txtPhone.Location = new System.Drawing.Point(1490, 53);
+            this.txtPhone.Location = new System.Drawing.Point(637, 53);
             this.txtPhone.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.txtPhone.Name = "txtPhone";
             this.txtPhone.Size = new System.Drawing.Size(200, 28);
@@ -683,7 +677,7 @@
             // 
             // txtInvoiceNo1
             // 
-            this.txtInvoiceNo1.Location = new System.Drawing.Point(199, 22);
+            this.txtInvoiceNo1.Location = new System.Drawing.Point(192, 22);
             this.txtInvoiceNo1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.txtInvoiceNo1.Name = "txtInvoiceNo1";
             this.txtInvoiceNo1.Size = new System.Drawing.Size(200, 28);
@@ -692,7 +686,7 @@
             // lblInvoiceNo1
             // 
             this.lblInvoiceNo1.AutoSize = true;
-            this.lblInvoiceNo1.Location = new System.Drawing.Point(40, 27);
+            this.lblInvoiceNo1.Location = new System.Drawing.Point(33, 27);
             this.lblInvoiceNo1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblInvoiceNo1.Name = "lblInvoiceNo1";
             this.lblInvoiceNo1.Required = true;
@@ -702,7 +696,7 @@
             // 
             // txtCustomer
             // 
-            this.txtCustomer.Location = new System.Drawing.Point(199, 53);
+            this.txtCustomer.Location = new System.Drawing.Point(192, 53);
             this.txtCustomer.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.txtCustomer.Name = "txtCustomer";
             this.txtCustomer.Size = new System.Drawing.Size(200, 28);
@@ -711,13 +705,44 @@
             // lblCustomer1
             // 
             this.lblCustomer1.AutoSize = true;
-            this.lblCustomer1.Location = new System.Drawing.Point(40, 58);
+            this.lblCustomer1.Location = new System.Drawing.Point(33, 58);
             this.lblCustomer1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblCustomer1.Name = "lblCustomer1";
             this.lblCustomer1.Required = true;
             this.lblCustomer1.Size = new System.Drawing.Size(90, 19);
             this.lblCustomer1.TabIndex = 21;
             this.lblCustomer1.Text = "ឈ្មោះអតិថិជន";
+            // 
+            // panel2
+            // 
+            this.panel2.Controls.Add(this.lblExpense_);
+            this.panel2.Controls.Add(this.lblTotalAmount);
+            this.panel2.Controls.Add(this.panel1);
+            this.panel2.Controls.Add(this.pnlExpect);
+            this.panel2.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.panel2.Location = new System.Drawing.Point(1, 662);
+            this.panel2.Name = "panel2";
+            this.panel2.Size = new System.Drawing.Size(875, 47);
+            this.panel2.TabIndex = 32;
+            // 
+            // panel3
+            // 
+            this.panel3.Controls.Add(this.dgv);
+            this.panel3.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panel3.Location = new System.Drawing.Point(1, 235);
+            this.panel3.Name = "panel3";
+            this.panel3.Size = new System.Drawing.Size(875, 427);
+            this.panel3.TabIndex = 33;
+            // 
+            // panel4
+            // 
+            this.panel4.Controls.Add(this.exLabel2);
+            this.panel4.Controls.Add(this.flowLayOutLabelRemoveAdd);
+            this.panel4.Dock = System.Windows.Forms.DockStyle.Top;
+            this.panel4.Location = new System.Drawing.Point(1, 202);
+            this.panel4.Name = "panel4";
+            this.panel4.Size = new System.Drawing.Size(875, 33);
+            this.panel4.TabIndex = 34;
             // 
             // frmSale
             // 
@@ -731,7 +756,6 @@
             this.Name = "frmSale";
             this.Text = "frmEmployeePay";
             this.container.ResumeLayout(false);
-            this.container.PerformLayout();
             this.flowLayOutLabelRemoveAdd.ResumeLayout(false);
             this.flowLayOutLabelRemoveAdd.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgv)).EndInit();
@@ -747,6 +771,11 @@
             this.tabCustomer_.PerformLayout();
             this.tabGeneral_.ResumeLayout(false);
             this.tabGeneral_.PerformLayout();
+            this.panel2.ResumeLayout(false);
+            this.panel2.PerformLayout();
+            this.panel3.ResumeLayout(false);
+            this.panel4.ResumeLayout(false);
+            this.panel4.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -789,10 +818,10 @@
         private Component.ExDateTimePicker dtpSaleDate;
         private Component.ExLabel lblSaleDate_;
         private Component.ExDateTimePicker dtpSaleDate_;
-        private Component.ExLabel exLabel1;
-        private System.Windows.Forms.TextBox textBox1;
+        private Component.ExLabel _lblSaleDate;
+        private System.Windows.Forms.TextBox txtNote1;
         private Component.ExLabel exLabel3;
-        private System.Windows.Forms.TextBox textBox2;
+        private System.Windows.Forms.TextBox txtNote2;
         private Component.ExLabel exLabel4;
         private System.Windows.Forms.DataGridViewTextBoxColumn colId;
         private System.Windows.Forms.DataGridViewTextBoxColumn colSaleId;
@@ -801,5 +830,8 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn colQauntity;
         private System.Windows.Forms.DataGridViewTextBoxColumn colUnitPrice;
         private System.Windows.Forms.DataGridViewTextBoxColumn colTotal;
+        private System.Windows.Forms.Panel panel3;
+        private System.Windows.Forms.Panel panel4;
+        private System.Windows.Forms.Panel panel2;
     }
 }
