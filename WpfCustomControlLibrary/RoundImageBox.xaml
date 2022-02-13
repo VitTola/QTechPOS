@@ -6,7 +6,7 @@
              xmlns:local="clr-namespace:WpfCustomControlLibrary"
              mc:Ignorable="d" Height="150" Width="150">
     <Grid Margin="0,0,0,0">
-        <Ellipse x:Name="el" Stroke="#1E90FF" StrokeThickness="2" Margin="0,0,0,0" MouseRightButtonDown="Ellipse_MouseRightButtonDown" MouseLeftButtonDown="Ellipse_MouseLeftButtonDown">
+        <Ellipse x:Name="el" Stroke="#686868" StrokeThickness="2" Margin="0,0,0,0" MouseRightButtonDown="Ellipse_MouseRightButtonDown" MouseLeftButtonDown="Ellipse_MouseLeftButtonDown">
             <Ellipse.Fill>
                 <ImageBrush ImageSource="dish (1).png" Stretch="UniformToFill"/>
             </Ellipse.Fill>

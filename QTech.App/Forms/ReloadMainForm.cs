@@ -16,7 +16,7 @@ namespace QTech.Forms
         public ReloadMainForm(MainForm mainForm)
         {
             InitializeComponent();
-            mainForm = MainForm;
+            MainForm = mainForm;
             
         }
 
