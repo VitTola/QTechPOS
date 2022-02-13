@@ -161,6 +161,7 @@ namespace QTech.Base.Helpers
                 }
                 if (c is ComboBox cb)
                 {
+                    cb.Size = new Size(200, 27);
                     cb.FlatStyle = FlatStyle.Standard;
                 }
                 if (c is TabControl tc)
@@ -214,6 +215,14 @@ namespace QTech.Base.Helpers
                 if (c is ExButtonLoading eb )
                 {
                     eb.Font = new Font("Fasthand", 8);
+                }
+                //if (c is TextBox txt)
+                //{
+                //    txt.Size = new Size(200, 27);
+                //}
+                if (c is DateTimePicker dt)
+                {
+                    dt.Size = new Size(200, 27);
                 }
             }
           
