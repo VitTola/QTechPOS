@@ -419,6 +419,7 @@
             this.cboCustomer.Choose = "";
             this.cboCustomer.CustomSearchForm = null;
             this.cboCustomer.DataSourceFn = null;
+            this.cboCustomer.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cboCustomer.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.cboCustomer.FormattingEnabled = true;
             this.cboCustomer.IsGirdViewColumn = false;

@@ -340,7 +340,7 @@ namespace QTech.Forms
         }
         private void dgv_RowPostPaint(object sender, DataGridViewRowPostPaintEventArgs e)
         {
-            dgv.Rows[e.RowIndex].Cells[colRow.Name].Value = (e.RowIndex + 1).ToString();
+            //dgv.Rows[e.RowIndex].Cells[colRow.Name].Value = (e.RowIndex + 1).ToString();
         }
     }
 }
