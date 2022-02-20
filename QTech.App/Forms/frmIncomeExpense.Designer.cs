@@ -244,7 +244,7 @@
             this.txtAmount.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.txtAmount.Multiline = true;
             this.txtAmount.Name = "txtAmount";
-            this.txtAmount.Size = new System.Drawing.Size(139, 23);
+            this.txtAmount.Size = new System.Drawing.Size(146, 23);
             this.txtAmount.TabIndex = 2;
             this.txtAmount.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
@@ -252,10 +252,10 @@
             // 
             this.label1.Dock = System.Windows.Forms.DockStyle.Right;
             this.label1.Font = new System.Drawing.Font("Khmer OS System", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(139, 2);
+            this.label1.Location = new System.Drawing.Point(146, 2);
             this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(59, 23);
+            this.label1.Size = new System.Drawing.Size(52, 23);
             this.label1.TabIndex = 0;
             this.label1.Text = "USD";
             this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;

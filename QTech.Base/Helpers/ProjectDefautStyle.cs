@@ -224,6 +224,13 @@ namespace QTech.Base.Helpers
                 {
                     dt.Size = new Size(200, 27);
                 }
+                if (c is TextBox txt)
+                {
+                    txt.BackColor = ShareValue.CurrentTheme.FormBackGround;
+                    txt.BorderStyle = BorderStyle.FixedSingle;
+                    txt.ForeColor = ShareValue.CurrentTheme.LabelColor;
+                    
+                }
             }
           
             form.Font = new Font("Fasthand", 8);

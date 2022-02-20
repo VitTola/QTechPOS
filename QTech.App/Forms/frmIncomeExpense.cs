@@ -30,8 +30,8 @@ namespace QTech.Forms
             this.Flag = flag;
             BindAsync();
             Read();
-            InitEvent();
             this.SetTheme(this.Controls, null);
+            InitEvent();
 
         }
         public GeneralProcess Flag { get; set; }
@@ -50,6 +50,11 @@ namespace QTech.Forms
             txtAmount.KeyPress += (sender, e) => txtAmount.validCurrency(sender, e);
             txtMiscNo.ReadOnly = true;
             txtMiscNo.RegisterKeyEnterNextControlWith(cboMiscType, txtAmount, txtNote);
+            txtAmount.BorderStyle = BorderStyle.None;
+            if (ShareValue.User.Theme != Base.Enums.Theme.Template1)
+            {
+                txtAmount.BackColor = ShareValue.CurrentTheme.PanelColor;
+            }
 
         }
         private void dgv_EditingControlShowing(object sender, DataGridViewEditingControlShowingEventArgs e)

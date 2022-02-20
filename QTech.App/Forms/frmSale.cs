@@ -83,6 +83,12 @@ namespace QTech.Forms
             lblPhone.Anchor = _lblSaleDate.Anchor = dtpSaleDate_.Anchor = txtPhone.Anchor = AnchorStyles.Right | AnchorStyles.Top;
             txtNote2.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
             txtInvoiceNo.ReadOnly = txtInvoiceNo1.ReadOnly = true;
+            txtTotal.BorderStyle = txtPaidAmount.BorderStyle = txtLeftAmount.BorderStyle = txtExpense.BorderStyle = BorderStyle.None;
+            if (ShareValue.User.Theme != Base.Enums.Theme.Template1)
+            {
+                txtTotal.BackColor = txtPaidAmount.BackColor = txtLeftAmount.BackColor = txtExpense.BackColor =
+                    ShareValue.CurrentTheme.PanelColor;
+            }
 
             if (Flag != GeneralProcess.Add)
             {
@@ -422,6 +428,7 @@ namespace QTech.Forms
                 Model.InvoiceNo = txtInvoiceNo.Text;
                 Model.SaleType = SaleType.Company;
                 Model.SaleDate = dtpSaleDate.Value;
+                Model.CustomerId = customer?.Id ?? 0;
             }
             else
             {
@@ -432,6 +439,7 @@ namespace QTech.Forms
                 Model.SaleDate = dtpSaleDate_.Value;
             }
 
+            Model.EmployeeId = ShareValue.User.Id;
             Model.Total = Parse.ToDecimal(!string.IsNullOrEmpty(txtTotal.Text) ? txtTotal.Text : "0");
 
             if (Model.SaleDetails == null)

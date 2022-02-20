@@ -109,9 +109,9 @@ namespace QTech.Forms
             this._lblEmail.AutoSize = true;
             this._lblEmail.Location = new System.Drawing.Point(80, 36);
             this._lblEmail.Name = "_lblEmail";
-            this._lblEmail.Size = new System.Drawing.Size(78, 19);
+            this._lblEmail.Size = new System.Drawing.Size(75, 19);
             this._lblEmail.TabIndex = 7;
-            this._lblEmail.Text = "ឈ្មោះអ្នកប្រើ";
+            this._lblEmail.Text = "ឈ្មោះគណនី";
             // 
             // _lblPassword
             // 

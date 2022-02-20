@@ -23,7 +23,7 @@ namespace QTech.Base
         public decimal Profit { get; set; }
         public decimal OtherExpense { get; set; }
         public SaleType SaleType { get; set; }
-
+        public int CustomerId { get; set; }
     }
 
     public class SaleDetail : ActiveBaseModel
