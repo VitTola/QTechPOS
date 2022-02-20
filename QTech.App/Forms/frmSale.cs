@@ -94,6 +94,47 @@ namespace QTech.Forms
             {
                 tabMain.Controls.Remove(Model.SaleType == SaleType.Company ? tabGeneral_ : tabCustomer_);
             }
+
+            txtPaidAmount.KeyPress += (s, e) => { txtPaidAmount.validCurrency(s, e); };
+            txtPaidAmount.ReadOnly = Flag == GeneralProcess.Remove && Flag == GeneralProcess.View;
+            txtTotal.ReadOnly = txtLeftAmount.ReadOnly = txtInvoiceNo.ReadOnly = true;
+            txtPaidAmount.KeyUp += TxtPaidAmount_KeyUp;
+            txtPaidAmount.TextChanged += txtPaidAmount_TextChanged;
+        }
+        private void TxtPaidAmount_KeyUp(object sender, KeyEventArgs e)
+        {
+            CalculateTotal();
+        }
+        private void CalculateTotal()
+        {
+            Total = 0;
+            //txtPaidAmount.Text = string.Empty;
+            var Rows = dgv.Rows.OfType<DataGridViewRow>().Where(x => !x.IsNewRow);
+            foreach (DataGridViewRow row in Rows)
+            {
+                Total = Total + Parse.ToDecimal(row.Cells[colTotal.Name].Value?.ToString() ?? "0");
+            }
+
+            var paidAmount = !string.IsNullOrEmpty(txtPaidAmount.Text) ? Parse.ToDecimal(txtPaidAmount.Text) : 0;
+            txtLeftAmount.Text = (Total - paidAmount).ToString();
+            txtTotal.Text = Total.ToString();
+        }
+        private void txtPaidAmount_TextChanged(object sender, EventArgs e)
+        {
+            if (string.IsNullOrEmpty(txtPaidAmount.Text))
+            {
+                return;
+            }
+            var pay = Parse.ToDecimal(txtPaidAmount.Text);
+            var total = Parse.ToDecimal(string.IsNullOrEmpty(txtTotal.Text) ? "0" : txtTotal.Text);
+            txtLeftAmount.Text = (total - pay).ToString();
+        }
+        private void txtPaidAmount_Leave(object sender, EventArgs e)
+        {
+            if (string.IsNullOrEmpty(txtPaidAmount.Text))
+            {
+                txtPaidAmount.Text = "0";
+            }
         }
         private void Dgv_CellValueChanged(object sender, DataGridViewCellEventArgs e)
         {
@@ -110,6 +151,7 @@ namespace QTech.Forms
             }
 
             dgv.CurrentRow.Cells[colTotal.Name].Value = (unitPrice * qty).ToString();
+            CalculateSubTotal();
             CalculateTotal();
             dgv.BeginEdit(true);
         }
@@ -181,13 +223,13 @@ namespace QTech.Forms
         {
             txtQauntity_Leave(sender, e);
         }
-        private void CalculateTotal()
+        private void CalculateSubTotal()
         {
             Total = 0;
             foreach (DataGridViewRow row in dgv.Rows.OfType<DataGridViewRow>().Where(x => !x.IsNewRow))
             {
                 if (string.IsNullOrEmpty(row.Cells[colTotal.Name]?.Value?.ToString() ?? "")) continue;
-                Total += decimal.Parse(row.Cells[colTotal.Name]?.Value?.ToString());
+                Total += Parse.ToDecimal(row.Cells[colTotal.Name]?.Value?.ToString());
             }
 
             txtTotal.Text = Total.ToString();
@@ -198,10 +240,10 @@ namespace QTech.Forms
             {
                 return;
             }
-            var unitPrice = decimal.Parse(dgv.CurrentRow?.Cells[colUnitPrice.Name].Value?.ToString() ?? "0");
+            var unitPrice = Parse.ToDecimal(dgv.CurrentRow?.Cells[colUnitPrice.Name].Value?.ToString() ?? "0");
             var qty = Parse.ToDecimal(dgv.CurrentRow?.Cells[colQauntity.Name]?.Value?.ToString() ?? "0");
             dgv.CurrentRow.Cells[colTotal.Name].Value = (unitPrice * qty).ToString();
-            CalculateTotal();
+            CalculateSubTotal();
             if (sender is TextBox txt)
             {
                 txt.Leave -= txtQauntity_Leave;
@@ -218,8 +260,8 @@ namespace QTech.Forms
                 dgv.CurrentCell.ColumnIndex == colProductId.Index ||
                 dgv.CurrentCell.ColumnIndex == colScale_.Index)
             {
-                var _productId = int.Parse(dgv.CurrentRow.Cells[colProductId.Name].Value?.ToString());
-                var _scaleId = int.Parse(dgv.CurrentRow.Cells[colScale_.Name].Value?.ToString());
+                var _productId = Parse.ToInt(dgv.CurrentRow.Cells[colProductId.Name].Value?.ToString());
+                var _scaleId = Parse.ToInt(dgv.CurrentRow.Cells[colScale_.Name].Value?.ToString());
                 if (_productId != 0 && _scaleId != 0)
                 {
                     dgv.CurrentRow.Cells[colUnitPrice.Name].Value = productPrices?.FirstOrDefault(x => x.ProductId == _productId && x.ScaleId == _scaleId)?.SalePrice;
@@ -561,7 +603,7 @@ namespace QTech.Forms
             }
             Model.SaleDetails.ForEach(x =>
             {
-                if (x.Id == int.Parse(idValue.ToString()))
+                if (x.Id == Parse.ToInt(idValue.ToString()))
                 {
                     x.Active = false;
                 }
@@ -569,7 +611,7 @@ namespace QTech.Forms
             if (!row.IsNewRow)
             {
                 dgv.Rows.Remove(row);
-                CalculateTotal();
+                CalculateSubTotal();
                 dgv.EndEdit();
             }
         }
