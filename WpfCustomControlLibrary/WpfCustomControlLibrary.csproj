@@ -70,7 +70,7 @@
   <ItemGroup>
     <Reference Include="QTech.Component, Version=2.8.4.25, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>Dll\QTech.Component.dll</HintPath>
+      <HintPath>..\QTech.Component\bin\Debug\QTech.Component.dll</HintPath>
     </Reference>
     <Reference Include="QTech.Db">
       <HintPath>..\QTech.Base\Dll\QTech.Db.dll</HintPath>
@@ -178,19 +178,18 @@
     <Resource Include="dish %281%29.png" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\QTech.Base\QTech.Base.csproj">
-      <Project>{209A6926-2491-4480-9CCE-5B6A0C65E5C1}</Project>
-      <Name>QTech.Base</Name>
-    </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
     <Page Include="Resources\Application.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Resource Include="btn_minus.png" />
     <Resource Include="btn_plus.png" />
-    <Content Include="Dll\QTech.Component.dll" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\QTech.Base\QTech.Base.csproj">
+      <Project>{209a6926-2491-4480-9cce-5b6a0c65e5c1}</Project>
+      <Name>QTech.Base</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

@@ -20,7 +20,7 @@
     <OutputPath>bin\Debug\</OutputPath>
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
-    <WarningLevel>4</WarningLevel>
+    <WarningLevel>1</WarningLevel>
     <PlatformTarget>AnyCPU</PlatformTarget>
     <AllowUnsafeBlocks>false</AllowUnsafeBlocks>
     <RunCodeAnalysis>false</RunCodeAnalysis>
@@ -79,8 +79,9 @@
     <Reference Include="QRCoder, Version=1.3.6.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\QRCoder.1.3.6\lib\net40\QRCoder.dll</HintPath>
     </Reference>
-    <Reference Include="QTech.Db">
-      <HintPath>..\QTech.Db\bin\Debug\QTech.Db.dll</HintPath>
+    <Reference Include="QTech.Base, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\QTech.Base\bin\Debug\QTech.Base.dll</HintPath>
     </Reference>
     <Reference Include="RestSharp, Version=106.6.3.0, Culture=neutral, PublicKeyToken=598062e77f915f75, processorArchitecture=MSIL">
       <HintPath>..\packages\RestSharp.106.6.3\lib\net452\RestSharp.dll</HintPath>
@@ -910,9 +911,9 @@
     </COMReference>
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\QTech.Base\QTech.Base.csproj">
-      <Project>{209a6926-2491-4480-9cce-5b6a0c65e5c1}</Project>
-      <Name>QTech.Base</Name>
+    <ProjectReference Include="..\QTech.Db\QTech.Db.csproj">
+      <Project>{789540cb-aeb1-4e6c-aba1-dac5b8d6d37a}</Project>
+      <Name>QTech.Db</Name>
     </ProjectReference>
     <ProjectReference Include="..\WpfCustomControlLibrary\WpfCustomControlLibrary.csproj">
       <Project>{12D93DB2-B391-4AF0-A25B-8AD658F9FD95}</Project>

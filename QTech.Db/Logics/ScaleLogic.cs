@@ -40,6 +40,17 @@ namespace QTech.Db.Logics
             {
                 q = q.Where(x => x.Name.ToLower().Contains(param.Search.ToLower()));
             }
+            if (param.ProductId == -1)
+            {
+                return q.Where(x => x.Id == -1);
+            }
+            else
+            {
+                q = from pp in _db.ProductPrices.Where(x => x.Active)
+                    join s in _db.Scales.Where(x => x.Active) on pp.ScaleId equals s.Id
+                    where pp.ProductId == param.ProductId
+                    select s;
+            }
             return q;
         }
         public override Scale AddAsync(Scale entity)

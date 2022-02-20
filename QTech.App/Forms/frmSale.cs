@@ -36,6 +36,7 @@ namespace QTech.Forms
         //private List<RepoInvoiceDetail> invoiceDetails;
         private List<Category> categories;
         private List<Product> products;
+        private List<ProductPrice> productPrices;
         public GeneralProcess Flag { get; set; }
         public frmSale(Sale model, GeneralProcess flag)
         {
@@ -47,7 +48,6 @@ namespace QTech.Forms
             Read();
             Bind();
             this.SetTheme(this.Controls, null);
-
             InitEvent();
         }
         public void Bind()
@@ -56,7 +56,10 @@ namespace QTech.Forms
             cboCustomer.SearchParamFn = () => new CustomerSearch();
             colProductId.DataSourceFn = p => ProductLogic.Instance.SearchAsync(p).OrderByDescending(x => x.RowDate).ToDropDownItemModelList();
             colProductId.SearchParamFn = () => new ProductSearch();
-
+            colScale_.DataSourceFn = p => ScaleLogic.Instance.SearchAsync(p).OrderByDescending(x => x.RowDate).ToDropDownItemModelList();
+            colScale_.SearchParamFn = () => new ScaleSearch() {
+                ProductId = Parse.ToInt(dgv.CurrentRow.Cells[colProductId.Name].Value?.ToString() ?? "-1")
+            };
         }
         public void InitEvent()
         {
@@ -71,14 +74,15 @@ namespace QTech.Forms
             this.SetEnabled(Flag != GeneralProcess.Remove && Flag != GeneralProcess.View);
             dgv.EditingControlShowing += Dgv_EditingControlShowing;
             dgv.MouseClick += Dgv_MouseClick;
-            dgv.EditColumnIcon(colProductId, colQauntity, colUnitPrice);
+            dgv.EditColumnIcon(colProductId, colQauntity, colUnitPrice, colScale_);
 
-            txtTotal.ReadOnly  = true;
+            txtTotal.ReadOnly = true;
             cboCustomer.SelectedIndexChanged += CboCustomer_SelectedIndexChanged;
             this.Load += FrmSale_Load;
             this.MaximizeBox = true;
             lblPhone.Anchor = _lblSaleDate.Anchor = dtpSaleDate_.Anchor = txtPhone.Anchor = AnchorStyles.Right | AnchorStyles.Top;
             txtNote2.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
+            txtInvoiceNo.ReadOnly = txtInvoiceNo1.ReadOnly = true;
 
             if (Flag != GeneralProcess.Add)
             {
@@ -87,9 +91,9 @@ namespace QTech.Forms
         }
         private void Dgv_CellValueChanged(object sender, DataGridViewCellEventArgs e)
         {
-            if (dgv.RowCount == 0 )
+            if (dgv.RowCount == 0)
             {
-                return; 
+                return;
             }
             dgv.EndEdit();
             var unitPrice = Parse.ToDecimal(dgv.CurrentRow?.Cells[colUnitPrice.Name]?.Value?.ToString() ?? "0");
@@ -109,6 +113,8 @@ namespace QTech.Forms
             {
                 categories = CategoryLogic.Instance.SearchAsync(new CategorySearch());
                 products = ProductLogic.Instance.SearchAsync(new ProductSearch());
+                productPrices = ProductPriceLogic.Instance.SearchAsync(new ProductPriceSearch());
+
                 return products;
             });
         }
@@ -127,14 +133,14 @@ namespace QTech.Forms
                 {
                     cboCustomer.ShowDropDown();
                 }
-                if (dgv.CurrentRow.Index > 0)
-                {
-                    dgv.ReadOnly = true;
-                }
-                else
-                {
-                    dgv.ReadOnly = false;
-                }
+                //if (dgv.CurrentRow.Index > 0)
+                //{
+                //    dgv.ReadOnly = true;
+                //}
+                //else
+                //{
+                //    dgv.ReadOnly = false;
+                //}
             }
         }
         private bool firstLoad = true;
@@ -195,25 +201,28 @@ namespace QTech.Forms
                 txt.Leave -= txtQauntity_Leave;
             }
         }
-        private async void Cbo_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            if (string.IsNullOrEmpty(dgv.CurrentCell.Value?.ToString() ?? "") || dgv.CurrentCell.ColumnIndex != colProductId.Index)
+        private  void Cbo_SelectedIndexChanged(object sender, EventArgs e)
             {
-                return;
-            }
             if (!cboCustomer.IsSelected() && tabMain.SelectedTab.Equals(tabCustomer_))
             {
                 return;
             }
 
-            decimal unitPrice = 0;
-            bool IsNotPriceByPO = true;
-            var _productId = int.Parse(dgv.CurrentCell.Value.ToString());
+            if (!string.IsNullOrEmpty(dgv.CurrentCell.Value?.ToString() ?? "") ||
+                dgv.CurrentCell.ColumnIndex == colProductId.Index ||
+                dgv.CurrentCell.ColumnIndex == colScale_.Index)
+            {
+                var _productId = int.Parse(dgv.CurrentRow.Cells[colProductId.Name].Value?.ToString());
+                var _scaleId = int.Parse(dgv.CurrentRow.Cells[colScale_.Name].Value?.ToString());
+                if (_productId != 0 && _scaleId != 0)
+                {
+                    dgv.CurrentRow.Cells[colUnitPrice.Name].Value = productPrices?.FirstOrDefault(x => x.ProductId == _productId && x.ScaleId == _scaleId)?.SalePrice;
+                }
+            }
 
-            dgv.CurrentRow.Cells[colUnitPrice.Name].Value = unitPrice.ToString();
         }
         DataGridViewCell Err = null;
-      
+
         public bool InValid()
         {
             if (tabMain.SelectedTab.Equals(tabCustomer_))
@@ -278,6 +287,7 @@ namespace QTech.Forms
         {
             if (Flag == GeneralProcess.Add)
             {
+                txtInvoiceNo.Text = txtInvoiceNo1.Text = "លេខវិក័យប័ត្រថ្មី";
                 return;
             }
 
@@ -559,10 +569,7 @@ namespace QTech.Forms
         {
             Save();
         }
-        private void btnClose_Click(object sender, EventArgs e)
-        {
-            this.Close();
-        }
+
         private async void btnPrint_Click(object sender, EventArgs e)
         {
             //if (InValid()) return;
@@ -642,9 +649,39 @@ namespace QTech.Forms
             throw new NotImplementedException();
         }
 
-        private void tabGeneral__Click(object sender, EventArgs e)
+        private void btnClose_Click(object sender, EventArgs e)
         {
-
+            this.Close();
         }
+
+        private void lblAdd_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            if (dgv.RowCount > 0)
+            {
+                if (!string.IsNullOrEmpty(dgv.CurrentRow?.Cells[colProductId.Name]?.Value?.ToString()))
+                {
+                    return;
+                }
+            }
+            if (tabMain.SelectedTab.Equals(tabGeneral_) && Flag != GeneralProcess.View)
+            {
+                dgv.ReadOnly = false;
+            }
+            
+            if (dgv.RowCount == 0 || !string.IsNullOrEmpty(dgv.Rows[dgv.RowCount - 1].Cells[colProductId.Name].Value?.ToString()))
+            {
+                var row = newRow(true);
+            }
+            else
+            {
+                var row = dgv.Rows[dgv.RowCount - 1];
+                if (row != null)
+                {
+                    dgv.Focus();
+                    dgv.CurrentCell = row.Cells[colProductId.Name];
+                }
+            }
+        }
+
     }
 }

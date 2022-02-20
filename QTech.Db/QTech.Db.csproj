@@ -165,12 +165,6 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\QTech.Base\QTech.Base.csproj">
-      <Project>{209a6926-2491-4480-9cce-5b6a0c65e5c1}</Project>
-      <Name>QTech.Base</Name>
-    </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
     <COMReference Include="AcroPDFLib">
       <Guid>{05BFD3F1-6319-4F30-B752-C7A22889BCC4}</Guid>
       <VersionMajor>1</VersionMajor>
@@ -181,7 +175,12 @@
       <EmbedInteropTypes>True</EmbedInteropTypes>
     </COMReference>
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <ProjectReference Include="..\QTech.Base\QTech.Base.csproj">
+      <Project>{209a6926-2491-4480-9cce-5b6a0c65e5c1}</Project>
+      <Name>QTech.Base</Name>
+    </ProjectReference>
+  </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Migrations\202112101718473_InitDataBase.resx">
       <DependentUpon>202112101718473_InitDataBase.cs</DependentUpon>

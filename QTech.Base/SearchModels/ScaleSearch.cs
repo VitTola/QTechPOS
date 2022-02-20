@@ -9,6 +9,7 @@ namespace QTech.Base.SearchModels
 {
     public class ScaleSearch : QTechSearch.BasicSearchModel
     {
+        public int ProductId { get; set; }
         public string Code { get; set; }
         public string Name { get; set; }
     }

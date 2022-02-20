@@ -15,7 +15,6 @@ namespace QTech.Forms
 {
     public partial class LoginDialog : ExDialog
     {
-       
         private string[] _userLoggedIn = Properties.Settings.Default.USER_LOGGED_IN?
                                                  .Cast<string>().ToArray() ?? new string[0];
 

@@ -103,6 +103,10 @@
     </Reference>
     <Reference Include="PresentationCore" />
     <Reference Include="PresentationFramework" />
+    <Reference Include="QTech.Base, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\QTech.Base\bin\Debug\QTech.Base.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
@@ -500,10 +504,6 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\QTech.Base\QTech.Base.csproj">
-      <Project>{209a6926-2491-4480-9cce-5b6a0c65e5c1}</Project>
-      <Name>QTech.Base</Name>
-    </ProjectReference>
     <ProjectReference Include="..\QTech.Component\QTech.Component.csproj">
       <Project>{13f682a8-c792-47b6-945a-222556d95398}</Project>
       <Name>QTech.Component</Name>
@@ -623,7 +623,9 @@
       <Install>false</Install>
     </BootstrapperPackage>
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <WCFMetadata Include="Connected Services\" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
     <PropertyGroup>
