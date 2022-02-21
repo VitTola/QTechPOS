@@ -751,4 +751,10 @@
   <data name="OtherSetting" xml:space="preserve">
     <value>កំណត់ផ្សេងៗ</value>
   </data>
+  <data name="Balance" xml:space="preserve">
+    <value>សមតុល្យ</value>
+  </data>
+  <data name="Saler" xml:space="preserve">
+    <value>អ្នកលក់</value>
+  </data>
 </root>

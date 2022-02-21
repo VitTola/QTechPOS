@@ -105,7 +105,7 @@ namespace QTech.Db.Logics
         }
         public override List<Sale> SearchAsync(ISearchModel model)
         {
-            var result = Search(model).ToList();
+            var result = Search(model)?.ToList();
             return result;
         }
         public override IQueryable<Sale> Search(ISearchModel model)

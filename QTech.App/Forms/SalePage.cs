@@ -24,6 +24,8 @@ namespace QTech.Forms
         public Sale Model { get; set; }
         private GeneralProcess flag = GeneralProcess.None;
         SaleSearchKey saleSearchKey = SaleSearchKey.None;
+        List<User> Employees = null;
+        List<Customer> Customers = null;
 
         public SalePage()
         {
@@ -55,9 +57,20 @@ namespace QTech.Forms
             cboImport.SelectedIndex = cboImport.FindStringExact(BaseResource.ImportPrice_All);
             btnAdd.Click += BtnAdd_Click;
             dgv.RowPostPaint += Dgv_RowPostPaint;
+            this.Load += SalePage_Load;
 
             flowLayoutPanel2.Dock = DockStyle.Fill;
 
+        }
+
+        private async void SalePage_Load(object sender, EventArgs e)
+        {
+            var isDone = await dgv.RunAsync(() =>
+            {
+                Employees = UserLogic.Instance.SearchAsync(new EmployeeSearch());
+                Customers = CustomerLogic.Instance.SearchAsync(new CustomerSearch());
+                return true;
+            });
         }
 
         private void Dgv_RowPostPaint(object sender, DataGridViewRowPostPaintEventArgs e)
@@ -159,8 +172,6 @@ namespace QTech.Forms
         }
         public async Task Search()
         {
-            dgv.Rows.Clear();
-            List<Customer> _Customers = null;
             var _payStatus = (PayStatus)cboPayStatus.SelectedValue;
             var _importPrice = (ImportPrice)cboImport.SelectedValue;
             var search = new SaleSearch()
@@ -169,19 +180,26 @@ namespace QTech.Forms
                 Search = txtSearch.Text,
                 payStatus = _payStatus,
                 ImportPrice = _importPrice,
-                Paging = pagination.Paging
+                //Paging = pagination.Paging
             };
-            pagination.ListModel = await dgv.RunAsync(() =>
-             {
-                 var _result = SaleLogic.Instance.SearchAsync(search);
+            //pagination.ListModel = await dgv.RunAsync(() =>
+            // {
+            //     var _result = SaleLogic.Instance.SearchAsync(search);
 
-                 return _result;
-             });
-            if (pagination.ListModel == null)
-            {
-                return;
+            //     return _result;
+            // });
+            //if (pagination.ListModel == null)
+            //{
+            //    return;
+            //}
+            List<Sale> sales = await dgv.RunAsync(() => {
+
+                return SaleLogic.Instance.SearchAsync(search); 
             }
-            List<Sale> sales = pagination.ListModel;
+            );
+
+            dgv.Rows.Clear();
+
             sales.ForEach(x =>
             {
                 var row = newRow(false);
@@ -191,6 +209,10 @@ namespace QTech.Forms
                 row.Cells[colSaleDate.Name].Value = x.SaleDate.ToString("dd-MMM-yyyy hh:mm");
                 row.Cells[colIsPaid.Name].Value = x.PayStatus;
                 row.Cells[colRowDate.Name].Value = x.RowDate;
+                row.Cells[colPaidAmount.Name].Value = x.PaymentRecieve;
+                row.Cells[colBalance.Name].Value = x.PaymentLeft;
+                row.Cells[colSaler.Name].Value = Employees?.FirstOrDefault(y => y.Id == x.EmployeeId)?.Name;
+                row.Cells[colCustomer.Name].Value = Customers?.FirstOrDefault(y => y.Id == x.CustomerId)?.Name ?? x.CustomerName;
 
                 var cell = row.Cells[colStatus.Name];
                 if (x.PayStatus == PayStatus.Paid)
@@ -337,6 +359,11 @@ namespace QTech.Forms
         private void dgv_RowPostPaint(object sender, DataGridViewRowPostPaintEventArgs e)
         {
             //dgv.Rows[e.RowIndex].Cells[colRow.Name].Value = (e.RowIndex + 1).ToString();
+        }
+
+        private void dgv_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
         }
     }
 }

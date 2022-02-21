@@ -7,9 +7,6 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using EasyServer.Domain.Models;
-using QTech.Base.BaseModels;
-//using EasyServer.Domain.SearchModels;
 using EDomain = EasyServer.Domain;
 
 namespace QTech.Component
@@ -17,7 +14,7 @@ namespace QTech.Component
     public partial class ExPaging : UserControl
     {
         public string text1;
-        public Paging Paging { get; set; } = new Paging() { IsPaging = true, CurrentPage = 1, PageSize = 25 };
+        public QTech.Base.BaseModels.Paging Paging { get; set; } = new QTech.Base.BaseModels.Paging() { IsPaging = true, CurrentPage = 1, PageSize = 25 };
         private dynamic _listModel;
         public dynamic ListModel
         {
@@ -58,16 +55,20 @@ namespace QTech.Component
                 _listModel = value;
             }
         }
-        [Browsable(true)]
+        private Color _textColor = Color.Blue;
         public Color TextColor
         {
-            get { return TextColor; }
+            get => _textColor; 
             set
             {
-                _lblCurrentPage.ForeColor = lblShowAllPaging.ForeColor =
-                    lblNextPaging.LinkColor = lblPreviousPaging.LinkColor = value;
+                if (value != null)
+                {
+                   _textColor = _lblCurrentPage.ForeColor = lblShowAllPaging.ForeColor =
+                   lblNextPaging.LinkColor = lblPreviousPaging.LinkColor = value;
+                }
             }
         }
+     
         public int CurrentPage { get; }
         public bool IsPaging { get; set; }
         private bool _isShowAll=false;

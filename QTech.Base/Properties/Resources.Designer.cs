@@ -115,6 +115,15 @@ namespace QTech.Base.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to សមតុល្យ.
+        /// </summary>
+        public static string Balance {
+            get {
+                return ResourceManager.GetString("Balance", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
         public static System.Drawing.Bitmap billing {
@@ -1643,6 +1652,15 @@ namespace QTech.Base.Properties {
         public static string SalePrice {
             get {
                 return ResourceManager.GetString("SalePrice", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to អ្នកលក់.
+        /// </summary>
+        public static string Saler {
+            get {
+                return ResourceManager.GetString("Saler", resourceCulture);
             }
         }
         
