@@ -54,9 +54,15 @@ namespace QTech.Forms
 
             cboImport.SelectedIndex = cboImport.FindStringExact(BaseResource.ImportPrice_All);
             btnAdd.Click += BtnAdd_Click;
+            dgv.RowPostPaint += Dgv_RowPostPaint;
 
             flowLayoutPanel2.Dock = DockStyle.Fill;
 
+        }
+
+        private void Dgv_RowPostPaint(object sender, DataGridViewRowPostPaintEventArgs e)
+        {
+            dgv.Rows[e.RowIndex].Cells[colRow_.Name].Value = (e.RowIndex + 1).ToString();
         }
 
         private void BtnAdd_Click(object sender, EventArgs e)
@@ -153,68 +159,58 @@ namespace QTech.Forms
         }
         public async Task Search()
         {
-            //dgv.Rows.Clear();
-            //List<Customer> _Customers = null;
-            //List<Site> _Sites = null;
-            //List<PurchaseOrder> purchaseOrders = null;
-            //var _payStatus = (PayStatus)cboPayStatus.SelectedValue;
-            //var _importPrice = (ImportPrice)cboImport.SelectedValue;
-            //var search = new SaleSearch()
-            //{
-            //    saleSearchKey = this.saleSearchKey,
-            //    Search = txtSearch.Text,
-            //    payStatus = _payStatus,
-            //    ImportPrice = _importPrice,
-            //    Paging = pagination.Paging
-            //};
-            //pagination.ListModel = await dgv.RunAsync(() =>
-            // {
-            //     var _result = SaleLogic.Instance.SearchAsync(search);
-            //     var CusIds = _result.Select(x => x.CompanyId).ToList();
-            //     var SitesIds = _result.Select(x => x.SiteId).ToList();
-            //     _Customers = CustomerLogic.Instance.GetCustomersById(CusIds);
-            //     _Sites = SiteLogic.Instance.GetSiteByIds(SitesIds);
-            //     purchaseOrders = PurchaseOrderLogic.Instance.SearchAsync(new PurchaseOrderSearch());
+            dgv.Rows.Clear();
+            List<Customer> _Customers = null;
+            var _payStatus = (PayStatus)cboPayStatus.SelectedValue;
+            var _importPrice = (ImportPrice)cboImport.SelectedValue;
+            var search = new SaleSearch()
+            {
+                saleSearchKey = this.saleSearchKey,
+                Search = txtSearch.Text,
+                payStatus = _payStatus,
+                ImportPrice = _importPrice,
+                Paging = pagination.Paging
+            };
+            pagination.ListModel = await dgv.RunAsync(() =>
+             {
+                 var _result = SaleLogic.Instance.SearchAsync(search);
 
-            //     return _result;
-            // });
-            //if (pagination.ListModel == null)
-            //{
-            //    return;
-            //}
-            //List<Sale> sales = pagination.ListModel;
-            //sales.ForEach(x =>
-            //{
-            //    var row = newRow(false);
-            //    row.Cells[colId.Name].Value = x.Id;
-            //    row.Cells[colPurchaseOrderNo.Name].Value = purchaseOrders.FirstOrDefault(p => p.Id == x.PurchaseOrderId)?.Name ?? "";
-            //    row.Cells[colInvoiceNo.Name].Value = x.InvoiceNo;
-            //    row.Cells[colToCompany.Name].Value = _Customers?.FirstOrDefault(cus => cus.Id == x.CompanyId)?.Name ?? x.CustomerName;
-            //    row.Cells[colToSite.Name].Value = _Sites?.FirstOrDefault(s => s.Id == x.SiteId)?.Name;
-            //    row.Cells[colTotal.Name].Value = x.Total;
-            //    row.Cells[colSaleDate.Name].Value = x.SaleDate.ToString("dd-MMM-yyyy hh:mm");
-            //    row.Cells[colIsPaid.Name].Value = x.PayStatus;
-            //    row.Cells[colRowDate.Name].Value = x.RowDate;
+                 return _result;
+             });
+            if (pagination.ListModel == null)
+            {
+                return;
+            }
+            List<Sale> sales = pagination.ListModel;
+            sales.ForEach(x =>
+            {
+                var row = newRow(false);
+                row.Cells[colId.Name].Value = x.Id;
+                row.Cells[colInvoiceNo.Name].Value = x.InvoiceNo;
+                row.Cells[colTotal.Name].Value = x.Total;
+                row.Cells[colSaleDate.Name].Value = x.SaleDate.ToString("dd-MMM-yyyy hh:mm");
+                row.Cells[colIsPaid.Name].Value = x.PayStatus;
+                row.Cells[colRowDate.Name].Value = x.RowDate;
 
-            //    var cell = row.Cells[colStatus.Name];
-            //    if (x.PayStatus == PayStatus.Paid)
-            //    {
-            //        row.Cells[colStatus.Name].Value = BaseResource.IsPaid;
-            //        cell.Style.ForeColor = Color.Red;
-            //    }
-            //    else if (x.PayStatus == PayStatus.WaitPayment)
-            //    {
-            //        row.Cells[colStatus.Name].Value = BaseResource.PayStatus_WaitPayment;
-            //        cell.Style.ForeColor = Color.Orange;
-            //    }
-            //    else
-            //    {
-            //        row.Cells[colStatus.Name].Value = BaseResource.NotYetPaid;
-            //        cell.Style.ForeColor = Color.Green;
-            //    }
-            //});
-            //dgv.Sort(dgv.Columns[colRowDate.Name], ListSortDirection.Descending);
-            //if (dgv.RowCount > 0) dgv.Rows[0].Selected = true;
+                var cell = row.Cells[colStatus.Name];
+                if (x.PayStatus == PayStatus.Paid)
+                {
+                    row.Cells[colStatus.Name].Value = BaseResource.IsPaid;
+                    cell.Style.ForeColor = Color.Red;
+                }
+                else if (x.PayStatus == PayStatus.WaitPayment)
+                {
+                    row.Cells[colStatus.Name].Value = BaseResource.PayStatus_WaitPayment;
+                    cell.Style.ForeColor = Color.Orange;
+                }
+                else
+                {
+                    row.Cells[colStatus.Name].Value = BaseResource.NotYetPaid;
+                    cell.Style.ForeColor = Color.Green;
+                }
+            });
+            dgv.Sort(dgv.Columns[colRowDate.Name], ListSortDirection.Descending);
+            if (dgv.RowCount > 0) dgv.Rows[0].Selected = true;
 
         }
         private DataGridViewRow newRow(bool isFocus = false)

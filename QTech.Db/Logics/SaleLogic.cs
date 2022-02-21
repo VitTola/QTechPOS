@@ -19,7 +19,6 @@ namespace QTech.Db.Logics
 {
     public class SaleLogic : DbLogic<Sale, SaleLogic>
     {
-        List<string>ignoreProperties=null;
         public SaleLogic()
         {
             

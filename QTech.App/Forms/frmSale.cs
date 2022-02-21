@@ -37,6 +37,7 @@ namespace QTech.Forms
         private List<Category> categories;
         private List<Product> products;
         private List<ProductPrice> productPrices;
+        private List<Scale> scales;
         public GeneralProcess Flag { get; set; }
         public frmSale(Sale model, GeneralProcess flag)
         {
@@ -162,6 +163,7 @@ namespace QTech.Forms
                 categories = CategoryLogic.Instance.SearchAsync(new CategorySearch());
                 products = ProductLogic.Instance.SearchAsync(new ProductSearch());
                 productPrices = ProductPriceLogic.Instance.SearchAsync(new ProductPriceSearch());
+                scales = ScaleLogic.Instance.SearchAsync(new ScaleSearch());
 
                 return products;
             });
@@ -310,7 +312,7 @@ namespace QTech.Forms
             {
                 var cells = row.Cells.OfType<DataGridViewCell>().Where(x =>
                 x.ColumnIndex == row.Cells[colProductId.Name].ColumnIndex || x.ColumnIndex == row.Cells[colQauntity.Name].ColumnIndex
-                || x.ColumnIndex == row.Cells[colUnitPrice.Name].ColumnIndex).ToList();
+                || x.ColumnIndex == row.Cells[colUnitPrice.Name].ColumnIndex || x.ColumnIndex == row.Cells[colScale_.Name].ColumnIndex).ToList();
                 cells.ForEach(x =>
                 {
                     if (x.Value == null)
@@ -339,9 +341,7 @@ namespace QTech.Forms
                 return;
             }
 
-            Customer cus = null;
             List<Product> products = null;
-            List<Employee> drivers = null;
             var saleDetails = await this.RunAsync(() =>
             {
                 return new List<SaleDetail>(); ;
@@ -351,16 +351,23 @@ namespace QTech.Forms
             if (Model?.SaleType == SaleType.Company)
             {
                 txtInvoiceNo.Text = Model.InvoiceNo;
-                txtTotal.Text = Model.Total.ToString();
+                dtpSaleDate_.Value = Model.SaleDate;
+                txtNote1.Text = Model.Note;
             }
             else
             {
-                txtTotal.Text = Model.Total.ToString();
                 txtCustomer.Text = Model.CustomerName;
                 txtInvoiceNo1.Text = Model.InvoiceNo;
                 txtPhone.Text = Model.Phone;
                 dtpSaleDate_.Value = Model.SaleDate;
+                txtNote2.Text = Model.Note;
+
             }
+
+            txtTotal.Text = Model.Total.ToString();
+            txtExpense.Text = Model.OtherExpense.ToString();
+            txtPaidAmount.Text = Model.PaymentRecieve.ToString();
+            txtLeftAmount.Text = Model.PaymentLeft.ToString();
 
             //Read SaleDetail
             if (saleDetails?.Any() ?? false)
@@ -374,7 +381,7 @@ namespace QTech.Forms
                     row.Cells[colQauntity.Name].Value = x.Quantity;
                     row.Cells[colTotal.Name].Value = x.Total;
                     var product = products?.FirstOrDefault(y => y.Id == x.ProductId) ?? new Product();
-                    row.Cells[colTotal.Name].Value = x.Total;
+                    row.Cells[colUnitPrice.Name].Value = x.UnitPrice;
 
                     if (products?.Any() ?? false)
                     {
@@ -391,6 +398,22 @@ namespace QTech.Forms
                                 }
                     };
                         row.Cells[colProductId.Name].Value = lsProdut;
+                    }
+                    if (scales?.Any() ?? false)
+                    {
+                        var sc = scales?.FirstOrDefault(f => f.Id == x.ScaleId);
+                        var lsc = new List<DropDownItemModel>()
+                    {
+                                new DropDownItemModel
+                                {
+                                    Id = sc.Id,
+                                    Code = sc.Name,
+                                    Name = sc.Name,
+                                    DisplayText = sc.Name,
+                                    ItemObject = sc,
+                                }
+                    };
+                        row.Cells[colSaleId.Name].Value = lsc;
                     }
                 });
             }
@@ -471,6 +494,8 @@ namespace QTech.Forms
                 Model.SaleType = SaleType.Company;
                 Model.SaleDate = dtpSaleDate.Value;
                 Model.CustomerId = customer?.Id ?? 0;
+                Model.Note = txtNote1.Text;
+
             }
             else
             {
@@ -479,10 +504,14 @@ namespace QTech.Forms
                 Model.SaleType = SaleType.General;
                 Model.InvoiceNo = txtInvoiceNo1.Text;
                 Model.SaleDate = dtpSaleDate_.Value;
+                Model.Note = txtNote2.Text;
             }
 
             Model.EmployeeId = ShareValue.User.Id;
-            Model.Total = Parse.ToDecimal(!string.IsNullOrEmpty(txtTotal.Text) ? txtTotal.Text : "0");
+            Model.Total = Parse.ToDecimal(txtTotal.Text);
+            Model.OtherExpense = Parse.ToDecimal(txtExpense.Text);
+            Model.PaymentRecieve = Parse.ToDecimal(txtPaidAmount.Text);
+            Model.PaymentLeft = Parse.ToDecimal(txtLeftAmount.Text);
 
             if (Model.SaleDetails == null)
             {
@@ -499,9 +528,9 @@ namespace QTech.Forms
                 saleDetail.SaleId = Model.Id;
                 saleDetail.ProductId = Parse.ToInt(row.Cells[colProductId.Name].Value?.ToString() ?? "0");
                 saleDetail.Total = Parse.ToDecimal(row.Cells[colTotal.Name].Value?.ToString() ?? "0");
+                saleDetail.UnitPrice= Parse.ToDecimal(row.Cells[colUnitPrice.Name].Value?.ToString() ?? "0");
+                saleDetail.ScaleId= Parse.ToInt(row.Cells[colSaleId.Name].Value?.ToString() ?? "0");
 
-                //ImportTotal & Profit
-                var otherPay = Parse.ToDecimal(txtExpense.Text);
 
                 if (Flag == GeneralProcess.Update)
                 {
@@ -619,7 +648,6 @@ namespace QTech.Forms
         {
             Save();
         }
-
         private async void btnPrint_Click(object sender, EventArgs e)
         {
             //if (InValid()) return;
@@ -664,8 +692,8 @@ namespace QTech.Forms
         {
             try
             {
-                int icolumn = dgv.CurrentCell.ColumnIndex;
-                int irow = dgv.CurrentCell.RowIndex;
+                int icolumn = dgv.CurrentCell?.ColumnIndex ?? 0;
+                int irow = dgv.CurrentCell?.RowIndex ?? 0;
 
                 if (keyData == Keys.Enter)
                 {
@@ -688,22 +716,18 @@ namespace QTech.Forms
             }
 
         }
-
         private void btnChangeLog_Click(object sender, EventArgs e)
         {
             ViewChangeLog();
         }
-
         public void BindAsync()
         {
             throw new NotImplementedException();
         }
-
         private void btnClose_Click(object sender, EventArgs e)
         {
             this.Close();
         }
-
         private void lblAdd_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
             if (dgv.RowCount > 0)

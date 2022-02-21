@@ -74,13 +74,11 @@ namespace QTech.Db
             }
             _db.Entry(entity).State = EntityState.Detached;
             entity.RowDate = DateTime.Now;
+            entity.CreatedBy = ShareValue.User.Name;
             SetActive(entity, true);
             _db.Entry(entity).State = EntityState.Added;
             _db.SaveChanges();
-            //if (typeof(T) != typeof(QTech.Base.Models.AuditTrail))
-            //{
-            //    AuditTrailLogic.Instance.AddManualAuditTrail<T, TKey>(entity, null, GeneralProcess.Add);
-            //}
+           
             return entity;
         }
         public virtual T UpdateAsync(T entity)
@@ -91,12 +89,9 @@ namespace QTech.Db
 
                 _db.Entry(entity).State = EntityState.Modified;
                 entity.RowDate = DateTime.Now;
+                entity.CreatedBy = ShareValue.User.Name;
                 _db.SaveChanges();
 
-                //if (typeof(T) != typeof(QTech.Base.Models.AuditTrail))
-                //{
-                //    new AuditTrailLogic().AddManualAuditTrail<T, TKey>(entity, oldEntity, GeneralProcess.Update);
-                //}
                 return entity;
             }
             catch (Exception ex)

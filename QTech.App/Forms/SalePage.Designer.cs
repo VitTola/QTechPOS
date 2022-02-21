@@ -399,9 +399,9 @@ namespace QTech.Forms
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(1201, 36);
             this.panel1.TabIndex = 2;
-            // 
-            // pagination
-            // 
+            //// 
+            //// pagination
+            //// 
             this.pagination.Action = null;
             this.pagination.Dock = System.Windows.Forms.DockStyle.Left;
             this.pagination.Font = new System.Drawing.Font("Khmer OS System", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));

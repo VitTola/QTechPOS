@@ -11,7 +11,7 @@ using System.Windows.Forms;
 
 namespace QTech.Base.Helpers
 {
-    public static class ProjectDefautStyle
+    public static class ProjectTheme
     {
         public static void SetTheme(this Form form,
             Control.ControlCollection controls = null,
