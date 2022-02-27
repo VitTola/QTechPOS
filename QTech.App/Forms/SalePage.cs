@@ -60,6 +60,7 @@ namespace QTech.Forms
             this.Load += SalePage_Load;
 
             flowLayoutPanel2.Dock = DockStyle.Fill;
+            pagination.BackGroundColor = ShareValue.CurrentTheme.PanelColor;
 
         }
 
@@ -182,24 +183,26 @@ namespace QTech.Forms
                 ImportPrice = _importPrice,
                 //Paging = pagination.Paging
             };
-            //pagination.ListModel = await dgv.RunAsync(() =>
-            // {
-            //     var _result = SaleLogic.Instance.SearchAsync(search);
+            pagination.DataSourceFn = await dgv.RunAsync(() =>
+             {
+                 var _result = SaleLogic.Instance.Search(search);
 
-            //     return _result;
-            // });
-            //if (pagination.ListModel == null)
-            //{
-            //    return;
-            //}
-            List<Sale> sales = await dgv.RunAsync(() => {
-
-                return SaleLogic.Instance.SearchAsync(search); 
+                 return _result;
+             });
+            if (pagination.DataSource == null)
+            {
+                return;
             }
-            );
+            List<Sale> sales = pagination.ListModels;
+
+            //List<Sale> sales = await dgv.RunAsync(() =>
+            //{
+
+            //    return SaleLogic.Instance.SearchAsync(search);
+            //}
+            //);
 
             dgv.Rows.Clear();
-
             sales.ForEach(x =>
             {
                 var row = newRow(false);

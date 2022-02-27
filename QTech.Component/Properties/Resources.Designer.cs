@@ -527,16 +527,6 @@ namespace QTech.Component.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Icon similar to (Icon).
-        /// </summary>
-        public static System.Drawing.Icon EPowerIcon {
-            get {
-                object obj = ResourceManager.GetObject("EPowerIcon", resourceCulture);
-                return ((System.Drawing.Icon)(obj));
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
         public static System.Drawing.Bitmap folder {
@@ -1177,6 +1167,66 @@ namespace QTech.Component.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        public static System.Drawing.Bitmap imgCurrentBack {
+            get {
+                object obj = ResourceManager.GetObject("imgCurrentBack", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        public static System.Drawing.Bitmap imgNextPage {
+            get {
+                object obj = ResourceManager.GetObject("imgNextPage", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        public static System.Drawing.Bitmap imgNoneNextPage {
+            get {
+                object obj = ResourceManager.GetObject("imgNoneNextPage", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        public static System.Drawing.Bitmap imgNonePreviousPage {
+            get {
+                object obj = ResourceManager.GetObject("imgNonePreviousPage", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        public static System.Drawing.Bitmap imgPaginationBack {
+            get {
+                object obj = ResourceManager.GetObject("imgPaginationBack", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        public static System.Drawing.Bitmap imgPreviousPage {
+            get {
+                object obj = ResourceManager.GetObject("imgPreviousPage", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         public static System.Drawing.Bitmap infinity {
             get {
                 object obj = ResourceManager.GetObject("infinity", resourceCulture);
@@ -1329,16 +1379,6 @@ namespace QTech.Component.Properties {
             get {
                 object obj = ResourceManager.GetObject("oone_64", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Icon similar to (Icon).
-        /// </summary>
-        public static System.Drawing.Icon OoneIcon {
-            get {
-                object obj = ResourceManager.GetObject("OoneIcon", resourceCulture);
-                return ((System.Drawing.Icon)(obj));
             }
         }
         

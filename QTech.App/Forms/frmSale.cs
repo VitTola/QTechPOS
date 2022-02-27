@@ -46,7 +46,6 @@ namespace QTech.Forms
             this.Flag = flag;
             ResourceHelper.Register(QTech.Base.Properties.Resources.ResourceManager);
             this.ApplyResource();
-            Read();
             Bind();
             this.SetTheme(this.Controls, null);
             InitEvent();
@@ -167,6 +166,8 @@ namespace QTech.Forms
 
                 return products;
             });
+            Read();
+
         }
         private void Dgv_MouseClick(object sender, MouseEventArgs e)
         {
@@ -340,13 +341,6 @@ namespace QTech.Forms
                 txtInvoiceNo.Text = txtInvoiceNo1.Text = "លេខវិក័យប័ត្រថ្មី";
                 return;
             }
-
-            List<Product> products = null;
-            var saleDetails = await this.RunAsync(() =>
-            {
-                return new List<SaleDetail>(); ;
-            });
-
             //Read Sale
             if (Model?.SaleType == SaleType.Company)
             {
@@ -370,10 +364,9 @@ namespace QTech.Forms
             txtLeftAmount.Text = Model.PaymentLeft.ToString();
 
             //Read SaleDetail
-            if (saleDetails?.Any() ?? false)
+            if (Model.SaleDetails?.Any() ?? false)
             {
-                Model.SaleDetails = saleDetails;
-                saleDetails.ForEach(x =>
+                Model.SaleDetails.ForEach(x =>
                 {
                     var row = newRow(false);
                     row.Cells[colId.Name].Value = x.Id;

@@ -122,6 +122,12 @@
     <Compile Include="Components\ExLinkLabel.cs">
       <SubType>Component</SubType>
     </Compile>
+    <Compile Include="Components\ExPaging.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Components\ExPaging.Designer.cs">
+      <DependentUpon>ExPaging.cs</DependentUpon>
+    </Compile>
     <Compile Include="Components\ExPrinterPicker.cs" />
     <Compile Include="Components\ExPrinterPicker.Designer.cs">
       <DependentUpon>ExPrinterPicker.cs</DependentUpon>
@@ -145,6 +151,14 @@
     </Compile>
     <Compile Include="LineDownPanel.designer.cs">
       <DependentUpon>LineDownPanel.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Components\LTPagination.cs">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Components\LTPagination.designer.cs">
+      <DependentUpon>LTPagination.cs</DependentUpon>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Compile>
     <Compile Include="MyComponents\ChooseFoodPanel.cs">
       <SubType>UserControl</SubType>
@@ -304,12 +318,6 @@
     <Compile Include="Components\DataGridViewTextImage.cs" />
     <Compile Include="Components\ExBotton.cs">
       <SubType>Component</SubType>
-    </Compile>
-    <Compile Include="Components\ExPaging.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="Components\ExPaging.Designer.cs">
-      <DependentUpon>ExPaging.cs</DependentUpon>
     </Compile>
     <Compile Include="Components\ExPanel.cs">
       <SubType>Component</SubType>
@@ -536,6 +544,9 @@
     <EmbeddedResource Include="AddAttachmentDialog.resx">
       <DependentUpon>AddAttachmentDialog.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Components\ExPaging.resx">
+      <DependentUpon>ExPaging.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Components\ExPrinterPicker.resx">
       <DependentUpon>ExPrinterPicker.cs</DependentUpon>
     </EmbeddedResource>
@@ -547,6 +558,10 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Interface\PrinterPickerDialog.resx">
       <DependentUpon>PrinterPickerDialog.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Components\LTPagination.resx">
+      <DependentUpon>LTPagination.cs</DependentUpon>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </EmbeddedResource>
     <EmbeddedResource Include="MyComponents\ChooseFoodPanel.resx">
       <DependentUpon>ChooseFoodPanel.cs</DependentUpon>
@@ -586,9 +601,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Interface\CustomAdvanceFilter.resx">
       <DependentUpon>CustomAdvanceFilter.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Components\ExPaging.resx">
-      <DependentUpon>ExPaging.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Components\ExTextboxIconPattern.resx">
       <DependentUpon>ExTextboxIconPattern.cs</DependentUpon>
@@ -857,6 +869,12 @@
     <None Include="Resources\GLeft.png" />
     <None Include="Resources\GRight.png" />
     <None Include="Resources\GCenter.png" />
+    <None Include="Resources\imgNonePreviousPage.png" />
+    <None Include="Resources\imgPreviousPage.png" />
+    <None Include="Resources\imgNoneNextPage.png" />
+    <None Include="Resources\imgNextPage.png" />
+    <None Include="Resources\imgCurrentBack.png" />
+    <None Include="Resources\imgPaginationBack.png" />
     <Content Include="Resources\map-point.png" />
     <None Include="Resources\maximize.png" />
     <Content Include="Resources\menu.png" />
