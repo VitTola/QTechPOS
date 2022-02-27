@@ -129,7 +129,7 @@ namespace QTech.Db.Logics
             {
                 q = q.Where(x => x.PayStatus == PayStatus.WaitPayment);
             }
-      
+            var tmp = q.ToList();
             return q;
         }
         public List<Sale> GetSaleByIds(List<int> saleIds)

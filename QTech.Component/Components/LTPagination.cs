@@ -96,14 +96,13 @@ namespace QTech.Component
             }
             base.OnCreateControl();
         }
-
+        private bool isFirstLoad = true;
         private IQueryable<QTech.Base.BaseModel> _dataSourceFn;
         public IQueryable<QTech.Base.BaseModel> DataSourceFn
         {
             set
             {
                 _dataSourceFn = value;
-                ChangePaginationCount(1);
             }
         }
 
@@ -163,6 +162,7 @@ namespace QTech.Component
         public void Reload()
         {
             ChangePaginationCount(1);
+
         }
 
         private void SetLeftPage()

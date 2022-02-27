@@ -35,7 +35,7 @@ namespace QTech.Forms
 
             InitEvent();
         }
-        private async void BindData()
+        private  void BindData()
         {
             txtSearch.RegisterEnglishInput();
             txtSearch.RegisterKeyArrowDown(dgv);
@@ -45,7 +45,6 @@ namespace QTech.Forms
             cboPayStatus.SetDataSource<PayStatus>();
             cboImport.SetDataSource<ImportPrice>();
 
-            pagination.DataSourceFn = await dgv.RunAsync(()=> SaleLogic.Instance.Search(new SaleSearch()));
         }
         private void InitEvent()
         {
@@ -191,10 +190,13 @@ namespace QTech.Forms
                 payStatus = _payStatus,
                 ImportPrice = _importPrice,
             };
+            pagination.DataSourceFn = await dgv.RunAsync(() => SaleLogic.Instance.Search(search));
+            pagination.RefreshCurrentPage(isLoadEvent:false);
             if (pagination.DataSource == null)
             {
                 return;
             }
+
             List<Sale> sales = pagination.DataSource.Cast<Sale>().ToList();
             dgv.Rows.Clear();
             sales.ForEach(x =>
