@@ -129,10 +129,7 @@ namespace QTech.Db.Logics
             {
                 q = q.Where(x => x.PayStatus == PayStatus.WaitPayment);
             }
-            if (param?.Paging?.IsPaging == true)
-            {
-                q = q.GetPaged(param.Paging).Results.OrderBy(x => x.Id);
-            }
+      
             return q;
         }
         public List<Sale> GetSaleByIds(List<int> saleIds)

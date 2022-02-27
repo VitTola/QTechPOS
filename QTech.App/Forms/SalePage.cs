@@ -35,7 +35,7 @@ namespace QTech.Forms
 
             InitEvent();
         }
-        private void BindData()
+        private async void BindData()
         {
             txtSearch.RegisterEnglishInput();
             txtSearch.RegisterKeyArrowDown(dgv);
@@ -44,6 +44,8 @@ namespace QTech.Forms
             registerSearchMenu();
             cboPayStatus.SetDataSource<PayStatus>();
             cboImport.SetDataSource<ImportPrice>();
+
+            pagination.DataSourceFn = await dgv.RunAsync(()=> SaleLogic.Instance.Search(new SaleSearch()));
         }
         private void InitEvent()
         {
@@ -61,7 +63,13 @@ namespace QTech.Forms
 
             flowLayoutPanel2.Dock = DockStyle.Fill;
             pagination.BackGroundColor = ShareValue.CurrentTheme.PanelColor;
+            pagination.DataSourceChanged += Pagination_DataSourceChanged;
+            pagination.Paging = 20;
+        }
 
+        private void Pagination_DataSourceChanged(object sender, EventArgs e)
+        {
+            Reload();
         }
 
         private async void SalePage_Load(object sender, EventArgs e)
@@ -70,6 +78,7 @@ namespace QTech.Forms
             {
                 Employees = UserLogic.Instance.SearchAsync(new EmployeeSearch());
                 Customers = CustomerLogic.Instance.SearchAsync(new CustomerSearch());
+
                 return true;
             });
         }
@@ -181,27 +190,12 @@ namespace QTech.Forms
                 Search = txtSearch.Text,
                 payStatus = _payStatus,
                 ImportPrice = _importPrice,
-                //Paging = pagination.Paging
             };
-            pagination.DataSourceFn = await dgv.RunAsync(() =>
-             {
-                 var _result = SaleLogic.Instance.Search(search);
-
-                 return _result;
-             });
             if (pagination.DataSource == null)
             {
                 return;
             }
-            List<Sale> sales = pagination.ListModels;
-
-            //List<Sale> sales = await dgv.RunAsync(() =>
-            //{
-
-            //    return SaleLogic.Instance.SearchAsync(search);
-            //}
-            //);
-
+            List<Sale> sales = pagination.DataSource.Cast<Sale>().ToList();
             dgv.Rows.Clear();
             sales.ForEach(x =>
             {

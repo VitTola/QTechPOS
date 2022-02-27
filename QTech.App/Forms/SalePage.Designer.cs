@@ -551,7 +551,7 @@ namespace QTech.Forms
             this.pagination.Location = new System.Drawing.Point(0, 0);
             this.pagination.Margin = new System.Windows.Forms.Padding(4);
             this.pagination.Name = "pagination";
-            this.pagination.Paging = 0;
+            //this.pagination.Paging = 0;
             this.pagination.Size = new System.Drawing.Size(228, 24);
             this.pagination.TabIndex = 0;
             // 

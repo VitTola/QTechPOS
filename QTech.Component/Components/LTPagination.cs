@@ -97,8 +97,8 @@ namespace QTech.Component
             base.OnCreateControl();
         }
 
-        private IQueryable<object> _dataSourceFn;
-        public IQueryable<object> DataSourceFn
+        private IQueryable<QTech.Base.BaseModel> _dataSourceFn;
+        public IQueryable<QTech.Base.BaseModel> DataSourceFn
         {
             set
             {
@@ -107,14 +107,13 @@ namespace QTech.Component
             }
         }
 
-        private IQueryable<object> _dataSource;
-        public IQueryable<object> DataSource
+        private IQueryable<QTech.Base.BaseModel> _dataSource;
+        public IQueryable<QTech.Base.BaseModel> DataSource
         {
             get { return _dataSource; }
         }
-        public dynamic  ListModels { get => DataSource.ToList(); }
 
-        public int Paging { get; set; }=25;
+        public int Paging = 30;
 
         private int _currentPage = 1;
         public int CurrentPage
@@ -297,7 +296,7 @@ namespace QTech.Component
             flpMain.Controls.SetChildIndex(picLoading, 11);
         }
 
-        private async void ChangePaginationCount(int currentPage)
+        private void ChangePaginationCount(int currentPage)
         {
             if (_isBusy) return;
             if (_dataSourceFn != null)
@@ -306,7 +305,7 @@ namespace QTech.Component
                 {
                     _isBusy = true;
                     picLoading.Visible = true;
-                    int count = await Task.Run(() => _dataSourceFn.Count());
+                    int count = _dataSourceFn.Count();
                     _recordCount = count;
                     int pageCount = (count / Paging);
                     if (count % Paging > 0)
@@ -347,7 +346,7 @@ namespace QTech.Component
             ChangeChildIndex();
 
             if (_dataSourceFn == null) return;
-            _dataSource = _dataSourceFn.Skip((_currentPage - 1) * Paging).Take(Paging);
+            _dataSource = _dataSourceFn.OrderByDescending(x=>x.RowDate).Skip((_currentPage - 1) * Paging).Take(Paging);
             if (loadEvent && DataSourceChanged != null)
                 DataSourceChanged(this, new EventArgs());
         }
