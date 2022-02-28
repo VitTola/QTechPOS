@@ -103,6 +103,7 @@ namespace QTech.Component
             set
             {
                 _dataSourceFn = value;
+                ChangePaginationCount(1);
             }
         }
 

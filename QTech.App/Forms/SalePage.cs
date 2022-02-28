@@ -62,13 +62,9 @@ namespace QTech.Forms
 
             flowLayoutPanel2.Dock = DockStyle.Fill;
             pagination.BackGroundColor = ShareValue.CurrentTheme.PanelColor;
-            pagination.DataSourceChanged += Pagination_DataSourceChanged;
-            pagination.Paging = 20;
-        }
+            pagination.Paging = 25;
+            pagination.DataSourceChanged +=  (s, e) => LoadData();
 
-        private void Pagination_DataSourceChanged(object sender, EventArgs e)
-        {
-            Reload();
         }
 
         private async void SalePage_Load(object sender, EventArgs e)
@@ -190,13 +186,16 @@ namespace QTech.Forms
                 payStatus = _payStatus,
                 ImportPrice = _importPrice,
             };
-            pagination.DataSourceFn = await dgv.RunAsync(() => SaleLogic.Instance.Search(search));
-            pagination.RefreshCurrentPage(isLoadEvent:false);
+            pagination.DataSourceFn =  await dgv.RunAsync(() => SaleLogic.Instance.Search(search));
             if (pagination.DataSource == null)
             {
                 return;
             }
-
+            LoadData();
+        }
+        
+        private void LoadData()
+        {
             List<Sale> sales = pagination.DataSource.Cast<Sale>().ToList();
             dgv.Rows.Clear();
             sales.ForEach(x =>
@@ -232,7 +231,6 @@ namespace QTech.Forms
             });
             dgv.Sort(dgv.Columns[colRowDate.Name], ListSortDirection.Descending);
             if (dgv.RowCount > 0) dgv.Rows[0].Selected = true;
-
         }
         private DataGridViewRow newRow(bool isFocus = false)
         {
