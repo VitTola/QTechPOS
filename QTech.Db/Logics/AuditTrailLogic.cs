@@ -323,6 +323,8 @@ namespace QTech.Db.Logics
                     return PositionLogic.Instance.FindAsync(entityId)?.Name ?? string.Empty;
                 case nameof(Scale):
                     return ScaleLogic.Instance.FindAsync(entityId)?.Name ?? string.Empty;
+                case nameof(Sale):
+                    return SaleLogic.Instance.FindAsync(entityId)?.InvoiceNo ?? string.Empty;
             }
 
             return string.Empty;

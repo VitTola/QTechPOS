@@ -1207,7 +1207,7 @@ namespace QTech.Base.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to រងចាំទូទាត់.
+        ///   Looks up a localized string similar to រងចាំទូទាត់ផ្តាច់.
         /// </summary>
         public static string PayStatus_WaitPayment {
             get {

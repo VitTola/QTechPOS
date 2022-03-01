@@ -101,6 +101,7 @@ namespace QTech.Forms
             txtTotal.ReadOnly = txtLeftAmount.ReadOnly = txtInvoiceNo.ReadOnly = true;
             txtPaidAmount.KeyUp += TxtPaidAmount_KeyUp;
             txtPaidAmount.TextChanged += txtPaidAmount_TextChanged;
+
         }
         private void TxtPaidAmount_KeyUp(object sender, KeyEventArgs e)
         {
@@ -338,7 +339,7 @@ namespace QTech.Forms
             if (Model?.SaleType == SaleType.Company)
             {
                 txtInvoiceNo.Text = Model.InvoiceNo;
-                dtpSaleDate_.Value = Model.SaleDate;
+                dtpSaleDate.Value = Model.SaleDate;
                 txtNote1.Text = Model.Note;
             }
             else
@@ -518,6 +519,18 @@ namespace QTech.Forms
             Model.OtherExpense = Parse.ToDecimal(txtExpense.Text);
             Model.PaymentRecieve = Parse.ToDecimal(txtPaidAmount.Text);
             Model.PaymentLeft = Parse.ToDecimal(txtLeftAmount.Text);
+            if (Model.PaymentRecieve == 0)
+            {
+                Model.PayStatus = PayStatus.NotYetPaid;
+            }
+            else if (Model.PaymentLeft == 0)
+            {
+                Model.PayStatus = PayStatus.Paid;
+            }
+            else
+            {
+                Model.PayStatus = PayStatus.WaitPayment;
+            }
 
             if (Model.SaleDetails == null)
             {
@@ -535,7 +548,8 @@ namespace QTech.Forms
                 saleDetail.ProductId = Parse.ToInt(row.Cells[colProductId.Name].Value?.ToString() ?? "0");
                 saleDetail.Total = Parse.ToDecimal(row.Cells[colTotal.Name].Value?.ToString() ?? "0");
                 saleDetail.UnitPrice= Parse.ToDecimal(row.Cells[colUnitPrice.Name].Value?.ToString() ?? "0");
-                saleDetail.ScaleId= Parse.ToInt(row.Cells[colSaleId.Name].Value?.ToString() ?? "0");
+                saleDetail.Quantity= Parse.ToInt(row.Cells[colQauntity.Name].Value?.ToString() ?? "0");
+                saleDetail.ScaleId= Parse.ToInt(row.Cells[colScale_.Name].Value?.ToString() ?? "0");
 
 
                 if (Flag == GeneralProcess.Update)
@@ -650,10 +664,6 @@ namespace QTech.Forms
                 dgv.EndEdit();
             }
         }
-        private void btnSave_Click(object sender, EventArgs e)
-        {
-            Save();
-        }
         private async void btnPrint_Click(object sender, EventArgs e)
         {
             //if (InValid()) return;
@@ -763,5 +773,9 @@ namespace QTech.Forms
             }
         }
 
+        private void btnSave_Click(object sender, EventArgs e)
+        {
+            Save();
+        }
     }
 }

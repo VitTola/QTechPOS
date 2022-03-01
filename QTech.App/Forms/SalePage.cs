@@ -132,12 +132,12 @@ namespace QTech.Forms
 
             var id = (int)dgv.SelectedRows[0].Cells[colId.Name].Value;
             Model = await btnUpdate.RunAsync(() => SaleLogic.Instance.FindAsync(id));
-            if (Model.PayStatus != PayStatus.NotYetPaid)
-            {
-                MsgBox.ShowWarning(BaseResource.MsgSaleCanEdit,
-                    GeneralProcess.Remove.GetTextDialog(BaseResource.Sales));
-                return;
-            }
+            //if (Model.PayStatus == PayStatus.Paid)
+            //{
+            //    MsgBox.ShowWarning(BaseResource.MsgSaleCanEdit,
+            //        GeneralProcess.Remove.GetTextDialog(BaseResource.Sales));
+            //    return;
+            //}
 
             Model = await btnUpdate.RunAsync(() => SaleLogic.Instance.FindAsync(id));
             if (Model == null)

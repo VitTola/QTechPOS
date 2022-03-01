@@ -5,7 +5,7 @@ using QTech.Base.Helpers;
 using QTech.Base.Models;
 using QTech.Base.OutFaceModels;
 using QTech.Base.SearchModels;
-
+using Storm.Domain.Helpers;
 using System;
 using System.Collections.Generic;
 using System.Data.Entity;
@@ -51,20 +51,30 @@ namespace QTech.Db.Logics
         {
             entity.InvoiceNo = NewInvoiceNumber();
             var result = base.AddAsync(entity);
+            if (result != null)
+            {
+                AuditTrailLogic.Instance.AddManualAuditTrail<Sale, int, SaleDetail>(entity, null, GeneralProcess.Add);
+            }
+
             entity.SaleDetails.ForEach(x => {
                 x.SaleId = result.Id;
                 SaleDetailLogic.Instance.AddAsync(x);
             });
 
-            
-
             return result;
         }
         public override Sale UpdateAsync(Sale entity)
         {
-            
+            var oldObject = SaleLogic.Instance.FindAsync(entity.Id);
+            oldObject.SaleDetails = SaleDetailLogic.Instance.SearchAsync(new SaleDetailSearch { SaleId = entity.Id });
             var result = base.UpdateAsync(entity);
-
+            if (result != null)
+            {
+                var newEntity = new Sale();
+                entity.CopyTo<Sale>(newEntity);
+                newEntity.SaleDetails = newEntity.SaleDetails.Where(x => x.Active).ToList();
+                AuditTrailLogic.Instance.AddManualAuditTrail<Sale, int, SaleDetail>(newEntity, oldObject, GeneralProcess.Update);
+            }
             UpdateSaleDetail(result.SaleDetails, result);
             return result;
         }

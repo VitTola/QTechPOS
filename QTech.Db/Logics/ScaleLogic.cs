@@ -44,7 +44,7 @@ namespace QTech.Db.Logics
             {
                 return q.Where(x => x.Id == -1);
             }
-            else
+            if(param.ProductId != 0)
             {
                 q = from pp in _db.ProductPrices.Where(x => x.Active)
                     join s in _db.Scales.Where(x => x.Active) on pp.ScaleId equals s.Id

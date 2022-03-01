@@ -40,26 +40,14 @@
             this.flowLayOutLabelRemoveAdd = new System.Windows.Forms.FlowLayoutPanel();
             this.lblRemove = new System.Windows.Forms.LinkLabel();
             this.lblAdd = new System.Windows.Forms.LinkLabel();
-            this.dgv = new QTech.Component.ExDataGridView();
-            this.colId = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.colSaleId = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.colProductId = new QTech.Component.ExSearchComboColumn();
-            this.colScale_ = new QTech.Component.ExSearchComboColumn();
-            this.colQauntity = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.colUnitPrice = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.colTotal = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.exLabel2 = new QTech.Component.ExLabel();
             this.exPanel1 = new QTech.Component.Components.ExPanel();
             this.flowLayoutPanel3 = new System.Windows.Forms.FlowLayoutPanel();
+            this.btnChangeLog = new QTech.Component.ExButtonLoading();
             this.btnPrint = new QTech.Component.ExButtonLoading();
             this.flowLayoutPanel2 = new System.Windows.Forms.FlowLayoutPanel();
             this.btnClose = new QTech.Component.ExButtonLoading();
             this.btnSave = new QTech.Component.ExButtonLoading();
-            this.lblInvoiceNo = new QTech.Component.ExLabel();
             this.txtInvoiceNo = new System.Windows.Forms.TextBox();
-            this.lblCustomer_ = new QTech.Component.ExLabel();
-            this.cboCustomer = new QTech.Component.ExSearchCombo();
-            this.lblExpense_ = new QTech.Component.ExLabel();
             this.panel1 = new System.Windows.Forms.Panel();
             this.txtExpense = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
@@ -67,6 +55,9 @@
             this.tabCustomer_ = new System.Windows.Forms.TabPage();
             this.txtNote1 = new System.Windows.Forms.TextBox();
             this.exLabel3 = new QTech.Component.ExLabel();
+            this.cboCustomer = new QTech.Component.ExSearchCombo();
+            this.lblInvoiceNo = new QTech.Component.ExLabel();
+            this.lblCustomer_ = new QTech.Component.ExLabel();
             this.lblSaleDate_ = new QTech.Component.ExLabel();
             this.dtpSaleDate = new QTech.Component.ExDateTimePicker();
             this.tabGeneral_ = new System.Windows.Forms.TabPage();
@@ -93,8 +84,18 @@
             this.exLabel1 = new QTech.Component.ExLabel();
             this.exLabel5 = new QTech.Component.ExLabel();
             this.exLabel6 = new QTech.Component.ExLabel();
+            this.lblExpense_ = new QTech.Component.ExLabel();
             this.panel3 = new System.Windows.Forms.Panel();
+            this.dgv = new QTech.Component.ExDataGridView();
+            this.colId = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colSaleId = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colProductId = new QTech.Component.ExSearchComboColumn();
+            this.colScale_ = new QTech.Component.ExSearchComboColumn();
+            this.colQauntity = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colUnitPrice = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colTotal = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.panel4 = new System.Windows.Forms.Panel();
+            this.exLabel2 = new QTech.Component.ExLabel();
             this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.exSearchComboColumn1 = new QTech.Component.ExSearchComboColumn();
@@ -104,7 +105,6 @@
             this.dataGridViewTextBoxColumn5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.container.SuspendLayout();
             this.flowLayOutLabelRemoveAdd.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dgv)).BeginInit();
             this.exPanel1.SuspendLayout();
             this.flowLayoutPanel3.SuspendLayout();
             this.flowLayoutPanel2.SuspendLayout();
@@ -117,6 +117,7 @@
             this.panel6.SuspendLayout();
             this.panel5.SuspendLayout();
             this.panel3.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dgv)).BeginInit();
             this.panel4.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -174,160 +175,6 @@
             this.lblAdd.Text = "បន្ថែម";
             this.lblAdd.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.lblAdd_LinkClicked);
             // 
-            // dgv
-            // 
-            this.dgv.AllowEnterToNextCell = false;
-            this.dgv.AllowRowNotFound = true;
-            this.dgv.AllowRowNumber = false;
-            this.dgv.AllowUserToAddRows = false;
-            this.dgv.AllowUserToDeleteRows = false;
-            this.dgv.AllowUserToResizeRows = false;
-            dataGridViewCellStyle1.BackColor = System.Drawing.Color.WhiteSmoke;
-            this.dgv.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
-            this.dgv.BackgroundColor = System.Drawing.Color.White;
-            this.dgv.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.dgv.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.None;
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Khmer OS System", 8F);
-            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.Transparent;
-            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgv.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
-            this.dgv.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgv.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.colId,
-            this.colSaleId,
-            this.colProductId,
-            this.colScale_,
-            this.colQauntity,
-            this.colUnitPrice,
-            this.colTotal});
-            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle6.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle6.Font = new System.Drawing.Font("Khmer OS System", 8F);
-            dataGridViewCellStyle6.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle6.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(173)))), ((int)(((byte)(205)))), ((int)(((byte)(239)))));
-            dataGridViewCellStyle6.SelectionForeColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle6.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dgv.DefaultCellStyle = dataGridViewCellStyle6;
-            this.dgv.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.dgv.EnableHeadersVisualStyles = false;
-            this.dgv.Executing = false;
-            this.dgv.Font = new System.Drawing.Font("Khmer OS System", 8F);
-            this.dgv.Location = new System.Drawing.Point(0, 0);
-            this.dgv.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
-            this.dgv.MultiSelect = false;
-            this.dgv.Name = "dgv";
-            this.dgv.Paging = null;
-            this.dgv.ReadOnly = true;
-            this.dgv.RowHeadersVisible = false;
-            this.dgv.RowHeadersWidth = 62;
-            this.dgv.RowTemplate.Height = 28;
-            this.dgv.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgv.Size = new System.Drawing.Size(871, 179);
-            this.dgv.TabIndex = 0;
-            // 
-            // colId
-            // 
-            this.colId.DataPropertyName = "Id";
-            this.colId.HeaderText = "Id";
-            this.colId.MinimumWidth = 8;
-            this.colId.Name = "colId";
-            this.colId.ReadOnly = true;
-            this.colId.Visible = false;
-            this.colId.Width = 150;
-            // 
-            // colSaleId
-            // 
-            this.colSaleId.HeaderText = "SaleId";
-            this.colSaleId.MinimumWidth = 8;
-            this.colSaleId.Name = "colSaleId";
-            this.colSaleId.ReadOnly = true;
-            this.colSaleId.Visible = false;
-            this.colSaleId.Width = 150;
-            // 
-            // colProductId
-            // 
-            this.colProductId.Choose = null;
-            this.colProductId.CustomSearchForm = null;
-            this.colProductId.DataPropertyName = "ProductId";
-            this.colProductId.DataSourceFn = null;
-            this.colProductId.HeaderText = "ឈ្មោះទំនិញ";
-            this.colProductId.MinimumWidth = 8;
-            this.colProductId.Name = "colProductId";
-            this.colProductId.ReadOnly = true;
-            this.colProductId.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.colProductId.SearchParamFn = null;
-            this.colProductId.ShowAll = false;
-            this.colProductId.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
-            this.colProductId.TextAll = null;
-            this.colProductId.Width = 250;
-            // 
-            // colScale_
-            // 
-            this.colScale_.Choose = null;
-            this.colScale_.CustomSearchForm = null;
-            this.colScale_.DataSourceFn = null;
-            this.colScale_.HeaderText = "ខ្នាត";
-            this.colScale_.MinimumWidth = 8;
-            this.colScale_.Name = "colScale_";
-            this.colScale_.ReadOnly = true;
-            this.colScale_.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.colScale_.SearchParamFn = null;
-            this.colScale_.ShowAll = false;
-            this.colScale_.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
-            this.colScale_.TextAll = null;
-            this.colScale_.Width = 200;
-            // 
-            // colQauntity
-            // 
-            this.colQauntity.DataPropertyName = "Qauntity";
-            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            this.colQauntity.DefaultCellStyle = dataGridViewCellStyle3;
-            this.colQauntity.HeaderText = "បរិមាណ";
-            this.colQauntity.MinimumWidth = 8;
-            this.colQauntity.Name = "colQauntity";
-            this.colQauntity.ReadOnly = true;
-            this.colQauntity.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.colQauntity.Width = 150;
-            // 
-            // colUnitPrice
-            // 
-            this.colUnitPrice.DataPropertyName = "UnitPrice";
-            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.TopRight;
-            this.colUnitPrice.DefaultCellStyle = dataGridViewCellStyle4;
-            this.colUnitPrice.HeaderText = "តម្ថៃឯកតា";
-            this.colUnitPrice.MinimumWidth = 8;
-            this.colUnitPrice.Name = "colUnitPrice";
-            this.colUnitPrice.ReadOnly = true;
-            this.colUnitPrice.Width = 150;
-            // 
-            // colTotal
-            // 
-            this.colTotal.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.colTotal.DataPropertyName = "Total";
-            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            this.colTotal.DefaultCellStyle = dataGridViewCellStyle5;
-            this.colTotal.HeaderText = "សរុប";
-            this.colTotal.MinimumWidth = 8;
-            this.colTotal.Name = "colTotal";
-            this.colTotal.ReadOnly = true;
-            // 
-            // exLabel2
-            // 
-            this.exLabel2.AutoSize = true;
-            this.exLabel2.Font = new System.Drawing.Font("Fasthand", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.exLabel2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(238)))), ((int)(((byte)(127)))), ((int)(((byte)(0)))));
-            this.exLabel2.Location = new System.Drawing.Point(4, 8);
-            this.exLabel2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.exLabel2.Name = "exLabel2";
-            this.exLabel2.Required = true;
-            this.exLabel2.Size = new System.Drawing.Size(102, 19);
-            this.exLabel2.TabIndex = 11;
-            this.exLabel2.Text = "មុខទំនិញលម្អិត";
-            // 
             // exPanel1
             // 
             this.exPanel1.BackColor = System.Drawing.Color.Transparent;
@@ -343,13 +190,34 @@
             // 
             // flowLayoutPanel3
             // 
+            this.flowLayoutPanel3.Controls.Add(this.btnChangeLog);
             this.flowLayoutPanel3.Controls.Add(this.btnPrint);
             this.flowLayoutPanel3.Dock = System.Windows.Forms.DockStyle.Fill;
             this.flowLayoutPanel3.Location = new System.Drawing.Point(3, 2);
             this.flowLayoutPanel3.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.flowLayoutPanel3.Name = "flowLayoutPanel3";
-            this.flowLayoutPanel3.Size = new System.Drawing.Size(313, 32);
+            this.flowLayoutPanel3.Size = new System.Drawing.Size(450, 32);
             this.flowLayoutPanel3.TabIndex = 3;
+            // 
+            // btnChangeLog
+            // 
+            this.btnChangeLog.BackColor = System.Drawing.Color.Ivory;
+            this.btnChangeLog.DefaultImage = null;
+            this.btnChangeLog.Executing = false;
+            this.btnChangeLog.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnChangeLog.Font = new System.Drawing.Font("Khmer OS Battambang", 8F);
+            this.btnChangeLog.ForeColor = System.Drawing.Color.Black;
+            this.btnChangeLog.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnChangeLog.Location = new System.Drawing.Point(3, 3);
+            this.btnChangeLog.Margin = new System.Windows.Forms.Padding(3, 3, 0, 2);
+            this.btnChangeLog.Name = "btnChangeLog";
+            this.btnChangeLog.ShortcutAligment = QTech.Component.ExButtonLoading.Aligment.Horizontal;
+            this.btnChangeLog.ShortcutText = "E";
+            this.btnChangeLog.Size = new System.Drawing.Size(100, 27);
+            this.btnChangeLog.TabIndex = 6;
+            this.btnChangeLog.Text = "ប្រវត្តកែប្រែ";
+            this.btnChangeLog.UseVisualStyleBackColor = true;
+            this.btnChangeLog.Click += new System.EventHandler(this.btnChangeLog_Click);
             // 
             // btnPrint
             // 
@@ -358,9 +226,9 @@
             this.btnPrint.Executing = false;
             this.btnPrint.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnPrint.Font = new System.Drawing.Font("Khmer OS Battambang", 8F);
-            this.btnPrint.ForeColor = System.Drawing.Color.White;
+            this.btnPrint.ForeColor = System.Drawing.Color.Black;
             this.btnPrint.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnPrint.Location = new System.Drawing.Point(3, 3);
+            this.btnPrint.Location = new System.Drawing.Point(106, 3);
             this.btnPrint.Margin = new System.Windows.Forms.Padding(3, 3, 3, 2);
             this.btnPrint.Name = "btnPrint";
             this.btnPrint.ShortcutAligment = QTech.Component.ExButtonLoading.Aligment.Horizontal;
@@ -376,10 +244,10 @@
             this.flowLayoutPanel2.Controls.Add(this.btnSave);
             this.flowLayoutPanel2.Dock = System.Windows.Forms.DockStyle.Right;
             this.flowLayoutPanel2.FlowDirection = System.Windows.Forms.FlowDirection.RightToLeft;
-            this.flowLayoutPanel2.Location = new System.Drawing.Point(316, 2);
+            this.flowLayoutPanel2.Location = new System.Drawing.Point(453, 2);
             this.flowLayoutPanel2.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.flowLayoutPanel2.Name = "flowLayoutPanel2";
-            this.flowLayoutPanel2.Size = new System.Drawing.Size(552, 32);
+            this.flowLayoutPanel2.Size = new System.Drawing.Size(415, 32);
             this.flowLayoutPanel2.TabIndex = 0;
             // 
             // btnClose
@@ -389,7 +257,7 @@
             this.btnClose.Executing = false;
             this.btnClose.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnClose.ForeColor = System.Drawing.Color.White;
-            this.btnClose.Location = new System.Drawing.Point(449, 3);
+            this.btnClose.Location = new System.Drawing.Point(312, 3);
             this.btnClose.Margin = new System.Windows.Forms.Padding(3, 3, 3, 2);
             this.btnClose.Name = "btnClose";
             this.btnClose.ShortcutAligment = QTech.Component.ExButtonLoading.Aligment.Horizontal;
@@ -407,8 +275,8 @@
             this.btnSave.Executing = false;
             this.btnSave.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnSave.ForeColor = System.Drawing.Color.White;
-            this.btnSave.Location = new System.Drawing.Point(343, 3);
-            this.btnSave.Margin = new System.Windows.Forms.Padding(3, 3, 3, 2);
+            this.btnSave.Location = new System.Drawing.Point(207, 3);
+            this.btnSave.Margin = new System.Windows.Forms.Padding(3, 3, 2, 2);
             this.btnSave.Name = "btnSave";
             this.btnSave.ShortcutAligment = QTech.Component.ExButtonLoading.Aligment.Horizontal;
             this.btnSave.ShortcutText = null;
@@ -416,17 +284,7 @@
             this.btnSave.TabIndex = 0;
             this.btnSave.Text = "រក្សាទុក";
             this.btnSave.UseVisualStyleBackColor = true;
-            // 
-            // lblInvoiceNo
-            // 
-            this.lblInvoiceNo.AutoSize = true;
-            this.lblInvoiceNo.Location = new System.Drawing.Point(38, 18);
-            this.lblInvoiceNo.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.lblInvoiceNo.Name = "lblInvoiceNo";
-            this.lblInvoiceNo.Required = false;
-            this.lblInvoiceNo.Size = new System.Drawing.Size(88, 19);
-            this.lblInvoiceNo.TabIndex = 19;
-            this.lblInvoiceNo.Text = "លេខវិក្កយបត្រ";
+            this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
             // 
             // txtInvoiceNo
             // 
@@ -436,50 +294,6 @@
             this.txtInvoiceNo.ReadOnly = true;
             this.txtInvoiceNo.Size = new System.Drawing.Size(200, 28);
             this.txtInvoiceNo.TabIndex = 3;
-            // 
-            // lblCustomer_
-            // 
-            this.lblCustomer_.AutoSize = true;
-            this.lblCustomer_.Location = new System.Drawing.Point(38, 50);
-            this.lblCustomer_.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.lblCustomer_.Name = "lblCustomer_";
-            this.lblCustomer_.Required = true;
-            this.lblCustomer_.Size = new System.Drawing.Size(59, 19);
-            this.lblCustomer_.TabIndex = 22;
-            this.lblCustomer_.Text = "អតិថិជន";
-            // 
-            // cboCustomer
-            // 
-            this.cboCustomer.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(222)))), ((int)(((byte)(250)))));
-            this.cboCustomer.Choose = "";
-            this.cboCustomer.CustomSearchForm = null;
-            this.cboCustomer.DataSourceFn = null;
-            this.cboCustomer.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.cboCustomer.FormattingEnabled = true;
-            this.cboCustomer.IsGirdViewColumn = false;
-            this.cboCustomer.LoadAll = true;
-            this.cboCustomer.Location = new System.Drawing.Point(197, 46);
-            this.cboCustomer.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
-            this.cboCustomer.Name = "cboCustomer";
-            this.cboCustomer.SearchParamFn = null;
-            this.cboCustomer.SelectedItems = null;
-            this.cboCustomer.SelectedObject = null;
-            this.cboCustomer.ShowAll = false;
-            this.cboCustomer.Size = new System.Drawing.Size(200, 27);
-            this.cboCustomer.TabIndex = 0;
-            this.cboCustomer.TextAll = "";
-            // 
-            // lblExpense_
-            // 
-            this.lblExpense_.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.lblExpense_.AutoSize = true;
-            this.lblExpense_.Location = new System.Drawing.Point(1, 69);
-            this.lblExpense_.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.lblExpense_.Name = "lblExpense_";
-            this.lblExpense_.Required = false;
-            this.lblExpense_.Size = new System.Drawing.Size(91, 19);
-            this.lblExpense_.TabIndex = 31;
-            this.lblExpense_.Text = "ចំណាយផ្សេងៗ";
             // 
             // panel1
             // 
@@ -571,6 +385,50 @@
             this.exLabel3.TabIndex = 48;
             this.exLabel3.Text = "ចំណាំ";
             // 
+            // cboCustomer
+            // 
+            this.cboCustomer.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(222)))), ((int)(((byte)(250)))));
+            this.cboCustomer.Choose = "";
+            this.cboCustomer.CustomSearchForm = null;
+            this.cboCustomer.DataSourceFn = null;
+            this.cboCustomer.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cboCustomer.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.cboCustomer.FormattingEnabled = true;
+            this.cboCustomer.IsGirdViewColumn = false;
+            this.cboCustomer.LoadAll = true;
+            this.cboCustomer.Location = new System.Drawing.Point(197, 46);
+            this.cboCustomer.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            this.cboCustomer.Name = "cboCustomer";
+            this.cboCustomer.SearchParamFn = null;
+            this.cboCustomer.SelectedItems = null;
+            this.cboCustomer.SelectedObject = null;
+            this.cboCustomer.ShowAll = false;
+            this.cboCustomer.Size = new System.Drawing.Size(200, 27);
+            this.cboCustomer.TabIndex = 0;
+            this.cboCustomer.TextAll = "";
+            // 
+            // lblInvoiceNo
+            // 
+            this.lblInvoiceNo.AutoSize = true;
+            this.lblInvoiceNo.Location = new System.Drawing.Point(38, 18);
+            this.lblInvoiceNo.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lblInvoiceNo.Name = "lblInvoiceNo";
+            this.lblInvoiceNo.Required = false;
+            this.lblInvoiceNo.Size = new System.Drawing.Size(88, 19);
+            this.lblInvoiceNo.TabIndex = 19;
+            this.lblInvoiceNo.Text = "លេខវិក្កយបត្រ";
+            // 
+            // lblCustomer_
+            // 
+            this.lblCustomer_.AutoSize = true;
+            this.lblCustomer_.Location = new System.Drawing.Point(38, 50);
+            this.lblCustomer_.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lblCustomer_.Name = "lblCustomer_";
+            this.lblCustomer_.Required = true;
+            this.lblCustomer_.Size = new System.Drawing.Size(59, 19);
+            this.lblCustomer_.TabIndex = 22;
+            this.lblCustomer_.Text = "អតិថិជន";
+            // 
             // lblSaleDate_
             // 
             this.lblSaleDate_.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
@@ -586,6 +444,7 @@
             // dtpSaleDate
             // 
             this.dtpSaleDate.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.dtpSaleDate.Format = System.Windows.Forms.DateTimePickerFormat.Short;
             this.dtpSaleDate.Location = new System.Drawing.Point(624, 15);
             this.dtpSaleDate.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.dtpSaleDate.Name = "dtpSaleDate";
@@ -609,7 +468,7 @@
             this.tabGeneral_.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.tabGeneral_.Name = "tabGeneral_";
             this.tabGeneral_.Padding = new System.Windows.Forms.Padding(4, 3, 4, 3);
-            this.tabGeneral_.Size = new System.Drawing.Size(863, 115);
+            this.tabGeneral_.Size = new System.Drawing.Size(435, 115);
             this.tabGeneral_.TabIndex = 1;
             this.tabGeneral_.Text = "អតិថិជនទូទៅ";
             // 
@@ -634,6 +493,7 @@
             // 
             // dtpSaleDate_
             // 
+            this.dtpSaleDate_.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
             this.dtpSaleDate_.Location = new System.Drawing.Point(624, 15);
             this.dtpSaleDate_.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.dtpSaleDate_.Name = "dtpSaleDate_";
@@ -872,6 +732,18 @@
             this.exLabel6.TabIndex = 42;
             this.exLabel6.Text = "បង់ប្រាក់";
             // 
+            // lblExpense_
+            // 
+            this.lblExpense_.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.lblExpense_.AutoSize = true;
+            this.lblExpense_.Location = new System.Drawing.Point(1, 69);
+            this.lblExpense_.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lblExpense_.Name = "lblExpense_";
+            this.lblExpense_.Required = false;
+            this.lblExpense_.Size = new System.Drawing.Size(91, 19);
+            this.lblExpense_.TabIndex = 31;
+            this.lblExpense_.Text = "ចំណាយផ្សេងៗ";
+            // 
             // panel3
             // 
             this.panel3.Controls.Add(this.dgv);
@@ -880,6 +752,147 @@
             this.panel3.Name = "panel3";
             this.panel3.Size = new System.Drawing.Size(871, 179);
             this.panel3.TabIndex = 33;
+            // 
+            // dgv
+            // 
+            this.dgv.AllowEnterToNextCell = false;
+            this.dgv.AllowRowNotFound = true;
+            this.dgv.AllowRowNumber = false;
+            this.dgv.AllowUserToAddRows = false;
+            this.dgv.AllowUserToDeleteRows = false;
+            this.dgv.AllowUserToResizeRows = false;
+            dataGridViewCellStyle1.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.dgv.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
+            this.dgv.BackgroundColor = System.Drawing.Color.White;
+            this.dgv.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.dgv.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.None;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Khmer OS System", 8F);
+            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.Transparent;
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgv.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
+            this.dgv.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgv.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.colId,
+            this.colSaleId,
+            this.colProductId,
+            this.colScale_,
+            this.colQauntity,
+            this.colUnitPrice,
+            this.colTotal});
+            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle6.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle6.Font = new System.Drawing.Font("Khmer OS System", 8F);
+            dataGridViewCellStyle6.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle6.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(173)))), ((int)(((byte)(205)))), ((int)(((byte)(239)))));
+            dataGridViewCellStyle6.SelectionForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle6.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dgv.DefaultCellStyle = dataGridViewCellStyle6;
+            this.dgv.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.dgv.EnableHeadersVisualStyles = false;
+            this.dgv.Executing = false;
+            this.dgv.Font = new System.Drawing.Font("Khmer OS System", 8F);
+            this.dgv.Location = new System.Drawing.Point(0, 0);
+            this.dgv.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            this.dgv.MultiSelect = false;
+            this.dgv.Name = "dgv";
+            this.dgv.Paging = null;
+            this.dgv.ReadOnly = true;
+            this.dgv.RowHeadersVisible = false;
+            this.dgv.RowHeadersWidth = 62;
+            this.dgv.RowTemplate.Height = 28;
+            this.dgv.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dgv.Size = new System.Drawing.Size(871, 179);
+            this.dgv.TabIndex = 0;
+            // 
+            // colId
+            // 
+            this.colId.DataPropertyName = "Id";
+            this.colId.HeaderText = "Id";
+            this.colId.MinimumWidth = 8;
+            this.colId.Name = "colId";
+            this.colId.ReadOnly = true;
+            this.colId.Visible = false;
+            this.colId.Width = 150;
+            // 
+            // colSaleId
+            // 
+            this.colSaleId.HeaderText = "SaleId";
+            this.colSaleId.MinimumWidth = 8;
+            this.colSaleId.Name = "colSaleId";
+            this.colSaleId.ReadOnly = true;
+            this.colSaleId.Visible = false;
+            this.colSaleId.Width = 150;
+            // 
+            // colProductId
+            // 
+            this.colProductId.Choose = null;
+            this.colProductId.CustomSearchForm = null;
+            this.colProductId.DataPropertyName = "ProductId";
+            this.colProductId.DataSourceFn = null;
+            this.colProductId.HeaderText = "ឈ្មោះទំនិញ";
+            this.colProductId.MinimumWidth = 8;
+            this.colProductId.Name = "colProductId";
+            this.colProductId.ReadOnly = true;
+            this.colProductId.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.colProductId.SearchParamFn = null;
+            this.colProductId.ShowAll = false;
+            this.colProductId.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
+            this.colProductId.TextAll = null;
+            this.colProductId.Width = 250;
+            // 
+            // colScale_
+            // 
+            this.colScale_.Choose = null;
+            this.colScale_.CustomSearchForm = null;
+            this.colScale_.DataSourceFn = null;
+            this.colScale_.HeaderText = "ខ្នាត";
+            this.colScale_.MinimumWidth = 8;
+            this.colScale_.Name = "colScale_";
+            this.colScale_.ReadOnly = true;
+            this.colScale_.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.colScale_.SearchParamFn = null;
+            this.colScale_.ShowAll = false;
+            this.colScale_.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
+            this.colScale_.TextAll = null;
+            this.colScale_.Width = 200;
+            // 
+            // colQauntity
+            // 
+            this.colQauntity.DataPropertyName = "Qauntity";
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            this.colQauntity.DefaultCellStyle = dataGridViewCellStyle3;
+            this.colQauntity.HeaderText = "បរិមាណ";
+            this.colQauntity.MinimumWidth = 8;
+            this.colQauntity.Name = "colQauntity";
+            this.colQauntity.ReadOnly = true;
+            this.colQauntity.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.colQauntity.Width = 150;
+            // 
+            // colUnitPrice
+            // 
+            this.colUnitPrice.DataPropertyName = "UnitPrice";
+            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.TopRight;
+            this.colUnitPrice.DefaultCellStyle = dataGridViewCellStyle4;
+            this.colUnitPrice.HeaderText = "តម្ថៃឯកតា";
+            this.colUnitPrice.MinimumWidth = 8;
+            this.colUnitPrice.Name = "colUnitPrice";
+            this.colUnitPrice.ReadOnly = true;
+            this.colUnitPrice.Width = 150;
+            // 
+            // colTotal
+            // 
+            this.colTotal.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.colTotal.DataPropertyName = "Total";
+            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            this.colTotal.DefaultCellStyle = dataGridViewCellStyle5;
+            this.colTotal.HeaderText = "សរុប";
+            this.colTotal.MinimumWidth = 8;
+            this.colTotal.Name = "colTotal";
+            this.colTotal.ReadOnly = true;
             // 
             // panel4
             // 
@@ -890,6 +903,19 @@
             this.panel4.Name = "panel4";
             this.panel4.Size = new System.Drawing.Size(871, 33);
             this.panel4.TabIndex = 34;
+            // 
+            // exLabel2
+            // 
+            this.exLabel2.AutoSize = true;
+            this.exLabel2.Font = new System.Drawing.Font("Fasthand", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.exLabel2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(238)))), ((int)(((byte)(127)))), ((int)(((byte)(0)))));
+            this.exLabel2.Location = new System.Drawing.Point(4, 8);
+            this.exLabel2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.exLabel2.Name = "exLabel2";
+            this.exLabel2.Required = true;
+            this.exLabel2.Size = new System.Drawing.Size(102, 19);
+            this.exLabel2.TabIndex = 11;
+            this.exLabel2.Text = "មុខទំនិញលម្អិត";
             // 
             // dataGridViewTextBoxColumn1
             // 
@@ -991,7 +1017,6 @@
             this.container.ResumeLayout(false);
             this.flowLayOutLabelRemoveAdd.ResumeLayout(false);
             this.flowLayOutLabelRemoveAdd.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dgv)).EndInit();
             this.exPanel1.ResumeLayout(false);
             this.flowLayoutPanel3.ResumeLayout(false);
             this.flowLayoutPanel2.ResumeLayout(false);
@@ -1011,6 +1036,7 @@
             this.panel5.ResumeLayout(false);
             this.panel5.PerformLayout();
             this.panel3.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.dgv)).EndInit();
             this.panel4.ResumeLayout(false);
             this.panel4.PerformLayout();
             this.ResumeLayout(false);
@@ -1085,5 +1111,6 @@
         private System.Windows.Forms.Panel panel5;
         private System.Windows.Forms.TextBox txtTotal;
         private System.Windows.Forms.Label label2;
+        private Component.ExButtonLoading btnChangeLog;
     }
 }

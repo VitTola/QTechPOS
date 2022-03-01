@@ -22,10 +22,14 @@ namespace QTech.Component
             DataBindings.Add("Height", parent.GetBounds(), "Height");
             //DataBindings.Add("Height", parent as Control, "Height");
             //Hide when form move.
-            parent.FindForm().LocationChanged += new EventHandler(frmParent_LocationChanged);
-            parent.FindForm().FormClosed += new FormClosedEventHandler(Validation_FormClosed);
-            _aligment = alignment;
-            GetLocation(parent as Control,_aligment);
+            if (parent.FindForm() != null)
+            {
+                parent.FindForm().LocationChanged += new EventHandler(frmParent_LocationChanged);
+                parent.FindForm().FormClosed += new FormClosedEventHandler(Validation_FormClosed);
+                _aligment = alignment;
+                GetLocation(parent as Control, _aligment);
+            }
+           
             this.SetTheme(this.Controls, null);
         }
 
