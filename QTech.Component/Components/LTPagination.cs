@@ -25,6 +25,9 @@ namespace QTech.Component
             lblCurrent.Tag = false;
             lblRight.Tag = false;
             lblLast.Tag = false;
+            //Set font
+            lblCurrent.Font = lblFirst.Font = lblGo_.Font = lblMoreRight.Font = lblNext.Font = lblPrevious.Font = lblRight.Font = lblMoreLeft.Font = new Font("Fasthand", 8);
+
         }
 
         private Color _backGroundColor = Color.Blue;

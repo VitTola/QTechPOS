@@ -112,10 +112,18 @@ namespace QTech.Db.Logics
         {
             var param = model as SaleSearch;
             var _saleSearchKey = param.saleSearchKey;
-            var q = All().Where(x => x.Active);
+            var q = All().Where(x => x.Active && x.SaleDate >= param.FromDate && x.SaleDate <= param.ToDate);
             if (_saleSearchKey == SaleSearchKey.InvoiceNo && !string.IsNullOrEmpty(param.Search))
             {
                 q = q.Where(x => x.InvoiceNo.ToLower().Contains(param.Search.ToLower()));
+            }
+            else if (_saleSearchKey == SaleSearchKey.CustomerName && !string.IsNullOrEmpty(param.Search))
+            {
+                q = from s in q
+                    join c in _db.Customers.Where(x => x.Active) on s.CustomerId equals c.Id into cus
+                    from c in cus.DefaultIfEmpty()
+                    where s.CustomerName.ToLower() == param.Search.ToLower() || c.Name.ToLower() == param.Search.ToLower()
+                    select s;
             }
             if (param.payStatus == PayStatus.Paid)
             {

@@ -34,6 +34,7 @@ namespace QTech.Component
             this.Text = peroid.AsOfName;
 
             this.SetTheme(this.Controls, null);
+            dtpFromDate.Width = dtpToDate.Width = 150;
         }
         public DateTimePeroid Peroid { get; set; }
 

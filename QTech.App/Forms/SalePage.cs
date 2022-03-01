@@ -35,7 +35,7 @@ namespace QTech.Forms
 
             InitEvent();
         }
-        private  void BindData()
+        private void BindData()
         {
             txtSearch.RegisterEnglishInput();
             txtSearch.RegisterKeyArrowDown(dgv);
@@ -43,19 +43,25 @@ namespace QTech.Forms
             txtSearch.PatternChanged += txtSearch_PatternChanged;
             registerSearchMenu();
             cboPayStatus.SetDataSource<PayStatus>();
-            cboImport.SetDataSource<ImportPrice>();
+
+            var maxDate = DateTime.Now;
+            dtpDate.CustomDateRang = CustomDateRang.None;
+            var peroids = ExReportDatePicker.GetPeroids(maxDate);
+            var customPeroid = ExReportDatePicker.GetPeriod(dtpDate.CustomDateRang, maxDate);
+            dtpDate.SetMaxDate(maxDate);
+            dtpDate.Items.AddRange(peroids.ToArray());
+            dtpDate.Items.Add(customPeroid);
+            dtpDate.SetSelectePeroid(DatePeroid.Today);
 
         }
         private void InitEvent()
         {
             this.Text = BaseResource.Sales;
             cboPayStatus.SelectedIndexChanged += CboPayStatus_SelectedIndexChanged;
-            cboImport.SelectedIndexChanged += CboPayStatus_SelectedIndexChanged;
             btnAdd.Visible = ShareValue.IsAuthorized(AuthKey.Sale_Sale_Add);
             btnRemove.Visible = ShareValue.IsAuthorized(AuthKey.Sale_Sale_Remove);
             btnUpdate.Visible = ShareValue.IsAuthorized(AuthKey.Sale_Sale_Update);
 
-            cboImport.SelectedIndex = cboImport.FindStringExact(BaseResource.ImportPrice_All);
             btnAdd.Click += BtnAdd_Click;
             dgv.RowPostPaint += Dgv_RowPostPaint;
             this.Load += SalePage_Load;
@@ -63,8 +69,13 @@ namespace QTech.Forms
             flowLayoutPanel2.Dock = DockStyle.Fill;
             pagination.BackGroundColor = ShareValue.CurrentTheme.PanelColor;
             pagination.Paging = 25;
-            pagination.DataSourceChanged +=  (s, e) => LoadData();
+            pagination.DataSourceChanged += (s, e) => LoadData();
+            dtpDate.SelectedIndexChanged += DtpDate_SelectedIndexChanged;
+        }
 
+        private async void DtpDate_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            await Search();
         }
 
         private async void SalePage_Load(object sender, EventArgs e)
@@ -178,22 +189,22 @@ namespace QTech.Forms
         public async Task Search()
         {
             var _payStatus = (PayStatus)cboPayStatus.SelectedValue;
-            var _importPrice = (ImportPrice)cboImport.SelectedValue;
             var search = new SaleSearch()
             {
                 saleSearchKey = this.saleSearchKey,
                 Search = txtSearch.Text,
                 payStatus = _payStatus,
-                ImportPrice = _importPrice,
+                FromDate = dtpDate.SelectedPeroid.FromDate.Date,
+                ToDate = dtpDate.SelectedPeroid.ToDate
             };
-            pagination.DataSourceFn =  await dgv.RunAsync(() => SaleLogic.Instance.Search(search));
+            pagination.DataSourceFn = await dgv.RunAsync(() => SaleLogic.Instance.Search(search));
             if (pagination.DataSource == null)
             {
                 return;
             }
             LoadData();
         }
-        
+
         private void LoadData()
         {
             List<Sale> sales = pagination.DataSource.Cast<Sale>().ToList();
@@ -264,17 +275,6 @@ namespace QTech.Forms
         private void registerSearchMenu()
         {
             txtSearch.AddMenuPattern(
-                SaleSearchKey.PurchaseOrderNo.ToString(),
-                SaleSearchKey.PurchaseOrderNo,
-                BaseResource.PurchaseOrderNo_img,
-                BaseResource.PurchaseOrderNo,
-                Constants.KeyShortcut[SaleSearchKey.PurchaseOrderNo],
-                (s, e) =>
-                {
-                    InputLanguage.CurrentInputLanguage = UI.English;
-                    txtSearch.ReadOnly = false;
-                });
-            txtSearch.AddMenuPattern(
              SaleSearchKey.InvoiceNo.ToString(),
              SaleSearchKey.InvoiceNo,
              BaseResource.InvoiceNo_img,
@@ -286,22 +286,11 @@ namespace QTech.Forms
                  txtSearch.ReadOnly = false;
              });
             txtSearch.AddMenuPattern(
-             SaleSearchKey.CompanyName.ToString(),
-             SaleSearchKey.CompanyName,
+             SaleSearchKey.CustomerName.ToString(),
+             SaleSearchKey.CustomerName,
              BaseResource.customer2,
              BaseResource.Customer,
-             Constants.KeyShortcut[SaleSearchKey.CompanyName],
-             (s, e) =>
-             {
-                 InputLanguage.CurrentInputLanguage = UI.English;
-                 txtSearch.ReadOnly = false;
-             });
-            txtSearch.AddMenuPattern(
-             SaleSearchKey.SiteName.ToString(),
-             SaleSearchKey.SiteName,
-             BaseResource.home,
-             BaseResource.Site,
-             Constants.KeyShortcut[SaleSearchKey.SiteName],
+             Constants.KeyShortcut[SaleSearchKey.CustomerName],
              (s, e) =>
              {
                  InputLanguage.CurrentInputLanguage = UI.English;
@@ -309,37 +298,23 @@ namespace QTech.Forms
              });
 
             InputLanguage.CurrentInputLanguage = UI.English;
-            txtSearch.ShowMenuPattern(SaleSearchKey.PurchaseOrderNo);
+            txtSearch.ShowMenuPattern(SaleSearchKey.InvoiceNo);
             // changeDataVisible();
         }
         protected override bool ProcessCmdKey(ref Message msg, Keys keyData)
         {
-            if (keyData == Constants.KeyShortcut[SaleSearchKey.PurchaseOrderNo])
-            {
-                InputLanguage.CurrentInputLanguage = UI.English;
-                txtSearch.ReadOnly = false;
-                txtSearch.ShowMenuPattern(SaleSearchKey.PurchaseOrderNo);
-                return true;
-            }
-            else if (keyData == Constants.KeyShortcut[SaleSearchKey.InvoiceNo])
+            if (keyData == Constants.KeyShortcut[SaleSearchKey.InvoiceNo])
             {
                 InputLanguage.CurrentInputLanguage = UI.English;
                 txtSearch.ReadOnly = false;
                 txtSearch.ShowMenuPattern(SaleSearchKey.InvoiceNo);
                 return true;
             }
-            else if (keyData == Constants.KeyShortcut[SaleSearchKey.CompanyName])
+            else if (keyData == Constants.KeyShortcut[SaleSearchKey.CustomerName])
             {
                 InputLanguage.CurrentInputLanguage = UI.English;
                 txtSearch.ReadOnly = false;
-                txtSearch.ShowMenuPattern(SaleSearchKey.CompanyName);
-                return true;
-            }
-            else if (keyData == Constants.KeyShortcut[SaleSearchKey.SiteName])
-            {
-                InputLanguage.CurrentInputLanguage = UI.English;
-                txtSearch.ReadOnly = false;
-                txtSearch.ShowMenuPattern(SaleSearchKey.SiteName);
+                txtSearch.ShowMenuPattern(SaleSearchKey.CustomerName);
                 return true;
             }
             return base.ProcessCmdKey(ref msg, keyData);

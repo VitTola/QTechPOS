@@ -13,10 +13,8 @@ namespace QTech.Base.Helpers
         public static Dictionary<SaleSearchKey, Keys> KeyShortcut => new Lazy<Dictionary<SaleSearchKey, Keys>>(() =>
            new Dictionary<SaleSearchKey, Keys>()
            {
-                {SaleSearchKey.PurchaseOrderNo, Keys.F2 },
                 {SaleSearchKey.InvoiceNo, Keys.F3 },
-                {SaleSearchKey.CompanyName, Keys.F4 },
-                {SaleSearchKey.SiteName, Keys.F5 },
+                {SaleSearchKey.CustomerName, Keys.F4 },
            }).Value;
 
 

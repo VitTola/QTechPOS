@@ -8,10 +8,8 @@ namespace QTech.Base.Enums
 {
     public enum SaleSearchKey
     {
-        PurchaseOrderNo = 1,
-        InvoiceNo = 2,
-        CompanyName = 3,
-        SiteName=4,
+        InvoiceNo = 1,
+        CustomerName = 2,
         None=5,
     }
 }

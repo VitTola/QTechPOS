@@ -38,6 +38,7 @@ namespace QTech.Forms
         private List<Product> products;
         private List<ProductPrice> productPrices;
         private List<Scale> scales;
+        private List<Customer> customers;
         public GeneralProcess Flag { get; set; }
         public frmSale(Sale model, GeneralProcess flag)
         {
@@ -163,7 +164,7 @@ namespace QTech.Forms
                 products = ProductLogic.Instance.SearchAsync(new ProductSearch());
                 productPrices = ProductPriceLogic.Instance.SearchAsync(new ProductPriceSearch());
                 scales = ScaleLogic.Instance.SearchAsync(new ScaleSearch());
-
+                customers = CustomerLogic.Instance.SearchAsync(new CustomerSearch());
                 return products;
             });
             Read();
@@ -184,14 +185,6 @@ namespace QTech.Forms
                 {
                     cboCustomer.ShowDropDown();
                 }
-                //if (dgv.CurrentRow.Index > 0)
-                //{
-                //    dgv.ReadOnly = true;
-                //}
-                //else
-                //{
-                //    dgv.ReadOnly = false;
-                //}
             }
         }
         private bool firstLoad = true;
@@ -363,6 +356,24 @@ namespace QTech.Forms
             txtPaidAmount.Text = Model.PaymentRecieve.ToString();
             txtLeftAmount.Text = Model.PaymentLeft.ToString();
 
+            var _customer = customers.FirstOrDefault(x => x.Id == Model.CustomerId);
+            if (_customer != null)
+            {
+                var customer = new List<DropDownItemModel>()
+                    {
+                                new DropDownItemModel
+                                {
+                                    Id = _customer.Id,
+                                    Code = _customer.Name,
+                                    Name = _customer.Name,
+                                    DisplayText = _customer.Name,
+                                    ItemObject = _customer,
+                                }
+                    };
+                cboCustomer.SetValue(customer);
+            }
+            
+
             //Read SaleDetail
             if (Model.SaleDetails?.Any() ?? false)
             {
@@ -376,9 +387,10 @@ namespace QTech.Forms
                     var product = products?.FirstOrDefault(y => y.Id == x.ProductId) ?? new Product();
                     row.Cells[colUnitPrice.Name].Value = x.UnitPrice;
 
-                    if (products?.Any() ?? false)
+                    
+                     var pro = products?.FirstOrDefault(f => f.Id == x.ProductId);
+                    if (pro != null)
                     {
-                        var pro = products?.FirstOrDefault(f => f.Id == x.ProductId);
                         var lsProdut = new List<DropDownItemModel>()
                     {
                                 new DropDownItemModel
@@ -392,9 +404,9 @@ namespace QTech.Forms
                     };
                         row.Cells[colProductId.Name].Value = lsProdut;
                     }
-                    if (scales?.Any() ?? false)
+                    var sc = scales?.FirstOrDefault(f => f.Id == x.ScaleId);
+                    if (sc != null)
                     {
-                        var sc = scales?.FirstOrDefault(f => f.Id == x.ScaleId);
                         var lsc = new List<DropDownItemModel>()
                     {
                                 new DropDownItemModel
@@ -406,8 +418,9 @@ namespace QTech.Forms
                                     ItemObject = sc,
                                 }
                     };
-                        row.Cells[colSaleId.Name].Value = lsc;
+                        row.Cells[colScale_.Name].Value = lsc;
                     }
+                   
                 });
             }
         }
