@@ -41,7 +41,11 @@ namespace QTech.Component
             // export list to excel
             btnExpand_.Click += btnExpand__Click;
             btnExportAsExcel_.Click += btnExportAsExcel__Click;
-            pagination.TextColor = ShareValue.CurrentTheme.LabelColor;
+            pagination.DataSourceChanged += (s, e) => LoadData();
+
+            pagination.BackGroundColor = ShareValue.CurrentTheme.PanelColor;
+
+
         }
 
         private void btnExpand__Click(object sender, EventArgs e)
@@ -199,7 +203,7 @@ namespace QTech.Component
             {
                 if (pagination != null)
                 {
-                    pagination.NextPage();
+                    //pagination.NextPage();
                 }
                 return true;
             }
@@ -207,7 +211,7 @@ namespace QTech.Component
             {
                 if (pagination != null)
                 {
-                    pagination.PreviousPage();
+                    //pagination.PreviousPage();
                 }
                 return true;
             }
@@ -215,7 +219,7 @@ namespace QTech.Component
             {
                 if (pagination != null)
                 {
-                    pagination.ShowAll();
+                    //pagination.ShowAll();
                 }
                 return true;
             }
@@ -232,7 +236,6 @@ namespace QTech.Component
 
         private async void dtpDate_ValueChanged(object sender, EventArgs e)
         {
-            pagination.Repaging();
             await Search();
         }
 
@@ -248,7 +251,6 @@ namespace QTech.Component
 
         private async void AuditTrailDialog_Load(object sender, EventArgs e)
         {
-            pagination.Repaging();
             await Search();
         }
 
@@ -330,17 +332,27 @@ namespace QTech.Component
             var TableName = Model.GetType().Namespace + "." + Model.GetType().Name + "s";
             var search = new AuditTrailHistorySearch()
             {
-                Paging = pagination.Paging,
                 FromDate = dtpDate.FromDate,
                 ToDate = dtpDate.ToDate,
                 Pk = Model.Id.ToString(),
                 TableName = TableName
             };
 
-            var auditTrail = await dgv.RunAsync(() => {
-                return AuditTrailLogic.Instance.SearchAsync(search); 
+            pagination.DataSourceFn = await dgv.RunAsync(() => {
+                return AuditTrailLogic.Instance.Search(search); 
             });
-            pagination.ListModel = auditTrail;
+            if (pagination.DataSource == null)
+            {
+                return;
+            }
+            LoadData();
+
+        }
+
+        private void LoadData()
+        {
+            List<AuditTrail> auditTrail = pagination.DataSource.Cast<AuditTrail>().ToList();
+
             dgv.Nodes.Clear();
             foreach (var audit in auditTrail)
             {

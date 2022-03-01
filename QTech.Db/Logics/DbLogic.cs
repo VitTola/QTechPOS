@@ -157,8 +157,8 @@ namespace QTech.Db
         }
     }
 
-    public class LongDbLogic<T, TSelf> : TDbLogic<T, long, TSelf> 
-        where T : QTech.Base.TBaseModel<long> 
+    public class LongDbLogic<T, TSelf> : TDbLogic<T, int, TSelf> 
+        where T : QTech.Base.TBaseModel<int> 
         where TSelf : LongDbLogic<T,TSelf>, new()
     {
     }

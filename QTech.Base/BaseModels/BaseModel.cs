@@ -49,7 +49,7 @@ namespace QTech.Base
             }
         }
     }
-    public class LongBaseModel : TBaseModel<long>
+    public class LongBaseModel : TBaseModel<int>
     {
     }
 }

@@ -100,8 +100,8 @@ namespace QTech.Component
             base.OnCreateControl();
         }
         private bool isFirstLoad = true;
-        private IQueryable<QTech.Base.BaseModel> _dataSourceFn;
-        public IQueryable<QTech.Base.BaseModel> DataSourceFn
+        private IQueryable<QTech.Base.TBaseModel<int>> _dataSourceFn;
+        public IQueryable<QTech.Base.TBaseModel<int>> DataSourceFn
         {
             set
             {
@@ -110,8 +110,8 @@ namespace QTech.Component
             }
         }
 
-        private IQueryable<QTech.Base.BaseModel> _dataSource;
-        public IQueryable<QTech.Base.BaseModel> DataSource
+        private IQueryable<QTech.Base.TBaseModel<int>> _dataSource;
+        public IQueryable<QTech.Base.TBaseModel<int>> DataSource
         {
             get { return _dataSource; }
         }
