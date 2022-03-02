@@ -116,8 +116,10 @@ namespace QTech.Db.Logics
                     var oldO = oldObjects?.FirstOrDefault(x => x.Id.ToString() == c.Id.ToString());
                     changeLog.DisplayName = oldO == null ? BaseResource.Add : BaseResource.Update;
                     c.RowDate = new DateTime(1900, 01, 01);
+                    c.CreatedBy = "";
                     if(oldO != null) oldO.RowDate = new DateTime(1900, 01, 01);
-                    if (!ObjectEquals(c,oldO))
+                    var ignores = new List<string> {nameof(c.CreatedBy),nameof(c.RowDate) };
+                    if (!ObjectEquals(c,oldO,ignores))
                     {
                         changeLog.Details = GetChangeLog<TChild, TKey, TChild>(c, oldO, flag);
                         changeLogs.Add(changeLog);
@@ -153,10 +155,14 @@ namespace QTech.Db.Logics
             return changeLogs;
         }
 
-        public bool ObjectEquals(dynamic object1, dynamic object2)
+        public bool ObjectEquals(dynamic object1, dynamic object2,List<string> ignores)
         {
-            var properties = object1.GetType().GetProperties();
-            foreach (var property in properties)
+            if (object2 == null && object1 != null)
+            {
+                return false;
+            }
+            PropertyInfo[] properties = object1.GetType().GetProperties();
+            foreach (var property in properties.Where(x => !ignores.Contains(x.Name)))
             {
                 var obj1 = property.GetValue(object1)?.ToString();
                 var obj2 = property.GetValue(object2)?.ToString();

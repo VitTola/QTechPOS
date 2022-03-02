@@ -1207,6 +1207,15 @@ namespace QTech.Base.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to បង់ប្រាក់.
+        /// </summary>
+        public static string PaymentRecieve {
+            get {
+                return ResourceManager.GetString("PaymentRecieve", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to ស្ថានភាពទាំងអស់.
         /// </summary>
         public static string PayStatus_All {

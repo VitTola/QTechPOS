@@ -772,4 +772,7 @@
   <data name="PaymentLeft" xml:space="preserve">
     <value>សមតុល្យ</value>
   </data>
+  <data name="PaymentRecieve" xml:space="preserve">
+    <value>បង់ប្រាក់</value>
+  </data>
 </root>
