@@ -328,7 +328,7 @@ namespace QTech.Forms
 
             return true;
         }
-        public async void Read()
+        public  void Read()
         {
             if (Flag == GeneralProcess.Add)
             {

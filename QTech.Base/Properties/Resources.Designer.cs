@@ -312,6 +312,15 @@ namespace QTech.Base.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to ឈ្មោះអតិថិជន.
+        /// </summary>
+        public static string CustomerName {
+            get {
+                return ResourceManager.GetString("CustomerName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to ប្រភេទអតិថិជន.
         /// </summary>
         public static string CustomerType {
@@ -1143,6 +1152,15 @@ namespace QTech.Base.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to ចំណាយផ្សេងៗ.
+        /// </summary>
+        public static string OtherExpense {
+            get {
+                return ResourceManager.GetString("OtherExpense", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to កំណត់ផ្សេងៗ.
         /// </summary>
         public static string OtherSetting {
@@ -1176,6 +1194,15 @@ namespace QTech.Base.Properties {
         public static string PayDate {
             get {
                 return ResourceManager.GetString("PayDate", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to សមតុល្យ.
+        /// </summary>
+        public static string PaymentLeft {
+            get {
+                return ResourceManager.GetString("PaymentLeft", resourceCulture);
             }
         }
         
@@ -1441,6 +1468,15 @@ namespace QTech.Base.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to ចំនួន.
+        /// </summary>
+        public static string Quantity {
+            get {
+                return ResourceManager.GetString("Quantity", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to លុប.
         /// </summary>
         public static string Remove {
@@ -1581,12 +1617,11 @@ namespace QTech.Base.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        ///   Looks up a localized string similar to ការលក់.
         /// </summary>
-        public static System.Drawing.Bitmap sale {
+        public static string Sale {
             get {
-                object obj = ResourceManager.GetObject("sale", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
+                return ResourceManager.GetString("Sale", resourceCulture);
             }
         }
         
@@ -1643,6 +1678,15 @@ namespace QTech.Base.Properties {
         public static string SaleDetail_op {
             get {
                 return ResourceManager.GetString("SaleDetail_op", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to ការលក់លម្អិត.
+        /// </summary>
+        public static string SaleDetails {
+            get {
+                return ResourceManager.GetString("SaleDetails", resourceCulture);
             }
         }
         

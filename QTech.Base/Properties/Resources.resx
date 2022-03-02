@@ -151,9 +151,6 @@
   <data name="RyLogo" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\RyLogo.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="sale" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\sale.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
   <data name="logout11" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\logout11.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
@@ -756,5 +753,23 @@
   </data>
   <data name="Saler" xml:space="preserve">
     <value>អ្នកលក់</value>
+  </data>
+  <data name="Quantity" xml:space="preserve">
+    <value>ចំនួន</value>
+  </data>
+  <data name="SaleDetails" xml:space="preserve">
+    <value>ការលក់លម្អិត</value>
+  </data>
+  <data name="Sale" xml:space="preserve">
+    <value>ការលក់</value>
+  </data>
+  <data name="CustomerName" xml:space="preserve">
+    <value>ឈ្មោះអតិថិជន</value>
+  </data>
+  <data name="OtherExpense" xml:space="preserve">
+    <value>ចំណាយផ្សេងៗ</value>
+  </data>
+  <data name="PaymentLeft" xml:space="preserve">
+    <value>សមតុល្យ</value>
   </data>
 </root>

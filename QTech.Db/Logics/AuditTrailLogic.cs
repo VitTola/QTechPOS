@@ -66,11 +66,6 @@ namespace QTech.Db.Logics
             q = q.Where(x =>
                    x.TableName == param.TableName &&
                    x.TablePK == param.Pk && x.TransactionDate >= param.FromDate && x.TransactionDate <= param.ToDate);
-            //var test = q.ToList();
-            //if (param.Paging?.IsPaging == true)
-            //{
-            //    q = q.GetPaged(param.Paging.CurrentPage, param.Paging.PageSize, true, true).Results;
-            //}
 
             return q;
         }
@@ -122,9 +117,7 @@ namespace QTech.Db.Logics
                     changeLog.DisplayName = oldO == null ? BaseResource.Add : BaseResource.Update;
                     c.RowDate = new DateTime(1900, 01, 01);
                     if(oldO != null) oldO.RowDate = new DateTime(1900, 01, 01);
-                    var jObj = JsonConvert.SerializeObject(c);
-                    var jOldObj = JsonConvert.SerializeObject(oldO);
-                    if (jObj != jOldObj)
+                    if (!ObjectEquals(c,oldO))
                     {
                         changeLog.Details = GetChangeLog<TChild, TKey, TChild>(c, oldO, flag);
                         changeLogs.Add(changeLog);
@@ -160,6 +153,20 @@ namespace QTech.Db.Logics
             return changeLogs;
         }
 
+        public bool ObjectEquals(dynamic object1, dynamic object2)
+        {
+            var properties = object1.GetType().GetProperties();
+            foreach (var property in properties)
+            {
+                var obj1 = property.GetValue(object1)?.ToString();
+                var obj2 = property.GetValue(object2)?.ToString();
+                if (obj1 != obj2)
+                {
+                    return false;
+                }
+            }
+            return true;
+        }
 
         public List<ChangeLog> GetChangeLog<T, TKey, TChild>(T entity, T oldObject, GeneralProcess flag) where T
             : TBaseModel<TKey> where TKey : struct where TChild : TBaseModel<TKey>
@@ -262,35 +269,8 @@ namespace QTech.Db.Logics
                     }
                     else if (typeof(DateTime) == propertyType)
                     {
-                        oldValue = (oldValue == null) ? Consts.MIN_DATE : DateTime.Parse(oldValue);
+                        oldValue = (oldValue == null) ? "": DateTime.Parse(oldValue);
                         newValue = (newValue == null) ? Consts.MIN_DATE : DateTime.Parse(newValue);
-
-                        oldValue = DateTime.Parse(oldValue);
-                        newValue = DateTime.Parse(newValue);
-                        if (oldValue == Consts.MIN_DATE || oldValue == Consts.MIN_DATE)
-                        {
-                            oldValue = EDomain.Resources.MinDate;
-                        }
-                        else if (oldValue == Consts.MAX_DATE)
-                        {
-                            oldValue = EDomain.Resources.MaxedDate;
-                        }
-                        else
-                        {
-                            oldValue = (oldValue.TimeOfDay.TotalSeconds == 0) ? oldValue.ToString("dd/MM/yyyy") : oldValue.ToString("dd/MM/yyyy hh:mm:ss tt");
-                        }
-                        if (newValue == Consts.MIN_DATE || oldValue == Consts.MIN_DATE)
-                        {
-                            newValue = EDomain.Resources.MinDate;
-                        }
-                        else if (newValue == Consts.MAX_DATE)
-                        {
-                            newValue = EDomain.Resources.MaxedDate;
-                        }
-                        else
-                        {
-                            newValue = (oldValue.TimeOfDay.TotalSeconds == 0) ? oldValue.ToString("dd/MM/yyyy") : oldValue.ToString("dd/MM/yyyy hh:mm:ss tt");
-                        }
                     }
                     DisplayNameAttribute dp = property.GetCustomAttributes(typeof(DisplayNameAttribute), true).Cast<DisplayNameAttribute>().SingleOrDefault();
                     var displayname = (!string.IsNullOrEmpty(dp?.DisplayName ?? ""))
@@ -329,7 +309,9 @@ namespace QTech.Db.Logics
 
             return string.Empty;
         }
+       
 
     }
+  
 
 }
