@@ -214,7 +214,7 @@
             this.btnChangeLog.ShortcutAligment = QTech.Component.ExButtonLoading.Aligment.Horizontal;
             this.btnChangeLog.ShortcutText = "E";
             this.btnChangeLog.Size = new System.Drawing.Size(100, 27);
-            this.btnChangeLog.TabIndex = 6;
+            this.btnChangeLog.TabIndex = 1;
             this.btnChangeLog.Text = "ប្រវត្តកែប្រែ";
             this.btnChangeLog.UseVisualStyleBackColor = true;
             this.btnChangeLog.Click += new System.EventHandler(this.btnChangeLog_Click);
@@ -233,7 +233,7 @@
             this.btnPrint.Name = "btnPrint";
             this.btnPrint.ShortcutAligment = QTech.Component.ExButtonLoading.Aligment.Horizontal;
             this.btnPrint.ShortcutText = "P";
-            this.btnPrint.Size = new System.Drawing.Size(119, 27);
+            this.btnPrint.Size = new System.Drawing.Size(100, 27);
             this.btnPrint.TabIndex = 0;
             this.btnPrint.Text = "បោះពុម្ភ";
             this.btnPrint.UseVisualStyleBackColor = true;
@@ -655,7 +655,7 @@
             this.label3.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(44, 23);
-            this.label3.TabIndex = 1;
+            this.label3.TabIndex = 0;
             this.label3.Text = "USD";
             this.label3.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 

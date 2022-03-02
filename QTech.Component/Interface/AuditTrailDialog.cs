@@ -44,8 +44,7 @@ namespace QTech.Component
             pagination.DataSourceChanged += (s, e) => LoadData();
 
             pagination.BackGroundColor = ShareValue.CurrentTheme.PanelColor;
-
-
+            pagination.Paging = 10;
         }
 
         private void btnExpand__Click(object sender, EventArgs e)

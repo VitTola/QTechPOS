@@ -304,7 +304,7 @@ namespace QTech.Db.Logics
                 case nameof(Customer):
                     return CustomerLogic.Instance.FindAsync(entityId)?.Name ?? string.Empty;
                 case nameof(Employee):
-                    return EmployeeLogic.Instance.FindAsync(entityId)?.Name ?? string.Empty;
+                    return UserLogic.Instance.FindAsync(entityId)?.Name ?? string.Empty;
                 case nameof(Position):
                     return PositionLogic.Instance.FindAsync(entityId)?.Name ?? string.Empty;
                 case nameof(Scale):

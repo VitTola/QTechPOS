@@ -73,12 +73,10 @@ namespace QTech.Forms
             dgv.EditMode = DataGridViewEditMode.EditOnEnter;
             dgv.EditingControlShowing += dgv_EditingControlShowing;
             this.SetEnabled(Flag != GeneralProcess.Remove && Flag != GeneralProcess.View);
-            dgv.EditingControlShowing += Dgv_EditingControlShowing;
             dgv.MouseClick += Dgv_MouseClick;
             dgv.EditColumnIcon(colProductId, colQauntity, colUnitPrice, colScale_);
 
             txtTotal.ReadOnly = true;
-            cboCustomer.SelectedIndexChanged += CboCustomer_SelectedIndexChanged;
             this.Load += FrmSale_Load;
             this.MaximizeBox = true;
             lblPhone.Anchor = _lblSaleDate.Anchor = dtpSaleDate_.Anchor = txtPhone.Anchor = AnchorStyles.Right | AnchorStyles.Top;
@@ -178,21 +176,6 @@ namespace QTech.Forms
                 dgv.ReadOnly = false;
             }
         }
-        private void Dgv_EditingControlShowing(object sender, DataGridViewEditingControlShowingEventArgs e)
-        {
-            if (tabMain.SelectedTab.Equals(tabCustomer_))
-            {
-                if (string.IsNullOrEmpty(cboCustomer.Text))
-                {
-                    cboCustomer.ShowDropDown();
-                }
-            }
-        }
-        private bool firstLoad = true;
-        private async void CboCustomer_SelectedIndexChanged(object sender, EventArgs e)
-        {
-
-        }
         private void dgv_EditingControlShowing(object sender, DataGridViewEditingControlShowingEventArgs e)
         {
             colTotal.ReadOnly = true;
@@ -266,8 +249,6 @@ namespace QTech.Forms
             }
 
         }
-        DataGridViewCell Err = null;
-
         public bool InValid()
         {
             if (tabMain.SelectedTab.Equals(tabCustomer_))
@@ -554,7 +535,7 @@ namespace QTech.Forms
 
                 if (Flag == GeneralProcess.Update)
                 {
-                    var _saleDetail = Model.SaleDetails?.FirstOrDefault(x => x.Id == saleDetail.Id);
+                    var _saleDetail = Model.SaleDetails?.FirstOrDefault(x => x.Id == saleDetail.Id && x.Id != 0);
                     if (_saleDetail != null)
                     {
                         Model.SaleDetails[Model.SaleDetails.IndexOf(_saleDetail)] = saleDetail;
@@ -613,29 +594,7 @@ namespace QTech.Forms
             //    invoiceDetails.Add(invoiceDt);
             //}
         }
-        private void lblAdd_LinkClicked_1(object sender, LinkLabelLinkClickedEventArgs e)
-        {
-            if (dgv.RowCount > 0)
-            {
-                if (!string.IsNullOrEmpty(dgv.CurrentRow?.Cells[colProductId.Name]?.Value?.ToString()))
-                {
-                    return;
-                }
-            }
-            if (tabMain.SelectedTab.Equals(tabGeneral_) && Flag != GeneralProcess.View)
-            {
-                dgv.ReadOnly = false;
-            }
-            else
-            {
-                var row = dgv.Rows[dgv.RowCount - 1];
-                if (row != null)
-                {
-                    dgv.Focus();
-                    dgv.CurrentCell = row.Cells[colProductId.Name];
-                }
-            }
-        }
+
         private void lblRemove_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
             if (dgv.SelectedRows.Count == 0 || dgv.SelectedRows[0] == null || dgv.CurrentRow.Cells[colProductId.Name].Value == null)
@@ -738,7 +697,7 @@ namespace QTech.Forms
         }
         public void BindAsync()
         {
-            throw new NotImplementedException();
+            
         }
         private void btnClose_Click(object sender, EventArgs e)
         {

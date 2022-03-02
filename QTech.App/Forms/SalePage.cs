@@ -132,12 +132,6 @@ namespace QTech.Forms
 
             var id = (int)dgv.SelectedRows[0].Cells[colId.Name].Value;
             Model = await btnUpdate.RunAsync(() => SaleLogic.Instance.FindAsync(id));
-            //if (Model.PayStatus == PayStatus.Paid)
-            //{
-            //    MsgBox.ShowWarning(BaseResource.MsgSaleCanEdit,
-            //        GeneralProcess.Remove.GetTextDialog(BaseResource.Sales));
-            //    return;
-            //}
 
             Model = await btnUpdate.RunAsync(() => SaleLogic.Instance.FindAsync(id));
             if (Model == null)
@@ -317,6 +311,18 @@ namespace QTech.Forms
                 txtSearch.ShowMenuPattern(SaleSearchKey.CustomerName);
                 return true;
             }
+            else if (keyData == Keys.N | keyData == Keys.Control)
+            {
+                AddNew();
+            }
+            else if (keyData == Keys.O | keyData == Keys.Control)
+            {
+                EditAsync();
+            }
+            else if (keyData == Keys.Delete | keyData == Keys.Control)
+            {
+                Remove();
+            }
             return base.ProcessCmdKey(ref msg, keyData);
         }
 
@@ -328,14 +334,6 @@ namespace QTech.Forms
         {
             Remove();
         }
-        private void dgv_RowPostPaint(object sender, DataGridViewRowPostPaintEventArgs e)
-        {
-            //dgv.Rows[e.RowIndex].Cells[colRow.Name].Value = (e.RowIndex + 1).ToString();
-        }
-
-        private void dgv_CellContentClick(object sender, DataGridViewCellEventArgs e)
-        {
-
-        }
+      
     }
 }
