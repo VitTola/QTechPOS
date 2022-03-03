@@ -171,7 +171,6 @@
     <Compile Include="Models\AuditTrail.cs" />
     <Compile Include="Models\Scale.cs" />
     <Compile Include="Models\IncomeExpense.cs" />
-    <Compile Include="Models\Invoice.cs" />
     <Compile Include="Models\Category.cs" />
     <Compile Include="Models\Customer.cs" />
     <Compile Include="Models\DbConfig.cs" />

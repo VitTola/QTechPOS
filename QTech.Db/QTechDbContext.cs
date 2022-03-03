@@ -33,7 +33,6 @@ namespace QTech.Db
         public virtual DbSet<Product> Products { get; set; }
         public virtual DbSet<SaleDetail> SaleDetails { get; set; }
         public virtual DbSet<Category> Categories { get; set; }
-        public virtual DbSet<Invoice> Invoices { get; set; }
         public virtual DbSet<QTech.Base.Models.User> Users { get; set; }
         public virtual DbSet<Permission> Permissions { get; set; }
         public virtual DbSet<UserPermission> UserPermissions { get; set; }

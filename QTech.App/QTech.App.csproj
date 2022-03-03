@@ -297,11 +297,15 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <Compile Include="ReportModel\DataSet.cs">
+      <DependentUpon>DataSet.xsd</DependentUpon>
+    </Compile>
     <Compile Include="ReportModel\DataSet.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>DataSet.xsd</DependentUpon>
     </Compile>
+    <Compile Include="ReportModel\Invoice.cs" />
     <Compile Include="Reports\ReportProfit.cs">
       <DependentUpon>ReportProfit.rpt</DependentUpon>
       <AutoGen>True</AutoGen>

@@ -25,6 +25,7 @@ using System.Windows.Forms;
 using BaseReource = QTech.Base.Properties.Resources;
 using EasyServer.Domain.Helpers;
 using EDomain = EasyServer.Domain;
+using QTech.ReportModel;
 
 namespace QTech.Forms
 {
@@ -32,8 +33,8 @@ namespace QTech.Forms
     {
         public Sale Model { get; set; }
         private decimal Total;
-        //private List<RepoInvoice> invoices;
-        //private List<RepoInvoiceDetail> invoiceDetails;
+        private List<Invoice> invoices ;
+        private List<InvoiceDetail> invoiceDetails;
         private List<Category> categories;
         private List<Product> products;
         private List<ProductPrice> productPrices;
@@ -79,8 +80,6 @@ namespace QTech.Forms
             txtTotal.ReadOnly = true;
             this.Load += FrmSale_Load;
             this.MaximizeBox = true;
-            lblPhone.Anchor = _lblSaleDate.Anchor = dtpSaleDate_.Anchor = txtPhone.Anchor = AnchorStyles.Right | AnchorStyles.Top;
-            txtNote2.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
             txtInvoiceNo.ReadOnly = txtInvoiceNo1.ReadOnly = true;
             txtTotal.BorderStyle = txtPaidAmount.BorderStyle = txtLeftAmount.BorderStyle = txtExpense.BorderStyle = BorderStyle.None;
             if (ShareValue.User.Theme != Base.Enums.Theme.Template1)
@@ -168,6 +167,8 @@ namespace QTech.Forms
             });
             Read();
 
+            lblPhone.Anchor = _lblSaleDate.Anchor = dtpSaleDate_.Anchor = txtPhone.Anchor = AnchorStyles.Right | AnchorStyles.Top;
+            txtNote2.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
         }
         private void Dgv_MouseClick(object sender, MouseEventArgs e)
         {
@@ -198,6 +199,10 @@ namespace QTech.Forms
                 }
             }
             dgv.CellValueChanged += Dgv_CellValueChanged;
+        }
+        private void Cbo_Leave(object sender, EventArgs e)
+        {
+            dgv.CurrentCell = dgv.CurrentRow.Cells[colScale_.Name];
         }
         private void Txt_Leave(object sender, EventArgs e)
         {
@@ -553,48 +558,45 @@ namespace QTech.Forms
         }
         private void WriteInvoice()
         {
-            //invoiceDetails = new List<RepoInvoiceDetail>();
-            //invoices = new List<RepoInvoice>();
-            //var invoice = new RepoInvoice();
+            invoiceDetails = new List<InvoiceDetail>();
+            invoices = new List<Invoice>();
+            var invoice = new Invoice();
 
-            //if (tabMain.SelectedTab.Equals(tabCustomer_))
-            //{
-            //    invoice.PurchaseOrderNo = cboPurchaseOrderNo.Text;
-            //    invoice.InvoiceNo = Model.InvoiceNo = txtInvoiceNo.Text;
-            //    var customer = cboCustomer.SelectedObject.ItemObject as Customer;
-            //    var site = cboSite?.SelectedObject?.ItemObject as Site;
-            //    var purchaseOrder = cboPurchaseOrderNo.SelectedObject?.ItemObject as PurchaseOrder;
-            //    Model.PurchaseOrderId = purchaseOrder == null ? 0 : purchaseOrder.Id;
-            //    invoice.Site = site?.Name;
-            //    invoice.Customer = customer.Name;
-            //}
-            //else
-            //{
-            //    invoice.InvoiceNo = txtInvoiceNo1.Text;
-            //    invoice.Customer = txtCustomer.Text;
-            //}
+            invoice.Company = BaseReource.Company;
+            invoice.Address = "Dummy address";
+            invoice.Phone = "010999999";
+            invoice.Cashier = ShareValue.User.Name;
+            invoice.TotalAmount = String.Format("{0:C}", Parse.ToDecimal(txtTotal.Text ?? "0"));
+            invoice.PaidAmount = String.Format("{0:C}", Parse.ToDecimal(txtPaidAmount.Text ?? "0"));
+            invoice.LeftAmount = String.Format("{0:C}", Parse.ToDecimal(txtPaidAmount.Text ?? "0"));
+            if (tabMain.SelectedTab.Equals(tabCustomer_))
+            {
+                invoice.InvoicingDate = dtpSaleDate_.Value;
+                invoice.InvoiceNo = txtInvoiceNo.Text;
+            }
+            else
+            {
+                invoice.InvoiceNo = txtInvoiceNo1.Text;
+            }
+            
+            invoices.Add(invoice);
 
-            //invoice.Total = String.Format("{0:C}", Model.Total);
-            //invoice.SaleId = Model.Id;
-            //invoices.Add(invoice);
+            dgv.EndEdit();
+            foreach (DataGridViewRow row in dgv.Rows.OfType<DataGridViewRow>().Where(x => !x.IsNewRow))
+            {
+                var invoiceDt = new InvoiceDetail();
 
-            //dgv.EndEdit();
-            //foreach (DataGridViewRow row in dgv.Rows.OfType<DataGridViewRow>().Where(x => !x.IsNewRow))
-            //{
-            //    var invoiceDt = new RepoInvoiceDetail();
-
-            //    var proId = int.Parse(row.Cells[colProductId.Name].Value.ToString());
-            //    var _pro = ProductLogic.Instance.FindAsync(proId);
-            //    invoiceDt.Product = _pro.Name;
-            //    invoiceDt.Qauntity = Parse.ToDecimal(row.Cells[colQauntity.Name].Value.ToString());
-            //    var unitP = decimal.Parse(row.Cells[colUnitPrice.Name].Value.ToString());
-            //    var totalP = decimal.Parse(row.Cells[colTotal.Name].Value.ToString());
-            //    invoiceDt.UnitPrice = String.Format("{0:C}", unitP);
-            //    invoiceDt.Total = String.Format("{0:C}", totalP);
-            //    invoiceDetails.Add(invoiceDt);
-            //}
+                var proId = int.Parse(row.Cells[colProductId.Name].Value.ToString());
+                var _pro = ProductLogic.Instance.FindAsync(proId);
+                invoiceDt.Product = _pro.Name;
+                invoiceDt.Qauntity = Parse.ToInt(row.Cells[colQauntity.Name].Value.ToString());
+                var unitP = decimal.Parse(row.Cells[colUnitPrice.Name].Value.ToString());
+                var totalP = decimal.Parse(row.Cells[colTotal.Name].Value.ToString());
+                invoiceDt.UnitPrice = String.Format("{0:C}", unitP);
+                invoiceDt.Total = String.Format("{0:C}", totalP);
+                invoiceDetails.Add(invoiceDt);
+            }
         }
-
         private void lblRemove_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
             if (dgv.SelectedRows.Count == 0 || dgv.SelectedRows[0] == null || dgv.CurrentRow.Cells[colProductId.Name].Value == null)
@@ -625,43 +627,40 @@ namespace QTech.Forms
         }
         private async void btnPrint_Click(object sender, EventArgs e)
         {
-            //if (InValid()) return;
-            //WriteInvoice();
-            //DataTable Invoice = new DataTable("Invoice");
-            //using (var reader = ObjectReader.Create(invoices))
-            //{
-            //    Invoice.Load(reader);
-            //}
-            //DataTable InvoiceDetail = new DataTable("InvoiceDetail");
-            //using (var reader = ObjectReader.Create(invoiceDetails))
-            //{
-            //    InvoiceDetail.Load(reader);
-            //}
-            //var Invoices = new List<DataTable>();
-            //Invoices.Add(Invoice);
-            //Invoices.Add(InvoiceDetail);
+            if (InValid()) return;
+            WriteInvoice();
+            DataTable Invoice = new DataTable("Invoice");
+            using (var reader = ObjectReader.Create(invoices))
+            {
+                Invoice.Load(reader);
+            }
+            DataTable InvoiceDetail = new DataTable("InvoiceDetail");
+            using (var reader = ObjectReader.Create(invoiceDetails))
+            {
+                InvoiceDetail.Load(reader);
+            }
+            var Invoices = new List<DataTable>();
+            Invoices.Add(Invoice);
+            Invoices.Add(InvoiceDetail);
 
-            //var report = await btnPrint.RunAsync(() =>
-            //{
-            //    var r = ReportHelper.Instance.Load(nameof(ReportInvoice), Invoices);
-            //    r.SummaryInfo.ReportTitle = nameof(ReportInvoice);
-            //    return r;
-            //});
+            var report = await btnPrint.RunAsync(() =>
+            {
+                var r = ReportHelper.Instance.Load(nameof(ReportInvoice), Invoices);
+                r.SummaryInfo.ReportTitle = nameof(ReportInvoice);
+                return r;
+            });
 
-            //if (report != null)
-            //{
-            //    var dig = new DialogReportViewer(report);
-            //    dig.Text = QTech.Base.Properties.Resources.Invoice;
-            //    dig.ShowDialog();
-            //}
+            if (report != null)
+            {
+                var dig = new DialogReportViewer(report);
+                dig.Text = QTech.Base.Properties.Resources.Invoice;
+                dig.ShowDialog();
+            }
         }
         private void dgv_CellLeave(object sender, DataGridViewCellEventArgs e)
         {
-            var cell = dgv.CurrentCell;
-            if (cell.Value != null)
-            {
-                cell.ErrorText = string.Empty;
-            }
+            var currentCell = dgv.CurrentCell;
+            var currentRow = dgv.CurrentRow;
         }
         protected override bool ProcessCmdKey(ref System.Windows.Forms.Message msg, System.Windows.Forms.Keys keyData)
         {
@@ -731,10 +730,10 @@ namespace QTech.Forms
                 }
             }
         }
-
         private void btnSave_Click(object sender, EventArgs e)
         {
             Save();
         }
+        
     }
 }
