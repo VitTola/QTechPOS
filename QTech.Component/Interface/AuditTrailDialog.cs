@@ -12,10 +12,8 @@ using QTech.Base.Helpers;
 using QTech.Base;
 using QTech.Base.Models;
 using QTech.Base.SearchModels;
-//using QTech.Db.Logics;
 using System.Threading;
 using QTech.Db.Logics;
-//using QTech.Db.Logics;
 
 namespace QTech.Component
 {
@@ -26,8 +24,10 @@ namespace QTech.Component
             InitializeComponent();
             InitEvent();
             this.SetTheme(this.Controls, null);
+            dtpDate.Width = 200;
+
         }
-        
+
         public GeneralProcess Flag { get; set; } = GeneralProcess.View;
         public BaseModel Model { get; set; }
         public void InitEvent()
@@ -55,7 +55,7 @@ namespace QTech.Component
             }
             var nodes = dgv.Rows.OfType<TreeGridNode>().ToList();
             if (nodes == null)
-            {
+            { 
                 return;
             }
             if (nodes.Any(x => x.IsExpanded))

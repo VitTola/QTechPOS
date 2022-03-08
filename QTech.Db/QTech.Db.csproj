@@ -92,6 +92,7 @@
     <Compile Include="Configs\QTechDbConfigs.cs" />
     <Compile Include="Logics\AuditTrailLogic.cs" />
     <Compile Include="Logics\AppSettingLogic.cs" />
+    <Compile Include="Logics\DiscountLogic.cs" />
     <Compile Include="Logics\SupplierLogic.cs" />
     <Compile Include="Logics\ProductPriceLogic.cs" />
     <Compile Include="Logics\ScaleLogic.cs" />

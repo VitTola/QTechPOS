@@ -13,6 +13,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using QTech.Component;
+using QTech.Base.Helpers;
 
 namespace QTech.Base.BaseReport
 {
@@ -135,6 +136,8 @@ namespace QTech.Base.BaseReport
 
         private async void DialogReportViewer_Load(object sender, EventArgs e)
         {
+            this.SetTheme(this.Controls, null);
+
             if (_direction == ReportDirection.ReportData)
             {
                 _report = await this.RunAsync(() =>

@@ -82,7 +82,7 @@ namespace QTech.Base.BaseModels
                 Children = new List<MenuBar>(),
                 FormName = "QTech.Forms.EmployeePage"
             },
-          
+
             new MenuBar()
             {
                 Index = 1,
@@ -118,7 +118,7 @@ namespace QTech.Base.BaseModels
                 FormName = "QTech.Forms.SalePage"
 
             },
-          
+
               new MenuBar()
             {
                 Index = 1,
@@ -145,7 +145,7 @@ namespace QTech.Base.BaseModels
             },
              new MenuBar()
             {
-                Index = 2,
+                Index = 3,
                 Level = 2,
                 Key = AuthKey.Sale_IncomeOutcome,
                 ParentKey = AuthKey.Sale,
@@ -191,7 +191,7 @@ namespace QTech.Base.BaseModels
                 FormName = "QTech.Forms.ScalePage"
 
             },
-               new MenuBar()
+            new MenuBar()
             {
                 Index = 3,
                 Level = 2,
@@ -199,6 +199,18 @@ namespace QTech.Base.BaseModels
                 ParentKey = AuthKey.Report,
                 DisplayName = BaseResource.ReportIncomeExpense,
                 Icon = BaseResource.InOut,
+                Children = new List<MenuBar>(),
+                FormName = "QTech.ReportViewerPage.ReportIncomeExpensePage"
+
+            },
+            new MenuBar()
+            {
+                Index = 2,
+                Level = 2,
+                Key = AuthKey.Sale_Discount,
+                ParentKey = AuthKey.Sale,
+                DisplayName = BaseResource.Discount,
+                Icon = BaseResource.discount_img,
                 Children = new List<MenuBar>(),
                 FormName = "QTech.ReportViewerPage.ReportIncomeExpensePage"
 

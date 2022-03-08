@@ -20,11 +20,11 @@ namespace QTech.Db.Configs
             modelBuilder.Entity<QTech.Base.Models.Product>().Ignore(x => x.ProductPrices);
 
             //AuditTail's config
-            //modelBuilder.Entity<AuditTrail>().Property(x => x.ClientAddress).HasMaxLength(200).IsRequired();
-            //modelBuilder.Entity<AuditTrail>().Property(x => x.OperatorGroup).HasMaxLength(200).IsRequired();
-            //modelBuilder.Entity<AuditTrail>().Property(x => x.TablePK).HasMaxLength(100).IsRequired();
-            //modelBuilder.Entity<AuditTrail>().Property(x => x.TableValue).HasMaxLength(1000).IsRequired();
-            //modelBuilder.Entity<AuditTrail>().Property(x => x.ChangeJson).HasColumnType("NTEXT").IsRequired();
+            modelBuilder.Entity<AuditTrail>().Property(x => x.ClientAddress).HasMaxLength(200).IsRequired();
+            modelBuilder.Entity<AuditTrail>().Property(x => x.OperatorGroup).HasMaxLength(200).IsRequired();
+            modelBuilder.Entity<AuditTrail>().Property(x => x.TablePK).HasMaxLength(100).IsRequired();
+            modelBuilder.Entity<AuditTrail>().Property(x => x.TableValue).HasMaxLength(1000).IsRequired();
+            modelBuilder.Entity<AuditTrail>().Property(x => x.ChangeJson).HasColumnType("NTEXT").IsRequired();
 
         }
     }

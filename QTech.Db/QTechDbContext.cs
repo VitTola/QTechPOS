@@ -43,6 +43,7 @@ namespace QTech.Db
         public virtual DbSet<Supplier> Suppliers { get; set; }
         public virtual DbSet<Scale> Scales { get; set; }
         public virtual DbSet<ProductPrice> ProductPrices { get; set; }
+        public virtual DbSet<Discount> Discounts { get; set; }
         
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
