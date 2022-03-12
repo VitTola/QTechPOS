@@ -150,9 +150,9 @@
     <Compile Include="Migrations\202112301352217_v1.9.designer.cs">
       <DependentUpon>202112301352217_v1.9.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\202112301543414_v2.0.cs" />
-    <Compile Include="Migrations\202112301543414_v2.0.designer.cs">
-      <DependentUpon>202112301543414_v2.0.cs</DependentUpon>
+    <Compile Include="Migrations\202203121543344_v2.0.cs" />
+    <Compile Include="Migrations\202203121543344_v2.0.designer.cs">
+      <DependentUpon>202203121543344_v2.0.cs</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -206,8 +206,8 @@
     <EmbeddedResource Include="Migrations\202112301352217_v1.9.resx">
       <DependentUpon>202112301352217_v1.9.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202112301543414_v2.0.resx">
-      <DependentUpon>202112301543414_v2.0.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\202203121543344_v2.0.resx">
+      <DependentUpon>202203121543344_v2.0.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

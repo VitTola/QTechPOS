@@ -13,12 +13,12 @@ namespace QTech.Db.Migrations
         
         string IMigrationMetadata.Id
         {
-            get { return "202112301543414_v2.0"; }
+            get { return "202203121543344_v2.0"; }
         }
         
         string IMigrationMetadata.Source
         {
-            get { return null; }
+            get { return Resources.GetString("Source"); }
         }
         
         string IMigrationMetadata.Target

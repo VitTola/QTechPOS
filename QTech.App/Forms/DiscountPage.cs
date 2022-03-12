@@ -141,8 +141,8 @@ namespace QTech.Forms
                 var row = newRow(false);
                 row.Cells[colId.Name].Value = x.Id;
                 row.Cells[colName.Name].Value = x.Name;
-                row.Cells[colFromDate.Name].Value = x.StartDate.ToString("dd-MMM-yyyy hh:mm"); ;
-                row.Cells[colToDate.Name].Value = x.ToDate.ToString("dd-MMM-yyyy hh:mm");
+                row.Cells[colFromDate.Name].Value = x.StartDate.ToString("dd-MMM-yyyy"); ;
+                row.Cells[colToDate.Name].Value = x.ToDate.ToString("dd-MMM-yyyy");
                 row.Cells[colDiscountType.Name].Value = x.DiscountType == DiscountType.ByProduct ? BaseResource.DiscountType_ByProduct :
                 BaseResource.DiscountType_ByTotal;
                 row.Cells[colNote.Name].Value = x.Note;

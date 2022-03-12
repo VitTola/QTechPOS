@@ -241,8 +241,8 @@ namespace QTech.Forms
             int _order = 1;
             Model.Name = txtName.Text;
             Model.Note = txtNote.Text;
-            Model.StartDate = dtpFrom.Value;
-            Model.ToDate = dtpTo.Value;
+            Model.StartDate = Parse.ToDateTime(dtpFrom.Value.ToString("dd-MMM-yyyy"));
+            Model.ToDate = Parse.ToDateTime(dtpTo.Value.ToString("dd-MMM-yyyy"));
             Model.DiscountType = (DiscountType)(cboDiscountType.SelectedValue);
             if (Model.DiscountType == DiscountType.ByProduct)
             {

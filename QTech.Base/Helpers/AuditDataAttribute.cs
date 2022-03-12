@@ -13,19 +13,22 @@ namespace QTech.Base.Helpers
         string _resourceName;
         int _index;
         bool _isIgnored;
+        string _dateformat;
 
 
-        public AuditDataAttribute(string resourceName = null, int index = 0,bool Ignored = false)
+        public AuditDataAttribute(string resourceName = null, int index = 0,bool Ignored = false, string dateformat = "dd-MM-yyyy HH:mm")
         {
             _resourceName = resourceName;
             _index = index;
             _isIgnored = Ignored;
+            _dateformat = dateformat;
 
         }
 
         public string ResourceName => _resourceName;
         public int Index => _index;
         public bool Ignored => _isIgnored;
+        public string Dateformat => _dateformat;
 
     }
 

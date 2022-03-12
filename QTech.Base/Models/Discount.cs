@@ -2,6 +2,7 @@
 using QTech.Base.Helpers;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -12,9 +13,9 @@ namespace QTech.Base.Models
     {
         [AuditData(resourceName: "Name", index: 1)]
         public string Name { get; set; }
-        [AuditData(resourceName: "FromDate", index: 2)]
+        [AuditData(resourceName: "FromDate",dateformat:"dd-MMM-yyyy", index: 2)]
         public DateTime StartDate { get; set; }
-        [AuditData(resourceName: "ToDate", index: 3)]
+        [AuditData(resourceName: "ToDate", dateformat: "dd-MMM-yyyy", index: 3)]
         public DateTime ToDate { get; set; }
         [AuditData(resourceName: "DiscountType", index: 4)]
         public DiscountType DiscountType { get; set; }

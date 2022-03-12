@@ -275,8 +275,9 @@ namespace QTech.Db.Logics
                     }
                     else if (typeof(DateTime) == propertyType)
                     {
-                        oldValue = (oldValue == null) ? "": DateTime.Parse(oldValue);
-                        newValue = (newValue == null) ? Consts.MIN_DATE : DateTime.Parse(newValue);
+                        var _dateFormate = ((QTech.Base.Helpers.AuditDataAttribute)property.GetCustomAttribute(typeof(QTech.Base.Helpers.AuditDataAttribute), true))?.Dateformat ?? "dd-MMM-yyyy HH:mm";
+                        oldValue = (oldValue == null) ? "": Convert.ToDateTime(oldValue).ToString(_dateFormate);
+                        newValue = (newValue == null) ? Consts.MIN_DATE : DateTime.Parse(newValue).ToString(_dateFormate);
                     }
                     DisplayNameAttribute dp = property.GetCustomAttributes(typeof(DisplayNameAttribute), true).Cast<DisplayNameAttribute>().SingleOrDefault();
                     var displayname = (!string.IsNullOrEmpty(dp?.DisplayName ?? ""))
