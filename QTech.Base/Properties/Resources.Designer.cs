@@ -377,6 +377,33 @@ namespace QTech.Base.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to បញ្ចុះតម្លៃតាមទំនិញ.
+        /// </summary>
+        public static string DiscountByProduct {
+            get {
+                return ResourceManager.GetString("DiscountByProduct", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to បញ្ចុះតម្លៃតាមតម្លៃទិញសរុប.
+        /// </summary>
+        public static string DiscountByTotal {
+            get {
+                return ResourceManager.GetString("DiscountByTotal", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to ប្រភេទបញ្ចុះតម្លៃ.
+        /// </summary>
+        public static string DiscountType {
+            get {
+                return ResourceManager.GetString("DiscountType", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to បញ្ចុះតម្លៃតាមមុខទំនិញ.
         /// </summary>
         public static string DiscountType_ByProduct {
@@ -1900,6 +1927,15 @@ namespace QTech.Base.Properties {
             get {
                 object obj = ResourceManager.GetObject("Staff", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to ចាប់ផ្តើម.
+        /// </summary>
+        public static string StartDate {
+            get {
+                return ResourceManager.GetString("StartDate", resourceCulture);
             }
         }
         

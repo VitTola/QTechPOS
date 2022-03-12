@@ -215,7 +215,6 @@ namespace QTech.Db.Logics
                     }
                 }
 
-
                 //IN CASE PROPERTY IS ID
                 if (property.Name.EndsWith("Id"))
                 {
@@ -258,7 +257,6 @@ namespace QTech.Db.Logics
                 var propertyType = (property.GetValue(entity) == null)
                     ? typeof(object)
                     : property.GetValue(entity).GetType();
-
                 if (typeof(decimal) == propertyType)
                 {
                     var decOldVaue = Parse.ToDecimal(oldValue);
@@ -266,12 +264,14 @@ namespace QTech.Db.Logics
                     oldValue = decOldVaue == 0 ? "" : decOldVaue.ToString();
                     newValue = decNewValue == 0 ? "" : decNewValue.ToString();
                 }
+                
                 if (oldValue != newValue || (property.PropertyType.IsGenericType && changeLog.Details.Any()))
                 {
                     if (propertyType.BaseType == typeof(Enum))
                     {
-                        oldValue = DomainResourceHelper.Translate(oldValue ?? "");
-                        newValue = DomainResourceHelper.Translate(newValue ?? "");
+                        var _type = propertyType.Name;
+                        oldValue = oldValue != null ? ResourceHelper.Translate($"{_type}_{oldValue}") : oldValue;
+                        newValue = newValue != null ? ResourceHelper.Translate($"{_type}_{newValue}") : newValue;
                     }
                     else if (typeof(DateTime) == propertyType)
                     {

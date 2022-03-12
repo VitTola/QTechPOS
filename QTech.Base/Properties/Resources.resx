@@ -799,4 +799,16 @@
   <data name="MsgToDateGreaterThenFromDate" xml:space="preserve">
     <value>ថ្ងៃដល់ត្រូវធំជាងថ្ងៃចាប់ពី!</value>
   </data>
+  <data name="DiscountType" xml:space="preserve">
+    <value>ប្រភេទបញ្ចុះតម្លៃ</value>
+  </data>
+  <data name="DiscountByProduct" xml:space="preserve">
+    <value>បញ្ចុះតម្លៃតាមទំនិញ</value>
+  </data>
+  <data name="DiscountByTotal" xml:space="preserve">
+    <value>បញ្ចុះតម្លៃតាមតម្លៃទិញសរុប</value>
+  </data>
+  <data name="StartDate" xml:space="preserve">
+    <value>ចាប់ផ្តើម</value>
+  </data>
 </root>

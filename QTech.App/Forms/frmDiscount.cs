@@ -75,8 +75,16 @@ namespace QTech.Forms
             dgv2.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
 
             cboDiscountType.SelectedIndexChanged += CboDiscountType_SelectedIndexChanged;
+            if(Flag == GeneralProcess.Add)
             cboDiscountType.SelectedIndex = cboDiscountType.FindString(BaseReource.DiscountType_ByProduct);
+            this.Load += FrmDiscount_Load;
 
+        }
+        private void FrmDiscount_Load(object sender, EventArgs e)
+        {
+            cboDiscountType.SelectedIndex = cboDiscountType.FindString​(Model.DiscountType == DiscountType.ByTotal ?
+                BaseReource.DiscountType_ByTotal : BaseReource.DiscountType_ByProduct);
+            CboDiscountType_SelectedIndexChanged(cboDiscountType, EventArgs.Empty);
         }
         private void CboDiscountType_SelectedIndexChanged(object sender, EventArgs e)
         {
@@ -120,8 +128,7 @@ namespace QTech.Forms
             txtNote.Text = Model.Note;
             dtpFrom.Value = Model.StartDate;
             dtpTo.Value = Model.ToDate;
-            cboDiscountType.SelectedItem = Enum.GetName(typeof(DiscountType), (DiscountType)Model.DiscountType);
-
+            
             if (Model.DiscountType == DiscountType.ByProduct)
             {
                 var disountByProducts = JsonConvert.DeserializeObject<List<DiscountByProduct>>(Model.DiscountByProduct);
@@ -163,16 +170,15 @@ namespace QTech.Forms
                 {
                     return ProductLogic.Instance.SearchAsync(new ProductSearch()) ?? new List<Product>();
                 });
-                dgv1.BeginEdit(true);
                 if (discountByTotals?.Any() ?? false)
                 {
                     discountByTotals.ForEach(x =>
                     {
                         var row = newRow(dgv2, false);
-                        row.Cells[colOrder.Name].Value = x.Order;
+                        row.Cells[colOrder2.Name].Value = x.Order;
                         row.Cells[colFromTotal.Name].Value = x.FromPrice;
                         row.Cells[colToTotal.Name].Value = x.ToPrice;
-                        row.Cells[colPercent.Name].Value = x.Percent;
+                        row.Cells[colPercent2.Name].Value = x.Percent;
                     });
                 }
             }
@@ -263,10 +269,10 @@ namespace QTech.Forms
                     dt.Order = _order++;
                     dt.FromPrice = Parse.ToDecimal(row.Cells[colFromTotal.Name].Value?.ToString());
                     dt.ToPrice = Parse.ToDecimal(row.Cells[colToTotal.Name].Value?.ToString());
-                    dt.Percent = Parse.ToDecimal(row.Cells[colPercent.Name].Value.ToString());
+                    dt.Percent = Parse.ToDecimal(row.Cells[colPercent2.Name].Value.ToString());
                     disountByTotals.Add(dt);
                 }
-                Model.DiscountByProduct = JsonConvert.SerializeObject(disountByTotals);
+                Model.DiscountByTotal = JsonConvert.SerializeObject(disountByTotals);
             }
         }
         private void btnClose_Click(object sender, EventArgs e)
@@ -295,7 +301,7 @@ namespace QTech.Forms
             var disounttype = (DiscountType)(cboDiscountType.SelectedValue);
             if (disounttype == DiscountType.ByTotal)
             {
-                var rows = dgv2.Rows.OfType<DataGridViewRow>().Where(x => x.Index != dgv1.RowCount - 1);
+                var rows = dgv2.Rows.OfType<DataGridViewRow>().Where(x => x.Index != dgv1.RowCount - 1 && !x.IsNewRow);
                 if (rows?.Any() != true)
                 {
                     MsgBox.ShowInformation(string.Format(BaseReource.MsgPleaseInputDataInTable_));
@@ -305,7 +311,7 @@ namespace QTech.Forms
                 foreach (DataGridViewRow row in rows)
                 {
                     var cells = row.Cells.OfType<DataGridViewCell>().Where(x =>
-                    x.ColumnIndex == row.Cells[colPercent.Name].ColumnIndex
+                    x.ColumnIndex == row.Cells[colPercent2.Name].ColumnIndex
                     || x.ColumnIndex == row.Cells[colFromTotal.Name].ColumnIndex
                     || x.ColumnIndex == row.Cells[colToTotal.Name].ColumnIndex)
                         .ToList();
@@ -325,7 +331,7 @@ namespace QTech.Forms
             }
             else if (disounttype == DiscountType.ByProduct)
             {
-                var rows = dgv1.Rows.OfType<DataGridViewRow>().Where(x => x.Index != dgv1.RowCount - 1);
+                var rows = dgv1.Rows.OfType<DataGridViewRow>().Where(x => x.Index != dgv1.RowCount - 1 && !x.IsNewRow);
                 if (rows?.Any() != true)
                 {
                     MsgBox.ShowInformation(string.Format(BaseReource.MsgPleaseInputDataInTable_));

@@ -41,13 +41,16 @@ namespace QTech.Forms
             txtSearch.RegisterPrimaryInput();
             txtSearch.RegisterKeyArrowDown(dgv);
             txtSearch.QuickSearch += txtSearch_QuickSearch;
-        }
 
+            dgv.RowPostPaint += (s,e) => dgv.Rows[e.RowIndex].Cells[colRow_.Name].Value = (e.RowIndex + 1).ToString(); 
+            pagination.DataSourceChanged += (s,e) => LoadData();
+            pagination.BackGroundColor = ShareValue.CurrentTheme.PanelColor;
+            pagination.Paging = 25;
+        }
         private async void txtSearch_QuickSearch(object sender, EventArgs e)
         {
             await Search();
         }  
-
         public async void AddNew()
         {
             Model = new Discount();
@@ -57,7 +60,6 @@ namespace QTech.Forms
                 await Search();
             }
         }
-
         public async void EditAsync()
         {
             if (dgv.SelectedRows.Count == 0)
@@ -81,16 +83,13 @@ namespace QTech.Forms
                 dgv.RowSelected(colId.Name, dig.Model.Id);
             }
         }
-
         public async void Reload()
         {
             dgv.AllowRowNotFound = true;
-            dgv.AllowRowNumber = true;
             dgv.ColumnHeadersHeight= 28;
 
             await Search();
         }
-
         public async void Remove()
         {
             if (dgv.SelectedRows.Count == 0)
@@ -119,7 +118,6 @@ namespace QTech.Forms
                 await Search();
             }
         }
-
         public async Task Search()
         {
             var search = new DiscountSearch()
@@ -127,13 +125,40 @@ namespace QTech.Forms
                 Search = txtSearch.Text,
             };
 
-            var result = await dgv.RunAsync(() => DiscountLogic.Instance.SearchAsync(search));
-            if (result != null)
+            pagination.DataSourceFn = await dgv.RunAsync(() => DiscountLogic.Instance.Search(search));
+            if (pagination.DataSource == null)
             {
-                dgv.DataSource = result.OrderByDescending(x=>x.RowDate)._ToDataTable();
+                return;
             }
+            LoadData();
         }
-  
+        private void LoadData()
+        {
+            List<Discount> discounts = pagination.DataSource.Cast<Discount>().ToList();
+            dgv.Rows.Clear();
+            discounts.OrderByDescending(x=>x.RowDate).ToList().ForEach(x =>
+            {
+                var row = newRow(false);
+                row.Cells[colId.Name].Value = x.Id;
+                row.Cells[colName.Name].Value = x.Name;
+                row.Cells[colFromDate.Name].Value = x.StartDate.ToString("dd-MMM-yyyy hh:mm"); ;
+                row.Cells[colToDate.Name].Value = x.ToDate.ToString("dd-MMM-yyyy hh:mm");
+                row.Cells[colDiscountType.Name].Value = x.DiscountType == DiscountType.ByProduct ? BaseResource.DiscountType_ByProduct :
+                BaseResource.DiscountType_ByTotal;
+                row.Cells[colNote.Name].Value = x.Note;
+            });
+            if (dgv.RowCount > 0) dgv.Rows[0].Selected = true;
+        }
+        private DataGridViewRow newRow(bool isFocus = false)
+        {
+            var row = dgv.Rows[dgv.Rows.Add()];
+            row.Cells[colId.Name].Value = 0;
+            if (isFocus)
+            {
+                dgv.Focus();
+            }
+            return row;
+        }
         public async void View()
         {
             if (dgv.SelectedRows.Count == 0)
@@ -152,22 +177,18 @@ namespace QTech.Forms
             var dig = new frmDiscount(Model, GeneralProcess.View);
             dig.ShowDialog();
         }
-
         private void btnAdd_Click(object sender, EventArgs e)
         {
             AddNew();
         }
-
         private void btnUpdate_Click(object sender, EventArgs e)
         {
             EditAsync();
         }
-
         private void btnRemove_Click(object sender, EventArgs e)
         {
             Remove();
         }
-
         private void dgv_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
             View();

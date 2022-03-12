@@ -30,6 +30,7 @@
         {
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             this.graPanel1 = new QTech.Component.GRAPanel();
             this.colorWithAlpha1 = new QTech.Component.ColorWithAlpha();
@@ -41,16 +42,28 @@
             this.btnAdd = new QTech.Component.ExButtonLoading();
             this.colorWithAlpha2 = new QTech.Component.ColorWithAlpha();
             this.colorWithAlpha3 = new QTech.Component.ColorWithAlpha();
-            this.colName = new QTech.Component.TreeGridColumn();
-            this.colNote = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dgv = new QTech.Component.ExDataGridView();
-            this.colId = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.panel1 = new System.Windows.Forms.Panel();
+            this.pagination = new QTech.Component.LTPagination();
+            this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn6 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn7 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colId = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colRow_ = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colName = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colFromDate = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colToDate = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colDiscountType = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colNote = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.graPanel1.SuspendLayout();
             this.flowLayoutPanel2.SuspendLayout();
             this.flowLayoutPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgv)).BeginInit();
+            this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
             // graPanel1
@@ -82,7 +95,7 @@
             this.graPanel1.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.graPanel1.Name = "graPanel1";
             this.graPanel1.Rounded = true;
-            this.graPanel1.Size = new System.Drawing.Size(1069, 35);
+            this.graPanel1.Size = new System.Drawing.Size(931, 35);
             this.graPanel1.TabIndex = 0;
             // 
             // colorWithAlpha1
@@ -99,7 +112,7 @@
             this.flowLayoutPanel2.Location = new System.Drawing.Point(0, 0);
             this.flowLayoutPanel2.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.flowLayoutPanel2.Name = "flowLayoutPanel2";
-            this.flowLayoutPanel2.Size = new System.Drawing.Size(304, 35);
+            this.flowLayoutPanel2.Size = new System.Drawing.Size(166, 35);
             this.flowLayoutPanel2.TabIndex = 0;
             // 
             // txtSearch
@@ -123,7 +136,7 @@
             this.flowLayoutPanel1.Controls.Add(this.btnAdd);
             this.flowLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Right;
             this.flowLayoutPanel1.FlowDirection = System.Windows.Forms.FlowDirection.RightToLeft;
-            this.flowLayoutPanel1.Location = new System.Drawing.Point(304, 0);
+            this.flowLayoutPanel1.Location = new System.Drawing.Point(166, 0);
             this.flowLayoutPanel1.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.flowLayoutPanel1.Name = "flowLayoutPanel1";
             this.flowLayoutPanel1.Size = new System.Drawing.Size(765, 35);
@@ -203,26 +216,6 @@
             this.colorWithAlpha3.Color = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
             this.colorWithAlpha3.Parent = null;
             // 
-            // colName
-            // 
-            this.colName.DefaultNodeImage = null;
-            this.colName.HeaderText = "ឈ្មោះ";
-            this.colName.Name = "colName";
-            this.colName.ReadOnly = true;
-            this.colName.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.colName.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            this.colName.Width = 300;
-            // 
-            // colNote
-            // 
-            this.colNote.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.colNote.DataPropertyName = "Note";
-            this.colNote.HeaderText = "ចំណាំ";
-            this.colNote.Name = "colNote";
-            this.colNote.ReadOnly = true;
-            this.colNote.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.colNote.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            // 
             // dgv
             // 
             this.dgv.AllowEnterToNextCell = false;
@@ -248,16 +241,20 @@
             this.dgv.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
             this.dgv.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.colId,
-            this.dataGridViewTextBoxColumn2,
-            this.dataGridViewTextBoxColumn4});
-            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle3.Font = new System.Drawing.Font("Khmer OS System", 8F);
-            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(173)))), ((int)(((byte)(205)))), ((int)(((byte)(239)))));
-            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dgv.DefaultCellStyle = dataGridViewCellStyle3;
+            this.colRow_,
+            this.colName,
+            this.colFromDate,
+            this.colToDate,
+            this.colDiscountType,
+            this.colNote});
+            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle4.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle4.Font = new System.Drawing.Font("Khmer OS System", 8F);
+            dataGridViewCellStyle4.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(173)))), ((int)(((byte)(205)))), ((int)(((byte)(239)))));
+            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dgv.DefaultCellStyle = dataGridViewCellStyle4;
             this.dgv.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dgv.EnableHeadersVisualStyles = false;
             this.dgv.Executing = false;
@@ -270,8 +267,85 @@
             this.dgv.RowHeadersVisible = false;
             this.dgv.RowTemplate.Height = 28;
             this.dgv.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgv.Size = new System.Drawing.Size(1069, 394);
+            this.dgv.Size = new System.Drawing.Size(931, 339);
             this.dgv.TabIndex = 2;
+            // 
+            // panel1
+            // 
+            this.panel1.Controls.Add(this.pagination);
+            this.panel1.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.panel1.Location = new System.Drawing.Point(0, 350);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(931, 24);
+            this.panel1.TabIndex = 3;
+            // 
+            // pagination
+            // 
+            this.pagination.BackColor = System.Drawing.Color.Blue;
+            this.pagination.BackGroundColor = System.Drawing.Color.Blue;
+            this.pagination.CurrentPage = 1;
+            this.pagination.Dock = System.Windows.Forms.DockStyle.Left;
+            this.pagination.Location = new System.Drawing.Point(0, 0);
+            this.pagination.Margin = new System.Windows.Forms.Padding(4);
+            this.pagination.Name = "pagination";
+            this.pagination.Size = new System.Drawing.Size(228, 24);
+            this.pagination.TabIndex = 0;
+            // 
+            // dataGridViewTextBoxColumn1
+            // 
+            this.dataGridViewTextBoxColumn1.DataPropertyName = "Id";
+            this.dataGridViewTextBoxColumn1.HeaderText = "Id";
+            this.dataGridViewTextBoxColumn1.Name = "dataGridViewTextBoxColumn1";
+            this.dataGridViewTextBoxColumn1.ReadOnly = true;
+            this.dataGridViewTextBoxColumn1.Visible = false;
+            // 
+            // dataGridViewTextBoxColumn2
+            // 
+            this.dataGridViewTextBoxColumn2.HeaderText = "";
+            this.dataGridViewTextBoxColumn2.Name = "dataGridViewTextBoxColumn2";
+            this.dataGridViewTextBoxColumn2.ReadOnly = true;
+            this.dataGridViewTextBoxColumn2.Width = 30;
+            // 
+            // dataGridViewTextBoxColumn3
+            // 
+            this.dataGridViewTextBoxColumn3.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
+            this.dataGridViewTextBoxColumn3.DataPropertyName = "Name";
+            this.dataGridViewTextBoxColumn3.FillWeight = 40F;
+            this.dataGridViewTextBoxColumn3.HeaderText = "ឈ្មោះ";
+            this.dataGridViewTextBoxColumn3.MinimumWidth = 300;
+            this.dataGridViewTextBoxColumn3.Name = "dataGridViewTextBoxColumn3";
+            this.dataGridViewTextBoxColumn3.ReadOnly = true;
+            this.dataGridViewTextBoxColumn3.Width = 300;
+            // 
+            // dataGridViewTextBoxColumn4
+            // 
+            this.dataGridViewTextBoxColumn4.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells;
+            this.dataGridViewTextBoxColumn4.HeaderText = "ចាប់ពីថ្ងៃទី";
+            this.dataGridViewTextBoxColumn4.Name = "dataGridViewTextBoxColumn4";
+            this.dataGridViewTextBoxColumn4.ReadOnly = true;
+            // 
+            // dataGridViewTextBoxColumn5
+            // 
+            this.dataGridViewTextBoxColumn5.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells;
+            this.dataGridViewTextBoxColumn5.HeaderText = "ដល់ថ្ងៃទី";
+            this.dataGridViewTextBoxColumn5.Name = "dataGridViewTextBoxColumn5";
+            this.dataGridViewTextBoxColumn5.ReadOnly = true;
+            // 
+            // dataGridViewTextBoxColumn6
+            // 
+            this.dataGridViewTextBoxColumn6.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells;
+            this.dataGridViewTextBoxColumn6.HeaderText = "ប្រភេទបញ្ចុះតម្លៃ";
+            this.dataGridViewTextBoxColumn6.Name = "dataGridViewTextBoxColumn6";
+            this.dataGridViewTextBoxColumn6.ReadOnly = true;
+            // 
+            // dataGridViewTextBoxColumn7
+            // 
+            this.dataGridViewTextBoxColumn7.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.dataGridViewTextBoxColumn7.DataPropertyName = "Note";
+            this.dataGridViewTextBoxColumn7.FillWeight = 60F;
+            this.dataGridViewTextBoxColumn7.HeaderText = "កំណត់ចំណាំ";
+            this.dataGridViewTextBoxColumn7.Name = "dataGridViewTextBoxColumn7";
+            this.dataGridViewTextBoxColumn7.ReadOnly = true;
             // 
             // colId
             // 
@@ -281,31 +355,64 @@
             this.colId.ReadOnly = true;
             this.colId.Visible = false;
             // 
-            // dataGridViewTextBoxColumn2
+            // colRow_
             // 
-            this.dataGridViewTextBoxColumn2.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
-            this.dataGridViewTextBoxColumn2.DataPropertyName = "Name";
-            this.dataGridViewTextBoxColumn2.FillWeight = 40F;
-            this.dataGridViewTextBoxColumn2.HeaderText = "ឈ្មោះ";
-            this.dataGridViewTextBoxColumn2.MinimumWidth = 300;
-            this.dataGridViewTextBoxColumn2.Name = "dataGridViewTextBoxColumn2";
-            this.dataGridViewTextBoxColumn2.ReadOnly = true;
-            this.dataGridViewTextBoxColumn2.Width = 300;
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            this.colRow_.DefaultCellStyle = dataGridViewCellStyle3;
+            this.colRow_.HeaderText = "";
+            this.colRow_.Name = "colRow_";
+            this.colRow_.ReadOnly = true;
+            this.colRow_.Width = 30;
             // 
-            // dataGridViewTextBoxColumn4
+            // colName
             // 
-            this.dataGridViewTextBoxColumn4.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.dataGridViewTextBoxColumn4.DataPropertyName = "Note";
-            this.dataGridViewTextBoxColumn4.FillWeight = 60F;
-            this.dataGridViewTextBoxColumn4.HeaderText = "កំណត់ចំណាំ";
-            this.dataGridViewTextBoxColumn4.Name = "dataGridViewTextBoxColumn4";
-            this.dataGridViewTextBoxColumn4.ReadOnly = true;
+            this.colName.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells;
+            this.colName.DataPropertyName = "Name";
+            this.colName.FillWeight = 40F;
+            this.colName.HeaderText = "ឈ្មោះ";
+            this.colName.MinimumWidth = 100;
+            this.colName.Name = "colName";
+            this.colName.ReadOnly = true;
             // 
-            // CategoryPage
+            // colFromDate
+            // 
+            this.colFromDate.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
+            this.colFromDate.HeaderText = "ចាប់ពីថ្ងៃទី";
+            this.colFromDate.Name = "colFromDate";
+            this.colFromDate.ReadOnly = true;
+            this.colFromDate.Width = 150;
+            // 
+            // colToDate
+            // 
+            this.colToDate.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
+            this.colToDate.HeaderText = "ដល់ថ្ងៃទី";
+            this.colToDate.Name = "colToDate";
+            this.colToDate.ReadOnly = true;
+            this.colToDate.Width = 150;
+            // 
+            // colDiscountType
+            // 
+            this.colDiscountType.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells;
+            this.colDiscountType.HeaderText = "ប្រភេទបញ្ចុះតម្លៃ";
+            this.colDiscountType.Name = "colDiscountType";
+            this.colDiscountType.ReadOnly = true;
+            this.colDiscountType.Width = 112;
+            // 
+            // colNote
+            // 
+            this.colNote.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.colNote.DataPropertyName = "Note";
+            this.colNote.FillWeight = 60F;
+            this.colNote.HeaderText = "កំណត់ចំណាំ";
+            this.colNote.Name = "colNote";
+            this.colNote.ReadOnly = true;
+            // 
+            // DiscountPage
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 19F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1069, 429);
+            this.ClientSize = new System.Drawing.Size(931, 374);
+            this.Controls.Add(this.panel1);
             this.Controls.Add(this.dgv);
             this.Controls.Add(this.graPanel1);
             this.Font = new System.Drawing.Font("Fasthand", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -316,6 +423,7 @@
             this.flowLayoutPanel2.ResumeLayout(false);
             this.flowLayoutPanel1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dgv)).EndInit();
+            this.panel1.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -332,11 +440,22 @@
         private Component.ColorWithAlpha colorWithAlpha2;
         private Component.ColorWithAlpha colorWithAlpha3;
         private Component.ExTextbox txtSearch;
-        private Component.TreeGridColumn colName;
-        private System.Windows.Forms.DataGridViewTextBoxColumn colNote;
         private Component.ExDataGridView dgv;
-        private System.Windows.Forms.DataGridViewTextBoxColumn colId;
+        private System.Windows.Forms.Panel panel1;
+        private Component.LTPagination pagination;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn1;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn2;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn3;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn5;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn6;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn7;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn4;
+        private System.Windows.Forms.DataGridViewTextBoxColumn colId;
+        private System.Windows.Forms.DataGridViewTextBoxColumn colRow_;
+        private System.Windows.Forms.DataGridViewTextBoxColumn colName;
+        private System.Windows.Forms.DataGridViewTextBoxColumn colFromDate;
+        private System.Windows.Forms.DataGridViewTextBoxColumn colToDate;
+        private System.Windows.Forms.DataGridViewTextBoxColumn colDiscountType;
+        private System.Windows.Forms.DataGridViewTextBoxColumn colNote;
     }
 }

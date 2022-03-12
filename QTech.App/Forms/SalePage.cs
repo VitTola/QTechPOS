@@ -72,12 +72,10 @@ namespace QTech.Forms
             pagination.DataSourceChanged += (s, e) => LoadData();
             dtpDate.SelectedIndexChanged += DtpDate_SelectedIndexChanged;
         }
-
         private async void DtpDate_SelectedIndexChanged(object sender, EventArgs e)
         {
             await Search();
         }
-
         private async void SalePage_Load(object sender, EventArgs e)
         {
             var isDone = await dgv.RunAsync(() =>
@@ -88,17 +86,14 @@ namespace QTech.Forms
                 return true;
             });
         }
-
         private void Dgv_RowPostPaint(object sender, DataGridViewRowPostPaintEventArgs e)
         {
             dgv.Rows[e.RowIndex].Cells[colRow_.Name].Value = (e.RowIndex + 1).ToString();
         }
-
         private void BtnAdd_Click(object sender, EventArgs e)
         {
             AddNew();
         }
-
         private async void CboPayStatus_SelectedIndexChanged(object sender, EventArgs e)
         {
             await Search();
@@ -198,7 +193,6 @@ namespace QTech.Forms
             }
             LoadData();
         }
-
         private void LoadData()
         {
             List<Sale> sales = pagination.DataSource.Cast<Sale>().ToList();
@@ -325,7 +319,6 @@ namespace QTech.Forms
             }
             return base.ProcessCmdKey(ref msg, keyData);
         }
-
         private void btnUpdate_Click(object sender, EventArgs e)
         {
             EditAsync();

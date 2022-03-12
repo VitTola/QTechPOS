@@ -30,10 +30,10 @@
         {
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             this.lblName = new QTech.Component.ExLabel();
             this.txtName = new System.Windows.Forms.TextBox();
             this.exPanel1 = new QTech.Component.Components.ExPanel();
@@ -44,6 +44,9 @@
             this.btnSave = new QTech.Component.ExButtonLoading();
             this.lblCategory = new QTech.Component.ExLabel();
             this.dgv1 = new QTech.Component.ExDataGridView();
+            this.colOrder = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colProduct = new QTech.Component.ExSearchComboColumn();
+            this.colPercent = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.txtNote = new System.Windows.Forms.TextBox();
             this.lblNote = new QTech.Component.ExLabel();
             this.flowLayOutLabelRemoveAdd = new System.Windows.Forms.FlowLayoutPanel();
@@ -64,9 +67,6 @@
             this.lblAdd2 = new System.Windows.Forms.LinkLabel();
             this.gbTotal_ = new System.Windows.Forms.GroupBox();
             this.gbProduct_ = new System.Windows.Forms.GroupBox();
-            this.colOrder = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.colProduct = new QTech.Component.ExSearchComboColumn();
-            this.colPercent = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.container.SuspendLayout();
             this.exPanel1.SuspendLayout();
             this.flowLayoutPanel3.SuspendLayout();
@@ -157,7 +157,7 @@
             this.btnChangeLog.ShortcutAligment = QTech.Component.ExButtonLoading.Aligment.Horizontal;
             this.btnChangeLog.ShortcutText = "E";
             this.btnChangeLog.Size = new System.Drawing.Size(86, 27);
-            this.btnChangeLog.TabIndex = 8;
+            this.btnChangeLog.TabIndex = 0;
             this.btnChangeLog.Text = "ប្រវត្តកែប្រែ";
             this.btnChangeLog.UseVisualStyleBackColor = true;
             this.btnChangeLog.Click += new System.EventHandler(this.btnChangeLog_Click);
@@ -258,7 +258,41 @@
             this.dgv1.RowTemplate.Height = 28;
             this.dgv1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgv1.Size = new System.Drawing.Size(270, 325);
-            this.dgv1.TabIndex = 35;
+            this.dgv1.TabIndex = 0;
+            // 
+            // colOrder
+            // 
+            this.colOrder.HeaderText = "Order";
+            this.colOrder.Name = "colOrder";
+            this.colOrder.ReadOnly = true;
+            this.colOrder.Visible = false;
+            // 
+            // colProduct
+            // 
+            this.colProduct.Choose = null;
+            this.colProduct.CustomSearchForm = null;
+            this.colProduct.DataSourceFn = null;
+            this.colProduct.FillWeight = 120F;
+            this.colProduct.HeaderText = "ទំនិញ";
+            this.colProduct.Name = "colProduct";
+            this.colProduct.ReadOnly = true;
+            this.colProduct.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.colProduct.SearchParamFn = null;
+            this.colProduct.ShowAll = false;
+            this.colProduct.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
+            this.colProduct.TextAll = null;
+            this.colProduct.Width = 200;
+            // 
+            // colPercent
+            // 
+            this.colPercent.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            dataGridViewCellStyle2.Format = "N2";
+            dataGridViewCellStyle2.NullValue = null;
+            this.colPercent.DefaultCellStyle = dataGridViewCellStyle2;
+            this.colPercent.HeaderText = "ភារយ";
+            this.colPercent.Name = "colPercent";
+            this.colPercent.ReadOnly = true;
             // 
             // txtNote
             // 
@@ -267,7 +301,7 @@
             this.txtNote.Multiline = true;
             this.txtNote.Name = "txtNote";
             this.txtNote.Size = new System.Drawing.Size(569, 28);
-            this.txtNote.TabIndex = 2;
+            this.txtNote.TabIndex = 4;
             // 
             // lblNote
             // 
@@ -323,14 +357,14 @@
             this.cboDiscountType.Location = new System.Drawing.Point(137, 51);
             this.cboDiscountType.Name = "cboDiscountType";
             this.cboDiscountType.Size = new System.Drawing.Size(199, 27);
-            this.cboDiscountType.TabIndex = 38;
+            this.cboDiscountType.TabIndex = 1;
             // 
             // dtpFrom
             // 
             this.dtpFrom.Location = new System.Drawing.Point(507, 19);
             this.dtpFrom.Name = "dtpFrom";
             this.dtpFrom.Size = new System.Drawing.Size(200, 28);
-            this.dtpFrom.TabIndex = 39;
+            this.dtpFrom.TabIndex = 2;
             // 
             // exLabel2
             // 
@@ -359,7 +393,7 @@
             this.dtpTo.Location = new System.Drawing.Point(507, 51);
             this.dtpTo.Name = "dtpTo";
             this.dtpTo.Size = new System.Drawing.Size(200, 28);
-            this.dtpTo.TabIndex = 41;
+            this.dtpTo.TabIndex = 3;
             // 
             // dgv2
             // 
@@ -401,7 +435,7 @@
             this.dgv2.RowTemplate.Height = 28;
             this.dgv2.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgv2.Size = new System.Drawing.Size(379, 328);
-            this.dgv2.TabIndex = 43;
+            this.dgv2.TabIndex = 0;
             // 
             // colOrder2
             // 
@@ -492,40 +526,6 @@
             this.gbProduct_.TabIndex = 47;
             this.gbProduct_.TabStop = false;
             this.gbProduct_.Text = "បញ្ចុះតម្លៃតាមមុខទំនិញ";
-            // 
-            // colOrder
-            // 
-            this.colOrder.HeaderText = "Order";
-            this.colOrder.Name = "colOrder";
-            this.colOrder.ReadOnly = true;
-            this.colOrder.Visible = false;
-            // 
-            // colProduct
-            // 
-            this.colProduct.Choose = null;
-            this.colProduct.CustomSearchForm = null;
-            this.colProduct.DataSourceFn = null;
-            this.colProduct.FillWeight = 120F;
-            this.colProduct.HeaderText = "ទំនិញ";
-            this.colProduct.Name = "colProduct";
-            this.colProduct.ReadOnly = true;
-            this.colProduct.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.colProduct.SearchParamFn = null;
-            this.colProduct.ShowAll = false;
-            this.colProduct.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
-            this.colProduct.TextAll = null;
-            this.colProduct.Width = 200;
-            // 
-            // colPercent
-            // 
-            this.colPercent.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            dataGridViewCellStyle2.Format = "N2";
-            dataGridViewCellStyle2.NullValue = null;
-            this.colPercent.DefaultCellStyle = dataGridViewCellStyle2;
-            this.colPercent.HeaderText = "ភារយ";
-            this.colPercent.Name = "colPercent";
-            this.colPercent.ReadOnly = true;
             // 
             // frmDiscount
             // 
