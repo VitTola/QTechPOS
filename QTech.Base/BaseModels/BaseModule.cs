@@ -212,7 +212,7 @@ namespace QTech.Base.BaseModels
                 DisplayName = BaseResource.Discount,
                 Icon = BaseResource.discount_img,
                 Children = new List<MenuBar>(),
-                FormName = "QTech.ReportViewerPage.ReportIncomeExpensePage"
+                FormName = "QTech.Forms.DiscountPage"
 
             },
 

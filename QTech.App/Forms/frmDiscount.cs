@@ -1,4 +1,6 @@
 ﻿using EasyServer.Domain.Helpers;
+using Newtonsoft.Json;
+using QTech.Base.Enums;
 using QTech.Base.Helpers;
 using QTech.Base.Models;
 using QTech.Base.SearchModels;
@@ -33,31 +35,19 @@ namespace QTech.Forms
             BindAsync();
             InitEvent();
             this.SetTheme(this.Controls, null);
-            pnlbackground.BackColor = Color.Gray;
+            flowLayOutLabelRemoveAdd.BackColor = flowLayOutLabelRemoveAdd2.BackColor =
+                ShareValue.CurrentTheme.FormBackGround;
+            lblAdd.LinkColor = lblRemove.LinkColor = lblAdd2.LinkColor = lblRemove2.LinkColor
+                = Color.FromArgb(0, 0, 255);
         }
         public GeneralProcess Flag { get; set; }
 
         public void BindAsync()
         {
-            cboCategory.DataSourceFn = p => CategoryLogic.Instance.SearchAsync(p).ToDropDownItemModelList();
-            cboCategory.SearchParamFn = () => new CategorySearch();
+            cboDiscountType.SetDataSource<DiscountType>();
+            colProduct.SearchParamFn = () => new ProductSearch() { };
+            colProduct.DataSourceFn = p => ProductLogic.Instance.SearchAsync(p).ToDropDownItemModelList();
 
-            colScale.SearchParamFn = () => new ScaleSearch() { };
-            colScale.DataSourceFn = p => ScaleLogic.Instance.SearchAsync(p).OrderByDescending(x => x.RowDate)
-            .Where(x=>!AddedScaleIds().Contains(x.Id)).ToDropDownItemModelList();
-
-        }
-        private List<int> AddedScaleIds()
-        {
-            var scaleIds = new List<int>();
-            dgv.EndEdit();
-            foreach (DataGridViewRow row in dgv.Rows.OfType<DataGridViewRow>().Where(x => !x.IsNewRow))
-            {
-                var scaleId = Parse.ToInt(row?.Cells[colScale.Name]?.Value?.ToString() ?? "0");
-                scaleIds.Add(scaleId);
-            }
-
-            return scaleIds;
         }
         public void InitEvent()
         {
@@ -65,19 +55,37 @@ namespace QTech.Forms
             this.Text = Flag.GetTextDialog(Base.Properties.Resources.Discount);
             txtName.RegisterPrimaryInputWith(txtNote, txtName);
             this.SetEnabled(Flag != GeneralProcess.Remove && Flag != GeneralProcess.View);
-            txtName.RegisterKeyEnterNextControlWith(cboCategory, txtNote);
-            picFood.Click += btnAddPic__Click;
-            txtName.RegisterKeyEnterNextControlWith(cboCategory, txtNote);
 
-            dgv.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
-            dgv.RegisterEnglishInputColumns(colSalePrice);
-            dgv.AllowRowNotFound = false;
-            dgv.AllowUserToAddRows = dgv.AllowUserToDeleteRows = true;
-            dgv.EditMode = DataGridViewEditMode.EditOnEnter;
-            dgv.EditingControlShowing += dgv_EditingControlShowing;
+            dgv1.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+            dgv1.RegisterEnglishInputColumns(colPercent);
+            dgv1.AllowRowNotFound = false;
+            dgv1.AllowUserToAddRows = dgv1.AllowUserToDeleteRows = true;
+            dgv1.EditMode = DataGridViewEditMode.EditOnEnter;
+            dgv1.EditingControlShowing += dgv_EditingControlShowing;
             this.SetEnabled(Flag != GeneralProcess.Remove && Flag != GeneralProcess.View);
-            dgv.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+            dgv1.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
 
+            dgv2.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+            dgv2.RegisterEnglishInputColumns(colPercent2);
+            dgv2.AllowRowNotFound = false;
+            dgv2.AllowUserToAddRows = dgv1.AllowUserToDeleteRows = true;
+            dgv2.EditMode = DataGridViewEditMode.EditOnEnter;
+            dgv2.EditingControlShowing += dgv_EditingControlShowing;
+            this.SetEnabled(Flag != GeneralProcess.Remove && Flag != GeneralProcess.View);
+            dgv2.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+
+            cboDiscountType.SelectedIndexChanged += CboDiscountType_SelectedIndexChanged;
+            cboDiscountType.SelectedIndex = cboDiscountType.FindString(BaseReource.DiscountType_ByProduct);
+
+        }
+        private void CboDiscountType_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            var discountType = (DiscountType)(cboDiscountType.SelectedValue);
+            gbTotal_.Enabled = !(gbProduct_.Enabled = discountType == DiscountType.ByProduct);
+            if (gbTotal_.Enabled)
+                dgv1.Rows.Clear();
+            else
+                dgv2.Rows.Clear();
         }
         private void dgv_EditingControlShowing(object sender, DataGridViewEditingControlShowingEventArgs e)
         {
@@ -86,11 +94,16 @@ namespace QTech.Forms
         public bool InValid()
         {
             if (!txtName.IsValidRequired(lblName.Text)
-                | !cboCategory.IsValidRequired(lblCategory.Text)
+                | !cboDiscountType.IsValidRequired(lblCategory.Text)
                )
             {
                 return true;
             }
+            if (dtpFrom.Value > dtpTo.Value)
+            {
+                dtpTo.ShowValidation(BaseReource.MsgToDateGreaterThenFromDate, TabAlignment.Right);
+            }
+
             if (!validDiscountPrice())
             {
                 return true;
@@ -105,54 +118,68 @@ namespace QTech.Forms
             }
             txtName.Text = Model.Name;
             txtNote.Text = Model.Note;
+            dtpFrom.Value = Model.StartDate;
+            dtpTo.Value = Model.ToDate;
+            cboDiscountType.SelectedItem = Enum.GetName(typeof(DiscountType), (DiscountType)Model.DiscountType);
 
-            //List<DiscountPrice> DiscountPrices = null;
-            //List<Scale> Scales = null;
-            //var _result = await this.RunAsync(() =>
-            //{
-            //    DiscountPrices = DiscountPriceLogic.Instance.SearchAsync(new DiscountPriceSearch { DiscountId = Model.Id });
-            //    Scales = ScaleLogic.Instance.SearchAsync(new ScaleSearch());
-            //    var result = CategoryLogic.Instance.FindAsync(Model.CategoryId);
-            //    return result;
-            //}
-            //);
-            //cboCategory.SetValue(_result);
-            //picFood.ImageSource = Model?.Photo;
+            if (Model.DiscountType == DiscountType.ByProduct)
+            {
+                var disountByProducts = JsonConvert.DeserializeObject<List<DiscountByProduct>>(Model.DiscountByProduct);
+                var products = await this.RunAsync(() =>
+                {
+                    return ProductLogic.Instance.SearchAsync(new ProductSearch()) ?? new List<Product>();
+                });
+                if (disountByProducts?.Any() ?? false)
+                {
+                    disountByProducts.ForEach(x =>
+                    {
+                        var row = newRow(dgv1, false);
+                        row.Cells[colOrder.Name].Value = x.Order;
+                        row.Cells[colPercent.Name].Value = x.Percent;
 
-            ////dgv.BeginEdit(true);
-            //if (DiscountPrices?.Any() ?? false)
-            //{
-            //    Model.DiscountPrices = DiscountPrices;
-            //    DiscountPrices.ForEach(x =>
-            //    {
-            //        var row = newRow(false);
-            //        row.Cells[colId.Name].Value = x.Id;
-            //        row.Cells[colSalePrice.Name].Value = x.SalePrice;
-
-            //        if (Scales?.Any() ?? false)
-            //        {
-            //            var scale = Scales.FirstOrDefault(f => f.Id == x.ScaleId);
-            //            var _scale = new List<DropDownItemModel>()
-            //        {
-            //                    new DropDownItemModel
-            //                    {
-            //                        Id = scale.Id,
-            //                        Code = scale.Name,
-            //                        Name = scale.Name,
-            //                        DisplayText = scale.Name,
-            //                        ItemObject = scale,
-            //                    }
-            //        };
-            //            row.Cells[colScale.Name].Value = _scale;
-            //        }
-                    
-            //    });
-            //}
+                        if (products?.Any() ?? false)
+                        {
+                            var product = products.FirstOrDefault(f => f.Id == x.ProductId);
+                            var _product = new List<DropDownItemModel>()
+                            {
+                                new DropDownItemModel
+                                {
+                                    Id = product.Id,
+                                    Code = product.Name,
+                                    Name = product.Name,
+                                    DisplayText = product.Name,
+                                    ItemObject = product,
+                                }
+                            };
+                            row.Cells[colProduct.Name].Value = _product;
+                        }
+                    });
+                }
+            }
+            else
+            {
+                var discountByTotals = JsonConvert.DeserializeObject<List<DiscountByTotal>>(Model.DiscountByTotal);
+                var products = await this.RunAsync(() =>
+                {
+                    return ProductLogic.Instance.SearchAsync(new ProductSearch()) ?? new List<Product>();
+                });
+                dgv1.BeginEdit(true);
+                if (discountByTotals?.Any() ?? false)
+                {
+                    discountByTotals.ForEach(x =>
+                    {
+                        var row = newRow(dgv2, false);
+                        row.Cells[colOrder.Name].Value = x.Order;
+                        row.Cells[colFromTotal.Name].Value = x.FromPrice;
+                        row.Cells[colToTotal.Name].Value = x.ToPrice;
+                        row.Cells[colPercent.Name].Value = x.Percent;
+                    });
+                }
+            }
         }
-        private DataGridViewRow newRow(bool isFocus = false)
+        private DataGridViewRow newRow(DataGridView dgv, bool isFocus = false)
         {
             var row = dgv.Rows[dgv.Rows.Add()];
-            row.Cells[colId.Name].Value = 0;
             if (isFocus)
             {
                 dgv.Focus();
@@ -205,34 +232,42 @@ namespace QTech.Forms
         }
         public void Write()
         {
+            int _order = 1;
             Model.Name = txtName.Text;
             Model.Note = txtNote.Text;
-            var selectedCat = cboCategory.SelectedObject.ItemObject as Category;
-           
-            
+            Model.StartDate = dtpFrom.Value;
+            Model.ToDate = dtpTo.Value;
+            Model.DiscountType = (DiscountType)(cboDiscountType.SelectedValue);
+            if (Model.DiscountType == DiscountType.ByProduct)
+            {
+                var discountByProducts = new List<DiscountByProduct>();
+                dgv1.EndEdit();
+                foreach (DataGridViewRow row in dgv1.Rows.OfType<DataGridViewRow>().Where(x => !x.IsNewRow))
+                {
+                    var dp = new DiscountByProduct();
+                    dp.Order = _order++;
+                    dp.ProductId = Parse.ToInt(row.Cells[colProduct.Name].Value?.ToString());
+                    dp.Percent = Parse.ToDecimal(row.Cells[colPercent.Name].Value.ToString());
+                    discountByProducts.Add(dp);
+                }
 
-            //dgv.EndEdit();
-            //foreach (DataGridViewRow row in dgv.Rows.OfType<DataGridViewRow>().Where(x => !x.IsNewRow))
-            //{
-            //    var pp = new DiscountPrice();
-
-            //    pp.Active = true;
-            //    pp.Id = Parse.ToInt(row?.Cells[colId.Name]?.Value?.ToString() ?? "0");
-            //    pp.DiscountId = Model.Id;
-            //    pp.ScaleId = Parse.ToInt(row?.Cells[colScale.Name]?.Value?.ToString() ?? "0");
-            //    pp.SalePrice = Parse.ToDecimal(row?.Cells[colSalePrice.Name]?.Value?.ToString() ?? "0");
-            //    var temp = Model.DiscountPrices.FirstOrDefault(x => x.Id == pp.Id);
-            //    if (temp !=null && temp.Id != 0)
-            //    {
-            //        Model.DiscountPrices[Model.DiscountPrices.IndexOf(temp)] = pp;
-            //    }
-            //    else
-            //    {
-            //        Model.DiscountPrices.Add(pp);
-            //    }
-
-            //}
-          
+                Model.DiscountByProduct = JsonConvert.SerializeObject(discountByProducts);
+            }
+            else
+            {
+                var disountByTotals = new List<DiscountByTotal>();
+                dgv2.EndEdit();
+                foreach (DataGridViewRow row in dgv2.Rows.OfType<DataGridViewRow>().Where(x => !x.IsNewRow))
+                {
+                    var dt = new DiscountByTotal();
+                    dt.Order = _order++;
+                    dt.FromPrice = Parse.ToDecimal(row.Cells[colFromTotal.Name].Value?.ToString());
+                    dt.ToPrice = Parse.ToDecimal(row.Cells[colToTotal.Name].Value?.ToString());
+                    dt.Percent = Parse.ToDecimal(row.Cells[colPercent.Name].Value.ToString());
+                    disountByTotals.Add(dt);
+                }
+                Model.DiscountByProduct = JsonConvert.SerializeObject(disountByTotals);
+            }
         }
         private void btnClose_Click(object sender, EventArgs e)
         {
@@ -241,21 +276,6 @@ namespace QTech.Forms
         private void btnSave_Click(object sender, EventArgs e)
         {
             Save();
-        }
-        private void btnAddPic__Click(object sender, EventArgs e)
-        {
-            OpenFileDialog dialog = new OpenFileDialog();
-            dialog.Filter = "Image|*.jpg;*.jpeg;*.png;";
-            if (dialog.ShowDialog() == DialogResult.OK)
-            {
-                var ByteSource = File.ReadAllBytes(dialog.FileName);
-                picFood.ImageSource = ByteSource;
-                picFood.ImagePath = dialog.FileName;
-            }
-        }
-        private void btnRemovePic_Click(object sender, EventArgs e)
-        {
-            picFood.SetPlaceHolder();
         }
         protected override bool ProcessCmdKey(ref Message msg, Keys keyData)
         {
@@ -272,31 +292,66 @@ namespace QTech.Forms
         private bool validDiscountPrice()
         {
             var invalidCell = false;
-            var rows = dgv.Rows.OfType<DataGridViewRow>().Where(x => x.Index != dgv.RowCount - 1);
-            if (rows?.Any() != true)
+            var disounttype = (DiscountType)(cboDiscountType.SelectedValue);
+            if (disounttype == DiscountType.ByTotal)
             {
-                MsgBox.ShowInformation(string.Format(BaseReource.MsgPleaseInputDataInTable_, BaseReource.SalePrice));
-                return false;
+                var rows = dgv2.Rows.OfType<DataGridViewRow>().Where(x => x.Index != dgv1.RowCount - 1);
+                if (rows?.Any() != true)
+                {
+                    MsgBox.ShowInformation(string.Format(BaseReource.MsgPleaseInputDataInTable_));
+                    return false;
+                }
+
+                foreach (DataGridViewRow row in rows)
+                {
+                    var cells = row.Cells.OfType<DataGridViewCell>().Where(x =>
+                    x.ColumnIndex == row.Cells[colPercent.Name].ColumnIndex
+                    || x.ColumnIndex == row.Cells[colFromTotal.Name].ColumnIndex
+                    || x.ColumnIndex == row.Cells[colToTotal.Name].ColumnIndex)
+                        .ToList();
+                    cells.ForEach(x =>
+                    {
+                        if (x.Value == null)
+                        {
+                            x.ErrorText = BaseReource.MsgPleaseInputValue;
+                            invalidCell = true;
+                        }
+                        else
+                        {
+                            x.ErrorText = string.Empty;
+                        }
+                    });
+                }
+            }
+            else if (disounttype == DiscountType.ByProduct)
+            {
+                var rows = dgv1.Rows.OfType<DataGridViewRow>().Where(x => x.Index != dgv1.RowCount - 1);
+                if (rows?.Any() != true)
+                {
+                    MsgBox.ShowInformation(string.Format(BaseReource.MsgPleaseInputDataInTable_));
+                    return false;
+                }
+
+                foreach (DataGridViewRow row in rows)
+                {
+                    var cells = row.Cells.OfType<DataGridViewCell>().Where(x =>
+                    x.ColumnIndex == row.Cells[colPercent.Name].ColumnIndex
+                    || x.ColumnIndex == row.Cells[colProduct.Name].ColumnIndex).ToList();
+                    cells.ForEach(x =>
+                    {
+                        if (x.Value == null)
+                        {
+                            x.ErrorText = BaseReource.MsgPleaseInputValue;
+                            invalidCell = true;
+                        }
+                        else
+                        {
+                            x.ErrorText = string.Empty;
+                        }
+                    });
+                }
             }
 
-            foreach (DataGridViewRow row in rows)
-            {
-                var cells = row.Cells.OfType<DataGridViewCell>().Where(x =>
-                x.ColumnIndex == row.Cells[colScale.Name].ColumnIndex
-                || x.ColumnIndex == row.Cells[colSalePrice.Name].ColumnIndex).ToList();
-                cells.ForEach(x =>
-                {
-                    if (x.Value == null)
-                    {
-                        x.ErrorText = BaseReource.MsgPleaseInputValue;
-                        invalidCell = true;
-                    }
-                    else
-                    {
-                        x.ErrorText = string.Empty;
-                    }
-                });
-            }
             if (invalidCell)
             {
                 return false;
@@ -304,65 +359,73 @@ namespace QTech.Forms
 
             return true;
         }
-
         private void lblAdd_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
-            if (!dgv.CurrentCell?.IsInEditMode ?? true)
+            if (!dgv1.CurrentCell?.IsInEditMode ?? true)
             {
-                if (dgv.Rows.OfType<DataGridViewRow>().Where(x => x.IsNewRow).Count() == 1 && dgv.CurrentCell == null)
+                if (dgv1.Rows.OfType<DataGridViewRow>().Where(x => x.IsNewRow).Count() == 1 && dgv1.CurrentCell == null)
                 {
-                    dgv.Rows.Clear();
+                    dgv1.Rows.Clear();
                 }
-                var index = dgv.Rows[dgv.NewRowIndex].Cells[colScale.Name];
-                dgv.CurrentCell = index;
-                dgv.BeginEdit(true);
+                var index = dgv1.Rows[dgv1.NewRowIndex].Cells[colProduct.Name];
+                dgv1.CurrentCell = index;
+                dgv1.BeginEdit(true);
             }
         }
-
         private void lblRemove_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
-            var row = dgv.SelectedRows[0];
-            var idValue = row.Cells[colId.Name].Value;
-            int ppId = int.Parse(idValue.ToString());
-            if (ppId != 0)
+            var row = dgv1.SelectedRows[0];
+
+            if (dgv1?.SelectedRows?.Count > 0)
             {
-                //var canRemove = await dgv.RunAsync(() => DiscountPriceLogic.Instance.CanRemoveAsync(ppId));
-                //if (!canRemove)
+                //Model.DiscountPrices.ForEach(x =>
                 //{
-                //    MsgBox.ShowWarning(BaseReource.Scale + BaseReource.MsgDataCurrentlyInUsed,
-                //   GeneralProcess.Remove.GetTextDialog(BaseReource.Site));
-                //    return;
+                //    if (x.Id == int.Parse(idValue.ToString()))
+                //    {
+                //        x.Active = false;
+                //    }
                 //}
+                //);
+                if (!row.IsNewRow)
+                {
+                    dgv1.Rows.Remove(row);
+                    dgv1.EndEdit();
+                }
             }
+        }
+        private void lblAdd2_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            if (!dgv2.CurrentCell?.IsInEditMode ?? true)
+            {
+                if (dgv2.Rows.OfType<DataGridViewRow>().Where(x => x.IsNewRow).Count() == 1 && dgv2.CurrentCell == null)
+                {
+                    dgv2.Rows.Clear();
+                }
+                var index = dgv2.Rows[dgv2.NewRowIndex].Cells[colFromTotal.Name];
+                dgv2.CurrentCell = index;
+                dgv2.BeginEdit(true);
+            }
+        }
+        private void lblRemove2_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            var row = dgv2.SelectedRows[0];
 
-            //if (dgv?.SelectedRows?.Count > 0)
-            //{
-            //    if (row.Cells[colScale.Name].Value == null &&
-            //     row.Cells[colSalePrice.Name].Value == null)
-            //    {
-            //        return;
-            //    }
-
-            //    if (idValue == null)
-            //    {
-            //        dgv.Rows.Remove(dgv.CurrentRow);
-            //        return;
-            //    }
-
-            //    Model.DiscountPrices.ForEach(x =>
-            //    {
-            //        if (x.Id == int.Parse(idValue.ToString()))
-            //        {
-            //            x.Active = false;
-            //        }
-            //    }
-            //    );
-            //    if (!row.IsNewRow)
-            //    {
-            //        dgv.Rows.Remove(row);
-            //        dgv.EndEdit();
-            //    }
-            //}
+            if (dgv2?.SelectedRows?.Count > 0)
+            {
+                //Model.DiscountPrices.ForEach(x =>
+                //{
+                //    if (x.Id == int.Parse(idValue.ToString()))
+                //    {
+                //        x.Active = false;
+                //    }
+                //}
+                //);
+                if (!row.IsNewRow)
+                {
+                    dgv2.Rows.Remove(row);
+                    dgv2.EndEdit();
+                }
+            }
         }
     }
 }

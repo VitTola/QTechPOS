@@ -19,7 +19,7 @@ namespace QTech.Base.Properties {
     // class via a tool like ResGen or Visual Studio.
     // To add or remove a member, edit your .ResX file then rerun ResGen
     // with the /str option, or rebuild your VS project.
-    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "15.0.0.0")]
+    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "17.0.0.0")]
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
     public class Resources {
@@ -377,6 +377,24 @@ namespace QTech.Base.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to បញ្ចុះតម្លៃតាមមុខទំនិញ.
+        /// </summary>
+        public static string DiscountType_ByProduct {
+            get {
+                return ResourceManager.GetString("DiscountType_ByProduct", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to បញ្ចុះតម្លៃតាមតម្លៃទិញសរុប.
+        /// </summary>
+        public static string DiscountType_ByTotal {
+            get {
+                return ResourceManager.GetString("DiscountType_ByTotal", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to ថ្ងៃធ្វើ.
         /// </summary>
         public static string DoDate {
@@ -494,6 +512,15 @@ namespace QTech.Base.Properties {
         public static string FromDate {
             get {
                 return ResourceManager.GetString("FromDate", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to តម្លៃសរុបចាប់ពី.
+        /// </summary>
+        public static string FromTotal {
+            get {
+                return ResourceManager.GetString("FromTotal", resourceCulture);
             }
         }
         
@@ -1081,6 +1108,15 @@ namespace QTech.Base.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to ថ្ងៃដល់ត្រូវធំជាងថ្ងៃចាប់ពី!.
+        /// </summary>
+        public static string MsgToDateGreaterThenFromDate {
+            get {
+                return ResourceManager.GetString("MsgToDateGreaterThenFromDate", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to ឈ្មោះ.
         /// </summary>
         public static string Name {
@@ -1267,6 +1303,15 @@ namespace QTech.Base.Properties {
         public static string PayStatus_WaitPayment {
             get {
                 return ResourceManager.GetString("PayStatus_WaitPayment", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to ភាគរយ.
+        /// </summary>
+        public static string Percent {
+            get {
+                return ResourceManager.GetString("Percent", resourceCulture);
             }
         }
         
@@ -1973,6 +2018,15 @@ namespace QTech.Base.Properties {
         public static string TotalImportPrice {
             get {
                 return ResourceManager.GetString("TotalImportPrice", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to ដល់.
+        /// </summary>
+        public static string ToTotal {
+            get {
+                return ResourceManager.GetString("ToTotal", resourceCulture);
             }
         }
         
