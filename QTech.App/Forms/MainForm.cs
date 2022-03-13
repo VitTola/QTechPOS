@@ -51,7 +51,7 @@ namespace QTech.Forms
             this.OptimizeLoadUI();
             this.FormClosed += MainForm_FormClosed1;
             this.Load += MainForm_Load;
-
+            
             try
             {
                 var jsonData = File.ReadAllText("Version.json");
@@ -137,6 +137,8 @@ namespace QTech.Forms
         private MenuBar ClickedButton;
         private void TopMenue_Click(object sender, EventArgs e)
         {
+            pSecondMenue1.BackColor = container.BackColor = ShareValue.CurrentTheme.MainFormSecondMenuePanel;
+
             var key = ((ExTabItem)sender).Tag ?? string.Empty;
             var navMenu = _menuBars.FirstOrDefault(y => y.Key.ToString() == key.ToString());
 
@@ -251,7 +253,6 @@ namespace QTech.Forms
                 ClickedButton = menuBar;
             }
         }
-
         private void SecodMenue_MouseHover(object sender, EventArgs e)
         {
             if (sender is ExTabItem2 btn)
@@ -263,7 +264,6 @@ namespace QTech.Forms
                 }
             }
         }
-
         private void SecodMenue_Leave(object sender, EventArgs e)
         {
             if (sender is ExTabItem2 btn)
@@ -277,7 +277,6 @@ namespace QTech.Forms
                 }
             }
         }
-
         private void SecodMenue_Click(object sender, EventArgs e)
         {
             if (sender is ExTabItem2 btn)
@@ -370,6 +369,7 @@ namespace QTech.Forms
             var currentTheme = ShareValue.CurrentTheme;
             pTopMenu.BackColor = currentTheme.MainFormFirstMenuePanel;
             pSecondMenue2.BackColor = currentTheme.MainFormSecondMenuePanel;
+            container.BackColor = currentTheme.MainFormSecondMenuePanel;
             BackColor = currentTheme.MainFormBackColor;
             pBottom.Colors.Clear();
             pBottom.Colors.Add(new ColorWithAlpha() { Color = 
@@ -471,5 +471,6 @@ namespace QTech.Forms
                 new ReloadMainForm(obj).Show();
             }
         }
+
     }
 }
