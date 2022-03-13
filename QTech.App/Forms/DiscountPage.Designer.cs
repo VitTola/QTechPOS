@@ -43,6 +43,13 @@
             this.colorWithAlpha2 = new QTech.Component.ColorWithAlpha();
             this.colorWithAlpha3 = new QTech.Component.ColorWithAlpha();
             this.dgv = new QTech.Component.ExDataGridView();
+            this.colId = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colRow_ = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colName = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colFromDate = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colToDate = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colDiscountType = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colNote = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.panel1 = new System.Windows.Forms.Panel();
             this.pagination = new QTech.Component.LTPagination();
             this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -52,13 +59,6 @@
             this.dataGridViewTextBoxColumn5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn6 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn7 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.colId = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.colRow_ = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.colName = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.colFromDate = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.colToDate = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.colDiscountType = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.colNote = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.graPanel1.SuspendLayout();
             this.flowLayoutPanel2.SuspendLayout();
             this.flowLayoutPanel1.SuspendLayout();
@@ -265,10 +265,78 @@
             this.dgv.Paging = null;
             this.dgv.ReadOnly = true;
             this.dgv.RowHeadersVisible = false;
+            this.dgv.RowHeadersWidth = 51;
             this.dgv.RowTemplate.Height = 28;
             this.dgv.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgv.Size = new System.Drawing.Size(931, 339);
+            this.dgv.Size = new System.Drawing.Size(931, 315);
             this.dgv.TabIndex = 2;
+            // 
+            // colId
+            // 
+            this.colId.DataPropertyName = "Id";
+            this.colId.HeaderText = "Id";
+            this.colId.MinimumWidth = 6;
+            this.colId.Name = "colId";
+            this.colId.ReadOnly = true;
+            this.colId.Visible = false;
+            this.colId.Width = 125;
+            // 
+            // colRow_
+            // 
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            this.colRow_.DefaultCellStyle = dataGridViewCellStyle3;
+            this.colRow_.HeaderText = "";
+            this.colRow_.MinimumWidth = 6;
+            this.colRow_.Name = "colRow_";
+            this.colRow_.ReadOnly = true;
+            this.colRow_.Width = 30;
+            // 
+            // colName
+            // 
+            this.colName.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells;
+            this.colName.DataPropertyName = "Name";
+            this.colName.FillWeight = 40F;
+            this.colName.HeaderText = "ឈ្មោះ";
+            this.colName.MinimumWidth = 100;
+            this.colName.Name = "colName";
+            this.colName.ReadOnly = true;
+            // 
+            // colFromDate
+            // 
+            this.colFromDate.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
+            this.colFromDate.HeaderText = "ចាប់ពីថ្ងៃទី";
+            this.colFromDate.MinimumWidth = 6;
+            this.colFromDate.Name = "colFromDate";
+            this.colFromDate.ReadOnly = true;
+            this.colFromDate.Width = 150;
+            // 
+            // colToDate
+            // 
+            this.colToDate.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
+            this.colToDate.HeaderText = "ដល់ថ្ងៃទី";
+            this.colToDate.MinimumWidth = 6;
+            this.colToDate.Name = "colToDate";
+            this.colToDate.ReadOnly = true;
+            this.colToDate.Width = 150;
+            // 
+            // colDiscountType
+            // 
+            this.colDiscountType.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells;
+            this.colDiscountType.HeaderText = "ប្រភេទបញ្ចុះតម្លៃ";
+            this.colDiscountType.MinimumWidth = 6;
+            this.colDiscountType.Name = "colDiscountType";
+            this.colDiscountType.ReadOnly = true;
+            this.colDiscountType.Width = 145;
+            // 
+            // colNote
+            // 
+            this.colNote.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.colNote.DataPropertyName = "Note";
+            this.colNote.FillWeight = 60F;
+            this.colNote.HeaderText = "កំណត់ចំណាំ";
+            this.colNote.MinimumWidth = 6;
+            this.colNote.Name = "colNote";
+            this.colNote.ReadOnly = true;
             // 
             // panel1
             // 
@@ -286,7 +354,7 @@
             this.pagination.CurrentPage = 1;
             this.pagination.Dock = System.Windows.Forms.DockStyle.Left;
             this.pagination.Location = new System.Drawing.Point(0, 0);
-            this.pagination.Margin = new System.Windows.Forms.Padding(4);
+            this.pagination.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.pagination.Name = "pagination";
             this.pagination.Size = new System.Drawing.Size(228, 24);
             this.pagination.TabIndex = 0;
@@ -295,13 +363,16 @@
             // 
             this.dataGridViewTextBoxColumn1.DataPropertyName = "Id";
             this.dataGridViewTextBoxColumn1.HeaderText = "Id";
+            this.dataGridViewTextBoxColumn1.MinimumWidth = 6;
             this.dataGridViewTextBoxColumn1.Name = "dataGridViewTextBoxColumn1";
             this.dataGridViewTextBoxColumn1.ReadOnly = true;
             this.dataGridViewTextBoxColumn1.Visible = false;
+            this.dataGridViewTextBoxColumn1.Width = 125;
             // 
             // dataGridViewTextBoxColumn2
             // 
             this.dataGridViewTextBoxColumn2.HeaderText = "";
+            this.dataGridViewTextBoxColumn2.MinimumWidth = 6;
             this.dataGridViewTextBoxColumn2.Name = "dataGridViewTextBoxColumn2";
             this.dataGridViewTextBoxColumn2.ReadOnly = true;
             this.dataGridViewTextBoxColumn2.Width = 30;
@@ -321,22 +392,28 @@
             // 
             this.dataGridViewTextBoxColumn4.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells;
             this.dataGridViewTextBoxColumn4.HeaderText = "ចាប់ពីថ្ងៃទី";
+            this.dataGridViewTextBoxColumn4.MinimumWidth = 6;
             this.dataGridViewTextBoxColumn4.Name = "dataGridViewTextBoxColumn4";
             this.dataGridViewTextBoxColumn4.ReadOnly = true;
+            this.dataGridViewTextBoxColumn4.Width = 125;
             // 
             // dataGridViewTextBoxColumn5
             // 
             this.dataGridViewTextBoxColumn5.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells;
             this.dataGridViewTextBoxColumn5.HeaderText = "ដល់ថ្ងៃទី";
+            this.dataGridViewTextBoxColumn5.MinimumWidth = 6;
             this.dataGridViewTextBoxColumn5.Name = "dataGridViewTextBoxColumn5";
             this.dataGridViewTextBoxColumn5.ReadOnly = true;
+            this.dataGridViewTextBoxColumn5.Width = 125;
             // 
             // dataGridViewTextBoxColumn6
             // 
             this.dataGridViewTextBoxColumn6.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells;
             this.dataGridViewTextBoxColumn6.HeaderText = "ប្រភេទបញ្ចុះតម្លៃ";
+            this.dataGridViewTextBoxColumn6.MinimumWidth = 6;
             this.dataGridViewTextBoxColumn6.Name = "dataGridViewTextBoxColumn6";
             this.dataGridViewTextBoxColumn6.ReadOnly = true;
+            this.dataGridViewTextBoxColumn6.Width = 125;
             // 
             // dataGridViewTextBoxColumn7
             // 
@@ -344,76 +421,17 @@
             this.dataGridViewTextBoxColumn7.DataPropertyName = "Note";
             this.dataGridViewTextBoxColumn7.FillWeight = 60F;
             this.dataGridViewTextBoxColumn7.HeaderText = "កំណត់ចំណាំ";
+            this.dataGridViewTextBoxColumn7.MinimumWidth = 6;
             this.dataGridViewTextBoxColumn7.Name = "dataGridViewTextBoxColumn7";
             this.dataGridViewTextBoxColumn7.ReadOnly = true;
             // 
-            // colId
-            // 
-            this.colId.DataPropertyName = "Id";
-            this.colId.HeaderText = "Id";
-            this.colId.Name = "colId";
-            this.colId.ReadOnly = true;
-            this.colId.Visible = false;
-            // 
-            // colRow_
-            // 
-            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            this.colRow_.DefaultCellStyle = dataGridViewCellStyle3;
-            this.colRow_.HeaderText = "";
-            this.colRow_.Name = "colRow_";
-            this.colRow_.ReadOnly = true;
-            this.colRow_.Width = 30;
-            // 
-            // colName
-            // 
-            this.colName.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells;
-            this.colName.DataPropertyName = "Name";
-            this.colName.FillWeight = 40F;
-            this.colName.HeaderText = "ឈ្មោះ";
-            this.colName.MinimumWidth = 100;
-            this.colName.Name = "colName";
-            this.colName.ReadOnly = true;
-            // 
-            // colFromDate
-            // 
-            this.colFromDate.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
-            this.colFromDate.HeaderText = "ចាប់ពីថ្ងៃទី";
-            this.colFromDate.Name = "colFromDate";
-            this.colFromDate.ReadOnly = true;
-            this.colFromDate.Width = 150;
-            // 
-            // colToDate
-            // 
-            this.colToDate.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
-            this.colToDate.HeaderText = "ដល់ថ្ងៃទី";
-            this.colToDate.Name = "colToDate";
-            this.colToDate.ReadOnly = true;
-            this.colToDate.Width = 150;
-            // 
-            // colDiscountType
-            // 
-            this.colDiscountType.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells;
-            this.colDiscountType.HeaderText = "ប្រភេទបញ្ចុះតម្លៃ";
-            this.colDiscountType.Name = "colDiscountType";
-            this.colDiscountType.ReadOnly = true;
-            this.colDiscountType.Width = 112;
-            // 
-            // colNote
-            // 
-            this.colNote.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.colNote.DataPropertyName = "Note";
-            this.colNote.FillWeight = 60F;
-            this.colNote.HeaderText = "កំណត់ចំណាំ";
-            this.colNote.Name = "colNote";
-            this.colNote.ReadOnly = true;
-            // 
             // DiscountPage
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 19F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(10F, 25F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(931, 374);
-            this.Controls.Add(this.panel1);
             this.Controls.Add(this.dgv);
+            this.Controls.Add(this.panel1);
             this.Controls.Add(this.graPanel1);
             this.Font = new System.Drawing.Font("Fasthand", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);

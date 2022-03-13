@@ -124,16 +124,6 @@ namespace QTech.Base.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
-        /// </summary>
-        public static System.Drawing.Bitmap billing {
-            get {
-                object obj = ResourceManager.GetObject("billing", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to គិតលុយ.
         /// </summary>
         public static string Calculate {
@@ -181,16 +171,6 @@ namespace QTech.Base.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
-        /// </summary>
-        public static System.Drawing.Bitmap Category_img {
-            get {
-                object obj = ResourceManager.GetObject("Category_img", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to ប្រវត្តិកែប្រែ.
         /// </summary>
         public static string ChangeLog {
@@ -228,7 +208,7 @@ namespace QTech.Base.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to ប្រព័ន្ធគ្រប់គ្រងការលក់​ Q-Tech.
+        ///   Looks up a localized string similar to ប្រព័ន្ធគ្រប់គ្រងការលក់​ CamQTech.
         /// </summary>
         public static string Company {
             get {
@@ -344,16 +324,6 @@ namespace QTech.Base.Properties {
         public static string Dated {
             get {
                 return ResourceManager.GetString("Dated", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
-        /// </summary>
-        public static System.Drawing.Bitmap delivery {
-            get {
-                object obj = ResourceManager.GetObject("delivery", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
             }
         }
         
@@ -1702,16 +1672,6 @@ namespace QTech.Base.Properties {
         public static System.Drawing.Bitmap RunningBill_img {
             get {
                 object obj = ResourceManager.GetObject("RunningBill_img", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
-        /// </summary>
-        public static System.Drawing.Bitmap RyLogo {
-            get {
-                object obj = ResourceManager.GetObject("RyLogo", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

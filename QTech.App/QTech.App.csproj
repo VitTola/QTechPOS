@@ -60,7 +60,7 @@
     <Prefer32Bit>false</Prefer32Bit>
   </PropertyGroup>
   <PropertyGroup>
-    <ApplicationIcon>Pheng-Ry.ico</ApplicationIcon>
+    <ApplicationIcon>logo_oJu_icon.ico</ApplicationIcon>
   </PropertyGroup>
   <PropertyGroup>
     <SignManifests>true</SignManifests>
@@ -582,8 +582,15 @@
     <None Include="Resources\imgCollapse.png" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="logo_oJu_icon.ico" />
     <Content Include="Pheng-Ry.ico" />
     <Content Include="Resources\Calendar1.png" />
+    <None Include="Resources\logo2.png" />
+    <None Include="Resources\_logo2.png" />
+    <None Include="Resources\logo1.png" />
+    <None Include="Resources\_logo1.png" />
+    <None Include="Resources\_logo.png" />
+    <None Include="Resources\logo.png" />
     <None Include="Resources\maxi_img.png" />
     <None Include="Resources\DropDown.png" />
     <None Include="Resources\History.png" />

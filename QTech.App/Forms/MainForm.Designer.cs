@@ -77,12 +77,12 @@
             this.btnLogOut = new System.Windows.Forms.ToolStripMenuItem();
             this.labelHideCurveBg_ = new System.Windows.Forms.Label();
             this.lblWhitbackG_ = new System.Windows.Forms.Label();
-            this.elementHost1 = new System.Windows.Forms.Integration.ElementHost();
-            this.curvePanel = new WpfCustomControlLibrary.CurvePanel();
             this.cnmTheme = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.Template1 = new System.Windows.Forms.ToolStripMenuItem();
             this.Template2 = new System.Windows.Forms.ToolStripMenuItem();
             this.Template3 = new System.Windows.Forms.ToolStripMenuItem();
+            this.elementHost1 = new System.Windows.Forms.Integration.ElementHost();
+            this.curvePanel = new WpfCustomControlLibrary.CurvePanel();
             this.container.SuspendLayout();
             this.topPanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.picLogo)).BeginInit();
@@ -221,9 +221,7 @@
             // 
             this.picLogo.BackColor = System.Drawing.Color.Gray;
             this.picLogo.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.picLogo.ErrorImage = global::QTech.Properties.Resources.QTech__2_;
-            this.picLogo.Image = global::QTech.Properties.Resources.Pheng_Ry;
-            this.picLogo.InitialImage = global::QTech.Properties.Resources.QTech__2_;
+            this.picLogo.Image = global::QTech.Properties.Resources._logo2;
             this.picLogo.Location = new System.Drawing.Point(12, 3);
             this.picLogo.Name = "picLogo";
             this.picLogo.Size = new System.Drawing.Size(66, 80);
@@ -751,16 +749,6 @@
             this.lblWhitbackG_.Size = new System.Drawing.Size(103, 23);
             this.lblWhitbackG_.TabIndex = 10;
             // 
-            // elementHost1
-            // 
-            this.elementHost1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(14)))), ((int)(((byte)(22)))), ((int)(((byte)(33)))));
-            this.elementHost1.Location = new System.Drawing.Point(1, 1);
-            this.elementHost1.Name = "elementHost1";
-            this.elementHost1.Size = new System.Drawing.Size(104, 114);
-            this.elementHost1.TabIndex = 9;
-            this.elementHost1.Text = "elementHost1";
-            this.elementHost1.Child = this.curvePanel;
-            // 
             // cnmTheme
             // 
             this.cnmTheme.Font = new System.Drawing.Font("Khmer OS Battambang", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -795,6 +783,16 @@
             this.Template3.Size = new System.Drawing.Size(111, 26);
             this.Template3.Text = "គំរូទី៣";
             this.Template3.Click += new System.EventHandler(this.Template3_Click);
+            // 
+            // elementHost1
+            // 
+            this.elementHost1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(14)))), ((int)(((byte)(22)))), ((int)(((byte)(33)))));
+            this.elementHost1.Location = new System.Drawing.Point(1, 1);
+            this.elementHost1.Name = "elementHost1";
+            this.elementHost1.Size = new System.Drawing.Size(104, 114);
+            this.elementHost1.TabIndex = 9;
+            this.elementHost1.Text = "elementHost1";
+            this.elementHost1.Child = this.curvePanel;
             // 
             // MainForm
             // 
