@@ -234,7 +234,7 @@ namespace QTech.Forms
         }
         public void ViewChangeLog()
         {
-            AuditTrailDialog.ShowChangeLog(Model);
+            AuditTrailDialog.ShowChangeLog(model: Model);
         }
         public void Write()
         {

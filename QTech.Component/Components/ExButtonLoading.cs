@@ -105,7 +105,7 @@ namespace QTech.Component
             }
             Image = Properties.Resources.spin;
             ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            FlatAppearance.BorderColor = Color.FromArgb(0, 122, 204);
+            FlatAppearance.BorderColor = Color.Blue;
         }
 
         protected override void OnClick(EventArgs e)

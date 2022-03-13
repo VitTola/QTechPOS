@@ -48,6 +48,10 @@ namespace QTech.Forms
             btnAdd.Visible = ShareValue.IsAuthorized(AuthKey.Sale_IncomeOutcome_Add);
             btnRemove.Visible = ShareValue.IsAuthorized(AuthKey.Sale_IncomeOutcome_Remove);
             btnUpdate.Visible = ShareValue.IsAuthorized(AuthKey.Sale_IncomeOutcome_Update);
+
+            pagination.BackGroundColor = ShareValue.CurrentTheme.PanelColor;
+            pagination.Paging = 25;
+            pagination.DataSourceChanged += (s, e) => LoadData();
         }
         private async void CboMiscellaneousType_SelectedIndexChanged(object sender, EventArgs e)
         {
@@ -132,15 +136,24 @@ namespace QTech.Forms
             {
                 Search = txtSearch.Text,
                 MiscellaneousType = (MiscellaneousType)cboMiscellaneousType.SelectedValue,
-                Paging = pagination.Paging
             };
 
             dgv.Rows.Clear();
-            pagination.ListModel = await dgv.RunAsync(() => IncomeExpenseLogic.Instance.SearchAsync(search));
-            if (pagination.ListModel != null)
+            pagination.DataSourceFn = await dgv.RunAsync(() => IncomeExpenseLogic.Instance.Search(search));
+            if (pagination.DataSource == null)
             {
-                var _incomeExpenses = pagination.ListModel as List<IncomeExpense>;
-                _incomeExpenses.OrderByDescending(x=>x.DoDate).ToList().ForEach(x => {
+                return;
+            }
+             LoadData();
+        }
+        private  void LoadData()
+        {
+            List<IncomeExpense> incomeExpenses = pagination.DataSource.Cast<IncomeExpense>().ToList();
+            dgv.Rows.Clear();
+            if (incomeExpenses != null)
+            {
+                incomeExpenses.OrderByDescending(x => x.DoDate).ToList().ForEach(x =>
+                {
                     var row = newRow();
                     row.Cells[colId.Name].Value = x.Id;
                     row.Cells[colMiscNo.Name].Value = x.MiscNo;

@@ -42,15 +42,15 @@ namespace QTech.Forms
             txtSearch.RegisterKeyArrowDown(dgv);
             txtSearch.QuickSearch += txtSearch_QuickSearch;
 
-            dgv.RowPostPaint += (s,e) => dgv.Rows[e.RowIndex].Cells[colRow_.Name].Value = (e.RowIndex + 1).ToString(); 
-            pagination.DataSourceChanged += (s,e) => LoadData();
+            dgv.RowPostPaint += (s, e) => dgv.Rows[e.RowIndex].Cells[colRow_.Name].Value = (e.RowIndex + 1).ToString();
+            pagination.DataSourceChanged += (s, e) => LoadData();
             pagination.BackGroundColor = ShareValue.CurrentTheme.PanelColor;
             pagination.Paging = 25;
         }
         private async void txtSearch_QuickSearch(object sender, EventArgs e)
         {
             await Search();
-        }  
+        }
         public async void AddNew()
         {
             Model = new Discount();
@@ -86,7 +86,7 @@ namespace QTech.Forms
         public async void Reload()
         {
             dgv.AllowRowNotFound = true;
-            dgv.ColumnHeadersHeight= 28;
+            dgv.ColumnHeadersHeight = 28;
 
             await Search();
         }
@@ -136,17 +136,17 @@ namespace QTech.Forms
         {
             List<Discount> discounts = pagination.DataSource.Cast<Discount>().ToList();
             dgv.Rows.Clear();
-            discounts.OrderByDescending(x=>x.RowDate).ToList().ForEach(x =>
-            {
-                var row = newRow(false);
-                row.Cells[colId.Name].Value = x.Id;
-                row.Cells[colName.Name].Value = x.Name;
-                row.Cells[colFromDate.Name].Value = x.StartDate.ToString("dd-MMM-yyyy"); ;
-                row.Cells[colToDate.Name].Value = x.ToDate.ToString("dd-MMM-yyyy");
-                row.Cells[colDiscountType.Name].Value = x.DiscountType == DiscountType.ByProduct ? BaseResource.DiscountType_ByProduct :
-                BaseResource.DiscountType_ByTotal;
-                row.Cells[colNote.Name].Value = x.Note;
-            });
+            discounts.OrderByDescending(x => x.RowDate).ToList().ForEach(x =>
+              {
+                  var row = newRow(false);
+                  row.Cells[colId.Name].Value = x.Id;
+                  row.Cells[colName.Name].Value = x.Name;
+                  row.Cells[colFromDate.Name].Value = x.StartDate.ToString("dd-MMM-yyyy"); ;
+                  row.Cells[colToDate.Name].Value = x.ToDate.ToString("dd-MMM-yyyy");
+                  row.Cells[colDiscountType.Name].Value = x.DiscountType == DiscountType.ByProduct ? BaseResource.DiscountType_ByProduct :
+                  BaseResource.DiscountType_ByTotal;
+                  row.Cells[colNote.Name].Value = x.Note;
+              });
             if (dgv.RowCount > 0) dgv.Rows[0].Selected = true;
         }
         private DataGridViewRow newRow(bool isFocus = false)
