@@ -73,6 +73,8 @@
             this.txtCustomer = new System.Windows.Forms.TextBox();
             this.lblCustomer1 = new QTech.Component.ExLabel();
             this.panel2 = new System.Windows.Forms.Panel();
+            this.cboDiscount = new QTech.Component.ExSearchCombo();
+            this.lblDiscount_ = new QTech.Component.ExLabel();
             this.panel7 = new System.Windows.Forms.Panel();
             this.txtLeftAmount = new System.Windows.Forms.TextBox();
             this.label4 = new System.Windows.Forms.Label();
@@ -435,7 +437,7 @@
             // 
             this.lblSaleDate_.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.lblSaleDate_.AutoSize = true;
-            this.lblSaleDate_.Location = new System.Drawing.Point(476, 20);
+            this.lblSaleDate_.Location = new System.Drawing.Point(465, 20);
             this.lblSaleDate_.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblSaleDate_.Name = "lblSaleDate_";
             this.lblSaleDate_.Required = true;
@@ -573,6 +575,8 @@
             // 
             // panel2
             // 
+            this.panel2.Controls.Add(this.cboDiscount);
+            this.panel2.Controls.Add(this.lblDiscount_);
             this.panel2.Controls.Add(this.panel7);
             this.panel2.Controls.Add(this.panel6);
             this.panel2.Controls.Add(this.panel5);
@@ -586,6 +590,40 @@
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(871, 96);
             this.panel2.TabIndex = 32;
+            // 
+            // cboDiscount
+            // 
+            this.cboDiscount.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(222)))), ((int)(((byte)(250)))));
+            this.cboDiscount.Choose = "";
+            this.cboDiscount.CustomSearchForm = null;
+            this.cboDiscount.DataSourceFn = null;
+            this.cboDiscount.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cboDiscount.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.cboDiscount.FormattingEnabled = true;
+            this.cboDiscount.IsGirdViewColumn = false;
+            this.cboDiscount.LoadAll = true;
+            this.cboDiscount.Location = new System.Drawing.Point(159, 34);
+            this.cboDiscount.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            this.cboDiscount.Name = "cboDiscount";
+            this.cboDiscount.SearchParamFn = null;
+            this.cboDiscount.SelectedItems = null;
+            this.cboDiscount.SelectedObject = null;
+            this.cboDiscount.ShowAll = false;
+            this.cboDiscount.Size = new System.Drawing.Size(200, 27);
+            this.cboDiscount.TabIndex = 49;
+            this.cboDiscount.TextAll = "";
+            // 
+            // lblDiscount_
+            // 
+            this.lblDiscount_.AutoSize = true;
+            this.lblDiscount_.Location = new System.Drawing.Point(1, 38);
+            this.lblDiscount_.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lblDiscount_.Name = "lblDiscount_";
+            this.lblDiscount_.Required = true;
+            this.lblDiscount_.Size = new System.Drawing.Size(59, 19);
+            this.lblDiscount_.TabIndex = 50;
+            this.lblDiscount_.Text = "អតិថិជន";
+            this.lblDiscount_.Click += new System.EventHandler(this.exLabel7_Click);
             // 
             // panel7
             // 
@@ -1115,5 +1153,7 @@
         private System.Windows.Forms.TextBox txtTotal;
         private System.Windows.Forms.Label label2;
         private Component.ExButtonLoading btnChangeLog;
+        private Component.ExSearchCombo cboDiscount;
+        private Component.ExLabel lblDiscount_;
     }
 }

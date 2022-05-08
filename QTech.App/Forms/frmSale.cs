@@ -734,6 +734,10 @@ namespace QTech.Forms
         {
             Save();
         }
-        
+
+        private void exLabel7_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }
